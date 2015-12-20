@@ -1,0 +1,59 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Compute the desired orientation and send rotation requests and cheating torque to try to keep the 
+/// body matching the desired orientation during freefall.
+///
+/// If the character is not in contact and is not supported or has no ground below him or is already in freefall
+/// he will be considered in freefall :
+///  - if he is already in freefall until the nextImpact.
+///  - if the next predicted impact is later than the freefallParams.minTimeBeforeImpactToStartToSpin.
+__global_access__ __no_feedback__  module_def FreeFallManagement
+{
+owner: HazardManagement
+
+data:
+  bool isInFreefall;        ///< Means character is in freefall but doesn't mean is doing fly behaviour.
+  TimePeriod isInFreefallTimer;
+  int32_t noHazardDetected; ///< Number of frames that no hazard has been detected
+  Angle orientationError;   ///< Angle between current and target orientation, in radians.
+  Wrench wrench;            ///< Torque to rotate character towards the desired orientation.
+
+feedIn:
+  Weight supportAmount;
+  Hazard chestHazard;
+  bool isInContact;
+
+in:
+  FreefallParameters freefallParams;
+
+out:
+  RotationRequest armsSpinRotationRequest;
+  RotationRequest legsSpinRotationRequest;
+  TargetRequest   focalCentre;
+
+  Angle           orientationError;  ///< Angle between current and target orientation, in radians.
+  PoseData        spinePose;
+  bool isInFreefall;                 ///< Orientation control is active.
+
+connections<>:
+  in.freefallParams = (owner.owner.freeFallBehaviourInterface.out.freefallParams);
+  // since this modules needs a 0-1 value of whether the modules are trying to support, we do it this way
+  feedIn.supportAmount = junctions.feedIn_supportAmount = maxFloatValue(
+    owner.owner.arms[*].standingSupport.feedOut.supportAmount, 
+    owner.owner.legs[*].standingSupport.feedOut.supportAmount, 
+    owner.owner.spines[0].feedOut.externalSupportAmount);
+  feedIn.chestHazard = (owner.chestImpactPredictor.feedOut.hazard);
+  feedIn.isInContact = (owner.owner.bodyFrame.feedIn.isInContact);
+}
+
+#endif 

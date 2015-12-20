@@ -1,0 +1,40 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Basic control of the spine with local orientation and position offsets
+__no_feedback__ module_def SpineControl
+{
+owner: Spine
+
+in:
+  RotationRequest endRotationRequest;       ///< Desired rotation of the chest
+  RotationRequest rootRotationRequest;      ///< Desired rotation of the pelvis
+  TranslationRequest endTranslationRequest; ///< Desired translation of the chest
+  TranslationRequest rootTranslationRequest;///< Desired translation of the pelvis
+  
+  Weight dampingIncrease;                   ///< 0 is normal damping
+  
+out:
+  LimbControl control; ///< IK control of the spine
+
+connections<>:
+  in.endRotationRequest = junctions.in_endRotationRequest = priority(owner.support.out.upperRotationRequestLocal, owner.support.out.upperRotationRequestWorld);
+  in.rootRotationRequest = junctions.in_rootRotationRequest = priority(owner.support.out.lowerRotationRequestLocal, owner.support.out.lowerRotationRequestWorld);
+  in.endTranslationRequest = junctions.in_endTranslationRequest = priority(owner.support.out.upperTranslationRequestLocal, owner.support.out.upperTranslationRequestWorld);
+  in.rootTranslationRequest = junctions.in_rootTranslationRequest = priority(owner.support.out.lowerTranslationRequestLocal, owner.support.out.lowerTranslationRequestWorld);
+  in.dampingIncrease =  junctions.in_dampingIncrease = priority(
+    owner.owner.reachForWorldBehaviourInterface.out.spineDampingIncrease, 
+    owner.owner.hazardManagement.grab.out.spineDampingIncrease,
+    owner.owner.bodyFrame.bodyBalance.out.spineDampingIncrease);
+}
+
+#endif 

@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug Tool|Win32">
+      <Configuration>Debug Tool</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Tool|Win32">
+      <Configuration>Release Tool</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>MDFCodeGen</ProjectName>
+    <ProjectGuid>{CE813576-CB67-43FD-CCB9-0D904C4B4B3A}</ProjectGuid>
+    <RootNamespace>MDFCodeGen</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <TargetName>MDFCodeGen_debug</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\MDFCodeGen\debug_tool\</IntDir>
+    <OutDir>..\..\..\bin\win32\vs$(VisualStudioVersion)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <TargetName>MDFCodeGen</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\MDFCodeGen\release_tool\</IntDir>
+    <OutDir>..\..\..\bin\win32\vs$(VisualStudioVersion)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\common\tinyxml;..\..\SDK\MDF;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;..\..\..\common\NMTL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>NMTINYXML_STATIC;NMTL_STATIC;WIN32;_CONSOLE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\lib\win32\vs$(VisualStudioVersion)\NMTinyXMLStatic_debug.lib";"..\..\..\lib\win32\vs$(VisualStudioVersion)\MDF_debug.lib";"..\..\..\lib\win32\vs$(VisualStudioVersion)\NMPlatform_target_LE32_debug.lib";"..\..\..\lib\win32\vs$(VisualStudioVersion)\NMTLStatic_debug.lib";shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <ProgramDatabaseFile>$(OutDir)MDFCodeGen_debug.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\common\tinyxml;..\..\SDK\MDF;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;..\..\..\common\NMTL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Precompiled.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>NDEBUG;NMTINYXML_STATIC;NMTL_STATIC;NM_ENABLE_EXCEPTIONS=1;WIN32;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\lib\win32\vs$(VisualStudioVersion)\NMTinyXMLStatic.lib";"..\..\..\lib\win32\vs$(VisualStudioVersion)\MDF.lib";"..\..\..\lib\win32\vs$(VisualStudioVersion)\NMPlatform_target_LE32.lib";"..\..\..\lib\win32\vs$(VisualStudioVersion)\NMTLStatic.lib";shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDatabaseFile>$(OutDir)MDFCodeGen.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="CodeWriter.cpp" />
+    <ClInclude Include="CodeWriter.h" />
+    <ClCompile Include="EmitCPP.cpp" />
+    <ClInclude Include="EmitCPP.h" />
+    <ClCompile Include="EmitCPP_Behaviour.cpp" />
+    <ClInclude Include="EmitCPP_Behaviour.h" />
+    <ClCompile Include="EmitCPP_Common.cpp" />
+    <ClInclude Include="EmitCPP_Common.h" />
+    <ClCompile Include="EmitCPP_Desc.cpp" />
+    <ClInclude Include="EmitCPP_Desc.h" />
+    <ClCompile Include="EmitCPP_Module.cpp" />
+    <ClInclude Include="EmitCPP_Module.h" />
+    <ClCompile Include="EmitCPP_Types.cpp" />
+    <ClInclude Include="EmitCPP_Types.h" />
+    <ClCompile Include="EmitManifest.cpp" />
+    <ClInclude Include="EmitManifest.h" />
+    <ClCompile Include="EmitXmlSummary.cpp" />
+    <ClInclude Include="EmitXmlSummary.h" />
+    <ClCompile Include="FileUtils.cpp" />
+    <ClInclude Include="FileUtils.h" />
+    <None Include="MDF.css" />
+    <ClCompile Include="MDFCodeGen.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ResourceCompile Include="MDFCodeGen.rc" />
+    <ClCompile Include="NetworkStats.cpp" />
+    <ClInclude Include="NetworkStats.h" />
+    <ClInclude Include="Precompiled.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\common\tinyxml\NMTinyXMLStatic_WIN32.vcxproj">
+      <Project>{48F5B187-BC3C-433B-1CA3-BD411C681D7A}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SDK\MDF\MDF_WIN32.vcxproj">
+      <Project>{3DD564A7-571D-4EAC-8AA6-5D5E2BDD0E66}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMPlatform\NMPlatform_WIN32.vcxproj">
+      <Project>{A09CF394-9273-474D-4091-19EB54BF95DA}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMTL\NMTLStatic_WIN32.vcxproj">
+      <Project>{FD01B990-7B2B-4C94-92AA-0F7092F4C86B}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

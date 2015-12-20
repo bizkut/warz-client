@@ -1,0 +1,82 @@
+* {
+	font-family:verdana,sans-serif;
+	font-size:14px;
+	line-height:1em;
+}
+
+body {
+	background:rgb(80,80,90);
+  text-align:center;
+}
+
+div#block {
+  margin:22px 0px 0px 0px;
+  padding:6px 0px 0px 0px;
+	border:black solid 1px;
+	background:white;
+	text-align:left;
+}
+
+div#vdblock {
+  margin:10px 4px 5px 4px;
+  padding:2px 2px 2px 2px;
+  border:black solid 1px;
+  background:rgb(190,190,190);
+}
+
+div#conblock {
+  margin:10px 4px 5px 4px;
+  padding:2px 2px 2px 2px;
+  border:black solid 1px;
+  background:rgb(200,200,250);
+}
+
+div#pathblock {
+  margin:10px 4px 5px 4px;
+  padding:2px 2px 2px 2px;
+  border:black solid 1px;
+  background:rgb(220,240,160);
+}
+
+
+
+.minitext {
+  font-family:tahoma;
+  font-size:0.7em;
+}
+
+.code {
+  padding:10px;
+	font-family:courier new, fixed-width;
+  font-weight: 800;
+  font-size: 1.2em;
+}
+
+
+.info {
+  margin:5px 5px 5px 5px;
+  padding:8px 8px 8px 8px;
+  border:black solid 1px;
+	background:rgb(240,240,250);
+}
+
+.info li {
+	display:inline;
+	margin:0px 2.0em 0px 0px;
+	padding:0px 2.0em 0px 0px;
+	vertical-align:middle;
+}
+
+.info li.vardecl {
+  border-right:black solid 2px;
+}
+
+
+
+.info li.code {
+  padding:5px 5px 5px 5px;
+	font-family:courier new, fixed-width;
+  font-size:0.7em;
+}
+
+

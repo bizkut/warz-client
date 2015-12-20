@@ -1,0 +1,29 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Non-SPU so it can interface with the system to get data into an appropriate network format etc
+__global_access__ __generate_interface__ __no_feedback__ module_def ArmsWindmillBehaviourInterface
+{
+owner: MyNetwork<>
+
+out:
+  /// Poses for each of the limb ends relative to their root
+  SpinParameters armsSpinParams;
+  bool armsSpinInPhase;
+  Multiplier spinStiffnessScales[networkMaxNumArms];   ///< 1 is normal stiffness
+  Multiplier swingStiffnessScales[networkMaxNumArms];  ///< 1 is normal stiffness
+  bool armsOutwardsOnly;                               ///< True means arms will swing outwards only, not inwards, it looks more natural
+  RotationRequest targetRequests[networkMaxNumArms];   ///< Request generated to cause arm spin, it is requesting a pelvis rotation
+}
+
+#endif
+

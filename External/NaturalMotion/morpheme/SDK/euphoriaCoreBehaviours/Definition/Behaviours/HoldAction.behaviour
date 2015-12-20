@@ -1,0 +1,175 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Makes the character grab and hold onto specific, marked up, edges when they are within reach
+behaviour_def HoldAction
+{
+interface:
+  displayname = "Hold Action";
+  version = 5;
+
+modules:
+  holdActionBehaviourInterface;
+  hazardManagement.grab;
+  hazardManagement.grabDetection;
+  bodyFrame;
+  upperBody;
+  upperBody.rotate;
+  upperBody.position;
+  lowerBody;
+  lowerBody.rotate;
+  lowerBody.position;
+  spines[*].support;
+  spines[*].control;
+  arms[*].grab;
+  arms[*].hold;
+  arms[*].holdingSupport;
+  arms[*].spin;
+  arms[*].swing;
+  arms[*].reachForWorld;
+  legs[*].spin;
+  legs[*].swing;
+  heads[*].point;
+  heads[*].eyes;
+
+attributes:
+
+  /// Settings that govern when a reach happens
+  group("Reach Condition")
+  {
+    /// If ground is detected below the character it is not considered supportive (i.e. grabbing is allowed) if it is steeper than this (angle in degrees between "up" and ground normal)
+    float MinSupportSlope = 25.0f, 0.0f, 90.0f      __per_anim_set__ __title__("GroundSlopeMoreThan");
+    
+    /// Grabbing is allowed to start when the character is moving downwards faster than this, in m/s (standard character).
+    float VerticalSpeedToStart = 0.8f __per_anim_set__ __title__("FallingFasterThan"); 
+    
+    /// Balance amounts greater than this for a period of time are considered supporting (no grab)
+    float UnbalancedAmount = 0.65f, 0.0f, 1.0f      __per_anim_set__ __title__("BalanceBelow");
+    
+    /// When balanced more than this time, the character is considered supported so grab is disabled. In seconds (standard character).
+    float MinUnbalancedPeriod = 0.5f, 0.0f   __per_anim_set__;
+  }
+
+  /// Settings that govern when a reach ends
+  group("Stop Condition")
+  {    
+    /// The reach/grab is stopped when the character is moving downwards slower than this, in m/s (standard character). The default value disables grabbing when he is moving upwards. Set to a large -ve number to disable this check.
+    float VerticalSpeedToStop = 0.06f  __per_anim_set__ __title__("MovingDownSlowerThan");
+  }
+
+  group("Hold Durations")
+  {
+    /// If a hold is successful it will always be active for at least this long. In seconds (standard character).
+    float MinHoldPeriod = 0.1f, 0.0f  __per_anim_set__ __title__("Min hold duration");
+    
+    /// A hold will never last longer than this before giving up. In seconds (standard character). A value less than or equal to zero means to never let go due to the hold duration.
+    float MaxHoldPeriod = 10.0f, 0.0f __per_anim_set__ __title__("Max hold duration");
+    
+    /// At least this much time is enforced between successive holds. In seconds (standard character).
+    float NoHoldPeriod = 0.5f, 0.0f   __per_anim_set__ __title__("Min time between holds");
+
+    /// If the hands are constrained behind the back for longer than this, the hold will be aborted. In seconds (standard character).
+    float MaxHandsBehindBackPeriod = 1.0f, 0.0f __per_anim_set__ __title__("Max hold behind back time");
+    
+    /// If a character has tried but failed to reach an edge for this long, the reach attempt is aborted. In seconds (standard character).
+    float MaxReachAttemptPeriod = 5.0f, 0.0f    __per_anim_set__ __title__("Stop reach attempt after");
+    
+    /// After a failed reach attempt, a new attempt isn't started until this period has elapsed. In seconds (standard character).
+    float MinReachRecoveryPeriod = 3.0f, 0.0f   __per_anim_set__ __title__("Min time between attempts");
+  }
+
+  /// A hold is achieved by establishing a constraint, the hold is broken (the edge released) when the constraint is destroyed.
+  group("Hold Constraint")
+  {
+    /// Hands needs to be at least this close to their target for constraint creation. In metres (standard character).
+    float CreateAtDistance = 0.1f, 0.0f __per_anim_set__ __title__("Closer than");
+    
+    /// Hand orientation is enforced when the angle between it and the target is less than this angle, in degrees
+    float EnableOrientationAtAngle = 120.0f, 0.0f, 360.0f __per_anim_set__ __title__("Angle less than");  
+    
+    /// When constrained, hands need to be this far from their target for the constraint to be destroyed (the hold to be broken). In metres (standard character).
+    float DestroyAtDistance = 0.25f, 0.0f __per_anim_set__ __title__("Further than"); 
+    
+    /// Hand orientation will stop being enforced when the angle between it and the target is greater than this angle, in degrees
+    float DisableOrientationAtAngle = 160.0f, 0.0f, 360.0f __per_anim_set__ __title__("Angle more than");  
+    
+    /// Which linear constraint axes are locked.
+    int LockedLinearDofs = 7, 0, 7 __per_anim_set__ __title__("LinearDOF"); // Bitfield: 0 = none, bit 1 = xAxis, bit 2 = yAxis, bit 3 = zAxis 
+
+    /// Which angular constraint axes are locked.
+    int LockedAngularDofs = 7, 0, 7 __per_anim_set__ __title__("AngularDOF"); // Bitfield: 0 = none, bit 1 = xAxis, bit 2 = yAxis, bit 3 = zAxis 
+    
+    /// Hold on to whatever the hand touches. This makes the hands to be magically sticky.
+    bool HoldOnContact = false __per_anim_set__ __title__("In contact");
+    
+    /// Disable collisions between hands and object
+    bool DisableCollisions = true __per_anim_set__ __title__("DisableHandCollisions");
+
+    /// If true then the orientations will only get locked (if requested) after the character has come to hang vertically.
+    bool DisableAngularDofsUntilHanging = true  __per_anim_set__ __title__("Constrain orientation only when hanging");
+  }
+  
+  /// When holding a character can attempt to pull himself up rather than simply hanging. This can add to the realism.
+  group("During Hold")
+  {
+    /// The proportion of maximum hold duration at which the character will switch from looking at the edge to looking down. This gives an impression of fatigue.
+    float TimeBeforeLookingDown = 0.8f, 0.0f, 1.0f __per_anim_set__;
+
+    /// Used to control the chest (make it upright) by swinging/spinning the legs and arms. Smaller values will result in more vigorous movements. In units of 1/seconds (standard character)
+    float ChestControlImminence = 2.0f, 0.0f __per_anim_set__ __title__("Imminence");
+    /// Strength multiplier for swinging/spinning the legs and arms when controlling the chest
+    float ChestControlStiffnessScale = 1.0f, 0.0f, 2.0f __per_anim_set__ __title__("Stiffness scale");
+    /// When controlling the chest, a small value confines the motions to the arms, a larger value results in leg motions
+    float ChestControlPassOnAmount = 1.0f, 0.0f, 1.0f __per_anim_set__ __title__("Move legs");
+  }
+  
+  /// Settings that govern what the character will consider as an edge that can be grabbed.
+  group("Edge Evaluation")
+  {
+    /// An edge will be considered only when closer to the character's chest than this distance. In metres (standard character).
+    float MaxReachDistance = 2.0f, 0.0f __per_anim_set__ __title__("MaxReachDistance");
+  }
+
+controlParams:
+
+  {
+    bool DoHold = true;                       ///< Dynamically toggle Hold. Set it to false to make character release the grabbed edge or to prevent the character from grabbing any edges.
+    bool IsWall;                              ///< True if the object being held is a wall, as opposed to a pole or ledge. This information is used to determine whether the steepness of the surface matters for grabbing, and whether there is a preferred side from which to hang.
+
+    /// Start and End specify the start and the end of the edge segment that should be grabbed. Normal should point out of 
+    /// the edge, so defines the direction pointing out of the back of the hands when the edge has been grabbed, assuming
+    /// the relevant Constraint angular degrees of freedom are locked.
+    float EdgeImportance = 1.01f, 0.0f, 1.01f __title__("EdgeWeight");  ///< Edge importance that is used to arbitrate with other behaviours when reaching. The user specified endge will always be used if weight is > 1. Otherwise the edge will be evaluated alongside other, detected edges.
+    vector3 EdgeStart   __expose_as_pin__;        ///< Position in world space of start of edge segment
+    vector3 EdgeEnd     __expose_as_pin__;        ///< Position in world space of end of edge segment
+    vector3 EdgeNormal  __expose_as_pin__;        ///< Normal of (perpendicular to) edge. The back-of-hand normal will try to match this
+
+    physicsObjectID PhysicsObjectID __expose_as_pin__; ///< The object to try to hold. If set, then the edge is specified relative to this object, in the local space of the object.
+
+    /// How high the character tries to pull himself up. 1: to chest level, 0: arms fully extended (but note that the arms may still have strength).
+    float PullUpAmount = 0.25f, 0.0f, 1.0f;
+    /// How strong the arms will try to pull up. This scales the normal strength is scaled by this factor. 0: no strength, 1: normal strength, 2: twice normal strength (super strong)
+    float PullUpStrengthScale = 0.5f, 0.0f, 2.0f;
+
+    float HoldImportance[networkMaxNumArms] = 1.0f __title__("HoldWeight"); ///< The amount each arm should hold onto the edge, in terms of competing with other behaviours for use of the arm. A value of zero will prevent the character from holding with the arm.
+
+  }
+
+outputControlParams:
+  float NumConstrainedHands;  ///< Number of hands which have successfully grabbed and held onto an edge.
+  bool  HandHolding[networkMaxNumArms];  ///< Is the nth hand constrained.
+  float HoldAttemptImportance __title__("HoldAttemptWeight");  ///< Indicates how much the behaviour is attempting to grab the edge (between 0 and 1). When the character has successfully grabbed and held onto an edge the value is 1.
+  float HoldDuration; ///< Indicates how long the character has been constrained to an edge. In absolute units.
+}
+
+#endif
+

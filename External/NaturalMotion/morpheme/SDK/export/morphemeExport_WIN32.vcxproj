@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug Tool|Win32">
+      <Configuration>Debug Tool</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Tool|Win32">
+      <Configuration>Release Tool</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>morphemeExport</ProjectName>
+    <ProjectGuid>{9D5258B4-874D-4D97-A797-857752CE21AC}</ProjectGuid>
+    <RootNamespace>morphemeExport</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <TargetName>morphemeExport_debug</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\morphemeExport\debug_tool\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <TargetName>morphemeExport</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\morphemeExport\release_tool\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\tinyxml;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeExport_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\tinyxml;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeExport.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\export\apExport.h" />
+    <ClInclude Include="include\export\apExportLUA.h" />
+    <ClInclude Include="include\export\mcAnimInfo.h" />
+    <ClInclude Include="include\export\mcAnimInfoXml.h" />
+    <ClInclude Include="include\export\mcExport.h" />
+    <ClInclude Include="include\export\mcExportBody.h" />
+    <ClInclude Include="include\export\mcExportBodyXml.h" />
+    <ClInclude Include="include\export\mcExportControllerXml.h" />
+    <ClInclude Include="include\export\mcExportInteractionProxyXml.h" />
+    <ClInclude Include="include\export\mcExportMessagePresets.h" />
+    <ClInclude Include="include\export\mcExportMessagePresetsXml.h" />
+    <ClInclude Include="include\export\mcExportPhysics.h" />
+    <ClInclude Include="include\export\mcExportPhysicsXml.h" />
+    <ClInclude Include="include\export\mcExportXml.h" />
+    <ClInclude Include="include\export\mcXML.h" />
+    <ClCompile Include="src\apExportLUA.cpp" />
+    <ClCompile Include="src\mcAnimInfoXml.cpp" />
+    <ClCompile Include="src\mcExport.cpp" />
+    <ClCompile Include="src\mcExportBody.cpp" />
+    <ClCompile Include="src\mcExportBodyXml.cpp" />
+    <ClCompile Include="src\mcExportControllerXml.cpp" />
+    <ClCompile Include="src\mcExportInteractionProxyXml.cpp" />
+    <ClCompile Include="src\mcExportMessagePresetsXml.cpp" />
+    <ClCompile Include="src\mcExportPhysics.cpp" />
+    <ClCompile Include="src\mcExportPhysicsXml.cpp" />
+    <ClCompile Include="src\mcExportXml.cpp" />
+    <ClCompile Include="src\mcXML.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\common\tinyxml\NMTinyXML_WIN32.vcxproj">
+      <Project>{DB83B4BD-06FA-42BE-9C9C-C79CC34E829F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMPlatform\NMPlatform_WIN32.vcxproj">
+      <Project>{A09CF394-9273-474D-4091-19EB54BF95DA}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,40 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// receives and transmits data related to positioning a core (which is a chest or a pelvis)
+module_def PositionCore
+{
+owner: BodySection<>
+
+in:
+  TranslationRequest translationRequest;            ///< Requested translation from higher level modules
+
+feedIn:
+  TranslationRequest oneWayTranslationRequest;      ///< Requested translation from lower level modules
+
+out:
+  TranslationRequest translationRequest;            ///< Translation request forwarded on from lowerlevel modules
+  TranslationRequest translationUnsupportedRequest; ///< Separate request for when body is unsupported. Since you don't for instance translate the chest with the arms when the spine is supported
+  TranslationRequest oneWayTranslationRequest;      ///< Request forwarded from feedIn.oneWayTranslationRequest
+
+feedOut:
+  TranslationRequest translationRequest;            ///< Translation request forwarded up from lowerlevel modules
+
+connections<>:
+
+  // in connections are given priority as they are an order from above
+  in.translationRequest = junctions.in_translationRequest = priority(owner.feedIn.translationRequest, owner.in.translationRequest);
+  feedIn.oneWayTranslationRequest = (owner.feedIn.oneWayTranslationRequest);
+}
+
+
+#endif

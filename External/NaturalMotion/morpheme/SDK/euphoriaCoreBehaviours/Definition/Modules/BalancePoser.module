@@ -1,0 +1,58 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Static balance control/management
+__no_feedback__ module_def BalancePoser
+{
+
+owner: BalanceManagement<>
+
+in: 
+  
+  BalancePoseParameters poseParameters;
+
+  /// The desired rotation and offset of the pelvis relative to the centre and direction of support.
+  /// The support coordinate from has the same convention as the spine etc - i.e. y up, x fwd
+  Transform pelvisRelSupport;
+  /// The desired rotation of the spine relative to the pelvis (sent to SpinePose)  (will only set the first)
+  OrientationDelta chestRelPelvisOrientation[networkMaxNumSpines];
+  /// The desired translation of the spine relative to the pelvis (sent to SpinePose)  (will only set the first)
+  PositionDelta chestRelPelvisTranslation[networkMaxNumSpines];
+  /// The desired rotation of the head relative to the spine
+  OrientationDelta headRelChestOrientation[networkMaxNumHeads];
+
+out:
+  /// The desired rotation and offset of the pelvis relative to the centre and direction of support.
+  /// The support coordinate from has the same convention as the spine etc - i.e. y up, x fwd
+  Transform pelvisRelSupport;
+  /// The desired rotation of the spine relative to the pelvis (sent to SpinePose)  (will only set the first)
+  OrientationDelta chestRelPelvisOrientation[networkMaxNumSpines];
+  /// The desired translation of the spine relative to the pelvis (sent to SpinePose)  (will only set the first)
+  PositionDelta chestRelPelvisTranslation[networkMaxNumSpines];
+  /// The desired rotation of the head relative to the spine
+  OrientationDelta headRelChestOrientation[networkMaxNumHeads];
+  
+connections<>:
+
+  in.poseParameters = junctions.in_poseParameters = priority(
+  owner.owner.balancePoserBehaviourInterface.out.poseParameters,
+  owner.owner.shieldBehaviourInterface.out.poseParameters,
+  owner.owner.shieldActionBehaviourInterface.out.poseParameters);
+
+  in.pelvisRelSupport = (owner.staticBalance.out.pelvisRelSupport);
+  in.chestRelPelvisOrientation[] = (owner.staticBalance.out.chestRelPelvisOrientation[]);
+  in.chestRelPelvisTranslation[] = (owner.staticBalance.out.chestRelPelvisTranslation[]);
+  in.headRelChestOrientation[] = (owner.staticBalance.out.headRelChestOrientation[]);
+}
+
+#endif
+

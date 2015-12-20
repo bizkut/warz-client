@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LiveLinkNetworkDefLifecycle.cpp" />
+    <ClInclude Include="LiveLinkNetworkDefLifecycle.h" />
+    <ClCompile Include="LiveLinkNetworkLifecycle.cpp" />
+    <ClInclude Include="LiveLinkNetworkLifecycle.h" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+</Project>

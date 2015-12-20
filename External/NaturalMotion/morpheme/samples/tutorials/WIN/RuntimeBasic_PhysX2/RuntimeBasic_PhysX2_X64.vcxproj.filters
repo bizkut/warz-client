@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameAnimLoader.cpp" />
+    <ClInclude Include="GameAnimLoader.h" />
+    <ClCompile Include="GameAssetLoader.cpp" />
+    <ClInclude Include="GameAssetLoader.h" />
+    <ClCompile Include="GameCharacterControllerPhysX2.cpp" />
+    <ClInclude Include="GameCharacterControllerPhysX2.h" />
+    <ClCompile Include="GameCharacterDef.cpp" />
+    <ClInclude Include="GameCharacterDef.h" />
+    <ClCompile Include="GameCharacterManagerPhysX2.cpp" />
+    <ClInclude Include="GameCharacterManagerPhysX2.h" />
+    <ClCompile Include="GameCharacterPhysX2.cpp" />
+    <ClInclude Include="GameCharacterPhysX2.h" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+</Project>

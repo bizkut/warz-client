@@ -1,0 +1,42 @@
+// Copyright (c) 2012 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Module responsible for driving the character to aim at a supplied target using a supplied pose.
+__pix__ __no_feedback__ module_def HeadAim
+{
+owner: Head
+
+in:
+  //ER::LimbTransform currentRootTM;
+  ER::LimbTransform targetRootTM;
+
+  Position  targetPositionInWorldSpace;  ///< The position the character should aim at now (in world space).
+  AimInfo   aimInfo;
+  Direction poseAimDirRelRoot;
+
+  Direction windingDirection;
+
+out:
+  LimbControl control;
+
+feedIn:
+  State rootState;
+
+connections<>:
+  // in
+  in.targetPositionInWorldSpace = (owner.owner.aimBehaviourInterface.out.targetPositionInWorldSpace);
+  in.targetRootTM = (owner.owner.spines[0].aim.out.targetEndTM);
+  in.aimInfo = (owner.owner.aimBehaviourInterface.out.headAimInfo[owner.$ChildIndex]);
+    in.poseAimDirRelRoot = (owner.owner.aimBehaviourInterface.out.poseAimDirRelChest);
+  in.windingDirection = (owner.owner.aimBehaviourInterface.out.windingDirection);
+}
+#endif

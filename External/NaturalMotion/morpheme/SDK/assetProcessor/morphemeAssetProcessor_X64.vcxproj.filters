@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\assetProcessor" />
+    <Filter Include="include" />
+    <Filter Include="include\assetProcessor\AnimSource" />
+    <Filter Include="src" />
+    <Filter Include="src\AnimSource" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\assetProcessor\acAnimInfo.h">
+      <Filter>include\assetProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnalysisProcessor.h">
+      <Filter>include\assetProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimationPoseBuilder.h">
+      <Filter>include\assetProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSectionCompressorASA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSectionCompressorQSA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceBuilderNSA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceBuilderUtils.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressor.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressorASA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressorMBA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressorNSA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressorQSA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceMotionAnalyser.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourcePreprocessor.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceSectioningCompressor.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceUncompressed.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelPosBuilder.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelPosQuantisedBuilder.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelQuatBuilder.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelRotVecQuantisedBuilder.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelSetInfoCompressorQSA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelSetTableBuilder.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\IntVector3TableBuilder.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\QuantisationSetQSA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\RotVecTableBuilder.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\SampledPosCompressorQSA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\SampledQuatCompressorQSA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\SectionCompilerNSA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\SplinePosCompressorQSA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\SplineQuatCompressorQSA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\TrajectorySourceCompressorASA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\TrajectorySourceCompressorNSA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\TrajectorySourceCompressorQSA.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\TransformsAccumulator.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\Vector3QuantisationSetBasis.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\Vector3QuantisationTableBuilder.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AnimSource\Vector3TableBuilder.h">
+      <Filter>include\assetProcessor\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AssetProcessor.h">
+      <Filter>include\assetProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\AssetProcessorUtils.h">
+      <Filter>include\assetProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\BlendNodeBuilderUtils.h">
+      <Filter>include\assetProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\MessageBuilder.h">
+      <Filter>include\assetProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\NodeBuilder.h">
+      <Filter>include\assetProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\NodeBuilderUtils.h">
+      <Filter>include\assetProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\NodeTransitBaseBuilder.h">
+      <Filter>include\assetProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\PredictionModelBuilder.h">
+      <Filter>include\assetProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\TransitConditionDefBuilder.h">
+      <Filter>include\assetProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="include\assetProcessor\TransitDeadBlendDefBuilder.h">
+      <Filter>include\assetProcessor</Filter>
+    </ClInclude>
+    <ClCompile Include="src\AnalysisProcessor.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimationPoseBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\AnimSectionCompressorASA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\AnimSectionCompressorQSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\AnimSourceBuilderNSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\AnimSourceBuilderUtils.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\AnimSourceCompressor.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\AnimSourceCompressorASA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\AnimSourceCompressorMBA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\AnimSourceCompressorNSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\AnimSourceCompressorQSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\AnimSourceMotionAnalyser.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\AnimSourcePreprocessor.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\AnimSourceSectioningCompressor.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\AnimSourceUncompressed.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\ChannelPosBuilder.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\ChannelPosQuantisedBuilder.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\ChannelQuatBuilder.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\ChannelRotVecQuantisedBuilder.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\ChannelSetInfoCompressorQSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\ChannelSetTableBuilder.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\IntVector3TableBuilder.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\QuantisationSetQSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\RotVecTableBuilder.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\SampledPosCompressorQSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\SampledQuatCompressorQSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\SectionCompilerNSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\SplinePosCompressorQSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\SplineQuatCompressorQSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\TrajectorySourceCompressorASA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\TrajectorySourceCompressorNSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\TrajectorySourceCompressorQSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\TransformsAccumulator.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\Vector3QuantisationSetBasis.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\Vector3QuantisationTableBuilder.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\Vector3TableBuilder.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AssetProcessor.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BlendNodeBuilderUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MessageBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeTransitBaseBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitDeadBlendDefBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

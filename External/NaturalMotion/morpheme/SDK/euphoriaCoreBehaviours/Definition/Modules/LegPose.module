@@ -1,0 +1,36 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+__no_feedback__ module_def LegPose
+{
+owner: Leg
+
+in:
+ PoseData legPoseLowImp;
+ PoseData legPoseHighImp;
+
+out:
+  LimbControl controlLowImp;
+  LimbControl controlHighImp;
+  
+connections<>:
+  in.legPoseLowImp = junctions.lowImportance = priority(
+    owner.owner.animateBehaviourInterface.out.legPoseLowPriority[owner.$ChildIndex],
+    owner.owner.idleAwakeBehaviourInterface.out.legPose[owner.$ChildIndex]);
+  in.legPoseHighImp = junctions.highImportance = winnerTakesAll(
+    owner.owner.shieldBehaviourInterface.out.legPose[owner.$ChildIndex],
+    owner.owner.shieldActionBehaviourInterface.out.legPose[owner.$ChildIndex],
+    owner.owner.animateBehaviourInterface.out.legPoseHighPriority[owner.$ChildIndex]
+  );
+}
+
+#endif

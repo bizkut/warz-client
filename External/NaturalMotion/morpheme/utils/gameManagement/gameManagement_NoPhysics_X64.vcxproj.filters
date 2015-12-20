@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\GameManagement" />
+    <Filter Include="include" />
+    <Filter Include="include\GameManagement\NoPhysics" />
+    <Filter Include="src" />
+    <Filter Include="src\NoPhysics" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\GameManagement\GameAnimLoader.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameAnimModule.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameAssetLoader.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameCharacter.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameCharacterDef.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameCharacterManager.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameThreadScheduler.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\NoPhysics\GameAnimSystemModuleNoPhysics.h">
+      <Filter>include\GameManagement\NoPhysics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\NoPhysics\GameCharacterControllerNoPhysics.h">
+      <Filter>include\GameManagement\NoPhysics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\NoPhysics\GameCharacterManagerNoPhysics.h">
+      <Filter>include\GameManagement\NoPhysics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\NoPhysics\GameCharacterManagerNoPhysicsThreaded.h">
+      <Filter>include\GameManagement\NoPhysics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\NoPhysics\GameCharacterNoPhysics.h">
+      <Filter>include\GameManagement\NoPhysics</Filter>
+    </ClInclude>
+    <ClCompile Include="src\GameAnimLoader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameAnimModule.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameAssetLoader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameCharacter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameCharacterDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameCharacterManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameThreadScheduler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NoPhysics\GameAnimSystemModuleNoPhysics.cpp">
+      <Filter>src\NoPhysics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NoPhysics\GameCharacterControllerNoPhysics.cpp">
+      <Filter>src\NoPhysics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NoPhysics\GameCharacterManagerNoPhysics.cpp">
+      <Filter>src\NoPhysics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NoPhysics\GameCharacterManagerNoPhysicsThreaded.cpp">
+      <Filter>src\NoPhysics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NoPhysics\GameCharacterNoPhysics.cpp">
+      <Filter>src\NoPhysics</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\comms" />
+    <Filter Include="include" />
+    <Filter Include="src" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\comms\assetManagerCommandsHandler.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\assetManagerPackets.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\assetManagerPackets.inl">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\assetManagerPacketsMacros.inl">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\attribute.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\attributeHelpers.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\attributeHelpers.inl">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\commandsHandler.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\commsDebugClient.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\commsServer.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\commsServerModule.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\connection.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\connectionManager.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\coreCommandsHandler.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\coreCommsServerModule.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\corePackets.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\corePackets.inl">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\corePacketsMacros.inl">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\debugDrawObjects.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\debugDrawObjects.inl">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\debugPackets.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\debugPackets.inl">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\debugPacketsMacros.inl">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\liveLinkDataManager.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\liveLinkNetworkManager.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\liveLinkSceneObjectManager.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\mcomms.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\morphemeCommsTarget.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\networkDataBuffer.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\networkManagementUtils.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\packet.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\runtimeTargetInterface.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\runtimeTargetNull.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\sceneObject.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\scopedMemory.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\simpleAnimBrowserManager.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\simpleBundleUtils.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\simpleConnectionManager.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\simpleDataManager.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\simpleEnvironmentManager.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClCompile Include="src\assetManagerCommandsHandler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\attribute.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commsDebugClient.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commsServer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commsServerModule.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\connection.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\connectionManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coreCommandsHandler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coreCommsServerModule.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\corePackets.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\debugPackets.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\liveLinkDataManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\liveLinkNetworkManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\liveLinkSceneObjectManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mcomms.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\morphemeCommsTarget.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\networkDataBuffer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\networkManagementUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\runtimeTargetNull.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sceneObject.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\simpleAnimBrowserManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\simpleBundleUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\simpleConnectionManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\simpleDataManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\simpleEnvironmentManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>NMSquirrel</ProjectName>
+    <ProjectGuid>{E65E070E-3AC8-4B16-1893-54EAB3126887}</ProjectGuid>
+    <RootNamespace>NMSquirrel</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>NMSquirrel_debug</TargetName>
+    <IntDir>..\..\obj\win32\vs$(VisualStudioVersion)\NMSquirrel\debug\</IntDir>
+    <OutDir>..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>NMSquirrel</TargetName>
+    <IntDir>..\..\obj\win32\vs$(VisualStudioVersion)\NMSquirrel\release\</IntDir>
+    <OutDir>..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\NMPlatform\include;..\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)NMSquirrel_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\NMPlatform\include;..\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)NMSquirrel.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\NMSquirrelMathLib.h" />
+    <ClInclude Include="include\sqplus\BaseHeader.h" />
+    <ClInclude Include="include\sqplus\Bind.h" />
+    <ClInclude Include="include\sqplus\Bind.inl" />
+    <ClInclude Include="include\sqplus\Call.h" />
+    <ClInclude Include="include\sqplus\Call.inl" />
+    <ClInclude Include="include\sqplus\ClassDef.h" />
+    <ClInclude Include="include\sqplus\ClassDef.inl" />
+    <ClInclude Include="include\sqplus\ClassHelpers.h" />
+    <ClInclude Include="include\sqplus\ClassHelpers.inl" />
+    <ClInclude Include="include\sqplus\ClassType.h" />
+    <ClInclude Include="include\sqplus\ClassType.inl" />
+    <ClInclude Include="include\sqplus\DirectCall.h" />
+    <ClInclude Include="include\sqplus\DirectCall.inl" />
+    <ClInclude Include="include\sqplus\Interface.h" />
+    <ClInclude Include="include\sqplus\ReturnSpecialization.h" />
+    <ClInclude Include="include\sqplus\ReturnSpecialization.inl" />
+    <ClInclude Include="include\sqplus\sqplus.h" />
+    <ClInclude Include="include\sqplus\SquirrelFunction.h" />
+    <ClInclude Include="include\sqplus\SquirrelFunction.inl" />
+    <ClInclude Include="include\sqplus\SquirrelObject.h" />
+    <ClInclude Include="include\sqplus\SquirrelObject.inl" />
+    <ClInclude Include="include\sqplus\SquirrelVM.h" />
+    <ClInclude Include="include\sqplus\SquirrelVM.inl" />
+    <ClInclude Include="include\sqplus\StackHandler.h" />
+    <ClInclude Include="include\sqplus\StackHandler.inl" />
+    <ClInclude Include="include\sqplus\StackUtils.h" />
+    <ClInclude Include="include\sqplus\StackUtils.inl" />
+    <ClInclude Include="include\sqplus\TypeInfo.h" />
+    <ClInclude Include="include\sqplus\TypeInfo.inl" />
+    <ClInclude Include="include\sqplus\VarRef.h" />
+    <ClInclude Include="include\sqplus\VarRef.inl" />
+    <ClInclude Include="include\sqstdlib\interface.h" />
+    <ClInclude Include="include\sqstdlib\sqstdaux.h" />
+    <ClInclude Include="include\sqstdlib\sqstdblob.h" />
+    <ClInclude Include="include\sqstdlib\sqstdio.h" />
+    <ClInclude Include="include\sqstdlib\sqstdmath.h" />
+    <ClInclude Include="include\sqstdlib\sqstdstring.h" />
+    <ClInclude Include="include\squirrel\squirrel.h" />
+    <ClCompile Include="src\NMSquirrelMathLib.cpp" />
+    <ClCompile Include="src\sqplus\ClassHelpers.cpp" />
+    <ClCompile Include="src\sqplus\ClassType.cpp" />
+    <ClCompile Include="src\sqplus\SquirrelObject.cpp" />
+    <ClCompile Include="src\sqplus\SquirrelVM.cpp" />
+    <ClCompile Include="src\sqplus\StackHandler.cpp" />
+    <ClCompile Include="src\sqplus\VarRef.cpp" />
+    <ClCompile Include="src\sqstdlib\sqstdaux.cpp" />
+    <ClCompile Include="src\sqstdlib\sqstdblob.cpp" />
+    <ClInclude Include="src\sqstdlib\sqstdblobimpl.h" />
+    <ClCompile Include="src\sqstdlib\sqstdio.cpp" />
+    <ClCompile Include="src\sqstdlib\sqstdmath.cpp" />
+    <ClCompile Include="src\sqstdlib\sqstdrex_old.cpp" />
+    <ClCompile Include="src\sqstdlib\sqstdstream.cpp" />
+    <ClInclude Include="src\sqstdlib\sqstdstream.h" />
+    <ClCompile Include="src\sqstdlib\sqstdstring.cpp" />
+    <ClCompile Include="src\squirrel\sqapi.cpp" />
+    <ClInclude Include="src\squirrel\sqarray.h" />
+    <ClCompile Include="src\squirrel\sqbaselib.cpp" />
+    <ClCompile Include="src\squirrel\sqclass.cpp" />
+    <ClInclude Include="src\squirrel\sqclass.h" />
+    <ClInclude Include="src\squirrel\sqclosure.h" />
+    <ClCompile Include="src\squirrel\sqcompiler.cpp" />
+    <ClInclude Include="src\squirrel\sqcompiler.h" />
+    <ClCompile Include="src\squirrel\sqdebug.cpp" />
+    <ClInclude Include="src\squirrel\sqfuncproto.h" />
+    <ClCompile Include="src\squirrel\sqfuncstate.cpp" />
+    <ClInclude Include="src\squirrel\sqfuncstate.h" />
+    <ClCompile Include="src\squirrel\sqlexer.cpp" />
+    <ClInclude Include="src\squirrel\sqlexer.h" />
+    <ClCompile Include="src\squirrel\sqmem.cpp" />
+    <ClCompile Include="src\squirrel\sqobject.cpp" />
+    <ClInclude Include="src\squirrel\sqobject.h" />
+    <ClInclude Include="src\squirrel\sqopcodes.h" />
+    <ClInclude Include="src\squirrel\sqpcheader.h" />
+    <ClCompile Include="src\squirrel\sqstate.cpp" />
+    <ClInclude Include="src\squirrel\sqstate.h" />
+    <ClInclude Include="src\squirrel\sqstring.h" />
+    <ClCompile Include="src\squirrel\sqtable.cpp" />
+    <ClInclude Include="src\squirrel\sqtable.h" />
+    <ClInclude Include="src\squirrel\squserdata.h" />
+    <ClInclude Include="src\squirrel\squtils.h" />
+    <ClCompile Include="src\squirrel\sqvm.cpp" />
+    <ClInclude Include="src\squirrel\sqvm.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NMPlatform\NMPlatform_WIN32.vcxproj">
+      <Project>{A09CF394-9273-474D-4091-19EB54BF95DA}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

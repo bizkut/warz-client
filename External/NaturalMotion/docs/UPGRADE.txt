@@ -1,0 +1,1108 @@
+This is version 5.2 of Morpheme Runtime
+
+
+Upgrade morpheme:runtime from 5.1 to 5.2
+========================================
+
+Changes to build
+----------------
+
+The output paths have been changed to be of the form vs$(VisualStudioVersion) instead of vc9/vc10/vc11. Visual Studio 2010 is still the baseline but solutions can now be opened in Visual Studio 2012 without any manual intervention necessary (beyond accepting Visual Studio's own upgrade process). .vs2010 suffixes have been dropped from vcxprojs and slns. VS2008 does not have a $(VisualStudioVersion) macro so its output path is explicitly vs9.0. These changes have been made across all platforms.
+
+Changes to Maths Library
+------------------------
+VPU support added for PS4 using native intrinsics - performance and precision may be affected.
+
+
+Upgrade morpheme:runtime from 5.0 to 5.1
+========================================
+
+Changes to the NodeID <-> NodeName String Table (NetworkDef::m_nodeIDNamesTable)
+--------------------
+Removed the State Machine states from this as they are not nodes. A string table mapping state name to stateID has been added (NetworkDef::m_stateMachineStateIDStringTable).
+So where previously you may have had
+(A)	NodeID nodeID = netDef->getNodeIDFromNodeName("StateMachine|WalkState|WalkAnim");
+This returns the same as 
+(B)	NodeID nodeID = netDef->getNodeIDFromNodeName("StateMachine|WalkState");
+The second statement (B) will no longer work (returning INVALID_NODE_ID). Replace this with
+    NodeID smNodeID = netDef->getNodeIDFromStateName("StateMachine|WalkState");
+
+Havok version update
+--------------------
+morphemeRuntime 5.1 is built and tested against Havok SDK 2012.2.
+
+Changes to the AnimationBrowserInterface
+--------------------------------------
+The animation browser interface loadAnimationBrowserData function signature has changed to accept a string as the animation format, instead of the enum accepted before.
+
+Changes to BlendOps
+--------------------------------------
+BlendOpsBase::interpQuatAddPosPartialFeathered now includes the boneAlphaScale in its position interpolation, which was previously ignored. BlendOpsBase::interpQuatAddPosPartial now clamps its alpha value to the [0,1] range for consistency with its SIMD variant.
+BlendOpsSIMD functions interpQuatAddPosPartial, interpQuatSubtractPosPartial and subtractQuatInterpPosPartial also clamp their alpha value to the [0,1] range for consistency.
+
+Changes to PhysicsRigHavok::receiveImpulse()
+--------------------------------------
+This Havok function remains impulse based and has accordingly been improved to maintain correct physical response. This includes the following function renaming:
+
+Renamed
+-------
+MR::addLinearVelocityChangeToHavokBody()  changed to MR::addLinearImpulseToHavokBody()
+MR::addAngularVelocityChangeToHavokBody() changed to MR::addAngularImpulseToHavokBody()
+
+Changes to Morpheme Update
+--------------------------------------
+Output Control parameters no longer have a 1 frame delay with respect to the update. They are now updated at the end of the morpheme update, rather than the beginning and are consistent with the current frame number for any consequent game logic. To effect this, in defaultPhysicsMgr:update, the call to m_characterControllerManager->updateInstanceNetworksReset() changed to m_characterControllerManager->updateInstanceNetworksEnd(). This new function includes a call to network->endUpdate() which updates the emitted control parameters.
+
+Changes to ER::InteractionProxy creation and update
+---------------------------------------------------
+ER::InteractionProxy can now be created based on the physics rig, or directly, passing in the required parameters. This allows it to be associated with non-Euphoria (and non-physical) characters, and therefore other Euphoria characters can interact with them. In addition, the InteractionProxy should now have its update function called right at the end of the network update - after transforms have been generated, as this avoids problems with getting the network's output transforms in the middle of the network update.
+
+This change allows custom animation formats to be processed correctly through the morpeheme Asset browsing pipeline.
+
+
+Upgrade Morpheme Runtime from 4.1 to 5.0
+========================================
+
+Changes to Data Pins to allow attribute attachment to control parameter inputs
+------------------------------------------------------------------------------
+A change in architecture allows nodes to have (optionally per anim set) attribute data on unconnected control parameters.
+
+To make use of this feature, node builders need to declare such data pins within the NodeDefBuilder::preInit() function with the following
+
+NM_INLINE void declareDataPin(NetworkDefCompilationInfo*  netDefCompilationInfo,
+                              const ME::NodeExport*       nodeDefExport,
+                              const char*                 nodeIDLabel, 
+                              MR::PinIndex                inputPinIndex,
+                              bool                        optional,
+                              MR::AttribDataSemantic      semantic)
+                              
+(See NodeBehaviourBuilder.cpp for an example of reading semantic type from the xml. Or NodeBlend2Builder.cpp for the simpler case.)
+
+Additionally, NodeDefBuilder::the initTaskQueuingFns() needs the node init function to either be set to our nodeInitPinAttribDataInstance() function, such as with the following code (where getNumReflexiveCPPins returns the number of data pins declared as above):
+
+if (nodeDef->getNumReflexiveCPPins() > 0)
+{
+  nodeDef->setInitNodeInstanceFnId(FN_NAME(nodeInitPinAttribDataInstance), logger);
+}
+
+or, if the node already has a InitNodeInstanceFn, then that will need to call nodeInitPinAttribDataInstance() itself. (See nodeOperatorSmoothDampFloatInitInstance() in mrNodeOperatorSmoothFloat.cpp for an example.)
+
+The NodeDefBuilder::getNodeDefMemoryRequirements() and NodeDefBuilder::init() functions now automatically process these declared data pins, and require no additional related code. Such attribute data on pins will then operate throughout the rest of runtime as if the control parameter were connected, just as before.
+
+
+Changes to Blend2 and FeatherBlend2 builders
+--------------------------------------------
+A bug was found in both the Blend2 and FeatherBlend2 initTaskQueuingFnsEvents function which effected these nodes depending on the combination of TimeStretching and Passthrough configurations. When TimeStretching was set to Match Events and Passthrough was set to either Source 0 or Source 1, these blend nodes were passing through both the sync event track and duration event track from which ever source had been set as Passthrough. This behaviour was incorrect as a blend node that is matching events should also generate a sync event track and a duration event track no matter what the Passthrough attribute is set to.
+
+Depending on network configuration, this fix could result in a change of network behaviour. Blend2 and FeatherBlend2 nodes will now always behave correctly when matching events by creating sync and duration event tracks by blending those semantics from their two sources. This differs from the previous incorrect behaviour where the sync and duration event tracks from only one source would be passed through by these blend nodes with this configuration.
+
+Changes to DeleteNodeInstace functions
+--------------------------------------
+
+An extra NodeID parameter that was no longer required has been removed. User written functions may need to be changed to account for this change.
+
+Changes to transitions
+----------------------
+
+There have been several changes to the way transitions work, to unify the behaviour of zero vs. non-zero duration transitions and to fix several bugs.
+
+The first change affects the way non-zero duration transition targets behave the first frame they become active. Before, there was a difference in the way zero and non-zero duration transitions behaved in this respect. Zero duration transitions behaved as if the target state started updating at the beginning of the frame, so the position at the end of the frame was the destination plus the frame delta:
+
+                     Previous Time Pos
+                             V       Current Time Pos
+Source State: ---------------|             V
+Destination State:           D-------------------------
+                             |             |
+                             / Frame Delta /
+
+On the other hand, non-zero duration transitions considered the target state became active at the end of the update, so the position at the end of the frame was the destination.
+
+                     Previous Time Pos
+                             V       Current Time Pos
+Source State: ---------------|             V
+Destination State:           |             D-------------------------
+                             |             |
+                             / Frame Delta /
+
+Now, non-zero duration transitions behave as their zero duration counterparts in this respect.
+
+Another change affects zero duration transitions. Before, zero duration transitions were never active. That meant that the active state in a network was the source state one frame and the target state the next. Now, zero duration transitions are active for one frame. This helped remove some inconsistencies in the behaviour with respect to non-zero duration transitions. Also, because the transition is active for a frame, it shows up highlighted in connect, which makes it easier to understand what is happening in the network. The output of the network should not be affected by this change because, even though the transition is active, the blend weight is 1, so to all effects it is as if it did not exist. Another preserved behaviour is that, even if the trajectory is active at the beginning of one frame, the conditions to leave the target state will be evaluated, even for non-breakout transitions.
+
+Finally, a change has been made to self transitions. Now, the target subnetwork is reset.
+                               
+
+Modified the API for NMP::CommandLineProcessor
+----------------------------------------------
+The function 'makeAbsolutePath()' has been removed. Functionality to remove quotes from a path now exists in NMFile::removeQuotesFromPath().
+
+
+Renamed
+-------
+NMP_STRCAT_S to NMP_STRNCAT_S and NMP_STRCPY_S to NMP_STRNCPY_S to more accurately reflect their function.
+MR::Network::isNodeOrChildPhysical renamed to MR::Network::isNodeOrActiveChildPhysical to more accurately reflect it's function.
+
+
+NMP::Memory::totalAllocatedBytes
+--------------------------------
+NMP::Memory::totalAllocatedBytes is now only available as an API if NMP_MEMORY_LOGGING is enabled. This is due to a performance optimisation to the allocation system.
+
+Changes to the NMP::DataBuffer interface
+----------------------------------------
+renamed NMP::DataBuffer.copy(const Memory::Resource& resource) -> NMP::DataBuffer.copyTo(const Memory::Resource& resource)
+renamed NMP::DataBuffer.copy(DataBuffer* destBuffer) 	       -> NMP::DataBuffer.copyTo(DataBuffer* destBuffer)
+
+
+
+Upgrade Morpheme Runtime from 4.0 to 4.1
+==========================================
+
+Tutorials use a new shared GameManagement library
+-------------------------------------------------
+This library is intended to be used as an easy route in to getting Morpheme Networks running in your applications.
+Including this library in your project should allow you to start loading and running networks exported and processed from Connect.
+Most morpheme features are supported, and access to these features is wrapped in to more easily understood compound functions.
+There are skews of this library that support different physics engines.
+Several tutorials show example use of this library.
+
+
+Old Animation Cache Files are not compatible with the new AssetCompiler
+-----------------------------------------------------------------------
+Animations for PS3 are compiled with smaller section sizes than for other platforms, but this was not taken account of in the anim cache.
+Adding a maxSectionSize to the anim cache key has fixed this problem, but this has made the new AssetCompiler incompatible with old anim cache files.
+Be sure to delete any old cache files, if you are setting the cache directory somewhere that's persisting across versions.
+
+Added Tags Query API
+--------------------
+Previous versions of livelink did not have functions to return the tags used in a network to connect.  This
+release adds the functions getNodeTagCount() and getNodeTag() to the runtimeTargetInterface.  If you are not 
+using the DefaultDataManager or SimpleDataManager these functions must be implemented in your implementation of the 
+runtimeTargetInterface.  
+
+Transition condition initialisation functions now need to support 2 phases of initialisation
+--------------------------------------------------------------------------------------------
+Transition condition initialisation at runtime is now a 2 stage operation:
+Both stages are handled by the transition condition types registered TransitCondInstanceInitFn:
+1. Creation - creates an instance of a TransitCondition class from the TransitConditionDef, in the memory provided.
+    This is the first step of initialisation and is indicated by passing a valid memRes where we want to construct the condition.
+    The function should only ever be called in this mode once for any condition.
+2. Extending the lifespan of dependent data - So if our condition is dependent on some source node data,
+    such as the sampled events buffer, this will extend the lifespan of this buffer so that it remains available for the condition 
+    to interrogate.
+    This is the second step of initialisation and is indicated by passing a NULL memRes.
+    This function will be called once for every source node that shares the transition that uses this condition;
+    this could be several times for ActiveState transitions.
+This change was made to fix a bug where active state transitions were not triggering correctly from all specified sources.
+
+
+Upgrade Morpheme Runtime from 3.6 to 4.0
+==========================================
+
+Changes to Animation Loaders in LiveLink that may impact browsing animations
+-----------------------------------------------
+In previous versions a full path to an animation was provided in the DefaultAssetMgr::AnimLoadingInfo as user data to the RequestAnimFn. This has been changed
+to a path relative to the preview network output location. To support animation browsing in integrations the handling of paths must be changed.  The full path can
+be constructed by combining the path of the animation browser network with the short path provided.  See DefaultAssetMgr::networkAnimLoader for example code. 
+
+
+Renamed
+-------
+NodeBin::deleteAttribDataIncluding -> NodeBin::deleteAllAttribDataSpecified
+
+AssetCompiler command line changes
+----------------------------------
+-basedir is now -baseDir
+-outputName is now -outputFileName
+-success is now -successCode
+-failure is now -failureCode
+
+
+Renamed character controller classes to better represent what they do
+---------------------------------------------------------------------
+CharacterController  -> CharacterControllerInterface
+CharacterControllerHavok -> CharacterControllerInterfaceHavok
+CharacterControllerPhysX2 -> CharacterControllerInterfacePhysX2
+CharacterControllerPhysX3 -> CharacterControllerInterfacePhysX3
+Also renamed their containing files:
+mrCharacterController.h -> mrCharacterControllerInterface.h
+mrCharacterControllerPhysX2.h -> mrCharacterControllerInterfacePhysX2.h
+mrCharacterControllerPhysX3.h -> mrCharacterControllerInterfacePhysX3.h
+mrCharacterControllerHavok.h -> mrCharacterControllerInterfaceHavok.h
+
+
+Havok version update
+--------------------
+morphemeRuntime 4.0 is built and tested against Havok SDK 2012.1.
+
+
+PhysX version update
+--------------------
+morphemeRuntime 4.0 is built and tested against PhysX 2.8.4.4 and PhysX 3.2.1.
+
+
+Changes to task queuing
+-----------------------
+There have been a few changes in the task queuing code that may require action.
+First, the signature of some of the MR::Network::TaskAddXXXParameter has changed. In particular, the functions that add output parameters now don't take a owningNodeID parameter, since a task can only create attributes for its owning node. Other parameters have been removed from some of the other functions. In addition, a new parameter to specify the type of the attribute to be created has been added to these same functions. These changes will require careful inspection of any user created queuing functions, since most of the parameters to those functions are of the same type, so the compiler can't help.
+Second, the signature of queuing functions has changed. Due to changes in the dependency mechanism, the dependent task parameter is no longer required.
+
+
+Changes to task execution
+-------------------------
+There have also been changes to task execution. Tasks no longer allocate memory for their output parameters. These are now allocated in a new stage, between task queuing and task execution. Because the attributes are now allocated before task execution, and because of the new temporary parameter caching scheme, all the attributes of the same type must be of the same size. This size can vary from update to update for a network, or from network to network, but for a single type during a single update they must remain constant. Each attribute data type that is used as an output of a task must register a new function that is used to determine its size. User created task functions shouldn't require any work as a consequence of this change, as long as they create their attributes using MR::Dispatcher::TaskParameters::createOutputAttrib and related functions.
+
+
+Changes to AttribData types
+---------------------------
+There have been two changes to AttribData classes. First, the signature of the relocate function has changed. It now takes a second parameter, a pointer where the attribute will be copied after the relocation. This is used to allow relocating before moving, instead of first moving and then relocating in place. Any user created relocate function must be carefully written. The memory area pointer by this new parameter cannot be read or written, as it may be in a different address space. Only the memory pointed to by the target parameter can be read and written. Also, relocating to a remote location and then moving must give the same result as moving first and then relocating in place.
+
+
+Changes to MR::Dispatcher
+-------------------------
+The list of tasks which a dispatcher knows how to deal with is now stored in a variable-sized array, to ensure that no memory is wasted and that there is no limit imposed on the number of custom tasks which can be created.  In order to support this, it is now required that client code calls DispatcherBasic::term (and DispatcherPS3::term, if appropriate) when shutting down morpheme.  Failure to do so will cause memory leaks.
+
+
+Changed typedef for DeleteNodeInstance
+--------------------------------------
+So that the node ptr parameter is const i.e. const NodeDef* node.
+User specified delete functions must be upgraded.
+
+
+Change to typedef TransitCondInstanceUpdateFn
+---------------------------------------------
+As part of improvements to state machines stopped visiting conditions twice during update, 
+once for update and once for status checking, instead update and status checking are done in the same visit.
+As part of this work, changed transit condition update typedef TransitCondInstanceUpdateFn so 
+that it no longer returns a useless uint32_t that was set to 0 in all cases.
+Now returns a bool indicating if the condition is true or not.
+Any user specified conditions must be upgraded to do the same.
+
+
+Typedef Changes
+---------------
+Made StateID uint16_t rather than uint32_t.
+Made TransitConditType uint16_t rather than uint32_t.
+
+
+Character Controller Override Node
+-----------------------------------
+This node type replaces ControllerHeightFraction and ControllerRadiusFraction that have been removed from SoftKeyFrame, HardKeyFrame and SoftKeyFrameAndActiveAnimation nodes.
+Removed all old style base class CharacterController properties functions, this has been replaced by a couple of virtual interface functions that the network (CCOverride) can use to communicate with the character:
+   setRequestedPropertyOverride
+   getRequestedPropertyOverride
+
+   
+Removed StateChangeDef
+----------------------
+content of this class is now contained in StateDef as entry conditions.
+StateDef has an array of m_exitTransitionStateIDs rather than  StateChangeDefs.
+StateDef API changes:
+  Function renames:
+    getNumConditions -> getNumExitConditions
+    getNumBreakoutConditions -> getNumExitBreakoutConditions
+    getConditionStateMachineIndex -> getExitConditionStateMachineIndex
+    getNumStateChanges -> getNumExitTransitionStates
+    getStateChange -> getExitTransitionStateID
+  New functions (only applicable to transition states):
+    getNumEntryConditions
+    getEntryConditionStateMachineIndex
+    getTransitSourceStateID - gives state machine connectivity info without having to query NodeDef data.
+    getTransitDestinationStateID - gives state machine connectivity info without having to query NodeDef data.
+AttribDataStateMachineDef API changes:
+  Renamed findNodeIDFromStateID to getNodeIDFromStateID to reflect the fact that it isn't a search.
+  New function findTransitionsListeningToMessage.    
+
+  
+Renamed much of the API for the character controller
+----------------------------------------------------
+m_controllerOffset -> m_originOffset in character controller implementations.
+ATTRIB_TYPE_CHARACTER_CONTROLLER -> ATTRIB_TYPE_CHARACTER_PROPERTIES
+ATTRIB_SEMANTIC_CHARACTER_CONTROLLER -> ATTRIB_SEMANTIC_CHARACTER_PROPERTIES
+AttribDataCharacterController -> AttribDataCharacterProperties
+Network::setAchievedRequestedMovement -> Network::setCharacterPropertiesAchievedRequestedMovement
+Network::getAchievedRequestedMovement -> Network::getCharacterPropertiesAchievedRequestedMovement
+Network::setGroundContactTime -> Network::setCharacterPropertiesGroundContactTime
+Network::getGroundContactTime -> Network::getCharacterPropertiesGroundContactTime
+Network::setPhysicsAndCharacterControllerUpdate -> Network::setCharacterPropertiesPhysicsAndCharacterControllerUpdate
+Network::getPhysicsAndCharacterControllerUpdate -> Network::getCharacterPropertiesPhysicsAndCharacterControllerUpdate
+Network::getCharacterControllerAttribData -> Network::getCharacterPropertiesAttribData
+Network::getCharacterControllerAttribData -> Network::getCharacterPropertiesAttribData
+Network::updateCharacterControllerAttribDataWorldRootTransform -> Network::updateCharacterPropertiesWorldRootTransform
+Network::setCharacterControllerAttribDataWorldRootTransform -> Network::setCharacterPropertiesWorldRootTransform
+Network::getCharacterControllerAttribDataWorldRootTransform -> Network::getCharacterPropertiesWorldRootTransform
+Network::getCharacterControllerAttribDataPrevWorldRootTransform -> Network::getCharacterPropertiesPrevWorldRootTransform
+
+
+Changes to the NMP::DataBuffer interface
+----------------------------------------
+setFull() renamed to calculateFullFlag()
+setFull(bool full) renamed to setFullFlag(bool full)
+
+
+TPARAM_FLAG_EVALUATED has been removed
+--------------------------------------
+This flag was no longer affecting runtime behaviour so has been removed. Any instances of this flag can be safely removed.
+
+
+Changes to unify the blend node weights
+---------------------------------------
+The way the blend and transit nodes deal with blend weights has been reworked to enable multilinear weights to be stored in a single attribute structure.
+Task queuing functions previously allocated and queued AttribDataFloat attributes for the internal blend weights using the semantic ATTRIB_SEMANTIC_CP_FLOAT.
+The task queuing functions now allocate and queue AttribDataBlendWeights attributes for the internal blend weights using the semantic ATTRIB_SEMANTIC_BLEND_WEIGHTS.
+
+
+Changes to registration of node queuing functions in node builders
+------------------------------------------------------------------
+A change has been made to the functions setTaskQueuingFnId, setOutputCPTaskFnId, setDeleteNodeInstanceId, setUpdateConnectionsFnId, setFindGeneratingNodeForSemanticFnId setInitNodeInstanceFnId and setMessageHandlerFnId.
+All of these nodes now take a pointer to the function as well as the string literal which represents the function name.  The purpose of this change is to ensure that no typos creep into node builders, which can cause problems and runtime and are hard to trace back to the source.  The macro FN_NAME() has been updated to emit the function pointer as well as the tokenised function name, so most user nodes should be unaffected.  However, it may be necessary to include the header where queuing functions are declared, or create a customised FN_NAME macro for cases where queuing functions are not in the MR namespace.
+
+
+MR::NA_NODE has been merged into MR::INVALID_NODE_ID
+----------------------------------------------------
+Any references to NA_NODE in application code should be changed to INVALID_NODE_ID.
+
+
+The closest anim node updates the network's post update access attributes for transforms and trajectories when created
+----------------------------------------------------------------------------------------------------------------------
+Any calls to MR::Network::addPostUpdateAccessAttrib outside of the morpheme core should use a lifespan of 1 unless the semantic is required for more than one frame.
+
+
+Rewrote network restore point
+-----------------------------
+MR::NetworkRestorePoint has been re-written so that it's contained in a single block of memory. This allows it to be relocated in memory to locations such as disk or a different machine as long as the target is of the same platform type.
+Network restore points can no longer be set from a network multiple times, once they are created using NetworkRestorePoint::createAndInit they can no longer be modified.
+NetworkRestorePoint::dislocate must be called before the restore point can be moved.
+A dislocated restore point must be located using NetworkRestorePoint::locate before it can be used on a network.
+The old API required calls to create, init and setFromNetwork to create a restore point. A single call to createAndInit in the new api achieves the same result.
+Restore points are still applied to networks using NetworkRestorePoint::applyToNetwork.
+See the NetworkRestorePoint tutorial for example code.
+
+
+Removed CharacterController::enableInboundCollision
+---------------------------------------------------
+If your application is calling CharacterController::enableInboundCollision on it's character controllers, you now need to implement that call in your own code.  See DefaultControllerMGR::enableInboundCollision for a reference implementation.
+
+
+Renamed MR::Dispatcher::release to MR::Dispatcher::releaseAndDestroy()
+----------------------------------------------------------------------
+This change was made in order to make the API consistent with other classes in the SDK, which only release their own memory in releaseAndDestroy() functions.  Note that MR::DispatcherBasic and MR::DispatcherPS3 are also affected.
+
+
+
+Upgrade Morpheme Runtime from 3.5.1 to 3.6
+==========================================
+
+Build changes
+=============
+
+Existing solutions have had .vs2008 appended to distinguish them clearly from the new .vs2010 solutions.
+
+Build output directories for X360, PS3 and Vita have changed slightly due to the introduction of VS2010 build support:
+
+bin/x360/vcx    ->    bin/x360/[vs2008|vs2010] (vcx folder is redundant)
+lib/x360/vcx    ->    lib/x360/[vs2008|vs2010]
+obj/x360/vcx    ->    obj/x360/[vs2008|vs2010]
+
+bin/ps3_ppu/snc ->    bin/ps3_ppu/[vs2008|vs2010]/snc
+lib/ps3_ppu/snc ->    lib/ps3_ppu/[vs2008|vs2010]/snc
+obj/ps3_ppu/snc ->    obj/ps3_ppu/[vs2008|vs2010]/snc
+
+bin/ps3_spu/gcc ->    bin/ps3_spu/[vs2008|vs2010] (gcc folder is redundant)
+lib/ps3_spu/gcc ->    lib/ps3_spu/[vs2008|vs2010]
+obj/ps3_spu/gcc ->    obj/ps3_spu/[vs2008|vs2010]
+
+Vita has been prepped for VS2010 support:
+
+bin/vita/snc    ->    bin/vita/vs2008 (snc folder is redundant)
+lib/vita/snc    ->    lib/vita/vs2008
+obj/vita/snc    ->    obj/vita/vs2008
+
+Wii paths have been slightly simplified:
+
+bin/wii/mw      ->    bin/wii
+lib/wii/mw      ->    lib/wii
+obj/wii/mw      ->    obj/wii
+
+Morpheme runtime target filenames previously started with 'morphemeRuntimeTarget'. This has been shortened to 'mrTarget'.
+
+PS3 SPU task executable names have been slightly shortened by changing 'morphemeSPU' prefix to 'mrSPU'. This to save a few characters in PS3 paths.
+
+X360 profile fastcap configs have had their target name suffixes shortened from _profile_fastcap to _profile_fc to prevent X360 filename length overflows.
+
+Refactored MR::PhysicsRigDef::Joint::SixDOF and added new ragdoll joint type.
+-----------------------------------------------------------------------------
+There is now a base class MR::PhysicsJointDef which contains the data common to all physics joints, the parent and child joint frames, the parent and child part indices, the name and the joint type.
+All references to frame1 and frame2 now refer to the parent frame and child frame respectively, the joint frame related members localAnchor, localAxis and localNormal have been replaced with two matrices m_parentPartFrame and m_childPartFrame
+All members of the joint classes have had the prefix 'm_' added to better conform with the runtime coding standard.
+The class MR::PhysicsRigDef::Joint::SixDOF has been renamed to MR::PhysicsSixDOFJointDef and is no longer a sub-class of MR::PhysicsRigDef and now inherits from the base  MR::PhysicsJointDef class.
+The members of MR::PhysicsSixDOFJointDef now only refer to the geometry of the joint, the members twistDriveDamping, twistDriveSpring, swingDriveDamping, swingDriveSpring, slerpDriveDamping, driveStrengthScale, driveDampingScale, driveMinDampingScale, driveCompensationScale, useSlerpDrive and useAccelerationSprings have been moved to physics driver specific data sections.
+The MR::PhysicsSixDOFJointDef drive types twistDriveType, swingDriveType and slerpDriveType have been removed as the only drive type used was DRIVE_TYPE_POSITION.
+The MR::PhysicsSixDOFJointDef projection related members projectionMode, projectionDistance and projectionAngle have been removed as these were always set to projection mode none.
+The MR::PhysicsSixDOFJointDef soft joint related members softLimitFrame1Local, softLimitFrame2Local, swing1SoftLimit, swing2SoftLimit, twistSoftLimitLow, twistSoftLimitHigh and softLimitStrengthScale have been moved to a new sub-class MR::PhysicsSixDOFJointDef::SoftLimit, all members have had the prefix 'm_' added. MR::PhysicsSixDOFJointDef has a member m_softLimit which points to the soft limit data for the joint, if no soft limit exists this data will be null.
+The soft joint members softSwing1Enabled, softSwing2Enabled and softTwistEnabled have been changed type to MR::PhysicsSixDOF::Motion and renamed to m_swing1Motion, m_swing2Motion and m_twistMotion respectively.
+
+Refactored MR::PhysicsRigDef to include physics driver specific data.
+---------------------------------------------------------------------
+All MR::PhysicsRigDef related classes now have a pointer to a PhysicsDriverData member m_driverData. This is to allow physics driver specific data to exist within the def data. The contents of the member will change depending on which physics asset compiler plug-in was used to create the rig def.
+
+Reduced asset compiler variations to one for each target platform which takes a list of plugins.
+-----------------------------------------------------------------------------------------------
+There is a single asset compiler named MorphemeAssetCompiler which loads plugins dynamically.  Unless the runtime target used only uses morpheme core the relevant plugins must be defined in the command line either as a list or using a configuration file.
+
+ - Added command line parameter "-plugins" which takes a comma separated list of plugins e.g. "acPluginPhysics,acPluginKinect".
+ - Added command line parameter "-pluginConfig" which takes a path to a configuration text file, each line stores a plugin to be loaded.
+    NOTE: The plugins to be used can be defined using either "-plugins" or "-pluginConfig" but not both.  "-pluginConfig" takes precedence if both are used.
+ - Added command line parameter "-pluginDir" which determines the directory plugins are loaded from.  If this command line is not used then the folder plugins/assetCompiler/ relative to the asset compiler is used.
+ 
+The order the plugins are defined in must match the order libraries are initialised in the runtime.  Compiling a network with the plugins "acPluginPhysics,acPluginKinect" will not be compatible with a runtime target that initialises morpheme Kinect before morpheme physics.
+
+A string table with the asset type Manager::kAsset_PluginList has been added to the simple bundle which contains the plugins and their order that the asset was compiled in.  The runtime target can optionally validate this list to ensure it only loads suitable assets.  In final release builds you may want to strip this out to minimise asset sizes.
+
+NOTE: Plugins are specific to each target platform.
+NOTE: If using memory logging the asset compiler and all plugins used must be compiled with NMP_MEMORY_LOGGING.
+
+Added VPU support for ARM platforms which currently include Vita, iOS and Android using NEON intrinsics
+-------------------------------------------------------------------------------------------------------
+No code changes are necessary for any platforms but as NEON support is not available on all Android devices, build changes may be required.
+
+ - iOS: NEON is supported on the iPhone3GS, iPhone4, 3rd-gen iPod Touch, 4th-gen iPod Touch, iPad and iPad2.  NEON intrinsics will be used if building for a device the supports them.
+ - Android: NEON was added in ARMv7 as an optional architecture extension so not all devices will support it.  The use of NEON intrinsics is decided at compile time in the morpheme runtime.  If targeting devices that may not have support then define NMP_VPU_FORCE_EMULATION in all morpheme projects or once in NMPlatform.h.
+
+The NMP::SPUManager now has ownership of CellSpursEventFlags
+-------------------------------------------------------------
+It has a stack of free flags, which a DispatcherPS3 will pop from when it starts running on SPU in launchSPUTask. When waitForSPUTask is called, the flag is returned to the SPUManager. This means we can have an unlimited number of networks running, without the penalty of having to attach/detach every frame. There are some limitations because of this.
+
+To keep the number of event flags small, so as not to waste OS resources, the define NMP_NUM_SPURS_EVENT_FLAGS limits how many flags the SPUManager creates. This is set to MAX_SPUS, which is 4, as a default. If you try to run more than this number of networks on SPU in parallel, morpheme will spin wait until all networks are processed, whilst the PS3 balances the work load across the available SPUs. This means that if you have large numbers of networks you will need to tune the number of NMP_NUM_SPURS_EVENT_FLAGS and/or throttling the number of networks that are updated in parallel.
+ 
+Upgrade Morpheme Runtime from 3.5 to 3.5.1
+==========================================
+
+Added ATTRIB_SEMANTIC_TRAJECTORY_DELTA_TRANSFORM_BUFFER
+-------------------------------------------------------
+This new semantic is a transform buffer that contains the trajectory delta in the first array element.
+This allows for unified tasks when both trajectory deltas and transforms are used which reduces the total number of tasks required for a network and thus improves performance.
+
+By default this semantic is used if the trajectory delta and transforms are queued for a network that supports it.
+Any nodes that generate the semantic ATTRIB_SEMANTIC_TRANSFORM_BUFFER or ATTRIB_SEMANTIC_TRAJECTORY_DELTA_TRANSFORM will now require a task to generate the new combined semantic ATTRIB_SEMANTIC_TRAJECTORY_DELTA_TRANSFORM_BUFFER unless the node has the flag NODE_FLAG_REQUIRES_SEPARATE_TRAJECTORY_AND_TRANSFORMS.
+
+Remember to add a post update access attrib for the new semantic ATTRIB_SEMANTIC_TRAJECTORY_DELTA_TRANSFORM_BUFFER on the network.
+
+NOTE: This semantic is not supported in physics or uneven terrain networks. This is because they require the trajectory delta for the entire network to be updated before transforms can be updated.  Any nodes that have this restriction need to set the flag NODE_FLAG_REQUIRES_SEPARATE_TRAJECTORY_AND_TRANSFORMS on their node def in the asset compiler.
+NOTE: This change does not affect morpheme users that do not queue trajectory deltas.
+
+Changed projects to link to officially named FBX libs
+-----------------------------------------------------
+This means that project files will not need to be changed in order to link to the 2012.1 FBX SDK.
+
+Specifically:
+
+lib/fbxsdk_md2008d.lib        -> lib/x86/2012.1-mdd.lib
+lib/fbxsdk_md2008.lib         -> lib/x86/2012.1-md.lib
+lib/fbxsdk_md2008_amd64d.lib  -> lib/x64/2012.1-mdd.lib
+lib/fbxsdk_md2008_amd64.lib   -> lib/x64/2012.1-md.lib
+
+
+Upgrade Morpheme Runtime from 3.0.1 to 3.5
+==========================================
+
+State machine initialisation behaviour has changed
+--------------------------------------------------
+State machines used as inputs to multiply referenced passdown pins are now correctly reset to their default state when they become active after a period of inactivity.
+The previous behaviour was unsafe because returning to some states (such as transitions) is not valid.
+If you require a state machine to be in a specific state the next time it is updated then use MR::Network::queueSetStateMachineStateByNodeID(NodeID stateMachineNodeID, NodeID targetStateNodeID).
+
+
+NodeInitDataArray pointer has been removed from the prototype for UpdateNodeConnections
+---------------------------------------------------------------------------------------
+  typedef NodeID (*UpdateNodeConnections)(
+    NodeDef*            node,
+    Network*            network,
+    NodeInitDataArray*  initData
+  );
+Has become:
+  typedef NodeID (*UpdateNodeConnections)(
+    NodeDef*            node,
+    Network*            network
+  );
+ 
+The passing of this data through updateConnections functions supported the initialisation of sub state in transitions.
+This is now done more directly in the updateConnections functions of transition nodes.
+
+
+NM_HOST_* and NM_TARGET_* preprocessor directives have been amended for 64 bit platforms
+-----------------------------------------------------------------------------------------
+NM_HOST_WIN32 is no longer defined for Win64 builds; it has been split into NM_HOST_WIN32 and NM_HOST_WIN64.  
+NM_IA64 has been removed, as it has been replaced in all uses with NM_HOST_WIN64.  Likewise, NM_TARGET_WIN64 has also been added.
+
+
+The CharacterController base class has been updated to be accessible from SPU
+-----------------------------------------------------------------------------
+Some of the members of the CharacterController have been converted into attrib data meaning that it can be accessed remotely.
+Specifically:
+  NMP::Matrix34 m_worldRootTransform;
+  NMP::Matrix34 m_prevWorldRootTransform;
+  bool          m_achievedRequestedMovement;
+  float         m_groundContactTime;
+
+These now belong in the networks AttribDataCharacterController and are managed via the network with the following accessors and modifiers:
+  AttribDataCharacterController* Network::getCharacterControllerAttribData();
+  NMP::Matrix34& Network::getCharacterControllerAttribDataWorldRootTransform();
+  NMP::Matrix34& Network::getCharacterControllerAttribDataPrevWorldRootTransform();
+  void Network::setCharacterControllerAttribDataWorldRootTransform(const NMP::Matrix34& worldRootTransform);
+  void Network::updateCharacterControllerAttribDataWorldRootTransform(const NMP::Matrix34& worldRootTransform, bool copyCurrentToPrevious);
+  bool Network::getAchievedRequestedMovement();
+  void Network::setAchievedRequestedMovement(bool status);
+  float Network::getGroundContactTime();
+  void Network::setGroundContactTime(float time);
+
+
+Removed unnecessary lifespan parameter from input task parameter functions in Network
+-------------------------------------------------------------------------------------
+Input task parameters don't determine the lifespan of attrib data so this parameter served no purpose.
+The functions affected are:
+  TaskAddInputParam, 
+  TaskAddNetInputParam, 
+  TaskAddOptionalNetInputParam, 
+  TaskAddInputParamWithOptionallyInvalidOwningNode, 
+  TaskAddOptionalNetInputParamRecurseFilterNodes, 
+  TaskAddOptionalNetInputParamRecurseToParent, 
+  TaskAddInputParamOptionallyInvalidOwningNode, 
+  TaskAddParamAndDependency 
+  RootTaskAddParamAndDependency.
+
+
+The Networks post update access function parameter lists have changed
+---------------------------------------------------------------------
+This reduces the amount of unnecessary data being passed to these functions.
+
+  findPostUpdateAccessAttrib(const AttribAddress& attribAddress) 
+becomes
+  findPostUpdateAccessAttrib(NodeID nodeID, AttribDataSemantic semantic)
+
+  addPostUpdateAccessAttrib(const AttribAddress& attribAddress, uint16_t minLifespan, bool fromParent)
+becomes
+  addPostUpdateAccessAttrib(NodeID nodeID, AttribDataSemantic semantic, uint16_t minLifespan, bool fromParent)
+
+  getPostUpdateAccessAttribLifespan(const AttribAddress& attribAddress, uint16_t existingLifespan)
+becomes
+  getPostUpdateAccessAttribLifespan(NodeID nodeID, AttribDataSemantic semantic, uint16_t existingLifespan)
+
+  removePostUpdateAccessAttrib(const AttribAddress& attribAddress)
+becomes
+  removePostUpdateAccessAttrib(NodeID nodeID, AttribDataSemantic semantic)
+
+  
+Removed NMP_DMA_ALIGNMENT
+-------------------------
+Using DMA alignment was found to offer negligible performance improvement and vastly increased asset sizes.
+
+All uses of this macro should be replaced with NMP_VECTOR_ALIGNEMENT which has a value of 16.
+
+
+Node builders have changed to facilitate fast lookup of NodeDef and NetworkDef AttribData
+-----------------------------------------------------------------------------------------
+Every NodeType, that has its own Def Data, now has a SemanticLookupTable that allows direct array indexed lookup into each nodes AttribData array.
+These SemanticLookupTables are constructed in the asset compiler and stored in an array in the NetworkDef.
+To this end each node builder has 2 new virtual functions:
+    bool hasSemanticLookupTable()
+    MR::SemanticLookupTable* initSemanticLookupTable(NMP::Memory::Resource& memRes)
+   
+Be sure to implement these functions if you have your own node types that have their own Def Data; there are default implementations that can be used by NodeTypes that have no Def data.
+NOTE: There is only one of these tables per node type, so if in your node builder you optionally add some bits of Def Data to your node, make sure that when you specify the table requirements you set the maximum requirements; leaving lookup slots unused is not a problem.
+
+
+The internals of Node Builder getNodeDefMemoryRequirements and init functions are now simpler
+---------------------------------------------------------------------------------------------
+In getNodeDefMemoryRequirements()
+  * It is no longer necessary to keep a count of the numAttribDatas to be added.
+  * MR::NodeDef::getMemoryRequirements is replaced by getCoreNodeDefMemoryRequirements
+In init()
+  * It is no longer necessary to keep a count of the numAttribDatas to be added.
+  * MR::NodeDef::init() and initNodeDefInfo() are replaced by the single function initCoreNodeDef().
+  * It is no longer necessary to directly handle the adding of AttribData to the nodes AttribDataEntry array, instead call initAttribEntry and it will handle where this data should be stored (based on the specified SemanticLookupTable).
+
+  
+Renamed all HasQueuingFunctionForSemantic
+-----------------------------------------
+Any custom nodes will need their function renaming to FindGeneratingNodeForSemantic.
+
+
+Registration of Semantics has changed
+-------------------------------------
+Registration of semantics through registerAttributeSemanticID now happens in 3 phases:
+  1. Determining the registration requirements for the Manager prior to actual registration of semantics.
+  2. Allocation of manager registration arrays through the function allocateRegistry.
+  3. Actually registering into manager arrays.
+  
+registerAttributeSemanticID() takes 3 arguments: SemanticID, semantic name (NULL on SPU), and computeRegistryRequirements.
+  computeRegistryRequirements indicates whether we are:
+    1. Determining the registration requirements for the Manager prior to actual registration of semantics.
+    2. Actually registering into registration arrays that have now been allocated.
+  Note: REG_FUNC_ARGS_COMPUTE is used to simplify provision of these parameters. 
+
+
+Asset compiler plugins require a finaliseInitPlugin function
+------------------------------------------------------------
+Due to the changes in semantic registration (see above) all modules now need a 2 steps to their initialisation:
+  1. Let the manager know what its requirements are.
+  2. Actually register semantics after the manager has allocated its internal arrays.
+Thus, as well as implementing an initPlugin function, asset compiler plugins must also implement a finaliseInitPlugin function, e.g. initPluginMove() and finaliseInitPluginMove()
+
+
+OutputReplace task parameters have been added
+---------------------------------------------
+These re-use existing attrib data in order to reduce the number of allocations and initialisations required on attrib data. To create one use MR::Network::TaskAddOutputReplaceParam() when queuing, then in the task use MR::Dispatcher::TaskParameters::createOutputAttribReplace().
+Note that all output replace parameters must have a lifespan of LIFESPAN_FOREVER.
+
+
+TPARAM_REPLACE_EXISTING has been removed
+----------------------------------------
+This flag has been removed from the TaskParamFlag enum, so any task parameters which used this flag should use TaskAddOutputReplaceParam instead. Note that the flag is still used internally by the SPU dispatcher.
+
+
+InputOutput task parameters have been added
+-------------------------------------------
+These use the same piece of attrib data that can be used as an input or output. To create one use MR::Network::TaskAddNetInputOutputParam() or MR::Network::TaskAddNetOptionalInputOutputParam() when queuing. All InputOutput task parameters are output replace parameters so re-use attrib data between frames. 
+
+
+Build Configurations
+--------------------
+Previously all projects had 'Debug' and 'Release' configurations. Additionally projects relevant to asset compilation also have a suite of 'target platform' configurations. The problem was that there was no explicit 'Target PC' configuration and so in some projects 'Debug' and 'Release' were being used in two contexts (in game code and tool code) without being able to distinguish between the two - in effect the PC build of the asset compiler was using game settings.
+
+This was overcome by making a clear distinction has been made between 'game' configurations and 'tool' configurations. Libraries that are now used in both tools and game code now have additional 'Debug Tool' and 'Release Tool' configurations. 'Debug' and 'Release' are now only used by game code. In addition explicit 'Target PC' configurations were added to asset compilers (replacing the old 'Debug' and 'Release' configurations).
+
+ * Game code is defined as code that runs in game or code that conforms to the standards of game code (for example unit tests would not run in game but they still need to conform to game code settings).
+ * Tool code is defined as code that is only used in offline tools. 
+
+This means that game and tool configurations now have more standard settings applied across them (see table below). Also tool-specific configurations can have more error checking enabled without affecting game code. 
+
+Summary of standard game and tool build settings:
+  
+  Setting                Game                                      Tool
+  ------------------------------------------------------------------------------------------------------
+  C++ exceptions         Always off (except on windows)*           Always on
+  RTTI                   Always off                                Off as standard and on where required
+  Warning level          Highest                                   Highest
+  Warn as error          On                                        On
+  NM_ENABLE_EXCEPTIONS   Always 0                                  0 in debug, 1 in release
+  
+  * Not currently possible to turn of C++ exceptions on windows as certain std library headers do not compile.
+
+  
+Closest Anim Node
+-----------------
+This node now has the option to pre-compute the source transforms offline (in the Asset Compiler) for faster runtime operation.
+The offline method compresses and stores the pre-computed transform buffers in the nodeDef. This method is substantially faster at matching (~0.0025ms per source) than the online evaluation method (~0.925ms per source).
+
+Note that only animation nodes or nodes that have a single connected child and no control parameters {"PassThrough", "MirrorTransforms", "FilterTransforms", "ApplyBindPose"} can be used as inputs with the offline pre-compute method. Conversely online matching is more flexible, allowing you to connect nodes with multiple connections and control parameters.
+
+By default all newly created closest anim nodes will use the offline pre-compute method. All existing nodes created in prior versions will be upgraded to the new node version, but will be set to use the online evaluation method. We recommend that you switch to using the offline pre-compute method if possible.
+
+
+MR::Manager API Changes
+-----------------------
+- initMorphemeLib() no longer takes any arguments. The old arguments, requestAnimFn and releaseAnimFn should passed into morpheme using MR::Manager::setAnimFileHandlingFunctions()
+- Renamed initAnimFileHandlingFunctions() to setAnimFileHandlingFunctions().
+
+MR::Network::setControlParameter
+- Paramaters have changed from (AttribDataSemantic, NodeID, _AttribDataClass*) to (NodeID, _AttribDataClass*, PinIndex = CONTROL_PARAMETER_NODE_PIN_0).
+- This change comes after improvement to the addressing of control parameter data. Rather than a full AttribAddress all that is required is a NodeID and an output PinIndex.
+
+
+Requests have been Renamed to Messages
+--------------------------------------
+Messages allow user defined data to be passed into node using its message handler.
+
+The request interface is still included but has been deprecated and will be removed in a future version.  Each deprecated function has a message equivalent:
+
+  sendRequestToStateMachine() - sendMessage()
+  resetRequestsOnStateMachine() - clearMessageStatusesOnStateMachine()
+  broadcastRequestToStateMachines() - broadcastMessage()
+  resetRequestsOnAllStateMachines() - clearMessageStatusesOnAllStateMachines()
+  getActiveRequestIDsFromActiveStateMachine() - getActiveMessageIDsFromActiveStateMachine()
+  getActiveRequestIDsFromAllActiveStateMachines() - getActiveMessageIDsFromAllActiveStateMachines()
+  
+Renamed MR_RESET_SM_REQUESTS_POST_UPDATE to MR_RESET_SM_MESSAGE_STATUSES_POST_UPDATE and EmittedRequestUtil to EmittedMessagesUtil mrNodeStateMachine now uses messages to handle request condition transitions and is an example of a message handling node.
+See the morpheme documentation for more information.
+
+
+Changes to getting active MessageIDs (nee RequestIDs)
+-----------------------------------------------------
+Network::getActiveMessageIDsFromActiveStateMachine(), Network::getActiveMessageIDsFromAllActiveStateMachines() and the deprecated functions Network::getActiveRequestIDsFromActiveStateMachine() and Network::getActiveRequestIDsFromAllActiveStateMachines() now all return ALL active MessageIDs, including:
+ - MessageIDs on transitions from the active state.
+ - If The active state is a transition, any MessageIDs on break out transitions from the destination state.
+ - Any MessageIDs on Global(Active) state transitions.
+
+API clarifications
+------------------
+Some API has been renamed to better describe what it is doing:
+  To reflect that we are actually registering AttribDataTypes rather than AttribDatas:
+    registerCoreAttribDatas -> registerCoreAttribDataTypes
+    registerPhysicsAttribDatas -> registerPhysicsAttribDataTypes
+    registerMoveAttribDatas -> registerMoveAttribDataTypes
+    registerKinectAttribDatas -> registerKinectAttribDataTypes
+  To make module registration more consistent:
+    MR::registerQueuingFnsAndOutputCPTasks -> MR::registerCoreQueuingFnsAndOutputCPTasks
+    MR::registerNodeInitDatas -> MR::registerCoreNodeInitDatas
+    MR::registerAttribDatas -> MR::registerCoreAttribDatas
+    MR::registerTransitConditions -> MR::registerCoreTransitConditions
+  As immediate tasks have been replaced with output control parameter tasks:
+    registerQueuingFnsAndImmediateTasks -> registerQueuingFnsAndOutputCPTasks
+ 
+NMFile::write(void* buffer, uint64_t bufferSize) no longer adds a carriage return to every file write
+-----------------------------------------------------------------------------------------------------
+It is the responsibility of the caller to include them if required.
+
+
+Upgrade Morpheme Runtime from 2.3.3 to 3.0
+==========================================
+
+Due to Autodesk licensing restrictions the FBX SDk is no longer packaged with morphemeRuntime and FBX is disabled in the asset compiler by default. To enable
+it, define NM_ENABLE_FBX in the asset compiler build and add a dependency on the acFBXPlugin project in Visual Studio (you may need to add the project
+to your solution). The FBX plugin expects the location of the FBX SDK to be in the environment variable $(FBXSDK). morphemeRuntime 3.0 is built and tested
+against FBX SDK version 2011.3.1.
+
+Morpheme's physics implementation has been extensively refactored to support multiple physics engines.  It also includes a better separation between physics and
+ no-physics implementations.  The major points of note are:
+- The MR::Network class no longer has API supporting physics-specific classes. API has been moved to mrPhysics.h.  More generally, physics-specific classes such
+  as MR::PhysicsRig, MR::PhysicsScene and so forth have been moved out of the animation core.
+- morphemeRuntime's physics implementation is now split into two libraries.  The morphemePhysicsCore contains the implementation of morpheme:physics and is
+  physics-engine independent.  The morphemePhysicsDriver_PhysX2 contains a physics engine "driver" for using morpheme:physics with PhysX2.
+- The API for physics classes such as MR::PhysicsRig has been significantly changed to make it more engine-agnostic.  See the API reference for more detail.
+- Note that assets build with a physics enabled asset compiler will not work with a no-physics runtime currently.  This will be resolved in a later release.
+
+morphemeRuntime 3.0 is built and tested against PhysX 2.8.4.4.
+
+All NMP classes now take references to NMP::Memory::Resources in their init functions, and will update those Resources to reflect the memory they have consumed.
+  Affected classes are NMP::BitArray, NMP::DataBuffer, NMP::RingBuffer, NMP::VectorContainer.  If you are using these classes in compound structures of your own,
+  you can simplify the construction code.
+
+Renamed SampleCharacterController to CharacterControllerDef, SampleControllerBuilder to CharacterControllerDefBuilder and kAsset_CharacterController to
+ kAsset_CharacterControllerDef.
+
+Added CharacterController::castRayIntoCollisionWorld(). This allows us to have functionality that requires knowledge of the collision world to function in
+ the no physics build.  For example, the UnevenTerrain node and the rayCast transition can be used in a NoPhysics build, if a suitable collision routine is
+ provided.
+
+Refactoring of task queuing in NodeBlend2, NodeBlend2x2, NodeBlend2SyncEvents, NodeBlendN, NodeFeatherBlend2 and blending tasks in BlendTransformTasks and
+  TrajectoryBlendTasks - common code factored out, reducing duplication, making code easier to understand. Changes parameter ordering for some tasks to increase
+  code regularity and sharing. Modifies blend task queuing in NodeBlendNSyncEvents and NodeTransit due to knock-on effects of parameter re-ordering.
+
+SPU Refactor:
+- Removed libovis overlay system.
+- Replaced libovis SPU overlay system with custom .elf task overlay system that enables debugging, dead code & data stripping and greater control over memory usage.
+- Added SPU bookmarks (disabled by default) for tracking SPURS task execution in SNTuner.
+- Re-engineered task function registration, allowing static declaration and SPU task .elf registration from same source code.
+- SPU task functions & overlay mapping is compiled on PPU and DMA'd to SPU.
+- Task queuing is inhibited if the task function has not been registered for SPU, PPU is used instead.
+- Removed use of source file enum (sourceFileID) only used for LibOvis.
+- Combined and encoded two MorphemeArgs parameters to make space for the task function map effective address.
+- morphemeSPU module now only contains the task overlay function execution 'kernel', links to morphemeSPUCore.
+- Added 'AggregateLibrary' which has no source files, but archives all the input objects.
+- Added 'morphemeSPU_PPULib module which archives all the SPU .elfs transformed into PPU binary objects.
+- Debug info is always enabled for all NMPlatform and morpheme SPU code ('-g') as is garbage collection ('-ffunction-sections', '-fdata-sections' &amp; '-Wl,--gc-sections').
+- Added display of .elf sizes as custom build steps.
+
+Asset compiler plugins
+- The asset compiler has undergone a code reorganisation.  Instead of having different morphemeAssetProcessor libraries for each configuration of the asset
+  compiler, we now have a single configuration, which has no nodes, transits etc compiled into it.  Each morpheme "plugin" (for example, animation, physics, 
+  Kinect, etc) has a separate DLL project (e.g. acPluginPhysX2).  These plugins contain the node, transit and plugin specific asset builders.
+- Each plugin has an initialise function which will register all the assets, node builders and so forth which the plugin adds support for.
+- It is possible for a plugin to add new AttribData to the MR::NetworkDef.  Creating an implementation of the NetworkBuilderPlugin interface and registering it
+  with NetworkDefBuilder::registerBuilderPlugin allows additional AttribData unrecognised by the morpheme core to be stored inside the MR::NetworkDef.
+- Configurations of the asset compiler are set up by simply initialising the set of plugins required (and linking in the stub libraries).  This initialisation
+  is performed in the initPlugins_*.cpp files in \morpheme\tools\assetCompiler\
+- Customers can now add support for their own nodes, transit conditions, assets and network AttribData using this mechanism without having to modify
+  the asset compiler to the extent required in 2.x.
+
+MR::Manager has been changed from a static class to a singleton.  This is to allow the use of MR::Manager in DLLS.  API which was previously static can 
+ now be accessed by getting the singleton instance of the manager.  For example:
+  Manager::registerAttrDataType();
+   would now be called like this:
+  Manager::getInstance().registerAttrDataType();
+
+NodeBuilder classes now no longer access the nodeDef's task queuing, connections, deletion, update functions directly.  Instead, API has been added
+ to allow the setting of node queuing functions and so forth.  For example:
+  nodeDef->m_taskQueuingFns[MR::ATTRIB_SEMANTIC_UPDATE_TIME_POS] = MR::queuePassThroughChild0;
+   would now be performed like this:
+  nodeDef->setTaskQueuingFnId(MR::ATTRIB_SEMANTIC_TIME_POS, FN_NAME(queuePassThroughChild0), logger);
+ This allows much greater error checking.  All custom node builders will need to be updated.
+
+Overridable virtual functions doLoadAssetSource() in mcExportXml.h and doLoadAnimInfoList() in mcAnimInfoXml.h (both in /export/include/export) have 
+  had an additional argument added, 'size_t& dataSize'. This should be set to the size, in bytes, of the returned raw XML data. 
+  It is used to help tune an XML loading optimisation. Note - returning 0 will result in the XML load being abandoned.
+
+  
+Upgrade Morpheme Runtime from 2.3.2 to 2.3.3
+============================================
+
+Change to Switch Node Behaviour
+-------------------------------
+
+Any switch node that only evaluates when the input has finished now performs that check when the input finished the frame before rather than if it's likely to finish the next frame. This makes it more robust to evaluating with variable timestep. The general effect is that it will check and switch one frame earlier.
+
+
+Change to transitions from transitions behaviour
+------------------------------------------------
+
+Contrary to intended state machine operation, only the first condition of a possible breakout transition was being updated. This has been corrected so a state machine updates all conditions of a possible breakout transition.
+
+
+
+Upgrade Morpheme Runtime from 2.3.1 to 2.3.2
+============================================
+
+Change to transitions from transitions behaviour
+------------------------------------------------
+
+Contrary to intended state machine operation, transitions from transitions could fire when their destination state was active. This is no longer permitted unless the destination state's active transition is set to 'dead blend source on breakout'.
+
+
+Additional attribute semantics
+------------------------------
+
+To support breakout transitions to active states by dead blending, the following semantics have been added to cache network state on dead blend enabled transitions, adding 32 bytes per node per network definition to the memory footprint.
+
+  ATTRIB_SEMANTIC_UPDATE_TIME_POS_T_MINUS_ONE
+  ATTRIB_SEMANTIC_TRAJECTORY_DELTA_T_MINUS_ONE
+  ATTRIB_SEMANTIC_TRANSFORM_BUFFER_T_MINUS_ONE
+  ATTRIB_SEMANTIC_TRANSFORM_BUFFER_T_MINUS_TWO
+
+
+Incremented MAX_NUM_QUEUED_TASKS_PER_NODE to 9
+----------------------------------------------
+
+The uneven terrain node queues 9 tasks for evaluation when used in conjunction with lock foot nodes and a transit match events between states. This change adds 8 bytes per node per network instance to the memory footprint.
+
+
+Upgraded Morpheme Runtime to be compatible with PhysX 2.8.3
+-----------------------------------------------------------
+
+In order to correctly support this, Morpheme Runtime requires the definition of an environment variable to point to the SDK for each platform:
+
+PHYSX_PATH_PC
+PHYSX_PATH_X360
+PHYSX_PATH_PS3
+
+
+Upgrade Morpheme Runtime from 2.3 to 2.3.1
+==========================================
+
+Asset Compiler
+--------------
+
+This defaults to initialising all allocated memory to 0xcdcdcdcd. This means that unused padding memory in compiled assets now has a deterministic value, reducing unimportant differences between asset versions, and helping with version control. This does add a performance cost to each allocation in the asset compiler. This behaviour can be disabled by removing #define FORCE_INIT_ALL_MEMORY in MorphemeAssetCompiler.cpp
+
+
+Switch Node
+-----------
+The Switch node now deletes all child instances when they become inactive and re-initializes them when they are reactivated.
+
+
+Buffers
+-------
+
+A faster way of accessing the most commonly used types of NMP::DataBuffer has been added, the position/attitude in a Pos/Quat buffer can be accessed using {get|set}PosQuatChannel{Pos|Quat}() and velocity/angular-velocity in a Vel/AngVel type buffer can be accessed using {get|set}VelAngVelChannel{Vel|AngVel}().
+Also in NMP::DataBuffer, setChannelUsed() has been split up into setChannelUsedFlag() (the original behavior) and setChannel{Unused|Used}() for when the flag is constant.
+
+
+Upgrade Morpheme Runtime from 2.2.1 to 2.3
+==========================================
+
+Animation Handling
+------------------
+
+The default behaviour is to have runtime animations use a filename based on a hash of their source XMD name. This means that runtime anims are no longer dependent on their names in the cache.
+
+By default there is a string table at runtime (stored in a MR::UTILS::SimpleAnimRuntimeIDtoFilenameLookup) that provides a lookup from runtime animation ID to runtime animation filename. This is generated in the asset compiler and added to the simple bundle.
+
+One of the side effects of this change is that there is now no longer any need for the DefaultAnimLoader files, instead see runtime tutorial 2 for an example of how to load animation files.
+
+
+Bool control parameters are now boolean data
+------------------------------------------------
+Accessing bool control parameters from the runtime is now done using ATTRIB_SEMANTIC_CP_BOOL and properly returns an AttribDataBool pointer.
+
+
+Upgrade Morpheme Runtime from 2.2 to 2.3
+========================================
+
+Animation Handling
+------------------
+
+The default behaviour is to have runtime animations use a filename based on a hash of their source XMD name. This means that runtime anims are no longer dependent on their names in the cache.
+
+By default there is a string table at runtime (stored in a MR::UTILS::SimpleAnimRuntimeIDtoFilenameLookup) that provides a lookup from runtime animation ID to runtime animation filename. This is generated in the asset compiler and added to the simple bundle.
+
+One of the side effects of this change is that there is now no longer any need for the DefaultAnimLoader files, instead see runtime tutorial 2 for an example of how to load animation files.
+
+
+Bool control parameters are now boolean data
+------------------------------------------------
+Accessing bool control parameters from the runtime is now done using ATTRIB_SEMANTIC_CP_BOOL and properly returns an AttribDataBool pointer.
+
+
+
+Animation Loading
+-----------------
+
+The load/unload animation callbacks have been renamed to request/releaseAnimation() and take an optional user data pointer.
+
+
+Animation Registry
+------------------
+
+AttribDataSourceAnim now stored the anim ID in serialised assets and then this is converted to/from the index of the registered anim format in the locate/dislocate functions. This means that runtime animations are insulated against problems arising from animation formats being registered in a different order in the asset compiler and game code.
+
+  MR::Manager::findAnimationFormatRegistryEntry()
+
+has been renamed to
+
+  MR::Manager::findAnimationFormatRegistryEntryIndex()
+
+and extra helper API has been added.
+
+
+Upgrade Morpheme Runtime from 2.2 to 2.2.1
+==========================================
+
+Network::startUpdate
+--------------------
+
+Network::startUpdate has had a new parameter added to allow you to prevent transforms being calculated.  This is set to true by default so no action should be required.
+
+Asserts in release
+------------------
+
+Asserts can now be enabled in release by defining NMP_ENABLE_ASSERTS.
+
+TaskAddInputParam and TaskAddOutputParam
+----------------------------------------
+
+TaskAddParam has been split into two functions, TaskAddInputParam and TaskAddOutputParam.  Update your task queuing functions to use the correct ones for each parameter.
+
+TaskAddInputParamOptionallyInvalidOwningNode
+--------------------------------------------
+
+Added Network::TaskAddInputParamOptionallyInvalidOwningNode() specialisation of Network::TaskAddInputParam() that allows removal of a condition from TaskAddInputParam which is what is used in the majority of cases.
+
+Network::TaskAddDefInputParam() 
+-------------------------------
+
+Added Network::TaskAddDefInputParam() specialisation of Network::TaskAddInputParam(). Target must always be NA_NODE on Def data. Flags must always be TPARAM_FLAG_INPUT|TPARAM_FLAG_EVALUATED on Def data.
+
+Network::TaskAddParamAndDependencyAnimSetSpecific()
+---------------------------------------------------
+
+Removed unnecessary Network::TaskAddParamAndDependencyAnimSetSpecific().  TaskAddParamAndDependency should be used instead.
+
+16 bit indices
+--------------
+
+MR::NodeID has been switched to being a uint16_t.  If you are using uint32_t as MR::NodeIDs in your code, update accordingly.  Use of the MR::NodeID typedef is strongly encouraged.  Likewise, attrib data semantics, attrib types, refcounts, anim set indices, lifespans and child node counts are all 16-bit numbers instead of 32-bit now.
+
+Upgrade Morpheme Runtime from 2.1 to 2.2
+========================================
+
+Improved Time update based on sync events
+-----------------------------------------
+This is now much simpler and consistent.
+ * Changed AttribDataPlaybackPos to have real and adjusted values.
+ * Changed AttribDataUpdateSyncEventPlaybackPos to have real and adjusted values.
+ * Removed unrequired TaskTransitSyncEventsUpdateTimeViaSyncEventPosDeadBlend and TaskTransitSyncEventsUpdateTimeViaTimePosDeadBlend.
+ * Added reused time/sync event update utility functions:
+    calcCurrentPlaybackValuesFromParentDeltaTimeAdjSpace
+    calcCurrentPlaybackValuesFromParentAbsTimeAdjSpace
+    calcCurrentPlaybackValuesFromParentAbsSyncEventPos
+    calcPreviousPlaybackValuesFromMyAbsSyncEventPos
+    calcCurrentPlaybackValuesFromParentDeltaSyncEventPosAdjSpace
+          
+Added API to clear the state of requests
+----------------------------------------
+ Network::resetRequestsOnStateMachine
+ Network::resetRequestsOnAllActiveStateMachines
+ AttribDataStateMachine::resetActiveStateRequestConditions
+ AttribDataStateMachine::resetStateRequestConditions
+    
+The JBA animation format has been removed
+-----------------------------------------
+
+  It has been completely superseded by the NSA format.  All new networks should use NSA as the default format, and existing networks should be updated when they are opened in connect 2.2.  References to the JBA format should be removed from application code.
+
+
+The MR::NetworkRestorePoint class has been added
+------------------------------------------------
+
+  This class allows you to create a snapshot of the state of an MR::Network instance, using NetworkRestorePoint::setFromNetwork.  This restore point can then be used to revert a Network to it's old state by calling NetworkRestorePoint::applyToNetwork.
+
+
+CustomPhysicsInterface has been removed
+---------------------------------------
+
+  If you were using this API to pass data to tasks, it is best to replace that code path with hard coded tasks.
+
+
+NMBitComparisonTable has been removed from NMPlatform
+-----------------------------------------------------
+
+  It was unused by NaturalMotion code.  If you are using this class, it is recommended that you copy it from an older version of NMP to your project's codebase.
+
+NMSocketWrapper has been moved from MCOMMS namespace to NMP as it is in NMPlatform
+----------------------------------------------------------------------------------
+
+  It has also been renamed to SocketWrapper.  Update all references.
+
+
+getDefInputAttrib and getOptionalDefInputAttrib have been removed
+-----------------------------------------------------------------
+
+  Replace all instances of these function calls in your code with getInputAttrib and getOptionalInputAttrib. They are functionally identical.
+
+
+The macro MR_QUEUING_FUNC_ARGS has been removed
+-----------------------------------------------
+
+  Queuing function arguments should be specified directly now.  Instances of "MR_QUEUING_FUNC_ARGS" in your code can be replaced with "NodeDef *node, TaskQueue *queue, Network *net, Dependencies &deps, Task *dependentTask, TaskParameter *dependentParameter"
+
+
+Refactor of update of time and sync events in nodes that handle sync events. Now much simpler and consistent
+------------------------------------------------------------------------------------------------------------
+  * Changed AttribDataPlaybackPos to have real and adjusted values.
+  * Changed AttribDataUpdateSyncEventPlaybackPos to have real and adjusted values.
+  * Removed unrequired TaskTransitSyncEventsUpdateTimeViaSyncEventPosDeadBlend and TaskTransitSyncEventsUpdateTimeViaTimePosDeadBlend.
+  * Added reused time/sync event update utility functions:
+          calcCurrentPlaybackValuesFromParentDeltaTimeAdjSpace
+          calcCurrentPlaybackValuesFromParentAbsTimeAdjSpace
+          calcCurrentPlaybackValuesFromParentAbsSyncEventPos
+          calcPreviousPlaybackValuesFromMyAbsSyncEventPos
+          calcCurrentPlaybackValuesFromParentDeltaSyncEventPosAdjSpace
+
+
+Remove ability for blend2 nodes to operate without connected cp nodes
+---------------------------------------------------------------------
+  Removes large amounts of code and additional complexity that was giving very little if any gain.
+
+
+Removed Blend2Opt as a stand alone node
+---------------------------------------
+  Instead added "AlwaysBlend" flag to Blend2 and Blend2MatchEvents that allows these nodes to operate in a Blend2Opt style.
+
+Renaming
+--------
+
+  * Renamed m_eventTrackNames to m_eventTrackIDNamesTable for consistency with all other tables in NetworkDef.
+  * Renamed Rig to AnimRigDef.
+  * Renamed RigBuilder to AnimRigDefBuilder.
+  * Renamed NETWORK_LOGGING to MR_NETWORK_LOGGING.
+  * Renamed spu_memory_info to spuMemoryInfo.
+  * Renamed m_controlParamNodeIDs to m_controlParamAndOpNodeIDs in NodeDef.
+  * Renamed ATTRIB_SEMANTIC_FRACTIONAL_POS to ATTRIB_SEMANTIC_FRACTION_POS.
+  * Moved to consistently using 'connections' rather than 'connectivity' terminology in all function names etc.
+    Includes rename of all UpdateConnectivity to UpdateConnections.
+
+
+Interface changes
+-----------------
+  * Allow findTaskParamAttribDataFromNetDef to validly return Null if attrib not found. It is up to caller to know if data must be there or not.
+  * Made Network::getAttribData actually return an AttribData and added Network::getAttribDataNodeBinEntry
+  * All HasQueuingFunctionForSemantic functions now return the NodeID of the actual node that provides the support, or NA_NODE.
+  * Changed Network::getActiveRequestIDsFromAllActiveStateMachines to return a count.

@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\NMPlatform\generic" />
+    <Filter Include="include\NMPlatform" />
+    <Filter Include="include" />
+    <Filter Include="include\NMPlatform\vpu" />
+    <Filter Include="include\NMPlatform\win32" />
+    <Filter Include="src" />
+    <Filter Include="src\win32" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\NMPlatform\generic\NMMatrix34.inl">
+      <Filter>include\NMPlatform\generic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\generic\NMQuat.inl">
+      <Filter>include\NMPlatform\generic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\generic\NMVector3.inl">
+      <Filter>include\NMPlatform\generic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMAtomic.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMBasicLogger.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMBitArray.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMBitStreamCoder.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMBuffer.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMColour.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMCommandLineProcessor.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMDebugDrawManager.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMFastFreeList.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMFastHeapAllocator.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMFile.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMFlags.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMFreelistMemoryAllocator.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMHash.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMHashMap.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMHierarchy.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMKeyboardHarness.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMLoggingMemoryAllocator.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMMapContainer.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMMathPlatform.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMMathUtils.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMMatrix.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMMatrix.inl">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMMatrix34.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMMemory.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMMemoryAllocator.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMNorm.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMPadHarness.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMPlatform.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMPrioritiesLogger.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMProfiler.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMQuat.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMRingBuffer.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMRNG.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMSeh.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMSocket.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMSocketWrapper.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMStaticFreeList.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMStaticFreeListAllocator.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMStlUtils.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMStlUtils.inl">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMString.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMStringTable.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMSync.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMSystem.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMTimer.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMVector.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMVector.inl">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMVector3.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMVectorContainer.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\NMvpu.h">
+      <Filter>include\NMPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\vpu\NMfpu.inl">
+      <Filter>include\NMPlatform\vpu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuFx.inl">
+      <Filter>include\NMPlatform\vpu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuInc.inl">
+      <Filter>include\NMPlatform\vpu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuMatrix.inl">
+      <Filter>include\NMPlatform\vpu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuMP.inl">
+      <Filter>include\NMPlatform\vpu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuQuat.inl">
+      <Filter>include\NMPlatform\vpu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuQuatMP.inl">
+      <Filter>include\NMPlatform\vpu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuSpec.inl">
+      <Filter>include\NMPlatform\vpu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuTrig.inl">
+      <Filter>include\NMPlatform\vpu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuVector.inl">
+      <Filter>include\NMPlatform\vpu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuVector3MP.inl">
+      <Filter>include\NMPlatform\vpu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuVector4MP.inl">
+      <Filter>include\NMPlatform\vpu</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\win32\NMAtomic.inl">
+      <Filter>include\NMPlatform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\win32\NMBasicLogger.inl">
+      <Filter>include\NMPlatform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\win32\NMFile.inl">
+      <Filter>include\NMPlatform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\win32\NMHost.h">
+      <Filter>include\NMPlatform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\win32\NMSync.inl">
+      <Filter>include\NMPlatform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\win32\NMSystem.inl">
+      <Filter>include\NMPlatform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\win32\NMvpuImplementation.inl">
+      <Filter>include\NMPlatform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\win32\NMvpuPlatformIncludes.h">
+      <Filter>include\NMPlatform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMPlatform\win32\socket_imp.h">
+      <Filter>include\NMPlatform\win32</Filter>
+    </ClInclude>
+    <ClCompile Include="src\NMBasicLogger.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBitArray.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBitStreamCoder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBuffer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMColour.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMCommandLineProcessor.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMDebugDrawManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMFastFreeList.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMFastHeapAllocator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMFile.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMFlags.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMFreelistMemoryAllocator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMKeyboardHarness.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMLoggingMemoryAllocator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMMatrix.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMMatrix_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMMemory.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMMemoryAllocator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNorm.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNorm_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMPadHarness.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMPlatformOutput.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMPrioritiesLogger.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMProfiler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMQuat.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSocketWrapper.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMStaticFreeListAllocator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMString.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMStringTable.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMVector.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMVector3.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMVector_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMvpu.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\win32\NMHostMemory.cpp">
+      <Filter>src\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="src\win32\NMSocket.cpp">
+      <Filter>src\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="src\win32\NMStlGuard.cpp">
+      <Filter>src\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="src\win32\NMSync.cpp">
+      <Filter>src\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="src\win32\NMTimer.cpp">
+      <Filter>src\win32</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

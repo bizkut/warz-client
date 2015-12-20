@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\physics\PhysX2" />
+    <Filter Include="include\physics" />
+    <Filter Include="include" />
+    <Filter Include="src\PhysX2" />
+    <Filter Include="src" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\physics\PhysX2\mrCharacterControllerInterfacePhysX2.h">
+      <Filter>include\physics\PhysX2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX2\mrPhysicsDriverDataPhysX2.h">
+      <Filter>include\physics\PhysX2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX2\mrPhysicsRigPhysX2.h">
+      <Filter>include\physics\PhysX2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX2\mrPhysicsScenePhysX2.h">
+      <Filter>include\physics\PhysX2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX2\mrPhysX2.h">
+      <Filter>include\physics\PhysX2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX2\mrPhysX2Configure.h">
+      <Filter>include\physics\PhysX2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX2\mrPhysX2Includes.h">
+      <Filter>include\physics\PhysX2</Filter>
+    </ClInclude>
+    <ClCompile Include="src\PhysX2\mrCharacterControllerInterfacePhysX2.cpp">
+      <Filter>src\PhysX2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX2\mrPhysicsDriverDataPhysX2.cpp">
+      <Filter>src\PhysX2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX2\mrPhysicsRigPhysX2.cpp">
+      <Filter>src\PhysX2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX2\mrPhysicsScenePhysX2.cpp">
+      <Filter>src\PhysX2</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

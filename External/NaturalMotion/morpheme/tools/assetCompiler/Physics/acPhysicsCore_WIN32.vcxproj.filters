@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\Physics" />
+    <Filter Include="include" />
+    <Filter Include="src" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Physics\acPhysicsCore.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\NodeApplyPhysicsJointLimitsBuilder.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\NodeControlParamPhysicsObjectPointerBuilder.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\NodeExpandLimitsBuilder.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\NodeOperatorApplyImpulseBuilder.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\NodeOperatorPhysicsInfoBuilder.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\NodePhysicsBuilder.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\NodePhysicsGrouperBuilder.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\NodePhysicsTransitBuilder.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\NodePhysicsTransitSyncEventsBuilder.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\NodeSetNonPhysicsTransformsBuilder.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\PhysicsRigDefBuilder.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\TransitConditionDefBuilderGroundContact.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\TransitConditionDefBuilderPhysicsAvailable.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\TransitConditionDefBuilderPhysicsInUse.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\TransitConditionDefBuilderPhysicsMoving.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\TransitConditionDefBuilderSKDeviation.h">
+      <Filter>include\Physics</Filter>
+    </ClInclude>
+    <ClCompile Include="src\acPhysicsCore.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeApplyPhysicsJointLimitsBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeControlParamPhysicsObjectPointerBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeExpandLimitsBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorApplyImpulseBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorPhysicsInfoBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodePhysicsBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodePhysicsGrouperBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodePhysicsTransitBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodePhysicsTransitSyncEventsBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeSetNonPhysicsTransformsBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysicsRigDefBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderGroundContact.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderPhysicsAvailable.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderPhysicsInUse.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderPhysicsMoving.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderSKDeviation.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

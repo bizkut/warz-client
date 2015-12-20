@@ -1,0 +1,85 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Allows a character to reach a target with its hands using its whole body. 
+behaviour_def ReachForBody
+{
+interface:
+  displayname = "Reach Body";
+  version = 5;
+  
+modules:
+  reachForBodyBehaviourInterface;
+  bodyFrame;
+  bodyFrame.reachForBody.*;
+  upperBody.*;
+  lowerBody.*;
+  spines[*].support.*;
+  spines[*].control.*;
+  spines[*].reachReaction.*;
+  legs[*];
+  legs[*].reachReaction.*;
+  arms[*].reachForBodyPart.*;
+  arms[*].reachReaction.*;
+
+attributes:
+  group("Out of Reach")
+  {
+    float OutOfReachTimeout[networkMaxNumArms] = 1.0f, 0.0f __per_anim_set__ __title__("Timeout");///< Give up after this time out of reach, in seconds (standard character).
+    float RampDownFailedDuration[networkMaxNumArms] = 1.0f, 0.0f __per_anim_set__ __title__("ExitDuration"); ///< Back off ramp (after failed reach) duration, in seconds (standard character).
+  }
+  group("Within Reach")
+  {
+    float WithinReachTimeout[networkMaxNumArms] =  5.0f,0.0f __per_anim_set__ __title__("Timeout");///< Give up after this time within reach, in seconds (standard character)..
+    float RampDownCompletedDuration[networkMaxNumArms] = 2.0f, 0.0f __per_anim_set__ __title__("Exit duration"); ///< Back off ramp (after successful reach) duration, in seconds (standard character)..
+  }
+  group("Target")
+  {
+    float OutOfReachDistance[networkMaxNumArms] = 0.15f, 0.0f, 1.0f __per_anim_set__ __title__("Radius"); ///< On target when within this distance, in metres (standard character).
+  }
+  group("Arm Movement")
+  {
+    /// Defines how or whether arm swivel should be applied to the reach: "None" means swivel is not required; "Automatic" means swivel will be determined procedurally by the behaviour based on the reach target, "Specified" means the behaviour will use the fixed swivel amount specified below.
+    int SwivelMode[networkMaxNumArms] = 0, -1, 1 __per_anim_set__ __title__("Swivel Mode");
+    /// Swivel value to use when Swivel Mode is "Specified". Value in range [-1,1],  positive values drive elbows out and up, negative drive elbows in and down.
+    float SwivelAmount[networkMaxNumArms] = 0.0f, -1.0f, 1.0f __per_anim_set__ __title__("Swivel Amount"); 
+    float MaxArmExtensionScale[networkMaxNumArms] = 1.0f, 0.1f, 1.0f __per_anim_set__ __title__("ArmExtension");   ///< Limit the maximum extension of the arm. Expressed as a proportion of the total arm length.
+    float SurfacePenetration[networkMaxNumArms] = 0.01f, 0.0f, 0.1f __per_anim_set__; ///< Small offset, to drive hand against surface, in metres (standard character).
+  }
+  
+  /// Configure he behaviour to avoid positioning the hands within a specified distance from the spine.
+  group("Self Avoidance")
+  {
+    float TorsoAvoidanceRadiusMultiplier[networkMaxNumArms] = 1.0f, 0.001f, 1.0f __per_anim_set__ __title__("Scale torso radius"); ///< Scales the self avoidance radius set on the spine limb.
+    int CollisionGroupIndex = -1 __title__("CollisionGroup"); ///< Collision group used to disable hand-hand collision when reaching. This is the collision group within the collision groups editor.
+  }
+
+controlParams:
+  {
+    bool newHit[networkMaxNumArms] = 0 __title__("Use latest hit info"); ///< Indicates that a new target has been supplied. Should be set to true on the frame in which the target is changed.
+    float Strength[networkMaxNumArms]  = 1.0f, 0.0f, 1.0f __title__("Amount"); ///< Sets the emphasis placed on the reach behaviour for this limb. A reach toward a target can be effectively faded out by ramping this value from 1 to 0.
+    float EffectorSpeedLimit[networkMaxNumArms] = 20.0f, 0.0f, 20.0f; ///< Sets the maximum speed of the hand when moving towards the target. In m/s (standard character).
+  }
+
+  /// Set the target position an orientation for each arm.
+  group("Target")
+  {
+    int LimbIndex[networkMaxNumArms] = -1, -1, 10  __per_anim_set__ __limb_index__  __title__("Limb");  ///< Index of the limb to reach for
+    int PartIndex[networkMaxNumArms] = -1, -1, 10  __per_anim_set__ __limb_part_index__  __title__("Part");  ///< Index of the part to reach for, e.g. the upper arm, or lower leg.
+    vector3 Position[networkMaxNumArms] __expose_as_pin__;  ///< Local surface point to reach to on the specified limb part (in frame of a physics joint).
+    vector3 Normal[networkMaxNumArms] __expose_as_pin__;    ///< Local surface normal of point to be reached to (in frame of a physics joint).
+  }
+animationInputs:
+  BodyPose  ArmReachForBodyPose __title__("Target Arm Pose");    ///< Sets a suitable pose for an arm that has become a reach target for another arm. Typically this pose will place the target arm in a position where it can be reached by another arm.
+}
+
+#endif

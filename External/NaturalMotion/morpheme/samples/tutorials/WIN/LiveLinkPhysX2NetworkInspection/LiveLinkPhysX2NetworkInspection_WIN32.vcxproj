@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>LiveLinkPhysX2NetworkInspection</ProjectName>
+    <ProjectGuid>{CD217E7F-6CDB-4E87-E98D-9E9E1B716E05}</ProjectGuid>
+    <RootNamespace>LiveLinkPhysX2NetworkInspection</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>LiveLinkPhysX2NetworkInspection_debug</TargetName>
+    <IntDir>..\..\..\..\..\obj\win32\vs$(VisualStudioVersion)\LiveLinkPhysX2NetworkInspection\debug\</IntDir>
+    <OutDir>..\..\..\..\..\bin\win32\vs$(VisualStudioVersion)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>LiveLinkPhysX2NetworkInspection</TargetName>
+    <IntDir>..\..\..\..\..\obj\win32\vs$(VisualStudioVersion)\LiveLinkPhysX2NetworkInspection\release\</IntDir>
+    <OutDir>..\..\..\..\..\bin\win32\vs$(VisualStudioVersion)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\utils\physicsComms2\include;..\..\..\..\utils\gameManagement\include;..\..\..\..\utils\comms2\include;..\..\..\..\utils\simpleBundle\include;..\..\..\..\SDK\physics\include\Physics\PhysX2;..\..\..\..\SDK\physics\include;..\..\..\..\SDK\core\include;..\..\..\..\SDK;..\..\..\..\..\common\NMRuntimeUtils\include;..\..\..\..\..\common\NMPlatform\include;..\..\..\..\..\common\NMPlatform\include\NMPlatform\win32;"$(PHYSX_PATH_PC)\SDKs\Core\include";"$(PHYSX_PATH_PC)\SDKs\Cooking\include";"$(PHYSX_PATH_PC)\SDKs\Foundation\include";"$(PHYSX_PATH_PC)\SDKs\NxCharacter\include";"$(PHYSX_PATH_PC)\SDKs\Physics\include";"$(PHYSX_PATH_PC)\SDKs\PhysXLoader\include";%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NOMINMAX;WIN32;_CONSOLE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsComms2_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\gameManagement_PhysX2_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeComms2_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeSimpleBundle_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsDriver_PhysX2_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsCore_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeCore_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMRuntimeUtils_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMPlatform_debug.lib";"$(PHYSX_PATH_PC)\SDKs\lib\win32\PhysXCore.lib";"$(PHYSX_PATH_PC)\SDKs\lib\win32\PhysXCooking.lib";"$(PHYSX_PATH_PC)\SDKs\lib\win32\NxCharacter.lib";"$(PHYSX_PATH_PC)\SDKs\lib\win32\PhysXLoader.lib";WS2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <ProgramDatabaseFile>$(OutDir)LiveLinkPhysX2NetworkInspection_debug.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\utils\physicsComms2\include;..\..\..\..\utils\gameManagement\include;..\..\..\..\utils\comms2\include;..\..\..\..\utils\simpleBundle\include;..\..\..\..\SDK\physics\include\Physics\PhysX2;..\..\..\..\SDK\physics\include;..\..\..\..\SDK\core\include;..\..\..\..\SDK;..\..\..\..\..\common\NMRuntimeUtils\include;..\..\..\..\..\common\NMPlatform\include;..\..\..\..\..\common\NMPlatform\include\NMPlatform\win32;"$(PHYSX_PATH_PC)\SDKs\Core\include";"$(PHYSX_PATH_PC)\SDKs\Cooking\include";"$(PHYSX_PATH_PC)\SDKs\Foundation\include";"$(PHYSX_PATH_PC)\SDKs\NxCharacter\include";"$(PHYSX_PATH_PC)\SDKs\Physics\include";"$(PHYSX_PATH_PC)\SDKs\PhysXLoader\include";%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NOMINMAX;WIN32;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsComms2.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\gameManagement_PhysX2.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeComms2.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeSimpleBundle.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsDriver_PhysX2.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsCore.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeCore.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMRuntimeUtils.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMPlatform.lib";"$(PHYSX_PATH_PC)\SDKs\lib\win32\PhysXCore.lib";"$(PHYSX_PATH_PC)\SDKs\lib\win32\PhysXCooking.lib";"$(PHYSX_PATH_PC)\SDKs\lib\win32\NxCharacter.lib";"$(PHYSX_PATH_PC)\SDKs\lib\win32\PhysXLoader.lib";WS2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDatabaseFile>$(OutDir)LiveLinkPhysX2NetworkInspection.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="LiveLinkPhysicsDataManager.cpp" />
+    <ClInclude Include="LiveLinkPhysicsDataManager.h" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\utils\physicsComms2\morphemePhysicsComms2_WIN32.vcxproj">
+      <Project>{875C8569-5B84-42A7-7D89-CF5336D6A09A}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\utils\gameManagement\gameManagement_PhysX2_WIN32.vcxproj">
+      <Project>{D44EA28F-01FF-41AC-7CA5-0C9709B55F76}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\utils\comms2\morphemeComms2_WIN32.vcxproj">
+      <Project>{588D0E6B-FB5F-4D2B-8B80-973FD78928A5}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\utils\simpleBundle\morphemeSimpleBundle_WIN32.vcxproj">
+      <Project>{A16C3047-7B5D-42CE-B4AA-190E025E16DC}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDK\physics\morphemePhysicsDriver_PhysX2_WIN32.vcxproj">
+      <Project>{360A2D15-4D74-4FD8-E3BC-0EE24FCDB44E}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDK\physics\morphemePhysicsCore_WIN32.vcxproj">
+      <Project>{79CD03AF-41CC-469B-B0B1-DD18BDBD1643}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDK\core\morphemeCore_WIN32.vcxproj">
+      <Project>{AC5679CC-935C-4BCF-67A4-D937C17D2BC4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\NMRuntimeUtils\NMRuntimeUtils_WIN32.vcxproj">
+      <Project>{3EBBF790-FDD8-4FCC-81A8-FEA264CAD994}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\NMPlatform\NMPlatform_WIN32.vcxproj">
+      <Project>{A09CF394-9273-474D-4091-19EB54BF95DA}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

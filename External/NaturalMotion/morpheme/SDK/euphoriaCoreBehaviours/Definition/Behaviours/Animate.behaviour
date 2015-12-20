@@ -1,0 +1,77 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Animates specified limbs with the provided animation.
+behaviour_def Animate
+{
+interface:
+  displayname = "Animate";
+  version = 3;
+
+modules:
+  animateBehaviourInterface;
+
+  arms[*].pose;
+  heads[*].pose;
+  legs[*].pose;
+  spines[*].pose;
+  
+animationInputs:
+  // Note that the body pose weight attributes are ignored and should not be displayed
+  BodyPose BodyPose __compulsory_input__;
+
+attributes:
+  group("Animation")
+  {
+    /// If set then pose will be cached on the first update. This means that the pose that is used will not change if the input changes.
+    bool UseSingleFrameForPose = false __per_anim_set__ __title__("CacheFirstFrame"); 
+  }
+
+  /// These determine whether the animate behaviour will have priority over autonomous behaviours, or if it will operate in the background and be easily over-ridden by other behaviours when they need to be active.
+  group("Animation Priority")
+  {
+    bool ArmsPriority   = true __title__("Arms");  ///< If set then the animate behaviour will have priority over autonomous behaviours for all the arms
+    bool HeadsPriority  = true __title__("Heads"); ///< If set then the animate behaviour will have priority over autonomous behaviours for all the heads
+    bool LegsPriority   = true __title__("Legs");  ///< If set then the animate behaviour will have priority over autonomous behaviours for all the legs
+    bool SpinesPriority = true __title__("Spine"); ///< If set then the animate behaviour will have priority over autonomous behaviours for the spine
+  }
+
+  group("Default")
+  {
+    /// False allows character to sleep when velocity is below a threshold, for performance. Only set to true if the animation won't change after becoming stationary, since
+    /// a sleeping character will not auto-awaken when animating
+    bool DisableSleeping = true; 
+  }
+
+  /// Gravity compensation is used to compensate for the sag of limbs due to gravity. In order for this to operate the limb needs to be supported at its root or end. This can happen if, for example, balance or hard keyframing is used on the lower body, and the animate behaviour is used on the upper body. Gravity compensation values above one should only normally be used if you want full gravity compensation with a limb that has got strength less than one.
+  group("Gravity Compensation")
+  {
+    float ArmGravityCompensation[networkMaxNumArms]     = 0, 0, 2 __title__("Arm");  ///< Gravity compentstation scale for the arm.
+    float HeadGravityCompensation[networkMaxNumHeads]   = 0, 0, 2 __title__("Head"); ///< Gravity compentstation scale for the head.
+    float LegGravityCompensation[networkMaxNumLegs]     = 0, 0, 2 __title__("Leg");  ///< Gravity compentstation scale for the leg.
+    float SpineGravityCompensation[networkMaxNumSpines] = 0, 0, 2 __title__("Spine");///< Gravity compentstation scale for the spine.
+  }
+
+controlParams:
+
+  // These values act to scale both the physical strength, and the importance/weight of the animate behaviour against other behaviours that may be trying to use the limb. For example, a small (non zero) value on the arms will allow the arms to follow the input animation loosely, with influences form other behaviours.
+  group("Input Strength Defaults")
+  {
+    float ArmStrength[networkMaxNumArms]     = 1, 0, 2 __title__("ArmWeight");  ///< Scales the strength and weights the arm animation against other arm behaviours.
+    float HeadStrength[networkMaxNumHeads]   = 1, 0, 2 __title__("HeadWeight"); ///< Scales the strength and weights the head animation against other head behaviours.
+    float LegStrength[networkMaxNumLegs]     = 1, 0, 2 __title__("LegWeight");  ///< Scales the strength and weights the leg animation against other leg behaviours.
+    float SpineStrength[networkMaxNumSpines] = 1, 0, 2 __title__("SpineWeight");///< Scales the strength and weights the spine animation against other spine behaviours.
+  }
+}
+
+#endif

@@ -1,0 +1,96 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Static balance control/management
+__pix__ __no_feedback__ module_def StaticBalance
+{
+owner: BalanceManagement<>
+
+in:
+  // Note that the transforms will be set, even if the importances are 0, since we require a standing pose
+  Transform headPoseEndRelativeToRoot[networkMaxNumHeads];
+  Transform spinePoseEndRelativeToRoot[networkMaxNumSpines];
+  Transform legPoseEndRelativeToRoot[networkMaxNumLegs];
+  Transform armPoseEndRelativeToRoot[networkMaxNumArms];
+
+  Orientation targetPelvisOrientation;
+
+  // Desired offset for the balance so it doesn't always balance perfectly over the CoM
+  Distance balanceOffsetFwd;
+  Distance balanceOffsetRight;
+
+  // Desired direction for the pelvis
+  Direction targetPelvisDirection;
+
+  /// If 1 then the incoming horizontal pelvis offset from support should be kept. If 0 then the CoM will be used
+  /// balance. 
+  ClampedWeight balanceUsingAnimationHorizontalPelvisOffsetAmount;
+
+  Multiplier stabilisingCrouchDownAmount;
+  Multiplier stabilisingCrouchPitchAmount;
+
+out:
+  /// The desired rotation and offset of the pelvis relative to the centre and direction of support.
+  /// The support coordinate frame has the same convention as the spine etc - i.e. y up, x fwd
+  Transform pelvisRelSupport;
+  
+  /// The desired end transforms relative to the support. Note that these are unaffected by any pose modifications.
+  Transform legPoseEndRelSupport[networkMaxNumLegs];
+  Transform averageLegPoseEndRelSupport;
+  Transform armPoseEndRelSupport[networkMaxNumArms];
+  Transform averageArmPoseEndRelSupport;
+
+  /// The desired rotation of the spine relative to the pelvis (sent to SpineSupport)  (will only set the first)
+  OrientationDelta chestRelPelvisOrientation[networkMaxNumSpines];
+  /// The desired translation of the spine relative to the pelvis (sent to SpineSupport)  (will only set the first)
+  PositionDelta chestRelPelvisTranslation[networkMaxNumSpines];
+  /// The desired rotation of the head relative to the spine
+  OrientationDelta headRelChestOrientation[networkMaxNumHeads];
+  
+feedIn:
+  RotationRequest pelvisRotationRequest;
+  DirectionRequest pelvisDirectionRequest;  
+  TranslationRequest pelvisTranslationRequest;
+  
+  DirectionRequest chestDirectionRequest;
+
+  ER::LimbTransform supportTM;
+  Position currHeadEndPositions[networkMaxNumHeads];
+ 
+connections<>:
+
+  // Note that these poses are guaranteed to be set
+  in.headPoseEndRelativeToRoot[] = (owner.owner.balanceBehaviourInterface.out.headBalancePoseEndRelativeToRoot[]);
+  in.spinePoseEndRelativeToRoot[] = (owner.owner.balanceBehaviourInterface.out.spineBalancePoseEndRelativeToRoot[]);
+  in.legPoseEndRelativeToRoot[] = (owner.owner.balanceBehaviourInterface.out.legBalancePoseEndRelativeToRoot[]);
+  in.armPoseEndRelativeToRoot[] = (owner.owner.balanceBehaviourInterface.out.armBalancePoseEndRelativeToRoot[]);
+  in.balanceUsingAnimationHorizontalPelvisOffsetAmount = (owner.owner.balanceBehaviourInterface.out.balanceUsingAnimationHorizontalPelvisOffsetAmount);
+
+  in.balanceOffsetFwd = (owner.owner.idleAwakeBehaviourInterface.out.balanceOffsetFwd);
+  in.balanceOffsetRight = (owner.owner.idleAwakeBehaviourInterface.out.balanceOffsetRight);
+
+  in.targetPelvisOrientation = (owner.owner.aimBehaviourInterface.out.targetPelvisOrientation);
+  in.targetPelvisDirection   = (owner.owner.balanceBehaviourInterface.out.targetPelvisDirection);
+
+  in.stabilisingCrouchDownAmount = (owner.owner.protectBehaviourInterface.out.crouchDownAmount);
+  in.stabilisingCrouchPitchAmount = (owner.owner.protectBehaviourInterface.out.crouchPitchAmount);
+
+  feedIn.supportTM = (owner.owner.bodyFrame.bodyBalance.feedOut.supportTM);
+  feedIn.currHeadEndPositions[] = (owner.owner.heads[].feedOut.currEndPartPosition);
+  
+  out.averageLegPoseEndRelSupport = junctions.out_averageAverageLegPoseEndRelSupport = average(
+    out.legPoseEndRelSupport[*]);
+  
+}
+
+#endif
+

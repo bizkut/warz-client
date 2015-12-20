@@ -1,0 +1,53 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// This behaviour works by placing the arms onto or in front of hazards that
+// have been moving recently relative to the character, it either resembles the character
+// steadying himself, or can be seen as precautionary placement against the hazard
+// its common role is to give continuity hazards that are often intermittently on collision course
+
+/// Places hands palm down against an object so that they are ready to brace if the object becomes a hazard. 
+behaviour_def ArmsPlacement
+{
+interface:
+  displayname = "Arms Placement";
+  version = 2;
+  
+modules:
+  armsPlacementBehaviourInterface;
+  arms[*].placement;
+  
+attributes: 
+  group("Positioning")
+  {
+    float SwivelAmount = 0.3f, -1.0f, 1.0f        __per_anim_set__; ///< Controls the arms' swivel. A positive value for elbows out and up, negative for elbows in and down, at zero the swivel will match the guide pose.
+    float MaxArmExtensionScale = 1.0f, 0.1f, 1.0f __per_anim_set__ __title__("ArmExtension"); ///< Limit the maximum extension of the arm. Expressed as a proportion of the total arm length.
+    float handOffsetMultiplier = 1.0f, 0.0f, 2.0f __title__("HandOffsetScale"); ///< Controls how close the hands are together when placing. 0 places hands in the same position, 1 is shoulder width apart so arms are effectively parallel, 2 is two shoulder widths apart.
+  }
+  
+controlParams:
+  /// Describes a surface, in terms of its position, normal and velocity, on which the palms of the hands should be placed. All in absolute, world space coordinates.
+  group("Target Inputs")
+  {
+    vector3 TargetPosition  __expose_as_pin__ __title__("Position");   ///< Position of the target in world space and absolute units.
+    vector3 TargetNormal    __expose_as_pin__ __title__("Normal");     ///< Normal of target in world space - does not need to be normalised.
+    vector3 TargetVelocity                    __title__("Velocity");   ///< Velocity of the target in world space and absolute units.
+  }
+  
+  group("Importance")
+  {
+    float Weight = 1.0f, 0.0f, 1.0f;              ///< Sets the importance of this behaviour relative to others.
+  }
+}
+
+#endif
+

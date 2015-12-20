@@ -1,0 +1,10 @@
+; mplg_Exporter.def : Declares the module parameters for the DLL.
+EXPORTS
+  expGetVersion
+  expInit
+  expGetFuncCount
+  expGetFuncName
+  expGetFuncType
+  expExecFunc
+
+

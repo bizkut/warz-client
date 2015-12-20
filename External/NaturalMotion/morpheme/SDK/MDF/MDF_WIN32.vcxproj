@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug Tool|Win32">
+      <Configuration>Debug Tool</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Tool|Win32">
+      <Configuration>Release Tool</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>MDF</ProjectName>
+    <ProjectGuid>{3DD564A7-571D-4EAC-8AA6-5D5E2BDD0E66}</ProjectGuid>
+    <RootNamespace>MDF</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <TargetName>MDF_debug</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\MDF\debug_tool\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <TargetName>MDF</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\MDF\release_tool\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\..\..\common\NMTL\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>MDFPrecompiled.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>NMTL_STATIC;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)MDF_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\..\..\common\NMTL\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>MDFPrecompiled.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>NDEBUG;NMTL_STATIC;NM_ENABLE_EXCEPTIONS=1;WIN32;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)MDF.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="CustomOptionKeyword.inl" />
+    <ClInclude Include="FixedStack.h" />
+    <ClCompile Include="LibMDF.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClInclude Include="LibMDF.h" />
+    <ClCompile Include="MappedIO.cpp" />
+    <ClInclude Include="MappedIO.h" />
+    <ClCompile Include="MDF.cpp" />
+    <ClInclude Include="MDF.h" />
+    <ClCompile Include="MDFBehaviourAnalysis.cpp" />
+    <ClInclude Include="MDFBehaviourAnalysis.h" />
+    <ClInclude Include="MDFBehaviourDefs.h" />
+    <ClCompile Include="MDFBehaviourGrammar.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClInclude Include="MDFBehaviourGrammar.h" />
+    <ClCompile Include="MDFBehaviourHandlers.cpp" />
+    <ClCompile Include="MDFKeywords.cpp" />
+    <ClInclude Include="MDFKeywords.h" />
+    <ClCompile Include="MDFModuleAnalysis.cpp" />
+    <ClInclude Include="MDFModuleAnalysis.h" />
+    <ClInclude Include="MDFModuleDefs.h" />
+    <ClCompile Include="MDFModuleGrammar.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClInclude Include="MDFModuleGrammar.h" />
+    <ClCompile Include="MDFModuleHandlers.cpp" />
+    <ClInclude Include="MDFPrecompiled.h" />
+    <ClCompile Include="MDFTypesAnalysis.cpp" />
+    <ClInclude Include="MDFTypesAnalysis.h" />
+    <ClInclude Include="MDFTypesDefs.h" />
+    <ClCompile Include="MDFTypesGrammar.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClInclude Include="MDFTypesGrammar.h" />
+    <ClCompile Include="MDFTypesHandlers.cpp" />
+    <ClCompile Include="ParserBase.cpp" />
+    <ClInclude Include="ParserBase.h" />
+    <ClInclude Include="ParserDefs.h" />
+    <ClCompile Include="ParserEngine.cpp" />
+    <ClInclude Include="ParserEngine.h" />
+    <ClCompile Include="ParserMemory.cpp" />
+    <ClInclude Include="ParserMemory.h" />
+    <ClInclude Include="PString.h" />
+    <ClInclude Include="StringBuilder.h" />
+    <ClCompile Include="TypesRegistry.cpp" />
+    <ClCompile Include="Utils.cpp" />
+    <ClInclude Include="Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\common\NMTL\NMTLStatic_WIN32.vcxproj">
+      <Project>{FD01B990-7B2B-4C94-92AA-0F7092F4C86B}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMPlatform\NMPlatform_WIN32.vcxproj">
+      <Project>{A09CF394-9273-474D-4091-19EB54BF95DA}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug Tool|x64">
+      <Configuration>Debug Tool</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Tool|x64">
+      <Configuration>Release Tool</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>qhull</ProjectName>
+    <ProjectGuid>{2A3758B7-E5C1-458F-948A-5DC4298A1CCA}</ProjectGuid>
+    <RootNamespace>qhull</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release Tool|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Tool|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|x64'">
+    <TargetName>qhull_debug</TargetName>
+    <IntDir>..\..\obj\x64\vs$(VisualStudioVersion)\qhull\debug_tool\</IntDir>
+    <OutDir>..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|x64'">
+    <TargetName>qhull</TargetName>
+    <IntDir>..\..\obj\x64\vs$(VisualStudioVersion)\qhull\release_tool\</IntDir>
+    <OutDir>..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)qhull_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)qhull.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="COPYING.txt" />
+    <None Include="README.txt" />
+    <ClCompile Include="src\libqhull\geom.c" />
+    <ClInclude Include="src\libqhull\geom.h" />
+    <ClCompile Include="src\libqhull\geom2.c" />
+    <ClCompile Include="src\libqhull\global.c" />
+    <ClCompile Include="src\libqhull\io.c" />
+    <ClInclude Include="src\libqhull\io.h" />
+    <ClCompile Include="src\libqhull\libqhull.c" />
+    <ClInclude Include="src\libqhull\libqhull.h" />
+    <ClCompile Include="src\libqhull\mem.c" />
+    <ClInclude Include="src\libqhull\mem.h" />
+    <ClCompile Include="src\libqhull\merge.c" />
+    <ClInclude Include="src\libqhull\merge.h" />
+    <ClCompile Include="src\libqhull\poly.c" />
+    <ClInclude Include="src\libqhull\poly.h" />
+    <ClCompile Include="src\libqhull\poly2.c" />
+    <ClInclude Include="src\libqhull\qhull_a.h" />
+    <ClCompile Include="src\libqhull\qset.c" />
+    <ClInclude Include="src\libqhull\qset.h" />
+    <ClCompile Include="src\libqhull\random.c" />
+    <ClInclude Include="src\libqhull\random.h" />
+    <ClCompile Include="src\libqhull\rboxlib.c" />
+    <ClCompile Include="src\libqhull\stat.c" />
+    <ClInclude Include="src\libqhull\stat.h" />
+    <ClCompile Include="src\libqhull\user.c" />
+    <ClInclude Include="src\libqhull\user.h" />
+    <ClCompile Include="src\libqhull\usermem.c" />
+    <ClCompile Include="src\libqhull\userprintf.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

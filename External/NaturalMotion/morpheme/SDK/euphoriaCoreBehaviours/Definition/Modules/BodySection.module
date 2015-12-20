@@ -1,0 +1,115 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// One for upper body, one for lower body, transports data which operates equivalently on upper and lower
+__no_feedback__ __no_update__ module_def BodySection
+{
+owner: MyNetwork<>
+
+children:
+  RotateCore<> rotate;
+  PositionCore<> position;
+  BraceChooser<> braceChooser;
+in:
+  /// Request for rotation of chest or pelvis depending on if this is the upper or lower body section
+  RotationRequest rotationRequest;
+  TranslationRequest translationRequest; ///< Request for translation of chest or pelvis
+out:
+  // Passing on the incoming requests to the limbs of this body section
+  RotationRequest rotationRequest;
+  RotationRequest oneWayRotationRequest;
+  TranslationRequest translationRequest;
+  TranslationRequest oneWayTranslationRequest;
+  Direction contactDirectionRequest;
+  RotationRequest intermediateRR; ///< just used as intermediate value in junction tree
+
+feedIn:
+  /// How much the chest of pelvis is controlled by the supporting limbs, 1 means it should move with normalStiffness.
+  WeightWithClamp controlledAmount;
+  WeightWithClamp externallyControlledAmount;    ///< Means externally to that body section
+  // Incoming requests to the limbs of this body section
+  RotationRequest rotationRequest;
+  RotationRequest oneWayRotationRequest;       ///< Comes from the spine.
+  TranslationRequest translationRequest;
+  TranslationRequest oneWayTranslationRequest; ///< Comes from the spine
+  bool inContact;                              ///< Are any of the limbs in this body section in contact
+  BraceState braceStates[networkMaxNumLegs];   ///< Used by BraceChooser to pick most appropriate limbs
+  ContactInfo closestContact;                  ///< Used by grab, to find the closest contact to a certain normal
+  Position cushionPoint;                       ///< Averages the cushion position which is centre of cushioning hands
+  
+  Direction spinDirection;                     ///< Used to coordinate the spin between limbs of this body section
+
+feedOut:
+  WeightWithClamp controlledAmount;              ///< Feeds out how controlled the chest/pelvis is
+
+connections<>:
+  out.oneWayTranslationRequest = (position.out.oneWayTranslationRequest);
+  out.translationRequest = junctions.out_translationRequest = average(
+    position.out.translationUnsupportedRequest, position.out.translationRequest);
+  feedOut.controlledAmount = junctions.feedOut_controlledAmount =
+    maxFloatValue(feedIn.controlledAmount, feedIn.externallyControlledAmount);
+  out.intermediateRR = junctions.out_intermediateRR = average(
+    rotate.out.rotationUnsupportedRequest, rotate.out.rotationRequest);
+
+connections<lower>:
+  feedIn.rotationRequest = junctions.rotationRequest = average(owner.legs[*].brace.feedOut.rootRotationRequest);
+  feedIn.oneWayRotationRequest = (owner.spines[0].feedOut.downstreamOnlyRotationRequest);
+  feedIn.oneWayTranslationRequest = (owner.spines[0].feedOut.downstreamOnlyTranslationRequest);
+  feedIn.controlledAmount = junctions.feedIn_supportingAmount =
+  sum(owner.legs[*].standingSupport.feedOut.pelvisControlAmount);
+  feedIn.externallyControlledAmount = (owner.spines[0].feedOut.chestControlledAmount);
+  feedIn.inContact = junctions.feedIn_inContact = isBoolSet(
+    owner.legs[*].feedOut.inContact, owner.spines[0].feedOut.inContact);
+  out.oneWayRotationRequest = junctions.out_oneWayRotationRequest = priority(
+    rotate.out.oneWayRotationRequest, owner.bodyFrame.out.pelvisRotationRequest);
+  feedIn.braceStates[] = (owner.legs[].brace.feedOut.braceState);
+  feedIn.cushionPoint = junctions.feedIn_cushionPoint = average(
+    owner.legs[*].brace.feedOut.endCushionPoint);
+  out.contactDirectionRequest = (owner.hazardManagement.grab.out.uprightContactDir);
+  feedIn.spinDirection = junctions.feedIn_limbTargetDirection = average(owner.legs[*].spin.feedOut.targetDirection);
+  out.rotationRequest = junctions.out_rotationRequest = 
+    priority(out.intermediateRR, owner.hazardManagement.freeFallManagement.out.legsSpinRotationRequest);
+
+connections<upper>:
+  in.rotationRequest = (owner.hazardManagement.grab.out.rotationRequest);
+  in.translationRequest = (owner.hazardManagement.grab.out.translationRequest);
+  
+  feedIn.rotationRequest = junctions.feedIn_rotationRequest = average(
+    owner.heads[*].point.feedOut.rootRotationRequest, 
+    owner.heads[*].avoid.feedOut.rootRotationRequest, 
+    owner.heads[*].dodge.feedOut.rootRotationRequest, 
+    owner.arms[*].brace.feedOut.rootRotationRequest,
+    owner.arms[*].reachForWorld.feedOut.rootRotationRequest,
+    owner.arms[*].holdingSupport.feedOut.rootRotationRequest);
+  feedIn.translationRequest = junctions.feedIn_translationRequest = average(
+    owner.heads[*].dodge.feedOut.rootTranslationRequest, 
+    owner.heads[*].avoid.feedOut.rootTranslationRequest,
+    owner.arms[*].reachForWorld.feedOut.chestTranslationRequest,
+    owner.arms[*].reachForBodyPart.feedOut.chestTranslationRequest);
+  feedIn.oneWayRotationRequest = (owner.spines[0].feedOut.upstreamOnlyRotationRequest);
+  feedIn.oneWayTranslationRequest = (owner.spines[0].feedOut.upstreamOnlyTranslationRequest);
+  feedIn.externallyControlledAmount = (owner.spines[0].feedOut.pelvisControlledAmount);
+  feedIn.controlledAmount = junctions.feedIn_supportingAmount =
+    sum(owner.arms[*].standingSupport.feedOut.chestControlAmount);
+  feedIn.inContact = junctions.feedIn_inContact = isBoolSet(
+    owner.heads[*].feedOut.inContact, owner.arms[*].feedOut.inContact, owner.spines[0].feedOut.inContact);
+  feedIn.braceStates[] = (owner.arms[].brace.feedOut.braceState);
+  feedIn.cushionPoint = junctions.feedIn_cushionPoint = average(
+    owner.arms[*].brace.feedOut.endCushionPoint);  
+
+  out.oneWayRotationRequest = (rotate.out.oneWayRotationRequest);
+  feedIn.spinDirection = junctions.feedIn_limbTargetDirection = average(owner.arms[*].spin.feedOut.targetDirection);
+  out.rotationRequest = junctions.out_rotationRequest =
+    priority(out.intermediateRR, owner.hazardManagement.freeFallManagement.out.armsSpinRotationRequest);
+}
+
+#endif

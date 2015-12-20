@@ -1,0 +1,53 @@
+<!DOCTYPE NxParameters>
+<NxParameters numObjects="1" version="1.0" >
+<value name="" type="Ref" className="ApexEmitterAssetParameters" version="0.2" checksum="0xcf54441b 0x37db41ef 0xda065555 0xdc1bbc3d">
+  <struct name="">
+    <struct name="densityRange">
+      <value name="min" type="F32">1.0</value>
+      <value name="max" type="F32">1.0</value>
+    </struct>
+    <struct name="rateRange">
+      <value name="min" type="F32">1000</value>
+      <value name="max" type="F32">1000</value>
+    </struct>
+    <struct name="lifetimeRange">
+      <value name="min" type="F32">60</value>
+      <value name="max" type="F32">60</value>
+    </struct>
+    <struct name="velocityRange">
+      <value name="min" type="Vec3">0 0 0</value>
+      <value name="max" type="Vec3">1 1 1</value>
+    </struct>
+    <value name="maxSamples" type="U32">512</value>
+    <struct name="lodParamDesc">
+      <value name="version" type="U32">0</value>
+      <value name="maxDistance" type="F32">100</value>
+      <value name="distanceWeight" type="F32">1</value>
+      <value name="speedWeight" type="F32">0</value>
+      <value name="lifeWeight" type="F32">0</value>
+      <value name="separationWeight" type="F32">0</value>
+      <value name="bias" type="F32">0</value>
+    </struct>
+    <value name="iofxAssetName" type="Ref" included="0" className="IOFX" objectName="spriteIofxAsset"></value>
+    <value name="iosAssetName" type="Ref" included="0" className="NxBasicIosAsset" objectName="basicIosAsset"></value>
+    <value name="geometryType" type="Ref" included="1" className="EmitterGeomExplicitParams" version="0.1" checksum="0xe09894f3 0xce4efef3 0x4e950875 0x6ea40ff1">    
+      <struct name="">
+        <value name="distance" type="F32">0</value>
+        <struct name="points">
+          <array name="positions" size="0" type="Struct" structElements="position(Vec3),doDetectOverlaps(Bool)"></array>
+          <array name="velocities" size="0" type="Vec3"></array>
+        </struct>
+        <struct name="spheres">
+          <array name="positions" size="0" type="Struct" structElements="center(Vec3),radius(F32),doDetectOverlaps(Bool)"></array>
+          <array name="velocities" size="0" type="Vec3"></array>
+        </struct>
+        <struct name="ellipsoids">
+          <array name="positions" size="0" type="Struct" structElements="center(Vec3),radius(F32),normal(Vec3),polarRadius(F32),doDetectOverlaps(Bool)"></array>
+          <array name="velocities" size="0" type="Vec3"></array>
+        </struct>
+      </struct>
+    </value>
+    <value name="emitterDuration" type="F32">PX_MAX_F32</value>
+  </struct>
+</value>
+</NxParameters>

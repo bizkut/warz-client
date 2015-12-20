@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\GameManagement" />
+    <Filter Include="include" />
+    <Filter Include="include\GameManagement\PhysX3" />
+    <Filter Include="src" />
+    <Filter Include="src\PhysX3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\GameManagement\GameAnimLoader.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameAnimModule.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameAssetLoader.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameCharacter.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameCharacterDef.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameCharacterManager.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameThreadScheduler.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\PhysX3\GameAnimSystemModulePhysX3.h">
+      <Filter>include\GameManagement\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\PhysX3\GameCharacterControllerPhysX3.h">
+      <Filter>include\GameManagement\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\PhysX3\GameCharacterManagerPhysX3.h">
+      <Filter>include\GameManagement\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\PhysX3\GameCharacterManagerPhysX3Threaded.h">
+      <Filter>include\GameManagement\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\PhysX3\GameCharacterPhysX3.h">
+      <Filter>include\GameManagement\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\PhysX3\GamePhysX3Manager.h">
+      <Filter>include\GameManagement\PhysX3</Filter>
+    </ClInclude>
+    <ClCompile Include="src\GameAnimLoader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameAnimModule.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameAssetLoader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameCharacter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameCharacterDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameCharacterManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameThreadScheduler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX3\GameAnimSystemModulePhysX3.cpp">
+      <Filter>src\PhysX3</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX3\GameCharacterControllerPhysX3.cpp">
+      <Filter>src\PhysX3</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX3\GameCharacterManagerPhysX3.cpp">
+      <Filter>src\PhysX3</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX3\GameCharacterManagerPhysX3Threaded.cpp">
+      <Filter>src\PhysX3</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX3\GameCharacterPhysX3.cpp">
+      <Filter>src\PhysX3</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX3\GamePhysX3Manager.cpp">
+      <Filter>src\PhysX3</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

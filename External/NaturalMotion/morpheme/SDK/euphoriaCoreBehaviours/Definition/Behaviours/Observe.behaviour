@@ -1,0 +1,49 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Automatically looks at nearby objects based on parameters that define the relevence of each object
+behaviour_def Observe
+{
+interface:
+  displayname = "Observe";
+  version = 4;
+  
+modules:
+  observeBehaviourInterface;
+  heads[*].eyes;
+  heads[*].point;
+  spines[*].support.*;
+  spines[*].control.*;
+  environmentAwareness.*;
+  sceneProbes.*;
+  
+attributes:
+  group("Observed Object")
+  {
+    float MinSpeed = 1.5f, 0.0f, 5.0f;         ///< The minimum relative speed at which the character will observe a moving object, in m/s (standard character).
+    float MinAcceleration = 8.0f, 0.0f, 20.0f; ///< The minimum relative acceleration at which the character will observe a moving object, in m/s^2 (standard character).
+    float MaxDistance = 4.0f, 0.0f, 30.0f;     ///< The maximum distance for the character at which the object will be observed, in metres (standard character).
+    float MaxSize = 4.0f, 0.0f, 30.0f;         ///< The maximum size of an object, at which it will be observed. Larger may look odd as the character looks at the object centre. In metres (standard character).
+    float MinMass = 0.1f, 0.0f, 10.0f;         ///< The smallest mass at which to observe the object. In kg (standard character).
+    float winnersAdvantage = 0.5f, 0.0f, 1.0f; ///< An extra boost in value for the highest rated object, to reduce flipping between many objects
+    float interestReductionRate = 0.5f, 0.0f, 10.0f  __title__("WeightReductionRate");///< Rate of exponential decrease of the output observe weight, so an object will still be observed for a while even if it stops moving. Units 1/seconds (standard character).
+  }
+controlParams:
+  group("Importance")
+  {
+    float ObserveWeight = 1.0f, 0.0f, 1.0f  __title__("Weight");     ///< The weight (importance) of look relative to other looking. 0 can be used to get output control params without actually looking
+  }
+outputControlParams:
+  float observedWeight  __title__("ObservedWeight"); ///< Indicates how strongly the object selected by this behaviour is being observed. The value is 0 when no objects are observed, 1 when the character is only looking at the selected object.
+}
+
+#endif

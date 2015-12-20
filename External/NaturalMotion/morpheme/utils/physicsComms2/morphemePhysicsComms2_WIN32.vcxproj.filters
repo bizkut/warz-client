@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\comms" />
+    <Filter Include="include" />
+    <Filter Include="src" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\comms\physicsCommsServerModule.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\physicsPackets.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\physicsPackets.inl">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\physicsPacketsMacros.inl">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comms\physicsRuntimeTargetSimple.h">
+      <Filter>include\comms</Filter>
+    </ClInclude>
+    <ClCompile Include="src\physicsCommsServerModule.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\physicsRuntimeTargetSimple.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

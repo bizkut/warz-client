@@ -1,0 +1,49 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Non-SPU so it can interface with the system to get data into an appropriate network format etc
+__global_access__ __generate_interface__ module_def HoldActionBehaviourInterface
+{
+owner: MyNetwork<>
+
+userIn:
+  Edge gameEdges[10];
+
+feedIn:
+  uint16_t numConstrainedArms;  ///< Number of currently constrained hands.
+  Weight holdAttemptImportance; ///< How important Hold thinks it is to grab the current edge.
+  TimePeriod holdDuration;      ///< How long the character has been constrained
+  Direction edgeForwardNormal;  ///< The normal to the front surface of the edge (as opposed to the upper surface).
+
+feedOut:
+  uint16_t numConstrainedArms;  ///< Number of currently constrained hands. Simply passed on.
+
+out:
+  GrabControl grabControl;      ///< Wraps EndConstraint parameters and timers into a single structure.
+  GrabDetectionParams grabDetectionParams;    ///< Configures what kind of edges to look for. 
+  GrabEnableConditions grabEnableConditions;  ///< Configures the conditions for starting a hold attempt.
+  GrabFailureConditions grabFailureConditions;///< Configures the conditions for aborting a hold attempt.
+  GrabAliveParams grabAliveParams;            ///< Configures behaviour while hanging (e.g. "pullUps")
+  Weight timeRatioBeforeLookingDown;          ///< Ratio of maxHoldTime at which the character starts looking at ground
+  bool hasForcedEdge;                         ///< If true, would overwrite any EA patches, therefore no need to use EA.
+  TimePeriod maxTwistBwdPeriod;               ///< If character is not facing the edge for this long he will give up
+  float holdPerArmImportance[networkMaxNumArms]; ///< Toggle grab per limb  
+
+connections<>:
+  feedIn.numConstrainedArms = (owner.hazardManagement.grab.feedOut.numConstrainedArms);
+  feedIn.holdAttemptImportance = (owner.hazardManagement.grab.feedOut.holdAttemptImportance);
+  feedIn.holdDuration = (owner.hazardManagement.grab.feedOut.holdDuration);
+  feedIn.edgeForwardNormal = (owner.hazardManagement.grab.feedOut.edgeForwardNormal);
+}
+
+#endif
+

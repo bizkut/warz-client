@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>MultipleNetworks3</ProjectName>
+    <ProjectGuid>{BFEC053E-168C-4DB5-B298-5594C254AAA4}</ProjectGuid>
+    <RootNamespace>MultipleNetworks3</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>MultipleNetworks3_debug</TargetName>
+    <IntDir>..\..\..\..\..\obj\win32\vs$(VisualStudioVersion)\MultipleNetworks3\debug\</IntDir>
+    <OutDir>..\..\..\..\..\bin\win32\vs$(VisualStudioVersion)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>MultipleNetworks3</TargetName>
+    <IntDir>..\..\..\..\..\obj\win32\vs$(VisualStudioVersion)\MultipleNetworks3\release\</IntDir>
+    <OutDir>..\..\..\..\..\bin\win32\vs$(VisualStudioVersion)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\utils\gameManagement\include;..\..\..\..\utils\comms2\include;..\..\..\..\utils\simpleBundle\include;..\..\..\..\SDK\core\include;..\..\..\..\SDK;..\..\..\..\..\common\NMRuntimeUtils\include;..\..\..\..\..\common\NMPlatform\include;..\..\..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>WIN32;_CONSOLE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\gameManagement_NoPhysics_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeComms2_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeSimpleBundle_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeCore_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMRuntimeUtils_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMPlatform_debug.lib";WS2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <ProgramDatabaseFile>$(OutDir)MultipleNetworks3_debug.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\utils\gameManagement\include;..\..\..\..\utils\comms2\include;..\..\..\..\utils\simpleBundle\include;..\..\..\..\SDK\core\include;..\..\..\..\SDK;..\..\..\..\..\common\NMRuntimeUtils\include;..\..\..\..\..\common\NMPlatform\include;..\..\..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\gameManagement_NoPhysics.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeComms2.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeSimpleBundle.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeCore.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMRuntimeUtils.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMPlatform.lib";WS2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDatabaseFile>$(OutDir)MultipleNetworks3.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\utils\gameManagement\gameManagement_NoPhysics_WIN32.vcxproj">
+      <Project>{D269426C-8DC7-4536-90B2-173B3D1C9356}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\utils\comms2\morphemeComms2_WIN32.vcxproj">
+      <Project>{588D0E6B-FB5F-4D2B-8B80-973FD78928A5}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\utils\simpleBundle\morphemeSimpleBundle_WIN32.vcxproj">
+      <Project>{A16C3047-7B5D-42CE-B4AA-190E025E16DC}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDK\core\morphemeCore_WIN32.vcxproj">
+      <Project>{AC5679CC-935C-4BCF-67A4-D937C17D2BC4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\NMRuntimeUtils\NMRuntimeUtils_WIN32.vcxproj">
+      <Project>{3EBBF790-FDD8-4FCC-81A8-FEA264CAD994}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\NMPlatform\NMPlatform_WIN32.vcxproj">
+      <Project>{A09CF394-9273-474D-4091-19EB54BF95DA}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

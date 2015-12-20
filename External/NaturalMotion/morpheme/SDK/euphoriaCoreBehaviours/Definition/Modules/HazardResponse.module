@@ -1,0 +1,65 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// respond to hazard alerts by calling for brace and avoid modules to activate, and specifying how strongly
+// to shield if there is a high danger due to a high angular velocity of the COM, a high momentum hazards
+// or a high tangential velocity along a big object. If shieldHazard is set, the others hazard are not.
+__no_feedback__ module_def HazardResponse
+{
+
+owner: HazardManagement<>
+
+data:
+  int64_t lastHazardID;         
+  Position lastImpactPos;
+  Velocity lastHazardVel;
+  Weight lastHazardDanger;
+  bool wasDoingShieldInUrgency;
+  TimePeriod lastTimeToImpact;
+  Weight placementImportance;   ///< Used for hysteresis on enabling the arms placement
+
+in:
+  ShieldParameters shieldParameters;
+  
+  // Flags for which sub modules to weight
+  Weight headAvoidWeight;
+  Weight headDodgeWeight;
+  Weight braceWeight;
+  Weight armsPlacementWeight;
+
+feedIn:
+  Hazard hazard;                      ///< The predicted incoming hazard
+  bool hazardsNotBraceable;           ///< Used by shield
+  SpatialTarget possibleFutureHazard; ///< Used by headAvoid and armsPlacement, i.e. hazards not on a collision course
+  
+out:
+  BraceHazard braceHazard;          ///< Control the bracing and cushioning
+  DodgeHazard dodgeHazard;          ///< Control the head dodging laterally
+  SpatialTarget avoidTarget;        ///< Control head's avoidance of nearby objects that are potential dangers
+  Weight instabilityPreparation;    ///< This value is the magnitude of an instability, and the importance is 1/(1+ time to instability)
+  Direction shieldDirectionToHazard;      ///< in world space
+  SpatialTarget placementTarget;    ///< Controls armsPlacement on nearby moving objects. Without this the brace has no persistence
+
+connections<>:
+  feedIn.hazard = (owner.chestImpactPredictor.feedOut.hazard);
+  feedIn.possibleFutureHazard = (owner.chestImpactPredictor.feedOut.possibleFutureHazard);
+  in.shieldParameters = (owner.owner.shieldBehaviourInterface.out.shieldParameters);
+  feedIn.hazardsNotBraceable = (owner.chestImpactPredictor.feedOut.hazardsNotBraceable);
+  
+  in.braceWeight = (owner.owner.protectBehaviourInterface.out.braceWeight);
+  in.headAvoidWeight = (owner.owner.protectBehaviourInterface.out.headAvoidWeight);
+  in.headDodgeWeight = (owner.owner.protectBehaviourInterface.out.headDodgeWeight);
+  in.armsPlacementWeight = (owner.owner.protectBehaviourInterface.out.armsPlacementWeight);
+}
+
+#endif 
+

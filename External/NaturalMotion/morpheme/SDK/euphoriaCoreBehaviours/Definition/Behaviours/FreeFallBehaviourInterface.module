@@ -1,0 +1,39 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Non-SPU so it can interface with the system to get data into an appropriate network format etc
+__global_access__ __generate_interface__ module_def FreeFallBehaviourInterface
+{
+owner: MyNetwork<>
+
+feedIn:
+  bool isInFreefall;
+  Angle orientationError;
+
+feedOut:
+  bool isInFreefall;
+  Angle orientationError;
+
+out:
+  FreefallParameters freefallParams;
+  // Poses for each of the limb ends relative to their root
+  Multiplier armsSpinStiffnessScales[networkMaxNumArms];
+  Multiplier legsSpinStiffnessScales[networkMaxNumLegs];
+  bool armsSpinInPhase;
+  
+connections<>:
+  feedIn.isInFreefall = (owner.hazardManagement.freeFallManagement.out.isInFreefall);
+  feedIn.orientationError = (owner.hazardManagement.freeFallManagement.out.orientationError);
+ 
+}
+
+#endif

@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Target LE64 Debug|x64">
+      <Configuration>Target LE64 Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target LE64 Release|x64">
+      <Configuration>Target LE64 Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>morphemeAssetProcessor</ProjectName>
+    <ProjectGuid>{864F5EAC-3E7B-4518-89BA-2C3201C79690}</ProjectGuid>
+    <RootNamespace>morphemeAssetProcessor</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <TargetName>morphemeAssetProcessor_target_LE64_debug</TargetName>
+    <IntDir>..\..\..\obj\x64\vs$(VisualStudioVersion)\morphemeAssetProcessor\target_le64_debug\</IntDir>
+    <OutDir>..\..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <TargetName>morphemeAssetProcessor_target_LE64</TargetName>
+    <IntDir>..\..\..\obj\x64\vs$(VisualStudioVersion)\morphemeAssetProcessor\target_le64_release\</IntDir>
+    <OutDir>..\..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\XMD\include;..\..\..\common\NMTL\include;..\..\..\common\NMNumerics\include;..\..\..\common\qhull\src;..\export\include;..\..\..\common\tinyxml;..\core\include;..;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_TARGET_BIGENDIAN=0;WIN32;_DEBUG;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeAssetProcessor_target_LE64_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\XMD\include;..\..\..\common\NMTL\include;..\..\..\common\NMNumerics\include;..\..\..\common\qhull\src;..\export\include;..\..\..\common\tinyxml;..\core\include;..;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;NM_TARGET_BIGENDIAN=0;WIN32;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeAssetProcessor_target_LE64.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\assetProcessor\acAnimInfo.h" />
+    <ClInclude Include="include\assetProcessor\AnalysisProcessor.h" />
+    <ClInclude Include="include\assetProcessor\AnimationPoseBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSectionCompressorASA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSectionCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceBuilderNSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceBuilderUtils.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressor.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressorASA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressorMBA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressorNSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceMotionAnalyser.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourcePreprocessor.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceSectioningCompressor.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceUncompressed.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelPosBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelPosQuantisedBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelQuatBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelRotVecQuantisedBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelSetInfoCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelSetTableBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\IntVector3TableBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\QuantisationSetQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\RotVecTableBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\SampledPosCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\SampledQuatCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\SectionCompilerNSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\SplinePosCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\SplineQuatCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\TrajectorySourceCompressorASA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\TrajectorySourceCompressorNSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\TrajectorySourceCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\TransformsAccumulator.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\Vector3QuantisationSetBasis.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\Vector3QuantisationTableBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\Vector3TableBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AssetProcessor.h" />
+    <ClInclude Include="include\assetProcessor\AssetProcessorUtils.h" />
+    <ClInclude Include="include\assetProcessor\BlendNodeBuilderUtils.h" />
+    <ClInclude Include="include\assetProcessor\MessageBuilder.h" />
+    <ClInclude Include="include\assetProcessor\NodeBuilder.h" />
+    <ClInclude Include="include\assetProcessor\NodeBuilderUtils.h" />
+    <ClInclude Include="include\assetProcessor\NodeTransitBaseBuilder.h" />
+    <ClInclude Include="include\assetProcessor\PredictionModelBuilder.h" />
+    <ClInclude Include="include\assetProcessor\TransitConditionDefBuilder.h" />
+    <ClInclude Include="include\assetProcessor\TransitDeadBlendDefBuilder.h" />
+    <ClCompile Include="src\AnalysisProcessor.cpp" />
+    <ClCompile Include="src\AnimationPoseBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSectionCompressorASA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSectionCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceBuilderNSA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceBuilderUtils.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceCompressor.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceCompressorASA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceCompressorMBA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceCompressorNSA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceMotionAnalyser.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourcePreprocessor.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceSectioningCompressor.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceUncompressed.cpp" />
+    <ClCompile Include="src\AnimSource\ChannelPosBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\ChannelPosQuantisedBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\ChannelQuatBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\ChannelRotVecQuantisedBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\ChannelSetInfoCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\ChannelSetTableBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\IntVector3TableBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\QuantisationSetQSA.cpp" />
+    <ClCompile Include="src\AnimSource\RotVecTableBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\SampledPosCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\SampledQuatCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\SectionCompilerNSA.cpp" />
+    <ClCompile Include="src\AnimSource\SplinePosCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\SplineQuatCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\TrajectorySourceCompressorASA.cpp" />
+    <ClCompile Include="src\AnimSource\TrajectorySourceCompressorNSA.cpp" />
+    <ClCompile Include="src\AnimSource\TrajectorySourceCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\TransformsAccumulator.cpp" />
+    <ClCompile Include="src\AnimSource\Vector3QuantisationSetBasis.cpp" />
+    <ClCompile Include="src\AnimSource\Vector3QuantisationTableBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\Vector3TableBuilder.cpp" />
+    <ClCompile Include="src\AssetProcessor.cpp" />
+    <ClCompile Include="src\BlendNodeBuilderUtils.cpp" />
+    <ClCompile Include="src\MessageBuilder.cpp" />
+    <ClCompile Include="src\NodeBuilder.cpp" />
+    <ClCompile Include="src\NodeTransitBaseBuilder.cpp" />
+    <ClCompile Include="src\TransitDeadBlendDefBuilder.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\common\XMD\XMD_X64.vcxproj">
+      <Project>{23D1C7B2-4F9B-401E-D08D-7E8CBE00A9B7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMTL\NMTL_X64.vcxproj">
+      <Project>{5FF4A11E-1F9C-4999-1E8C-6616EF16DB1C}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMNumerics\NMNumerics_X64.vcxproj">
+      <Project>{E97AC720-CA8A-49CD-49A9-BBED3C23E192}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\qhull\qhull_X64.vcxproj">
+      <Project>{2A3758B7-E5C1-458F-948A-5DC4298A1CCA}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\export\morphemeExport_X64.vcxproj">
+      <Project>{348A8659-5C73-4CB4-20A1-95EDAB98AE5D}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\tinyxml\NMTinyXML_X64.vcxproj">
+      <Project>{9121BE9D-8F56-4D9C-158F-1495BC741C2A}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\core\morphemeCore_X64.vcxproj">
+      <Project>{D90ECD48-E518-4965-D5A1-487523A09108}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMRuntimeUtils\NMRuntimeUtils_X64.vcxproj">
+      <Project>{3C388267-640A-4D4B-C8B1-2361CDE77233}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMPlatform\NMPlatform_X64.vcxproj">
+      <Project>{773E894A-FCA3-4312-37AF-0588248FC43F}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

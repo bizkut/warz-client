@@ -1,0 +1,76 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Defines the common characteristics of the character such as whole/partial body strength.
+behaviour_def Characteristics
+{
+interface:
+  displayname = "Characteristics";
+  version = 3;
+
+modules:
+  characteristicsBehaviourInterface;
+ 
+controlParams:
+  /// Sets the strength scale for a character's limbs. Stronger limbs will be move faster and be better able to reach and maintain target poses.
+  group("Input strength defaults")
+  {
+    float WholeBodyStrengthScale                  = 1, 0, 2 __title__("Whole body scale");
+    float ArmStrengthScale[networkMaxNumArms]     = 1, 0, 2 __title__("Arm scale");  ///< Strength multiplier for this arm
+    float HeadStrengthScale[networkMaxNumHeads]   = 1, 0, 2 __title__("Head scale"); ///< Strength multiplier for this head
+    float LegStrengthScale[networkMaxNumLegs]     = 1, 0, 2 __title__("Leg scale");  ///< Strength multiplier for this leg
+    float SpineStrengthScale[networkMaxNumSpines] = 1, 0, 2 __title__("Spine scale");///< Strength multiplier for the spine
+  }
+
+  /// The control compensation is used to make joints compensate for controlled motion in other parts of the rig. A high value will cause a character to appear coordinated whilst a low value will lead to loose, uncontrolled motion.
+  group("Input compensation defaults")
+  {
+    float WholeBodyControlCompensationScale                  = 1, 0, 1 __title__("Whole body scale");
+    float ArmControlCompensationScale[networkMaxNumArms]     = 1, 0, 1 __title__("Arm scale");   ///< Control compensation multiplier for this arm
+    float HeadControlCompensationScale[networkMaxNumHeads]   = 1, 0, 1 __title__("Head scale");  ///< Control compensation multiplier for this head
+    float LegControlCompensationScale[networkMaxNumLegs]     = 1, 0, 1 __title__("Leg scale");   ///< Control compensation multiplier for this leg
+    float SpineControlCompensationScale[networkMaxNumSpines] = 1, 0, 1 __title__("Spine scale"); ///< Control compensation multiplier for the spine
+  }
+
+  /// The external compliance is used to make joints compensate for external forces on other parts of the rig (e.g. contact forces). A high value will allow motion caused by external forces to propagate through the rig (making it seem quite loose) whilst a low value will limit movement to the affected part, making the rest of the rig appear stiff.
+  group("External compliance defaults")
+  {
+    float WholeBodyExternalComplianceScale                  = 1, 0, 10 __title__("Whole body scale");
+    float ArmExternalComplianceScale[networkMaxNumArms]     = 1, 0, 10 __title__("Arm scale");   ///< External Compliance multiplier for this arm
+    float HeadExternalComplianceScale[networkMaxNumHeads]   = 1, 0, 10 __title__("Head scale");  ///< External Compliance multiplier for this head
+    float LegExternalComplianceScale[networkMaxNumLegs]     = 1, 0, 10 __title__("Leg scale");   ///< External Compliance multiplier for this leg
+    float SpineExternalComplianceScale[networkMaxNumSpines] = 1, 0, 10 __title__("Spine scale"); ///< External Compliance multiplier for the spine
+  }
+
+  /// Sets the damping scale for a character's limbs. High values (above 1) will result in the charater moving his joints more slowly in a controlled way, and they will deform less as a result of external influences. Small values (below 1) will result in the joints being looser andless well controlled. 
+  group("Input damping defaults")
+  {
+    float WholeBodyDampingRatioScale                  = 1, 0, 5 __title__("Whole body scale");
+    float ArmDampingRatioScale[networkMaxNumArms]     = 1, 0, 5 __title__("Arm scale");  ///< Damping ratio multiplier for this arm
+    float HeadDampingRatioScale[networkMaxNumHeads]   = 1, 0, 5 __title__("Head scale"); ///< Damping ratio multiplier for this head
+    float LegDampingRatioScale[networkMaxNumLegs]     = 1, 0, 5 __title__("Leg scale");  ///< Damping ratio multiplier for this leg
+    float SpineDampingRatioScale[networkMaxNumSpines] = 1, 0, 5 __title__("Spine scale");///< Damping ratio multiplier for the spine
+  }
+
+  /// Sets the stiffness scale for the soft limits. Lowering the value to less than 1 will reduce the effect of the soft limits when the limb is being weakly controlled.
+  group("Soft limits stiffness scale defaults")
+  {
+    float WholeBodySoftLimitStiffnessScale                  = 1, 0, 1 __title__("Whole body soft limit stiffness scale");
+    float ArmSoftLimitStiffnessScale[networkMaxNumArms]     = 1, 0, 1 __title__("Arm scale");   ///< Control soft limit stiffness multiplier for this arm
+    float HeadSoftLimitStiffnessScale[networkMaxNumHeads]   = 1, 0, 1 __title__("Head scale");  ///< Control soft limit stiffness multiplier for this head
+    float LegSoftLimitStiffnessScale[networkMaxNumLegs]     = 1, 0, 1 __title__("Leg scale");   ///< Control soft limit stiffness multiplier for this leg
+    float SpineSoftLimitStiffnessScale[networkMaxNumSpines] = 1, 0, 1 __title__("Spine scale"); ///< Control soft limit stiffness multiplier for the spine
+  }
+}
+
+#endif
+

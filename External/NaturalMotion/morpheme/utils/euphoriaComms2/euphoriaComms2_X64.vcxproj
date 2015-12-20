@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Tool|x64">
+      <Configuration>Debug Tool</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Tool|x64">
+      <Configuration>Release Tool</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>euphoriaComms2</ProjectName>
+    <ProjectGuid>{E15AB510-1F3E-42C5-DEA8-5A88FCE8AD57}</ProjectGuid>
+    <RootNamespace>euphoriaComms2</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release Tool|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Tool|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>euphoriaComms2_debug</TargetName>
+    <IntDir>..\..\..\obj\x64\vs$(VisualStudioVersion)\euphoriaComms2\debug\</IntDir>
+    <OutDir>..\..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>euphoriaComms2</TargetName>
+    <IntDir>..\..\..\obj\x64\vs$(VisualStudioVersion)\euphoriaComms2\release\</IntDir>
+    <OutDir>..\..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|x64'">
+    <TargetName>euphoriaComms2_tool_debug</TargetName>
+    <IntDir>..\..\..\obj\x64\vs$(VisualStudioVersion)\euphoriaComms2\debug_tool\</IntDir>
+    <OutDir>..\..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|x64'">
+    <TargetName>euphoriaComms2_tool</TargetName>
+    <IntDir>..\..\..\obj\x64\vs$(VisualStudioVersion)\euphoriaComms2\release_tool\</IntDir>
+    <OutDir>..\..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\physicsComms2\include;..\comms2\include;..\..\SDK\euphoriaCore\include;..\..\SDK\physics\include;..\..\SDK\core\include;..\..\SDK;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)euphoriaComms2_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\physicsComms2\include;..\comms2\include;..\..\SDK\euphoriaCore\include;..\..\SDK\physics\include;..\..\SDK\core\include;..\..\SDK;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)euphoriaComms2.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\physicsComms2\include;..\comms2\include;..\..\SDK\euphoriaCore\include;..\..\SDK\physics\include;..\..\SDK\core\include;..\..\SDK;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)euphoriaComms2_tool_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\physicsComms2\include;..\comms2\include;..\..\SDK\euphoriaCore\include;..\..\SDK\physics\include;..\..\SDK\core\include;..\..\SDK;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;WIN32;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)euphoriaComms2_tool.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\comms\euphoriaCommandsHandler.h" />
+    <ClInclude Include="include\comms\euphoriaCommsServerModule.h" />
+    <ClInclude Include="include\comms\euphoriaDataManagementInterface.h" />
+    <ClInclude Include="include\comms\euphoriaPackets.h" />
+    <ClInclude Include="include\comms\euphoriaPackets.inl" />
+    <ClInclude Include="include\comms\euphoriaPacketsMacros.inl" />
+    <ClInclude Include="include\comms\euphoriaRuntimeTargetSimple.h" />
+    <ClCompile Include="src\euphoriaCommandsHandler.cpp" />
+    <ClCompile Include="src\euphoriaCommsServerModule.cpp" />
+    <ClCompile Include="src\euphoriaRuntimeTargetSimple.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\physicsComms2\morphemePhysicsComms2_X64.vcxproj">
+      <Project>{831324BB-75CD-4A5A-7481-A917B89F5F50}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\comms2\morphemeComms2_X64.vcxproj">
+      <Project>{6759E731-4BC1-4352-28AA-C5583B7EC71F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SDK\euphoriaCore\euphoriaCore_X64.vcxproj">
+      <Project>{BE1CCCB9-311F-4D98-9FA6-18F0B60F33E9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SDK\physics\morphemePhysicsCore_X64.vcxproj">
+      <Project>{C153C767-7FAA-4D11-629F-2BFA6D25D883}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SDK\core\morphemeCore_X64.vcxproj">
+      <Project>{D90ECD48-E518-4965-D5A1-487523A09108}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMRuntimeUtils\NMRuntimeUtils_X64.vcxproj">
+      <Project>{3C388267-640A-4D4B-C8B1-2361CDE77233}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMPlatform\NMPlatform_X64.vcxproj">
+      <Project>{773E894A-FCA3-4312-37AF-0588248FC43F}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

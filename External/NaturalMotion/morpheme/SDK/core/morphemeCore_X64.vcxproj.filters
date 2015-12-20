@@ -1,0 +1,1171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\morpheme\AnimSource" />
+    <Filter Include="include\morpheme" />
+    <Filter Include="include" />
+    <Filter Include="include\morpheme\Nodes" />
+    <Filter Include="include\morpheme\Prediction" />
+    <Filter Include="include\morpheme\TransitConditions" />
+    <Filter Include="src\AnimSource" />
+    <Filter Include="src" />
+    <Filter Include="src\Nodes" />
+    <Filter Include="src\Prediction" />
+    <Filter Include="src\TransitConditions" />
+    <Filter Include="sharedDefines" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSectionASA.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSectionMBA.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSectionNSA.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSectionQSA.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSource.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSourceASA.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSourceMBA.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSourceNSA.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSourceQSA.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSourceUtils.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrChannelPos.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrChannelPosQuantised.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrChannelQuat.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrChannelRotVecQuantised.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrTrajectorySourceASA.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrTrajectorySourceBase.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrTrajectorySourceMBA.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrTrajectorySourceNSA.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\AnimSource\mrTrajectorySourceQSA.h">
+      <Filter>include\morpheme\AnimSource</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrAnimationSourceHandle.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrAnimSampleTasks.inl">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrAttribAddress.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrAttribData.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrBlendOps.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrCharacterControllerAttribData.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrCharacterControllerDef.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrCharacterControllerInterface.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrCharacterControllerInterfaceBase.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrCommonTaskQueuingFns.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrCommonTasks.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrCompressedDataBufferQuat.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrCompressedDataBufferVector3.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrCoreTaskIDs.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrDebugClient.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrDebugClient.inl">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrDebugMacros.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrDebugManager.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrDefines.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrDispatcher.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrEventTrackBase.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrEventTrackCurve.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrEventTrackDiscrete.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrEventTrackDuration.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrEventTrackSync.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrFootCyclePrediction.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrInstanceDebugInterface.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrJointControlUtilities.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrManager.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrMessage.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrMessageDistributor.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrMirroredAnimMapping.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNetwork.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNetworkControlSerialiser.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNetworkControlSerialiser.inl">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNetworkDef.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNetworkDef.inl">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNetworkLogger.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNetworkRestorePoint.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNetworkRestorePoint.inl">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNode.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNodeBin.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNodeDef.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNodeDef.inl">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNodeParentingMap.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNodeTagTable.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrNodeTagTable.inl">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrPackedArrayUint32.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrRig.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrRigRetargetMapping.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrRigToAnimMap.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrRuntimeNodeInspector.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrSPUDefines.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrSyncEventPos.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrTask.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrTaskQueue.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrTaskUtilities.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrTrajectoryPrediction.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrTransitDeadBlend.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrUnevenTerrainIK.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrUnevenTerrainUtilities.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\mrUtils.h">
+      <Filter>include\morpheme</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrEmittedControlParamNodeUtils.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeAnimSyncEvents.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeApplyBindPose.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeApplyGlobalTime.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBasicUnevenTerrain.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlend2.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlend2SyncEvents.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlend2x2.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlend2x2SyncEvents.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlendAll.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlendAllSyncEvents.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlendN.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlendNSyncEvents.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlendNxM.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeCharacterControllerOverride.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeClosestAnim.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeControlParamBool.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeControlParamFloat.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeControlParamInt.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeControlParamUInt.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeControlParamVector3.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeControlParamVector4.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeEmitMessageOnDiscreteEvent.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeExtractJointInfo.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeFeatherBlend2.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeFeatherBlend2SyncEvents.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeFilterTransforms.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeFreeze.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeGunAimIK.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeHeadLook.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeHipsIK.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeLockFoot.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeMirrorTransforms.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeModifyJointTransform.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeModifyTrajectoryTransform.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorArithmetic.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorBoolean.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorCPCompare.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorFloatsToVector3.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorFloatToInt.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorFunction.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorIntToFloat.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorNoiseGen.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorOneInputArithmetic.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorRampFloat.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorRandomFloat.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorRateOfChange.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorRayCast.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorSmoothFloat.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorTimeLagInput.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorVector3Angle.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorVector3CrossProduct.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorVector3Distance.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorVector3Dot.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorVector3Normalise.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorVector3ToFloats.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodePassThrough.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodePlaySpeedModifier.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodePredictiveUnevenTerrain.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeRetarget.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodes.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeScaleCharacter.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeScaleToDuration.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeScatterBlend1D.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeScatterBlend2D.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeScatterBlend2DSyncEvents.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeSequence.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeSingleFrame.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeSmoothTransforms.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeStateMachine.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeSubtractiveBlend.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeSubtractiveBlendSyncEvents.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeSwitch.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeTransit.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeTransitSyncEvents.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrNodeTwoBoneIK.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrScatterBlend1DUtils.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrScatterBlend2DUtils.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrScatterBlendProjectionUtils.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Nodes\mrSharedNodeFunctions.h">
+      <Filter>include\morpheme\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Prediction\mrNDMesh.h">
+      <Filter>include\morpheme\Prediction</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Prediction\mrNDMeshAPResampleMap.h">
+      <Filter>include\morpheme\Prediction</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Prediction\mrNDMeshAPSearchMap.h">
+      <Filter>include\morpheme\Prediction</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Prediction\mrNDMeshQueryData.h">
+      <Filter>include\morpheme\Prediction</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Prediction\mrNetworkPredictionDef.h">
+      <Filter>include\morpheme\Prediction</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Prediction\mrPredictionModelNDMesh.h">
+      <Filter>include\morpheme\Prediction</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\Prediction\mrScatteredDataUtils.h">
+      <Filter>include\morpheme\Prediction</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitCondition.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamBoolSet.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamFloatGreater.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamFloatInRange.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamFloatLess.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamIntGreater.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamIntInRange.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamIntLess.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamUIntGreater.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamUIntInRange.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamUIntLess.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionCrossedCurveEventValueDecreasing.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionCrossedDurationFraction.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionDiscreteEventTriggered.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionFalse.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionInDurationEvent.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionInSyncEventRange.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionNodeActive.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionOnMessage.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionRayHit.h">
+      <Filter>include\morpheme\TransitConditions</Filter>
+    </ClInclude>
+    <ClCompile Include="src\AnimSource\mrAnimSectionASA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrAnimSectionMBA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrAnimSectionNSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrAnimSectionQSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrAnimSource.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrAnimSourceASA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrAnimSourceMBA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrAnimSourceNSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrAnimSourceQSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrAnimSourceUtils.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrChannelPos.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrChannelPosQuantised.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrChannelQuat.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrChannelRotVecQuantised.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrTrajectorySourceASA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrTrajectorySourceMBA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrTrajectorySourceNSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimSource\mrTrajectorySourceQSA.cpp">
+      <Filter>src\AnimSource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrAnimationSourceHandle.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrAnimSampleTasksASA.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrAnimSampleTasksMBA.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrAnimSampleTasksNSA.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrAnimSampleTasksQSA.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrAttribData.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrBasicUnevenTerrainIKTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrBlendOps.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrBlendOpsSIMD.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrBlendTransformTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrCharacterControllerAttribData.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrCharacterControllerDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrCommonTaskQueuingFns.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrCommonTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrCompressedDataBufferQuat.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrCompressedDataBufferVector3.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrCoreTaskIDs.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrDebugManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrDispatcher.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrDurationEventTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrEventTrackBase.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrEventTrackCurve.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrEventTrackDiscrete.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrEventTrackDuration.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrEventTrackSync.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrFootCyclePrediction.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrFootLockIKTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrGunAimIKTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrHeadLookIKTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrHipsIKTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrInstanceDebugInterface.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrJointControlUtilities.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrMessageDistributor.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrMirroredAnimMapping.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrNetwork.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrNetworkControlSerialiser.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrNetworkDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrNetworkLogger.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrNetworkRestorePoint.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrNodeBin.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrNodeDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrNodeParentingMap.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrNodeTagTable.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrPackedArrayUint32.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrPredictiveUnevenTerrainIKTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrReferenceTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrRetargetTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrRig.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrRigRetargetMapping.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrRigToAnimMap.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrRuntimeNodeInspector.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrTaskQueue.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrTaskUtilities.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrTrajectoryBlendTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrTrajectoryPrediction.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrTransitDeadBlend.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClInclude Include="src\mrTransitDeadBlend.inl">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClCompile Include="src\mrTransitTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrTwoBoneIKTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrUnevenTerrainIK.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrUnevenTerrainUtilities.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeAnimSyncEvents.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeApplyBindPose.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeApplyGlobalTime.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeBasicUnevenTerrain.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeBlend2.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeBlend2SyncEvents.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeBlend2x2.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeBlend2x2SyncEvents.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeBlendAll.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeBlendAllSyncEvents.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeBlendN.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeBlendNSyncEvents.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeBlendNxM.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeCharacterControllerOverride.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeClosestAnim.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeControlParamBool.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeControlParamFloat.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeControlParamInt.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeControlParamUInt.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeControlParamVector3.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeControlParamVector4.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeEmitMessageOnDiscreteEvent.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeExtractJointInfo.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeFeatherBlend2.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeFeatherBlend2SyncEvents.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeFilterTransforms.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeFreeze.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeGunAimIK.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeHeadLook.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeHipsIK.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeLockFoot.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeMirrorTransforms.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeModifyJointTransform.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeModifyTrajectoryTransform.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorArithmetic.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorBoolean.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorCPCompare.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorFloatsToVector3.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorFloatToInt.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorFunction.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorIntToFloat.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorNoiseGen.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorOneInputArithmetic.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorRampFloat.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorRandomFloat.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorRateOfChange.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorRayCast.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorSmoothFloat.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorTimeLagInput.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorVector3Angle.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorVector3CrossProduct.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorVector3Distance.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorVector3Dot.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorVector3Normalise.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorVector3ToFloats.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodePassThrough.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodePlaySpeedModifier.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodePredictiveUnevenTerrain.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeRetarget.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodes.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeScaleCharacter.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeScaleToDuration.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeScatterBlend1D.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeScatterBlend2D.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeScatterBlend2DSyncEvents.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeSequence.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeSingleFrame.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeSmoothTransforms.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeStateMachine.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeSubtractiveBlend.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeSubtractiveBlendSyncEvents.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeSwitch.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeTransit.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClInclude Include="src\Nodes\mrNodeTransit.inl">
+      <Filter>src\Nodes</Filter>
+    </ClInclude>
+    <ClCompile Include="src\Nodes\mrNodeTransitSyncEvents.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeTwoBoneIK.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrScatterBlend1DUtils.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrScatterBlend2DUtils.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrScatterBlendProjectionUtils.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrSharedNodeFunctions.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Prediction\mrNDMesh.cpp">
+      <Filter>src\Prediction</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Prediction\mrNDMeshAPResampleMap.cpp">
+      <Filter>src\Prediction</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Prediction\mrNDMeshAPSearchMap.cpp">
+      <Filter>src\Prediction</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Prediction\mrNDMeshQueryData.cpp">
+      <Filter>src\Prediction</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Prediction\mrNetworkPredictionDef.cpp">
+      <Filter>src\Prediction</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Prediction\mrPredictionModelNDMesh.cpp">
+      <Filter>src\Prediction</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Prediction\mrScatteredDataUtils.cpp">
+      <Filter>src\Prediction</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitCondition.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamBoolSet.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamFloatGreater.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamFloatInRange.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamFloatLess.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamIntGreater.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamIntInRange.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamIntLess.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamUIntGreater.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamUIntInRange.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamUIntLess.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionCrossedCurveEventValueDecreasing.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionCrossedDurationFraction.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionDiscreteEventTriggered.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionFalse.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionInDurationEvent.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionInSyncEventRange.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionNodeActive.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionOnMessage.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditions\mrTransitConditionRayHit.cpp">
+      <Filter>src\TransitConditions</Filter>
+    </ClCompile>
+    <ClInclude Include="..\sharedDefines\mAnimDebugInterface.h">
+      <Filter>sharedDefines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sharedDefines\mAnimDebugInterface.inl">
+      <Filter>sharedDefines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sharedDefines\mCoreDebugInterface.h">
+      <Filter>sharedDefines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sharedDefines\mCoreDebugInterface.inl">
+      <Filter>sharedDefines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sharedDefines\mDebugDrawTessellator.h">
+      <Filter>sharedDefines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sharedDefines\mDebugDrawTessellator.inl">
+      <Filter>sharedDefines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sharedDefines\mSharedDefines.h">
+      <Filter>sharedDefines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sharedDefines\mVersion.h">
+      <Filter>sharedDefines</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+<!DOCTYPE NxParameters>
+<NxParameters numObjects="1" version="1.0" >
+<value name="" type="Ref" className="IofxAssetParameters" version="0.1" checksum="0x4f59ea8d 0xffdb948a 0x87165d25 0xda1345f1">
+  <struct name="">
+    <value name="iofxType" type="Ref" included="1" className="SpriteIofxParameters" version="0.2" checksum="0xb3736234 0x649595fb 0xc6acc3 0xd78904f6">    
+      <struct name="">
+        <value name="spriteMaterialName" type="Ref" included="0" className="ApexMaterials" objectName="materials/particle_blob.xml"></value>
+        <array name="spawnModifierList" size="0" type="Ref"></array>
+        <array name="continuousModifierList" size="0" type="Ref"></array>
+      </struct>
+    </value>
+  </struct>
+</value>
+</NxParameters>

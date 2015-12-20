@@ -1,0 +1,10 @@
+<material type="lit">
+    <shader name="vertex">vertex/staticmesh.cg</shader>
+    <shader name="vertex">vertex/skeletalmesh_4bone.cg</shader>
+    <shader name="fragment">fragment/simple_diffuse_uniform_colors.cg</shader>
+    <variables>
+        <float4 name="diffuseColor">1.0 1.0 1.0 1.0</float4>
+        <float4 name="specularColor">0.1 0.3 0.3 16</float4>
+        <sampler2D name="diffuseTexture">textures/beshon_gray_no_belt.dds</sampler2D>
+    </variables>
+</material>

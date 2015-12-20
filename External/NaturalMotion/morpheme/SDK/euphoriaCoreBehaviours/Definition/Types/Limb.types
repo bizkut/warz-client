@@ -1,0 +1,162 @@
+/*
+ * Copyright (c) 2009 NaturalMotion Ltd. All rights reserved.
+ *
+ * Not to be copied, adapted, modified, used, distributed, sold,
+ * licensed or commercially exploited in any manner without the
+ * written consent of NaturalMotion.
+ *
+ * All non public elements of this software are the confidential
+ * information of NaturalMotion and may not be disclosed to any
+ * person nor used for any purpose not expressly approved by
+ * NaturalMotion in writing.
+ *
+ */
+
+#if 0
+
+/// Class for controlling the rig-independent limb structures 
+/// This class has a number of idiosyncrasies, which will hopefully disappear eventually, but for now,
+/// they are very important to pay attention to:
+/// 1. the rootTarget and velocities only work if you have an end target or orientation set (with a weight>0)
+/// 2. The end velocity can be slowed down by rotational damping (which exists even if the orientation weight is 0) if it requires rotation of the end effector
+/// 3. The end angular velocity can be slowed down by linear damping (which exists even if the position weight is 0) if it requires movement of the end effector
+/// 4. The VM provides no damping in the normal axis when you specify a normal for the control
+/// Lastly, there is a weighting system employed in this class so that (for example)
+/// if you combine an unimportant position (with a weight of 0), and a valid position (with a weight of 1),
+/// you don't get a random position with a weight of half, instead you get the valid position with weight of half.
+struct LimbControl
+{
+  + LimbControl(float stiffness, float dampingRatio, float driveCompensation);
+
+  + void setTargetPos(const NMP::Vector3 &targetPos, float positionWeight, const NMP::Vector3 &velocityOfTargetPos = NMP::Vector3(0,0,0));
+  + void setTargetNormal(const NMP::Vector3 &targetNormal, float normalWeight, const NMP::Vector3 &angularVelocityOfTargetNormal = NMP::Vector3(0,0,0), const NMP::Vector3 &localNormalVector = NMP::Vector3(1,0,0));
+  /// Note that only the orientation part of targetorientation is used.
+  + void setTargetOrientation(const NMP::Matrix34 &targetOrientation, float orientWeight, const NMP::Vector3 &angularVelocityOfTargetOrientation = NMP::Vector3(0,0,0));
+  + void setTargetOrientation(const NMP::Quat &targetOrientation, float orientWeight, const NMP::Vector3 &angularVelocityOfTargetOrientation = NMP::Vector3(0,0,0));
+  + void setExpectedRootPosForTarget(const NMP::Vector3 &rootTargetPos, float rootPositionWeight, const NMP::Vector3 &velocityOfRootTarget = NMP::Vector3(0,0,0));
+  + void setExpectedRootOrientationForTarget(const NMP::Quat &rootTargetOrientation, float rootOrientationWeight, const NMP::Vector3 &angularVelocityOfRootTarget = NMP::Vector3(0,0,0));
+  + void setExpectedRootForTarget(const NMP::Matrix34 &rootTarget, float rootTargetWeight, const NMP::Vector3 &velocityOfRootTarget = NMP::Vector3(0,0,0), const NMP::Vector3 &angularVelocityOfRootTarget = NMP::Vector3(0,0,0));
+  + void setEndSupportAmount(float endSupportAmount);
+  + void setRootSupportedAmount(float rootSupportedAmount);
+  /// Implicit stiffness is in 0 to 1 range, 1 is normal/correct implicit stiffness, 0 means there is no stiffness from the internal drive strength/damping on external impacts
+  + void setImplicitStiffness(float implicitStiffness);
+  /// This sets the skin width of all the parts in the limb to the original authored value plus skinWidthIncrease
+  + void setSkinWidthIncrease(float skinWidthIncrease);
+  /// This scales the gravity compensation clamp
+  + void setGravityCompensation(float gravityCompensation);
+  /// This sets the amount by which the strength should be increased when the limb is marked as supporting. With a value
+  /// of 1 (the default), then the strength is increased so that the root will have the same acceleration control as the
+  /// end would normally have. With a value of 0 then the strength is not modified.
+  + void setSupportForceMultiplier(float supportForceMultiplier);
+  + void setSoftLimitStiffnessScale(float softLimitStiffnessScale);
+  + void setSwivelAmount(float swivelAmount);
+  + void setDamping(float damping);
+  + void setEndFrictionScale(float endFrictionScale);
+  /// Small values will fully control the limb. 1.0 will result in zero strength at the last joint. 
+  /// Larger values will confine strength to just the rootward joints.
+  + void setStrengthReductionTowardsEnd(float reduction);
+  + void setUseIncrementalIK(bool useIncrementalIK);
+  + NMP::Vector3 getTargetPos() const;
+  + NMP::Matrix34 getExpectedRootForTarget() const;
+  + NMP::Vector3 getExpectedRootPosForTarget() const;
+  + NMP::Quat getExpectedRootOrientationForTarget() const;
+  + NMP::Quat getTargetOrientation() const;
+  + NMP::Vector3 getTargetNormal() const;
+  + NMP::Vector3 getLocalNormalVector() const;
+  + NMP::Vector3 getTargetsVelocity() const;
+  + NMP::Vector3 getTargetsAngularVelocity() const;
+  + NMP::Vector3 getRootsVelocity() const;
+  + NMP::Vector3 getRootsAngularVelocity() const;
+  + float getPositionWeight() const;
+  + float getRootPositionWeight() const;
+  + float getRootOrientationWeight() const;
+  + float getNormalWeight() const;
+  + float getOrientationWeight() const;
+  + float getStiffness() const;
+  + float getDampingRatio() const;
+  + float getStrength() const;
+  + float getDamping() const;
+  + float getDriveCompensation() const;
+  + float getEndSupportAmount() const;
+  + float getRootSupportedAmount() const;
+  + bool  getStrongFrictionDisabled() const;
+  + float getEndFrictionScale() const;
+  + float getImplicitStiffness() const;
+  + float getSkinWidthIncrease() const;
+  + float getGravityCompensation() const;
+  + float getSupportForceMultiplier() const;
+  + float getSoftLimitStiffnessScale() const;
+  + float getSwivelAmount() const;
+  + float getStrengthReductionTowardsEnd() const;
+  + bool  getUseIncrementalIK() const;
+  + void setTargetDeltaStep(float w);
+  + float getTargetDeltaStep() const;
+
+  + void setCollisionGroupIndex(float index);
+  + float getCollisionGroupIndex() const;
+
+  + void setControlAmount(uint32_t controlType, float amount);
+  + const ER::LimbControlAmounts* getControlAmounts() const;
+
+  + void reinit(float stiffness, float dampingRatio, float driveCompensation);
+
+private:
+  + LimbControl();
+
+  // Values weighted by the importance only
+  StrengthValue m_strength;
+  DampingValue m_damping;
+  Compensation m_driveCompensation; ///< we store the square value so add/merges act like they do on stiffness
+  Multiplier   m_endSupportAmount;
+  Multiplier   m_rootSupportedAmount;
+  Multiplier   m_implicitStiffness;
+  Multiplier   m_endFrictionScale;
+  Length       m_skinWidthIncrease; ///< Amount the skin width should be greater than the authored value
+  Weight       m_strengthReductionTowardsEnd;
+  // AdvancedIK stepsize between 0 and 1
+  Weight m_targetDeltaStep;
+  // when this value is 0 incremental IK is disabled and the IK solution is reset to the guide pose before each solve.
+  Weight m_useIncrementalIK;
+  // Guide pose system swivel weight between -1 and 1
+  Multiplier m_swivelAmount;
+  // The collision set to enable - note that this will only be valid if the importance of the result
+  // is 1 - i.e. it came from a single output. Float so that it goes through the blending junctions.
+  float m_collisionGroupIndex;
+  LimbDebugControlAmounts m_debugControlAmounts;
+ 
+
+  // Singly weighted values - weighted by m_strength
+  Weight m_weightedRootPositionWeight;
+  Weight m_weightedRootOrientationWeight;
+  Weight m_weightedPositionWeight;
+  Weight m_weightedNormalWeight;
+  Weight m_weightedOrientationWeight;
+  Multiplier m_weightedGravityCompensation; 
+  Multiplier m_weightedSupportForceMultipler;
+  Multiplier m_softLimitStiffnessScale;
+
+  // doubly weighted values
+  NMP::Vector3 m_weightedRootTargetPosition; ///< weighted by m_weightedRootPositionWeight
+  NMP::Quat m_weightedRootTargetOrientation; ///< weighted by m_weightedRootOrientationWeight
+  NMP::Quat m_weightedTargetOrientation; ///< weighted by m_weightedOrientationWeight
+  NMP::Vector3 m_weightedTargetPosition; ///< weighted by m_weightedPositionWeight
+  NMP::Vector3 m_weightedTargetNormal; ///< weighted by m_weightedNormalWeight
+  NMP::Vector3 m_weightedLocalNormal; ///< weighted by m_weightedNormalWeight
+  NMP::Vector3 m_weightedRootTargetVelocity; ///< weighted by m_weightedRootPositionWeight
+  NMP::Vector3 m_weightedRootTargetAngularVelocity; ///< weighted by m_weightedRootOrientationWeight
+  NMP::Vector3 m_weightedTargetVelocity; ///< weighted by m_weightedPositionWeight
+  NMP::Vector3 m_weightedTargetAngularVelocity; ///< weighted by m_weightedNormalWeight or m_weightedOrientationWeight depending  
+};
+
+struct ContactInfo
+{
+  /// Note that the info here can be relative to either part involved - 
+  /// so sometimes the normal points one way, sometimes the other.
+  Velocity  lastVelocity; ///< velocity of contacted part at contact, last observed velocity if contact has parted
+  Position  lastPosition; ///< position of contacted part at contact, last observed position if contact has parted
+  Direction lastNormal;   ///< normal of contacted part at contact, last observed normal if contact has parted
+  Force     lastForce;    ///< relative force at contact, last observed if contact has parted
+  bool      inContact;    ///< True if currently in contact
+};
+
+#endif

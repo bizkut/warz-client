@@ -1,0 +1,133 @@
+/*
+ * Copyright (c) 2009 NaturalMotion Ltd. All rights reserved.
+ *
+ * Not to be copied, adapted, modified, used, distributed, sold,
+ * licensed or commercially exploited in any manner without the
+ * written consent of NaturalMotion.
+ *
+ * All non public elements of this software are the confidential
+ * information of NaturalMotion and may not be disclosed to any
+ * person nor used for any purpose not expressly approved by
+ * NaturalMotion in writing.
+ *
+ */
+
+#if 0
+
+// register built-in types
+
+typedef uint64_t        {8};
+typedef uint32_t        {4};
+typedef uint16_t        {2};
+typedef uint8_t         {1};
+
+typedef int64_t         {8};
+typedef int32_t         {4};
+typedef int16_t         {2};
+typedef int8_t          {1};
+
+typedef bool            {1};
+typedef float           {4} __blendable__ __validator__(FloatValid);
+typedef double          {8};
+
+typedef void            {4};
+typedef size_t          {4};
+
+
+// NMP built-ins
+
+typedef NMP::Vector3    {16} __align__(16) __blendable__ __import_builtin__("NMPlatform/NMVector3.h") __validator__(Vector3Valid);
+typedef NMP::Quat       {16} __align__(16) __blendable__ __import_builtin__("NMPlatform/NMQuat.h");
+typedef NMP::Matrix34   {64} __align__(16) __blendable__ __import_builtin__("NMPlatform/NMMatrix34.h");
+typedef NMRU::GeomUtils::AABB {32} __align__(16) __blendable__ __import_builtin__("NMGeomUtils/NMGeomUtils.h");
+
+// core externals
+
+typedef ER::LimbTypeEnum     {4} __extern_struct__("Euphoria/erSharedEnums.h");
+typedef ER::BodyPartTypeEnum {4} __extern_struct__("Euphoria/erSharedEnums.h");
+typedef ER::LimbControlAmounts {128}  __blendable__ __extern_class__("Euphoria/erDebugDraw.h");
+
+typedef ER::Module      {4} __extern_class__("euphoria/erModule.h");
+typedef ER::Character   {4} __extern_class__("euphoria/erCharacter.h");
+typedef ER::DebugDraw   {16} __extern_class__("euphoria/erDebugDraw.h");
+typedef MR::InstanceDebugInterface   {16} __extern_class__("euphoria/erDebugDraw.h");
+typedef ER::LimbTransform   {64} __align__(16) __blendable__ __extern_class__("euphoria/erLimbTransforms.h");
+typedef ER::HandFootTransform   {64} __align__(16) __blendable__ __extern_class__("euphoria/erLimbTransforms.h");
+typedef ER::ReachLimit   {16} __extern_class__("euphoria/erReachLimit.h");
+typedef ER::DimensionalScaling   {16} __extern_class__("euphoria/erDimensionalScaling.h");
+
+typedef ArmSittingStepData::ArmSittingStepState {4} __extern_class__("Network/ArmSittingStepData.h");
+
+// /helpers externals
+// Note: it is our current belief that these payload sizes are no longer material, setting to zero here
+// partly to test that assumption (follow-up MORPH-22357).
+typedef LimbSharedState   {0} __align__(16) __extern_class__("Helpers/LimbSharedState.h");
+typedef HeadLimbSharedState   {0} __align__(16) __extern_class__("Helpers/LimbSharedState.h");
+typedef SpineLimbSharedState   {0} __align__(16) __extern_class__("Helpers/LimbSharedState.h");
+typedef ArmAndLegLimbSharedState   {0} __align__(16) __extern_class__("Helpers/LimbSharedState.h");
+typedef BodyLimbSharedState   {0} __align__(16) __extern_class__("Helpers/LimbSharedState.h");
+
+
+// Configure base aliases for commonly used value types.
+//
+// Note: dimensional values are expressed in standard (SI) units.
+alias float => Length             __validator__(FloatNonNegative); ///< in metres, can't be negative as a length is a magnitude
+alias float => Distance           __validator__(FloatValid);       ///< in metres, can be negative
+alias float => Speed              __validator__(FloatValid);       ///< in metres per second, can be negative
+alias float => AccelerationScalar __validator__(FloatValid);       ///< in metres per second squared
+alias float => AccelerationSquared __validator__(FloatValid);      ///< in metres squared per second power 4
+alias float => Angle              __validator__(FloatValid);       ///< in radians, unlimited, can be negative
+alias float => StrengthValue      __validator__(FloatNonNegative); ///< per second squared. This is s in acc = s*error. The gain of a hookean spring
+alias float => DampingValue       __validator__(FloatNonNegative); ///< per second. This is d in acc = -d*vel. It is linear drag
+alias float => Stiffness          __validator__(FloatNonNegative); ///< per second. also called natural frequency, as undamped motion oscillates at this many radians per second. is omega in acc=omega^2*error. 10 approx human stiffness
+alias float => DampingRatio       __validator__(FloatNonNegative); ///< unitless ratio, 1 = critical damping (fastest convergence with no oscillation). Is dr in acc=omega^2*error - omega*dr*vel
+alias float => AngularSpeed       __validator__(FloatValid);       ///< radians per second, can be negative
+alias float => Frequency          __validator__(FloatNonNegative); ///< revolutions/repeats per second. Hertz
+alias float => TimePeriod         __validator__(FloatValid);       ///< seconds, can be negative
+alias float => Imminence          __validator__(FloatValid);       ///< 1/time to event, can be negative
+alias float => Urgency            __validator__(FloatValid);       ///< 0 to 1, 1/(1+time to event*stiffness*k) for some k
+alias float => Mass               __validator__(FloatNonNegative); ///< kilograms
+alias float => Compensation       __validator__(FloatNonNegative); ///< unitless. 0 = no coordinated control, inf = fully controlled, kinematic, stiffer
+alias float => Area               __validator__(FloatNonNegative); ///< metres^2, can't be negative. square of Length
+alias float => Volume             __validator__(FloatNonNegative); ///< metres^3, can't be negative. length cubed
+alias float => Multiplier         __validator__(FloatValid);       ///< -inf to inf range scaling value. 1 is usually the default (no effect) value
+alias float => Weight             __validator__(FloatNonNegative); ///< usually 0 to 1 range, sometimes can be greater than 1
+alias float => ClampedWeight      __validator__(Float0to1);         ///< validated for 0 to 1 range
+alias float => WeightWithClamp    __validator__(Float0to1) __post_combine__(ClampWeight); ///< clamps to 0 to 1 range
+alias float => Importance         __validator__(Float0to1);        ///< an alias for importance values
+
+// vector dimensions, each is in SI units
+alias NMP::Vector3 => Position            __validator__(Vector3Valid); ///< coordinates in metres, world space unless specified otherwise
+alias NMP::Vector3 => PositionDelta       __validator__(Vector3Valid); ///< in metres
+alias NMP::Vector3 => Velocity            __validator__(Vector3Valid); ///< in metres per second
+alias NMP::Vector3 => Acceleration        __validator__(Vector3Valid); ///< in metres per second squared
+alias NMP::Vector3 => Jerk                __validator__(Vector3Valid); ///< in metres per second cubed
+alias NMP::Vector3 => RotationVector      __validator__(Vector3Valid); ///< direction = rotation axis, magnitude = radians anti-clockwise (used when you're interested in the process of rotation, not necessarily the resulting orientation)
+alias NMP::Vector3 => AngularVelocity     __validator__(Vector3Valid); ///< radians per second (anti-clockwise looking along direction)
+alias NMP::Vector3 => AngularAcceleration __validator__(Vector3Valid); ///< radians per second squared (anti-clockwise looking along direction)
+alias NMP::Vector3 => Momentum            __validator__(Vector3Valid); ///< in kilogram metres per second
+alias NMP::Vector3 => Impulse             __validator__(Vector3Valid); ///< in kilogram metres per second (force * time)
+alias NMP::Vector3 => Force               __validator__(Vector3Valid); ///< in kilogram metres per second squared (or newtons)
+alias NMP::Vector3 => AngularMomentum     __validator__(Vector3Valid); ///< in kilogram metres squared radians per second
+alias NMP::Vector3 => TorqueImpulse       __validator__(Vector3Valid); ///< in kilogram metres squared radians per second
+alias NMP::Vector3 => Torque              __validator__(Vector3Valid); ///< in kilogram metres squared radians per second squared
+alias NMP::Vector3 => Extents       __validator__(Vector3NonNegative); ///< in metres. Radius (half width) extents, usually of an aabb.
+alias NMP::Vector3 => Colour         __validator__(Vector3NonNegative); ///< 0-1 in x=red, y=green, z=blue, w is (occasionally) alpha
+
+__validator__(Vector3Normalised)   __post_combine__(Vector3Normalise)
+  alias NMP::Vector3 => Direction;                                    ///< always unit length, so unitless
+
+__validator__(QuatNormalised)      __post_combine__(QuatNormalise)
+alias NMP::Quat => Orientation;                                       ///< unitless, always normalised. This is an attitude, a state in world space, unless otherwise specified 
+__validator__(QuatNormalised)      __post_combine__(QuatNormalise)
+alias NMP::Quat => OrientationDelta;                                  ///< unitless, always normalised. This is an attitude change where you're interested in the target orientation (see also RotationVector)
+
+__validator__(Matrix34Orthonormal) __post_combine__(Matrix34Orthonormalise)
+alias NMP::Matrix34 => Transform;                                     ///< unitless, orthonormal
+
+alias NMP::Vector3 => DebugDrawColour __preprocessor__(MR_OUTPUT_DEBUGGING) __import_builtin__("euphoria/erDebugDraw.h"); ///< Colour used only if MR_OUTPUT_DEBUGGING is enabled
+alias float => DebugDrawFloat __preprocessor__(MR_OUTPUT_DEBUGGING) __import_builtin__("euphoria/erDebugDraw.h"); ///< Float used only if MR_OUTPUT_DEBUGGING is enabled
+
+alias ER::LimbControlAmounts => LimbDebugControlAmounts __preprocessor__(MR_OUTPUT_DEBUGGING);
+
+#endif

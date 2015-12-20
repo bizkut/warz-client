@@ -1,0 +1,76 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Make the leg move to prepare to support the pelvis
+module_def LegStep
+{
+owner: Leg
+
+data:
+  // These are calculated during the feedback
+  Position averageOtherEndPos;
+  Position stepTargetPos;
+
+  // These are calculated during the update
+  bool isStepping;
+  bool isDoingRecoveryStep;
+  bool hasEndLeftGround;
+  Transform recoveryStepTarget;
+  TimePeriod stepTime;
+  // These are calculated just once at the start of the step and then don't change
+  PositionDelta stepStartDelta;
+  Direction stepDir;
+  Length stepLength;
+
+in:
+  StepParameters stepParameters;
+  Direction averageEndContactNormal;
+  bool allowStep;
+  ER::LimbTransform supportTM;
+  Velocity groundVelocity;
+  bool enableStep;
+  bool evaluateStep;
+  Transform recoveryStepTarget;
+  
+  Transform standingPoseEndRelativeToSupport[networkMaxNumLegs];
+  Transform averageStandingPoseEndRelativeToSupport;
+
+feedOut:
+  bool isStepping;
+  bool isSteppingBeingSuppressed;
+  bool isDoingRecoveryStep;
+  Length stepLength;
+  Distance lowerRootDistance;
+  Direction stepDir;
+  Multiplier stepFraction; ///< Approximately how far through the step (will be 0 if not stepping)
+
+out:
+  LimbControl control;
+  bool useFullEndJointRange;
+
+connections<>:
+  in.enableStep = (owner.owner.balanceBehaviourInterface.out.stepWithLegs);
+  in.stepParameters = (owner.owner.balanceBehaviourInterface.out.stepParameters);
+  in.averageEndContactNormal = (owner.owner.bodyFrame.bodyBalance.out.averageSupportingLimbContactNormal);
+  in.allowStep = junctions.wtaAllowStep = winnerTakesAll(
+    owner.owner.bodyFrame.bodyBalance.out.allowLegStep[owner.$ChildIndex],
+    owner.owner.bodyFrame.sittingBodyBalance.out.allowLegStep);
+  in.recoveryStepTarget = (owner.owner.bodyFrame.bodyBalance.out.recoveryLegStepTarget[owner.$ChildIndex]);
+  in.evaluateStep = (owner.owner.bodyFrame.bodyBalance.out.evaluateStep);
+  in.supportTM = (owner.owner.bodyFrame.bodyBalance.out.supportTM);
+  in.groundVelocity = (owner.owner.bodyFrame.bodyBalance.out.groundVelocity);
+
+  in.standingPoseEndRelativeToSupport[] = (owner.owner.balanceManagement.staticBalance.out.legPoseEndRelSupport[]);
+  in.averageStandingPoseEndRelativeToSupport = (owner.owner.balanceManagement.staticBalance.out.averageLegPoseEndRelSupport);
+}
+
+#endif 

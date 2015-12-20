@@ -1,0 +1,40 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+__no_feedback__ module_def RandomLook
+{
+owner: MyNetwork<>
+data:
+  TimePeriod lookTargetTimer;
+  Position lookTarget;
+  Position lastLookTarget;
+  Velocity lastLookTargetRate;
+  bool needToInitialise;
+  ModuleRNG rng;
+
+in:
+  RandomLookParameters randomLookParameters;
+
+out:
+  TargetRequest lookTarget;
+
+feedIn:
+  Position headPosition;
+
+connections<>:
+  in.randomLookParameters = junctions.pri01 = priority(owner.idleAwakeBehaviourInterface.out.randomLookParameters, 
+  owner.writheBehaviourInterface.out.randomLookParameters);
+  feedIn.headPosition = (owner.heads[0].feedOut.currEndPartPosition); ///< MORPH-19576 - Handle multiple heads.
+}
+
+#endif
+

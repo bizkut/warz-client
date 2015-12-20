@@ -1,0 +1,40 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// hold on to another actor with the end-effector
+module_def ArmHold
+{
+owner: Arm
+
+data:
+  TimePeriod timeHeld;
+  TimePeriod timeNotHeld;
+  HoldTimer timer;  ///< in data section because both update and feedback need access
+  EndConstraintControl lastRequestedConstraint;
+
+in:
+  EndConstraintControl endConstraint;
+  HoldTimer timer;
+
+out:
+  EndConstraintControl endConstraint;
+  ER::HandFootTransform endDesiredTM;
+
+feedOut:
+  Weight timeHeldProportion;
+
+connections<>:
+  in.timer = (owner.owner.hazardManagement.grab.out.holdTimer);  ///< from grab module
+  in.endConstraint = (owner.grab.out.endConstraint);  ///< from armGrab module
+}
+
+#endif

@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug Tool|x64">
+      <Configuration>Debug Tool</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Tool|x64">
+      <Configuration>Release Tool</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>morphemeComms2</ProjectName>
+    <ProjectGuid>{6759E731-4BC1-4352-28AA-C5583B7EC71F}</ProjectGuid>
+    <RootNamespace>morphemeComms2</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release Tool|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Tool|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>morphemeComms2_debug</TargetName>
+    <IntDir>..\..\..\obj\x64\vs$(VisualStudioVersion)\morphemeComms2\debug\</IntDir>
+    <OutDir>..\..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>morphemeComms2</TargetName>
+    <IntDir>..\..\..\obj\x64\vs$(VisualStudioVersion)\morphemeComms2\release\</IntDir>
+    <OutDir>..\..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|x64'">
+    <TargetName>morphemeComms2_tool_debug</TargetName>
+    <IntDir>..\..\..\obj\x64\vs$(VisualStudioVersion)\morphemeComms2\debug_tool\</IntDir>
+    <OutDir>..\..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|x64'">
+    <TargetName>morphemeComms2_tool</TargetName>
+    <IntDir>..\..\..\obj\x64\vs$(VisualStudioVersion)\morphemeComms2\release_tool\</IntDir>
+    <OutDir>..\..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\simpleBundle\include;..\..\SDK\core\include;..\..\SDK;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeComms2_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\simpleBundle\include;..\..\SDK\core\include;..\..\SDK;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeComms2.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\simpleBundle\include;..\..\SDK\core\include;..\..\SDK;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeComms2_tool_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\simpleBundle\include;..\..\SDK\core\include;..\..\SDK;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;WIN32;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeComms2_tool.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\comms\assetManagerCommandsHandler.h" />
+    <ClInclude Include="include\comms\assetManagerPackets.h" />
+    <ClInclude Include="include\comms\assetManagerPackets.inl" />
+    <ClInclude Include="include\comms\assetManagerPacketsMacros.inl" />
+    <ClInclude Include="include\comms\attribute.h" />
+    <ClInclude Include="include\comms\attributeHelpers.h" />
+    <ClInclude Include="include\comms\attributeHelpers.inl" />
+    <ClInclude Include="include\comms\commandsHandler.h" />
+    <ClInclude Include="include\comms\commsDebugClient.h" />
+    <ClInclude Include="include\comms\commsServer.h" />
+    <ClInclude Include="include\comms\commsServerModule.h" />
+    <ClInclude Include="include\comms\connection.h" />
+    <ClInclude Include="include\comms\connectionManager.h" />
+    <ClInclude Include="include\comms\coreCommandsHandler.h" />
+    <ClInclude Include="include\comms\coreCommsServerModule.h" />
+    <ClInclude Include="include\comms\corePackets.h" />
+    <ClInclude Include="include\comms\corePackets.inl" />
+    <ClInclude Include="include\comms\corePacketsMacros.inl" />
+    <ClInclude Include="include\comms\debugDrawObjects.h" />
+    <ClInclude Include="include\comms\debugDrawObjects.inl" />
+    <ClInclude Include="include\comms\debugPackets.h" />
+    <ClInclude Include="include\comms\debugPackets.inl" />
+    <ClInclude Include="include\comms\debugPacketsMacros.inl" />
+    <ClInclude Include="include\comms\liveLinkDataManager.h" />
+    <ClInclude Include="include\comms\liveLinkNetworkManager.h" />
+    <ClInclude Include="include\comms\liveLinkSceneObjectManager.h" />
+    <ClInclude Include="include\comms\mcomms.h" />
+    <ClInclude Include="include\comms\morphemeCommsTarget.h" />
+    <ClInclude Include="include\comms\networkDataBuffer.h" />
+    <ClInclude Include="include\comms\networkManagementUtils.h" />
+    <ClInclude Include="include\comms\packet.h" />
+    <ClInclude Include="include\comms\runtimeTargetInterface.h" />
+    <ClInclude Include="include\comms\runtimeTargetNull.h" />
+    <ClInclude Include="include\comms\sceneObject.h" />
+    <ClInclude Include="include\comms\scopedMemory.h" />
+    <ClInclude Include="include\comms\simpleAnimBrowserManager.h" />
+    <ClInclude Include="include\comms\simpleBundleUtils.h" />
+    <ClInclude Include="include\comms\simpleConnectionManager.h" />
+    <ClInclude Include="include\comms\simpleDataManager.h" />
+    <ClInclude Include="include\comms\simpleEnvironmentManager.h" />
+    <ClCompile Include="src\assetManagerCommandsHandler.cpp" />
+    <ClCompile Include="src\attribute.cpp" />
+    <ClCompile Include="src\commsDebugClient.cpp" />
+    <ClCompile Include="src\commsServer.cpp" />
+    <ClCompile Include="src\commsServerModule.cpp" />
+    <ClCompile Include="src\connection.cpp" />
+    <ClCompile Include="src\connectionManager.cpp" />
+    <ClCompile Include="src\coreCommandsHandler.cpp" />
+    <ClCompile Include="src\coreCommsServerModule.cpp" />
+    <ClCompile Include="src\corePackets.cpp" />
+    <ClCompile Include="src\debugPackets.cpp" />
+    <ClCompile Include="src\liveLinkDataManager.cpp" />
+    <ClCompile Include="src\liveLinkNetworkManager.cpp" />
+    <ClCompile Include="src\liveLinkSceneObjectManager.cpp" />
+    <ClCompile Include="src\mcomms.cpp" />
+    <ClCompile Include="src\morphemeCommsTarget.cpp" />
+    <ClCompile Include="src\networkDataBuffer.cpp" />
+    <ClCompile Include="src\networkManagementUtils.cpp" />
+    <ClCompile Include="src\runtimeTargetNull.cpp" />
+    <ClCompile Include="src\sceneObject.cpp" />
+    <ClCompile Include="src\simpleAnimBrowserManager.cpp" />
+    <ClCompile Include="src\simpleBundleUtils.cpp" />
+    <ClCompile Include="src\simpleConnectionManager.cpp" />
+    <ClCompile Include="src\simpleDataManager.cpp" />
+    <ClCompile Include="src\simpleEnvironmentManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\simpleBundle\morphemeSimpleBundle_X64.vcxproj">
+      <Project>{6CEBC4A6-0CFB-4C11-E5A6-3A08633BEE6F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SDK\core\morphemeCore_X64.vcxproj">
+      <Project>{D90ECD48-E518-4965-D5A1-487523A09108}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMRuntimeUtils\NMRuntimeUtils_X64.vcxproj">
+      <Project>{3C388267-640A-4D4B-C8B1-2361CDE77233}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMPlatform\NMPlatform_X64.vcxproj">
+      <Project>{773E894A-FCA3-4312-37AF-0588248FC43F}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

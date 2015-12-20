@@ -1,0 +1,63 @@
+#ifndef _C_CkZipEntry_H
+#define _C_CkZipEntry_H
+#include "Chilkat_C.h"
+
+HCkZipEntry CkZipEntry_Create(void);
+void CkZipEntry_Dispose(HCkZipEntry handle);
+void CkZipEntry_getComment(HCkZipEntry cHandle, HCkString retval);
+void CkZipEntry_putComment(HCkZipEntry cHandle, const char *newVal);
+unsigned long CkZipEntry_getCompressedLength(HCkZipEntry cHandle);
+__int64 CkZipEntry_getCompressedLength64(HCkZipEntry cHandle);
+long CkZipEntry_getCompressionLevel(HCkZipEntry cHandle);
+void CkZipEntry_putCompressionLevel(HCkZipEntry cHandle, long newVal);
+long CkZipEntry_getCompressionMethod(HCkZipEntry cHandle);
+void CkZipEntry_putCompressionMethod(HCkZipEntry cHandle, long newVal);
+int CkZipEntry_getCrc(HCkZipEntry cHandle);
+void CkZipEntry_getDebugLogFilePath(HCkZipEntry cHandle, HCkString retval);
+void CkZipEntry_putDebugLogFilePath(HCkZipEntry cHandle, const char *newVal);
+long CkZipEntry_getEntryID(HCkZipEntry cHandle);
+long CkZipEntry_getEntryType(HCkZipEntry cHandle);
+void CkZipEntry_getFileDateTime(HCkZipEntry cHandle, SYSTEMTIME *retval);
+void CkZipEntry_putFileDateTime(HCkZipEntry cHandle, SYSTEMTIME *newVal);
+void CkZipEntry_getFileDateTimeStr(HCkZipEntry cHandle, HCkString retval);
+void CkZipEntry_putFileDateTimeStr(HCkZipEntry cHandle, const char *newVal);
+void CkZipEntry_getFileName(HCkZipEntry cHandle, HCkString retval);
+void CkZipEntry_putFileName(HCkZipEntry cHandle, const char *newVal);
+BOOL CkZipEntry_getIsDirectory(HCkZipEntry cHandle);
+void CkZipEntry_getLastErrorHtml(HCkZipEntry cHandle, HCkString retval);
+void CkZipEntry_getLastErrorText(HCkZipEntry cHandle, HCkString retval);
+void CkZipEntry_getLastErrorXml(HCkZipEntry cHandle, HCkString retval);
+unsigned long CkZipEntry_getUncompressedLength(HCkZipEntry cHandle);
+__int64 CkZipEntry_getUncompressedLength64(HCkZipEntry cHandle);
+BOOL CkZipEntry_getUtf8(HCkZipEntry cHandle);
+void CkZipEntry_putUtf8(HCkZipEntry cHandle, BOOL newVal);
+BOOL CkZipEntry_getVerboseLogging(HCkZipEntry cHandle);
+void CkZipEntry_putVerboseLogging(HCkZipEntry cHandle, BOOL newVal);
+void CkZipEntry_getVersion(HCkZipEntry cHandle, HCkString retval);
+BOOL CkZipEntry_AppendData(HCkZipEntry cHandle, HCkByteData bdata);
+BOOL CkZipEntry_AppendString(HCkZipEntry cHandle, const char *inStr, const char *charset);
+BOOL CkZipEntry_Copy(HCkZipEntry cHandle, HCkByteData outData);
+BOOL CkZipEntry_CopyToBase64(HCkZipEntry cHandle, HCkString outStr);
+BOOL CkZipEntry_CopyToHex(HCkZipEntry cHandle, HCkString outStr);
+BOOL CkZipEntry_Extract(HCkZipEntry cHandle, const char *dirPath);
+BOOL CkZipEntry_ExtractInto(HCkZipEntry cHandle, const char *dirPath);
+HCkDateTime CkZipEntry_GetDt(HCkZipEntry cHandle);
+BOOL CkZipEntry_Inflate(HCkZipEntry cHandle, HCkByteData outData);
+HCkZipEntry CkZipEntry_NextEntry(HCkZipEntry cHandle);
+BOOL CkZipEntry_ReplaceData(HCkZipEntry cHandle, HCkByteData bdata);
+BOOL CkZipEntry_ReplaceString(HCkZipEntry cHandle, const char *inStr, const char *charset);
+BOOL CkZipEntry_SaveLastError(HCkZipEntry cHandle, const char *path);
+void CkZipEntry_SetDt(HCkZipEntry cHandle, HCkDateTime dt);
+BOOL CkZipEntry_UnzipToString(HCkZipEntry cHandle, int lineEndingBehavior, const char *srcCharset, HCkString outStr);
+const char *CkZipEntry_comment(HCkZipEntry cHandle);
+const char *CkZipEntry_copyToBase64(HCkZipEntry cHandle);
+const char *CkZipEntry_copyToHex(HCkZipEntry cHandle);
+const char *CkZipEntry_debugLogFilePath(HCkZipEntry cHandle);
+const char *CkZipEntry_fileDateTimeStr(HCkZipEntry cHandle);
+const char *CkZipEntry_fileName(HCkZipEntry cHandle);
+const char *CkZipEntry_lastErrorHtml(HCkZipEntry cHandle);
+const char *CkZipEntry_lastErrorText(HCkZipEntry cHandle);
+const char *CkZipEntry_lastErrorXml(HCkZipEntry cHandle);
+const char *CkZipEntry_unzipToString(HCkZipEntry cHandle, int lineEndingBehavior, const char *srcCharset);
+const char *CkZipEntry_version(HCkZipEntry cHandle);
+#endif

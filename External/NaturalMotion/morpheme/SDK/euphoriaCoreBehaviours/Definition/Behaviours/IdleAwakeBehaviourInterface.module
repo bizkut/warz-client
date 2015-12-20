@@ -1,0 +1,73 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// IdleAwake attempts to make the character seem less uncounscious/robotic by adding some variation
+/// to existing capabilities. This includes:
+/// * Perturbing the balance slightly so the character shifts his weight
+/// * Choosing random, low importance look targets
+/// * If he's fallen over then attempt to get into a suitable on-ground pose (using animation
+///   inputs)
+__global_access__ module_def IdleAwakeBehaviourInterface
+{
+owner: MyNetwork<>
+data:
+
+  /// For random drift of the balance
+  Distance balanceOffsetFwd;
+  Distance balanceOffsetRight;
+  Speed balanceOffsetFwdRate;
+  Speed balanceOffsetRightRate;
+  Distance balanceOffsetFwdTarget;
+  Distance balanceOffsetRightTarget;
+  
+  TimePeriod timeSinceLastOffsetTarget;
+  
+  ModuleRNG rng;
+
+feedIn:
+  Weight supportAmount;
+  bool spineInContact;
+  bool legsInContact;
+  bool headsInContact;
+  bool armsInContact;
+  Weight armOrLegSupportAmount;
+  bool isStepping;
+
+out:
+  Weight useSpineDefaultPose;
+  
+  // Poses for each of the limb ends relative to their root
+  PoseData armPose[networkMaxNumArms];
+  PoseData headPose[networkMaxNumHeads];
+  PoseData legPose[networkMaxNumLegs];
+  PoseData spinePose[networkMaxNumSpines];
+  
+  RandomLookParameters randomLookParameters;
+  
+  // Desired offset for the balance so it doesn't always balance perfectly over the CoM
+  Distance balanceOffsetFwd;
+  Distance balanceOffsetRight;
+  
+connections<>:
+  feedIn.supportAmount = (owner.bodyFrame.feedOut.supportAmount);
+  feedIn.spineInContact = (owner.spines[0].feedOut.inContact);
+  feedIn.headsInContact = junctions.feedIn_headInContact = isBoolSet(owner.heads[*].feedOut.inContact);
+  feedIn.legsInContact = junctions.feedIn_legsInContact = isBoolSet(owner.legs[*].feedOut.inContact);
+  feedIn.armsInContact = junctions.feedIn_armsInContact = isBoolSet(owner.arms[*].feedOut.inContact);
+  feedIn.armOrLegSupportAmount = junctions.feedIn_armOrLegSupportAmount = maxFloatValue(
+    owner.arms[*].standingSupport.feedOut.supportAmount, 
+    owner.legs[*].standingSupport.feedOut.supportAmount);
+  feedIn.isStepping = (owner.bodyFrame.bodyBalance.feedOut.isStepping);
+}
+
+#endif
+

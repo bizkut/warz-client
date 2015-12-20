@@ -1,0 +1,109 @@
+// Copyright (c) 2012 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Drives the character into a sitting pose using the legs and arms to support the spine when necessary.
+__pix__ module_def SittingBodyBalance
+{
+owner: BodyFrame<>
+
+data:
+  enum Constants {rigMaxNumSupports = networkMaxNumLegs + networkMaxNumArms + 1};
+
+  Weight sitAmount;
+
+  /// Direction of the effective gravity (adjusted if the floor is accelerating)
+  Direction effectiveGravityDir;
+  /// The current (smoothed) ground velocity (averaged over all supporting limbs)
+  Velocity groundVel;
+  /// Rate of change of the ground velocity so we can smooth it
+  Acceleration groundVelRate;
+  /// Store the old ground velocity so we can estimate the acceleration
+  Velocity lastGroundVel;
+  /// (Smoothed) Acceleration of the feet/standing surface
+  Acceleration groundAccel;
+  /// Rate of change of the acceleration of the standing surface, used for smoothing
+  Jerk groundAccelRate;
+  /// velocity of the CoM
+  Velocity COMVel;
+  /// True when after module entry and before supporting surface properties (effective gravity etc) have been updated.
+  bool needToInitialiseSupportingSurface;
+
+in:
+  Transform armPoseEndRelativeToRoot[networkMaxNumArms];     ///< Arm balance pose
+  Transform legPoseEndRelativeToRoot[networkMaxNumLegs];     ///< Leg balance pose
+  Transform spinePoseEndRelativeToRoot[networkMaxNumSpines]; ///< Spine balance pose
+  Transform headPoseEndRelativeToRoot[networkMaxNumHeads];   ///< Head balance pose
+
+  SitParameters sitParameters; ///< Parameters defined by sit behaviour interface.
+
+  Environment::SupportPoly supportPolygon;
+
+  bool supportWithArms;
+  bool supportWithLegs;
+
+out:
+  ER::LimbTransform desiredPelvisTM; ///< Desired spine root transform that support modules may try to reach for balance
+  ER::LimbTransform desiredChestTM;  ///< Desired spine end transform that support modules may try to reach for balance
+  ER::HandFootTransform desiredArmEndTM[networkMaxNumArms]; ///< Desired hand transform for support module
+
+  // Output for spine support module.
+  OrientationDelta chestRelPelvisOrientation[networkMaxNumSpines];
+  PositionDelta    chestRelPelvisTranslation[networkMaxNumSpines];
+
+  /// The desired rotation of the head relative to the spine
+  OrientationDelta headRelChestOrientation[networkMaxNumHeads];
+
+  LimbControl armControl[networkMaxNumArms];          ///< Limb control used for arm stepping.
+  Weight armSupportImportance;                        ///< Importance of the arms in keeping the spine upright.
+  Weight armSupportStrengthScales[networkMaxNumArms]; ///< Strength scales for the arms that are supporting
+  Weight legSupportStrengthScales[networkMaxNumLegs]; ///< Strength scales for the legs that are supporting
+
+  bool supportWithArms;
+  bool supportWithLegs;
+  bool supportWithSpine;
+  bool allowLegStep;
+
+feedOut:
+  Weight sitAmount;
+
+  PositionDelta leanVector; ///< Normalised direction from the pelvis to the chest.
+
+feedIn:
+  Weight chestOnGroundAmount;
+  Weight pelvisOnGroundAmount;
+  Weight handOnGroundAmount[networkMaxNumArms];
+  TimePeriod handOnGroundCollidingTime[networkMaxNumArms];
+  Weight standingBalanceAmount;
+
+connections<>:
+  // Inputs
+  in.armPoseEndRelativeToRoot[] = (owner.owner.sitBehaviourInterface.out.armPoseEndRelativeToRoot[]);
+  in.legPoseEndRelativeToRoot[] = (owner.owner.sitBehaviourInterface.out.legPoseEndRelativeToRoot[]);
+  in.spinePoseEndRelativeToRoot[] = (owner.owner.sitBehaviourInterface.out.spinePoseEndRelativeToRoot[]);
+  in.headPoseEndRelativeToRoot[] = (owner.owner.sitBehaviourInterface.out.headPoseEndRelativeToRoot[]);
+
+  in.sitParameters = (owner.owner.sitBehaviourInterface.out.sitParameters);
+
+  in.supportPolygon = (owner.sittingSupportPolygon.out.polygon);
+
+  in.supportWithArms = (owner.owner.sitBehaviourInterface.out.supportWithArms);
+  in.supportWithLegs = (owner.owner.sitBehaviourInterface.out.supportWithLegs);
+
+  // Feed inputs
+  feedIn.chestOnGroundAmount = (owner.owner.spines[0].feedOut.endOnGroundAmount);
+  feedIn.pelvisOnGroundAmount = (owner.owner.spines[0].feedOut.rootOnGroundAmount);
+  feedIn.handOnGroundAmount[] = (owner.owner.arms[].feedOut.endOnGroundAmount);
+  feedIn.handOnGroundCollidingTime[] = (owner.owner.arms[].feedOut.endGroundCollidingTime);
+  feedIn.standingBalanceAmount = (owner.bodyBalance.feedOut.balanceAmount);
+}
+
+#endif

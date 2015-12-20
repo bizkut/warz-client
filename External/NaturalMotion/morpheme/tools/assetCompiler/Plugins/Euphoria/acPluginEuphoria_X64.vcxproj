@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Target LE64 Debug|x64">
+      <Configuration>Target LE64 Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target LE64 Release|x64">
+      <Configuration>Target LE64 Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>acPluginEuphoria</ProjectName>
+    <ProjectGuid>{D6713B27-B5EE-4F86-7BA8-F0F91141A1E2}</ProjectGuid>
+    <RootNamespace>acPluginEuphoria</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <TargetName>acPluginEuphoria_target_LE64_debug</TargetName>
+    <IntDir>..\..\..\..\..\obj\x64\vs$(VisualStudioVersion)\acPluginEuphoria\target_le64_debug\</IntDir>
+    <OutDir>..\..\..\..\..\bin\x64\vs$(VisualStudioVersion)\plugins\assetCompiler\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <TargetName>acPluginEuphoria_target_LE64</TargetName>
+    <IntDir>..\..\..\..\..\obj\x64\vs$(VisualStudioVersion)\acPluginEuphoria\target_le64_release\</IntDir>
+    <OutDir>..\..\..\..\..\bin\x64\vs$(VisualStudioVersion)\plugins\assetCompiler\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;include\euphoria;..\..\..\..\SDK\euphoriaCore\include;..\..\..\..\SDK\physics\include\Physics\PhysX3;..\..\..\..\SDK\physics\include;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\..\..\..\..\common\NMRuntimeUtils\include;..\..\Core;..\..\Core\include\core;..\..\..\..\SDK\assetProcessor\include;..\..\..\..\SDK\core\include;..\..\..\..\SDK;..\..\..\..\SDK\export\include;..\..\..\..\..\common\tinyxml;..\..\..\..\..\common\NMNumerics\include;..\..\..\..\..\common\NMPlatform\include;..\..\..\..\..\common\NMPlatform\include\NMPlatform\win32;..\..\..\..\..\common\qhull\src;..\..\..\..\..\common\XMD\include;..\..\..\..\..\common\NMTL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_PHYSX3;NM_TARGET_BIGENDIAN=0;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_DEBUG;_USRDLL;_WIN64;_WINDLL;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\euphoriaCore_target_LE64_debug.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemePhysicsDriver_PhysX3_target_LE64_debug.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemePhysicsCore_target_LE64_debug.lib";"$(PHYSX3_PATH)\Lib\win64\LowLevelCHECKED.lib";"$(PHYSX3_PATH)\Lib\win64\LowLevelClothCHECKED.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3ExtensionsCHECKED.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3VehicleCHECKED.lib";"$(PHYSX3_PATH)\Lib\win64\PhysXProfileSDKCHECKED.lib";"$(PHYSX3_PATH)\Lib\win64\PhysXVisualDebuggerSDKCHECKED.lib";"$(PHYSX3_PATH)\Lib\win64\PvdRuntimeCHECKED.lib";"$(PHYSX3_PATH)\Lib\win64\PxTaskCHECKED.lib";"$(PHYSX3_PATH)\Lib\win64\RepX3CHECKED.lib";"$(PHYSX3_PATH)\Lib\win64\SceneQueryCHECKED.lib";"$(PHYSX3_PATH)\Lib\win64\SimulationControllerCHECKED.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3CHECKED_x64.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3CharacterKinematicCHECKED_x64.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3CommonCHECKED_x64.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3CookingCHECKED_x64.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3GpuCHECKED_x64.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMHybridIK_target_LE64_debug.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\acCore_target_LE64_debug.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeAssetProcessor_target_LE64_debug.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeCore_target_LE64_debug.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMRuntimeUtils_target_LE64_debug.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeExport_debug.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMTinyXML_debug.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMNumerics_debug.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMPlatform_target_LE64_debug.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\qhull_debug.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\XMD_debug.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMTL_debug.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <ProgramDatabaseFile>$(OutDir)acPluginEuphoria_target_LE64_debug.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;include\euphoria;..\..\..\..\SDK\euphoriaCore\include;..\..\..\..\SDK\physics\include\Physics\PhysX3;..\..\..\..\SDK\physics\include;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\..\..\..\..\common\NMRuntimeUtils\include;..\..\Core;..\..\Core\include\core;..\..\..\..\SDK\assetProcessor\include;..\..\..\..\SDK\core\include;..\..\..\..\SDK;..\..\..\..\SDK\export\include;..\..\..\..\..\common\tinyxml;..\..\..\..\..\common\NMNumerics\include;..\..\..\..\..\common\NMPlatform\include;..\..\..\..\..\common\NMPlatform\include\NMPlatform\win32;..\..\..\..\..\common\qhull\src;..\..\..\..\..\common\XMD\include;..\..\..\..\..\common\NMTL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;NM_PHYSX3;NM_TARGET_BIGENDIAN=0;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_USRDLL;_WIN64;_WINDLL;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\euphoriaCore_target_LE64.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemePhysicsDriver_PhysX3_target_LE64.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemePhysicsCore_target_LE64.lib";"$(PHYSX3_PATH)\Lib\win64\LowLevel.lib";"$(PHYSX3_PATH)\Lib\win64\LowLevelCloth.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3Extensions.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3Vehicle.lib";"$(PHYSX3_PATH)\Lib\win64\PhysXProfileSDK.lib";"$(PHYSX3_PATH)\Lib\win64\PhysXVisualDebuggerSDK.lib";"$(PHYSX3_PATH)\Lib\win64\PvdRuntime.lib";"$(PHYSX3_PATH)\Lib\win64\PxTask.lib";"$(PHYSX3_PATH)\Lib\win64\RepX3.lib";"$(PHYSX3_PATH)\Lib\win64\SceneQuery.lib";"$(PHYSX3_PATH)\Lib\win64\SimulationController.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3_x64.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3CharacterKinematic_x64.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3Common_x64.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3Cooking_x64.lib";"$(PHYSX3_PATH)\Lib\win64\PhysX3Gpu_x64.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMHybridIK_target_LE64.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\acCore_target_LE64.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeAssetProcessor_target_LE64.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeCore_target_LE64.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMRuntimeUtils_target_LE64.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeExport.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMTinyXML.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMNumerics.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMPlatform_target_LE64.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\qhull.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\XMD.lib";"..\..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMTL.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDatabaseFile>$(OutDir)acPluginEuphoria_target_LE64.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\euphoria\acPluginEuphoria.h" />
+    <ClInclude Include="include\euphoria\BodyDefBuilder.h" />
+    <ClInclude Include="include\euphoria\InteractionProxyDefBuilder.h" />
+    <ClInclude Include="include\euphoria\MessageHitBuilder.h" />
+    <ClInclude Include="include\euphoria\NodeBehaviourBuilder.h" />
+    <ClInclude Include="include\euphoria\NodeBehaviourGrouperBuilder.h" />
+    <ClInclude Include="include\euphoria\NodeLimbInfoBuilder.h" />
+    <ClInclude Include="include\euphoria\NodeOperatorContactReporterBuilder.h" />
+    <ClInclude Include="include\euphoria\NodeOperatorFallOverWallBuilder.h" />
+    <ClInclude Include="include\euphoria\NodeOperatorHitBuilder.h" />
+    <ClInclude Include="include\euphoria\NodeOperatorOrientationInFreefallBuilder.h" />
+    <ClInclude Include="include\euphoria\NodeOperatorPhysicalConstraintBuilder.h" />
+    <ClInclude Include="include\euphoria\NodeOperatorRollDownStairsBuilder.h" />
+    <ClInclude Include="include\euphoria\NodePerformanceBehaviourBuilder.h" />
+    <ClInclude Include="include\euphoria\NodeTrajectoryOverrideBuilder.h" />
+    <ClCompile Include="src\acPluginEuphoria.cpp" />
+    <ClCompile Include="src\BodyDefBuilderPhysX.cpp" />
+    <ClCompile Include="src\DllMain.cpp" />
+    <ClCompile Include="src\InteractionProxyDefBuilder.cpp" />
+    <ClCompile Include="src\MessageHitBuilder.cpp" />
+    <ClCompile Include="src\NodeBehaviourBuilder.cpp" />
+    <ClCompile Include="src\NodeBehaviourGrouperBuilder.cpp" />
+    <ClCompile Include="src\NodeLimbInfoBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorContactReporterBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorFallOverWallBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorHitBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorOrientationInFreefallBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorPhysicalConstraintBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorRollDownStairsBuilder.cpp" />
+    <ClCompile Include="src\NodePerformanceBehaviourBuilder.cpp" />
+    <ClCompile Include="src\NodeTrajectoryOverrideBuilder.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\SDK\euphoriaCore\euphoriaCore_X64.vcxproj">
+      <Project>{BE1CCCB9-311F-4D98-9FA6-18F0B60F33E9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDK\physics\morphemePhysicsDriver_PhysX3_X64.vcxproj">
+      <Project>{49059F87-92EE-48ED-389D-76C9F7E7D572}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDK\physics\morphemePhysicsCore_X64.vcxproj">
+      <Project>{C153C767-7FAA-4D11-629F-2BFA6D25D883}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\NMRuntimeUtils\NMHybridIK_X64.vcxproj">
+      <Project>{C0F411FE-04C7-4856-829F-B9C7CDC2DCB5}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\acCore_X64.vcxproj">
+      <Project>{E02BF743-2306-4EB6-D5B9-ABF6A67628A6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDK\assetProcessor\morphemeAssetProcessor_X64.vcxproj">
+      <Project>{864F5EAC-3E7B-4518-89BA-2C3201C79690}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDK\core\morphemeCore_X64.vcxproj">
+      <Project>{D90ECD48-E518-4965-D5A1-487523A09108}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\NMRuntimeUtils\NMRuntimeUtils_X64.vcxproj">
+      <Project>{3C388267-640A-4D4B-C8B1-2361CDE77233}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDK\export\morphemeExport_X64.vcxproj">
+      <Project>{348A8659-5C73-4CB4-20A1-95EDAB98AE5D}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\tinyxml\NMTinyXML_X64.vcxproj">
+      <Project>{9121BE9D-8F56-4D9C-158F-1495BC741C2A}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\NMNumerics\NMNumerics_X64.vcxproj">
+      <Project>{E97AC720-CA8A-49CD-49A9-BBED3C23E192}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\NMPlatform\NMPlatform_X64.vcxproj">
+      <Project>{773E894A-FCA3-4312-37AF-0588248FC43F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\qhull\qhull_X64.vcxproj">
+      <Project>{2A3758B7-E5C1-458F-948A-5DC4298A1CCA}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\XMD\XMD_X64.vcxproj">
+      <Project>{23D1C7B2-4F9B-401E-D08D-7E8CBE00A9B7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\NMTL\NMTL_X64.vcxproj">
+      <Project>{5FF4A11E-1F9C-4999-1E8C-6616EF16DB1C}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

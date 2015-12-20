@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Target LE32 Debug|Win32">
+      <Configuration>Target LE32 Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target LE32 Release|Win32">
+      <Configuration>Target LE32 Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target BE32 Debug|Win32">
+      <Configuration>Target BE32 Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target BE32 Release|Win32">
+      <Configuration>Target BE32 Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>morphemeAssetProcessor</ProjectName>
+    <ProjectGuid>{17DC67A9-155A-40C1-CD99-91526A1D3548}</ProjectGuid>
+    <RootNamespace>morphemeAssetProcessor</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <TargetName>morphemeAssetProcessor_target_LE32_debug</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\morphemeAssetProcessor\target_le32_debug\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <TargetName>morphemeAssetProcessor_target_LE32</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\morphemeAssetProcessor\target_le32_release\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <TargetName>morphemeAssetProcessor_target_BE32_debug</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\morphemeAssetProcessor\target_be32_debug\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <TargetName>morphemeAssetProcessor_target_BE32</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\morphemeAssetProcessor\target_be32_release\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\XMD\include;..\..\..\common\NMTL\include;..\..\..\common\NMNumerics\include;..\..\..\common\qhull\src;..\export\include;..\..\..\common\tinyxml;..\core\include;..;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_TARGET_BIGENDIAN=0;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeAssetProcessor_target_LE32_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\XMD\include;..\..\..\common\NMTL\include;..\..\..\common\NMNumerics\include;..\..\..\common\qhull\src;..\export\include;..\..\..\common\tinyxml;..\core\include;..;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;NM_TARGET_BIGENDIAN=0;WIN32;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeAssetProcessor_target_LE32.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\XMD\include;..\..\..\common\NMTL\include;..\..\..\common\NMNumerics\include;..\..\..\common\qhull\src;..\export\include;..\..\..\common\tinyxml;..\core\include;..;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_TARGET_BIGENDIAN=1;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeAssetProcessor_target_BE32_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\XMD\include;..\..\..\common\NMTL\include;..\..\..\common\NMNumerics\include;..\..\..\common\qhull\src;..\export\include;..\..\..\common\tinyxml;..\core\include;..;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;NM_TARGET_BIGENDIAN=1;WIN32;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeAssetProcessor_target_BE32.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\assetProcessor\acAnimInfo.h" />
+    <ClInclude Include="include\assetProcessor\AnalysisProcessor.h" />
+    <ClInclude Include="include\assetProcessor\AnimationPoseBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSectionCompressorASA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSectionCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceBuilderNSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceBuilderUtils.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressor.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressorASA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressorMBA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressorNSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceMotionAnalyser.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourcePreprocessor.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceSectioningCompressor.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\AnimSourceUncompressed.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelPosBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelPosQuantisedBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelQuatBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelRotVecQuantisedBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelSetInfoCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\ChannelSetTableBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\IntVector3TableBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\QuantisationSetQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\RotVecTableBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\SampledPosCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\SampledQuatCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\SectionCompilerNSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\SplinePosCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\SplineQuatCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\TrajectorySourceCompressorASA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\TrajectorySourceCompressorNSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\TrajectorySourceCompressorQSA.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\TransformsAccumulator.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\Vector3QuantisationSetBasis.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\Vector3QuantisationTableBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AnimSource\Vector3TableBuilder.h" />
+    <ClInclude Include="include\assetProcessor\AssetProcessor.h" />
+    <ClInclude Include="include\assetProcessor\AssetProcessorUtils.h" />
+    <ClInclude Include="include\assetProcessor\BlendNodeBuilderUtils.h" />
+    <ClInclude Include="include\assetProcessor\MessageBuilder.h" />
+    <ClInclude Include="include\assetProcessor\NodeBuilder.h" />
+    <ClInclude Include="include\assetProcessor\NodeBuilderUtils.h" />
+    <ClInclude Include="include\assetProcessor\NodeTransitBaseBuilder.h" />
+    <ClInclude Include="include\assetProcessor\PredictionModelBuilder.h" />
+    <ClInclude Include="include\assetProcessor\TransitConditionDefBuilder.h" />
+    <ClInclude Include="include\assetProcessor\TransitDeadBlendDefBuilder.h" />
+    <ClCompile Include="src\AnalysisProcessor.cpp" />
+    <ClCompile Include="src\AnimationPoseBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSectionCompressorASA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSectionCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceBuilderNSA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceBuilderUtils.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceCompressor.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceCompressorASA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceCompressorMBA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceCompressorNSA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceMotionAnalyser.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourcePreprocessor.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceSectioningCompressor.cpp" />
+    <ClCompile Include="src\AnimSource\AnimSourceUncompressed.cpp" />
+    <ClCompile Include="src\AnimSource\ChannelPosBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\ChannelPosQuantisedBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\ChannelQuatBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\ChannelRotVecQuantisedBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\ChannelSetInfoCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\ChannelSetTableBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\IntVector3TableBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\QuantisationSetQSA.cpp" />
+    <ClCompile Include="src\AnimSource\RotVecTableBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\SampledPosCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\SampledQuatCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\SectionCompilerNSA.cpp" />
+    <ClCompile Include="src\AnimSource\SplinePosCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\SplineQuatCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\TrajectorySourceCompressorASA.cpp" />
+    <ClCompile Include="src\AnimSource\TrajectorySourceCompressorNSA.cpp" />
+    <ClCompile Include="src\AnimSource\TrajectorySourceCompressorQSA.cpp" />
+    <ClCompile Include="src\AnimSource\TransformsAccumulator.cpp" />
+    <ClCompile Include="src\AnimSource\Vector3QuantisationSetBasis.cpp" />
+    <ClCompile Include="src\AnimSource\Vector3QuantisationTableBuilder.cpp" />
+    <ClCompile Include="src\AnimSource\Vector3TableBuilder.cpp" />
+    <ClCompile Include="src\AssetProcessor.cpp" />
+    <ClCompile Include="src\BlendNodeBuilderUtils.cpp" />
+    <ClCompile Include="src\MessageBuilder.cpp" />
+    <ClCompile Include="src\NodeBuilder.cpp" />
+    <ClCompile Include="src\NodeTransitBaseBuilder.cpp" />
+    <ClCompile Include="src\TransitDeadBlendDefBuilder.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\common\XMD\XMD_WIN32.vcxproj">
+      <Project>{80C0AC14-53FB-425C-FA8E-2E4A82CD3D6D}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMTL\NMTL_WIN32.vcxproj">
+      <Project>{BA13B81C-4721-4169-EC83-D3600C9BE1F6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMNumerics\NMNumerics_WIN32.vcxproj">
+      <Project>{6FA431F1-15DC-443E-AEB5-5521E67FB5B6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\qhull\qhull_WIN32.vcxproj">
+      <Project>{A587A69D-9CFC-4F76-4DA6-327EA0B484D1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\export\morphemeExport_WIN32.vcxproj">
+      <Project>{9D5258B4-874D-4D97-A797-857752CE21AC}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\tinyxml\NMTinyXML_WIN32.vcxproj">
+      <Project>{DB83B4BD-06FA-42BE-9C9C-C79CC34E829F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\core\morphemeCore_WIN32.vcxproj">
+      <Project>{AC5679CC-935C-4BCF-67A4-D937C17D2BC4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMRuntimeUtils\NMRuntimeUtils_WIN32.vcxproj">
+      <Project>{3EBBF790-FDD8-4FCC-81A8-FEA264CAD994}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMPlatform\NMPlatform_WIN32.vcxproj">
+      <Project>{A09CF394-9273-474D-4091-19EB54BF95DA}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,55 @@
+// Copyright (c) 2009 NaturalMotion.  AllRights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// identifies geometry in the environment appropriate for grabbing and passes the best patch to Grab
+__global_access__ module_def GrabDetection
+{
+owner: 
+  HazardManagement<>
+
+data:
+  Length maxArmLength;        ///< Length of longest arm, calculated in entry.
+  Velocity smoothedChestVel;  ///< Makes chest predictions less erratic.
+  EdgeBuffer edgeBuffer;      ///< Keep local memory of encountered edges (ring buffer).
+  int64_t bestEdgeShapeID;
+  bool isFirstUpdate;         ///< True only right at the start of the update (and then cleared).
+
+in:
+  Edge gameEdges[10];         ///< Edges passed in directly by the game.
+  ObjectFiltering grabFiltering;
+  GrabDetectionParams params; ///< What kind of edges too look for.
+
+out:
+  Edge grabbableEdge;         ///< Returns best edge found amongst EA patches and game-provided edges.
+  TargetRequest lookTarget;   ///< Head look target, closest point on edge to character's chest.
+  bool letGoEdge;
+
+feedIn:
+  PatchSet potentialGrabPatches; ///< Input from EA system: set of patches colliding with impactPredictor's sphere sweep
+  BodyState centreOfMassBodyState;
+  bool useEnvironmentAwareness;  ///< Allows Grab module to control when to use grabDetection (and therefore EA).
+  bool isHanging;
+
+connections<>:
+  feedIn.potentialGrabPatches = (owner.owner.environmentAwareness.feedOut.potentialHazardsForImpactPredictor[0]);
+  feedIn.useEnvironmentAwareness = (owner.grab.feedOut.useEnvironmentAwareness);
+  feedIn.isHanging = (owner.grab.out.isHanging);
+  feedIn.centreOfMassBodyState = (owner.owner.bodyFrame.feedOut.centreOfMassBodyState); 
+
+  in.gameEdges[] = (owner.owner.holdActionBehaviourInterface.userIn.gameEdges[]);
+  in.params = junctions.in_supportStrengthScale = priority(
+    owner.owner.holdBehaviourInterface.out.grabDetectionParams,
+    owner.owner.holdActionBehaviourInterface.out.grabDetectionParams);
+  in.grabFiltering = (owner.owner.holdBehaviourInterface.out.grabFiltering);
+}
+
+#endif

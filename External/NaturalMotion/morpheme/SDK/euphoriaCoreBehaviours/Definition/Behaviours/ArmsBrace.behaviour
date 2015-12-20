@@ -1,0 +1,52 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Reaches for and absorbs the impact of an approaching object to protect the head and chest from damage. 
+behaviour_def ArmsBrace
+{
+interface:
+  displayname = "Arms Brace";
+  version = 2;
+  
+modules:
+  armsBraceBehaviourInterface;
+  arms[*].brace.*;
+  
+attributes:
+
+  group("Positioning")
+  {
+    float SwivelAmount = 0.3f, -1.0f, 1.0f        __per_anim_set__; ///< Controls the arms' swivel. A positive value encourages the elbows to be placed out and up, negative for elbows in and down. When zero the swivel will match the guide pose.
+    float MaxArmExtensionScale = 1.0f, 0.1f, 1.0f __per_anim_set__ __title__("ArmExtension"); ///< Limit the maximum extension of the arm. Expressed as a proportion of the total arm length
+  }
+
+controlParams:
+  /// Describes an approaching object that the arms should brace against.
+  /// Hazard position and hazard normal represent the hazard surface whilst
+  /// hazard radius defines the extent and curvature (1/radius) of that surface.
+  /// In absolute, world space units
+  group("Hazard Inputs")
+  {
+    vector3 HazardVelocity                         __title__("Velocity"); ///< Velocity (m/s) of the hazard
+    vector3 HazardPosition    __expose_as_pin__    __title__("Position"); ///< Position (m) of the hazard surface
+    vector3 HazardNormal      __expose_as_pin__    __title__("Normal");   ///< Normal of the hazard surface (doesn't have to be normalised, but should be non-zero)
+    float HazardMass = 1.0f, 0.0f, 10000.0f        __title__("Mass");     ///< Mass (kg) of the hazard
+    float HazardRadius = 0.25f, 0.0f, 100.0f       __title__("Radius");   ///< Extent and curvature (1/radius) of the hazard surface
+  }
+  
+  group("Input Defaults")
+  {
+    float Weight = 1.0f, 0.0f, 1.0f;  ///< Sets the importance of this behaviour relative to others. Accepts values in the range 0 to 1.
+  }
+}
+
+#endif

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CodeWriter.cpp" />
+    <ClInclude Include="CodeWriter.h" />
+    <ClCompile Include="EmitCPP.cpp" />
+    <ClInclude Include="EmitCPP.h" />
+    <ClCompile Include="EmitCPP_Behaviour.cpp" />
+    <ClInclude Include="EmitCPP_Behaviour.h" />
+    <ClCompile Include="EmitCPP_Common.cpp" />
+    <ClInclude Include="EmitCPP_Common.h" />
+    <ClCompile Include="EmitCPP_Desc.cpp" />
+    <ClInclude Include="EmitCPP_Desc.h" />
+    <ClCompile Include="EmitCPP_Module.cpp" />
+    <ClInclude Include="EmitCPP_Module.h" />
+    <ClCompile Include="EmitCPP_Types.cpp" />
+    <ClInclude Include="EmitCPP_Types.h" />
+    <ClCompile Include="EmitManifest.cpp" />
+    <ClInclude Include="EmitManifest.h" />
+    <ClCompile Include="EmitXmlSummary.cpp" />
+    <ClInclude Include="EmitXmlSummary.h" />
+    <ClCompile Include="FileUtils.cpp" />
+    <ClInclude Include="FileUtils.h" />
+    <None Include="MDF.css" />
+    <ClCompile Include="MDFCodeGen.cpp" />
+    <ResourceCompile Include="MDFCodeGen.rc" />
+    <ClCompile Include="NetworkStats.cpp" />
+    <ClInclude Include="NetworkStats.h" />
+    <ClInclude Include="Precompiled.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+</Project>

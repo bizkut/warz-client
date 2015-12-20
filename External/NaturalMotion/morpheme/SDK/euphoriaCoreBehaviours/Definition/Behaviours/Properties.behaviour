@@ -1,0 +1,42 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Defines the common properties of the character that are not limb dependent
+behaviour_def Properties
+{
+interface:
+  displayname = "Properties";
+  version = 1;
+
+modules:
+  propertiesBehaviourInterface;
+ 
+controlParams:
+  group("Input Defaults")
+  {
+    float CollidingSupportTime = 0.5f; ///< When a supporting contact is lost, the character still considers itself partially supported during this time period. This is so that it does not suddenly "panic" if it hops off the ground. In seconds (standard character).
+    float MaxSlopeForGround = 60.0f; ///< If a surface slopes more than this angle, in degrees, then it will not be considered "ground" for the purposes of balance etc.
+    float AwarenessPredictionTime = 1.0f; ///< Only respond objects in the environment (hazards or edges to grab etc) when they are predicted to interact with the character within this time. In seconds (standard character).
+  }
+  
+  /// Enable and configure joint projection, an additional solver step for correcting joint separation in the physics rig.
+  group("Joint Projection Inputs")
+  {
+    bool EnableJointProjection = false                          __title__("Enable"); ///< Use joint projection to reduce joint separation
+    float JointProjectionLinearTolerance = 0.1f, 0.0f           __title__("LinearTolerance"); ///< Tolerance above which joint separation will be corrected.
+    float JointProjectionAngularTolerance = 10.0f, 0.0f, 180.0f __title__("AngularTolerance"); ///< Angular tolerance in degrees above which joint limit errors will be corrected.
+    int JointProjectionIterations = 1, 1                        __title__("Iterations"); ///< Number of iterations used for resolving joint separation.
+  }
+}
+
+#endif
+

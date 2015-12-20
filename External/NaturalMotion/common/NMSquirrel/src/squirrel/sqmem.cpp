@@ -1,0 +1,18 @@
+/*
+see copyright notice in squirrel.h
+*/
+#include "sqpcheader.h"
+void *sq_vm_malloc(SQUnsignedInteger size)
+{
+  return malloc(size);
+}
+
+void *sq_vm_realloc(void *p, SQUnsignedInteger SQUIRREL_UNUSED(oldsize), SQUnsignedInteger size)
+{
+  return realloc(p, size);
+}
+
+void sq_vm_free(void *p, SQUnsignedInteger SQUIRREL_UNUSED(size))
+{
+  free(p);
+}

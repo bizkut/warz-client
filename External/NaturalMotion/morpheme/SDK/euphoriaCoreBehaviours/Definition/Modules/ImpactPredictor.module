@@ -1,0 +1,65 @@
+// Copyright (c) 2009 NaturalMotion.  AllRights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// the job of this module is to alert of (pass up) the single most dangerous hazard (if any) that will affect a defined protect sphere
+module_def ImpactPredictor
+{
+owner: HazardManagement<>
+
+data:
+  Hazard hazard;                  ///< So the update can access the hazard calculated in the feedback
+  float hazardUrgency;            ///< Unitless 1/time to impact
+  SphereTrajectory protectSphere; ///< Pos, vel, acc of protection sphere around the chest
+  TimePeriod lookTime;            ///< So character doesn't look for too long at a former hazard
+  Velocity firstSeenPos;          ///< First seen position of hazard when became aware of it
+in:
+  ProtectParameters protectParameters;    ///< How to protect
+  ObjectFiltering protectHazardFiltering; ///< Protect hazard filtering that uses additional information associated with a hazard to evaluate whether it should be considered or not.
+  Weight ignoreVerticalPredictionAmount;  ///< Weighs how much to ignore vertical motion in the trajectory predictions
+  bool velocityIsControlled;              ///< If true then the character's velocity is not considered a hazard
+  Length probeRadius;                     ///< Radius of probe, personal space
+  PatchSet potentialUserHazards;          ///< Potential hazards provided by the UserHazard module.
+  bool ignoreNonUserHazards;              ///< Only user hazards will be considered if this is true.
+
+
+feedOut:
+  Hazard hazard;            ///< Pass up the discovered hazard
+  bool hazardsNotBraceable; ///< More than one significant hazard will hit the character soon and are not braceable.
+  SpatialTarget possibleFutureHazard; ///< Used for placement and head avoid, for close obejcts that have been moving a lot, relative to character
+  
+out:
+  TargetRequest focalCentre;         ///< Signal to look at the hazard
+  SphereTrajectory sphereProjection; ///< Passed to EnvironmentAwareness in order to receive potentialHazards set
+  
+feedIn:
+  PatchSet potentialEnvironmentHazards;  ///< Set of objects which might be hazards, that means collided patches and some previously collided patches
+  PositionDelta leanVector;   ///< How much the character is leaning, it affects character's computed acceleration
+  ER::LimbTransform supportTM;
+
+connections<chest>:
+  // feedIn
+  feedIn.leanVector = (owner.owner.bodyFrame.feedOut.leanVector);
+  feedIn.supportTM = (owner.owner.bodyFrame.bodyBalance.feedOut.supportTM);
+  feedIn.potentialEnvironmentHazards = (owner.owner.environmentAwareness.feedOut.potentialHazardsForImpactPredictor[0]);
+
+  // in
+  in.ignoreVerticalPredictionAmount = (owner.owner.hazardAwarenessBehaviourInterface.out.ignoreVerticalPredictionAmount);
+  in.velocityIsControlled = (owner.owner.hazardAwarenessBehaviourInterface.out.velocityIsControlled);
+  in.probeRadius = (owner.owner.hazardAwarenessBehaviourInterface.out.probeRadius);
+  in.potentialUserHazards = (owner.owner.userHazardBehaviourInterface.out.potentialHazards);
+  in.ignoreNonUserHazards = (owner.owner.userHazardBehaviourInterface.out.ignoreNonUserHazards);
+
+  in.protectParameters = (owner.owner.protectBehaviourInterface.out.toImpactPredictorParameters);
+  in.protectHazardFiltering = (owner.owner.protectBehaviourInterface.out.toImpactPredictorHazardFiltering);
+}
+
+#endif

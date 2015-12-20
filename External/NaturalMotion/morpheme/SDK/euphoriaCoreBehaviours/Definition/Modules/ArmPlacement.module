@@ -1,0 +1,50 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Place the arms in front of the target, to minimise danger of object and head/chest colliding
+__no_feedback__ module_def ArmPlacement
+{
+owner: Arm
+
+data:
+  bool targetWithinCone;
+  bool isInRange; ///< Used for hysteresis.
+
+in:
+  SpatialTarget target;        ///< pos, vel and normal of the target to place the hand against.
+  Weight maxArmExtensionScale; ///< 1 is full extension of the arm.
+  Multiplier swivelAmount;     ///< Usually -1 to 1 refers to elbows in vs elbow out or visa versa.
+  /// Affects how far apart the hands are, default of 1 will place the hands at the same span as the shoulders.
+  Multiplier handOffsetMultiplier;
+
+out:
+  LimbControl control;        ///< IK control of arm.
+  /// Controls a reduction in the wrist joint limit to prevent poor wrist alignment on falling backwards.
+  Weight wristLimitReduction;
+
+connections<>:
+  in.target = junctions.in_target = priority(
+    owner.owner.hazardManagement.hazardResponse.out.placementTarget,
+    owner.owner.armsPlacementBehaviourInterface.out.placementTarget);
+
+  in.maxArmExtensionScale = junctions.in_maxArmExtensionScale = priority(
+    owner.owner.armsPlacementBehaviourInterface.out.maxArmExtensionScale,
+    owner.owner.protectBehaviourInterface.out.maxArmExtensionScale);
+
+  in.swivelAmount = junctions.in_swivelAmount = priority(
+    owner.owner.armsPlacementBehaviourInterface.out.swivelAmount,
+    owner.owner.protectBehaviourInterface.out.swivelAmount);
+
+  in.handOffsetMultiplier = (owner.owner.armsPlacementBehaviourInterface.out.handOffsetMultiplier);
+}
+
+#endif

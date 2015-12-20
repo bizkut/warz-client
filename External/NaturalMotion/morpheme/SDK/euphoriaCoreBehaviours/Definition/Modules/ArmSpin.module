@@ -1,0 +1,56 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// a long term spin motion in order to control the orientation of the body
+module_def ArmSpin
+{
+owner: Arm
+
+data:
+  Torque targetTorque;
+  Position targetDirection;
+
+in:
+  Direction combinedTargetDirection;
+  RotationRequest rotationRequest; ///< Rotation this limb will try to achieve by spinning (in world space).
+  bool armsSpinInPhase;
+  Multiplier spinAmount;
+  SpinParameters spinParams;
+  bool ignoreContacts; ///< spin action is supressed when rig is in contact unless this flag is set
+  
+feedOut:
+  Direction targetDirection; ///< Used for coordinating control between limbs
+  
+out:
+  LimbControl control;
+
+connections<>:
+  in.combinedTargetDirection = (owner.owner.upperBody.feedIn.spinDirection);
+
+  in.rotationRequest = junctions.in_rotationRequest = priority(
+    owner.owner.upperBody.out.rotationRequest,
+    owner.owner.armsWindmillBehaviourInterface.out.targetRequests[owner.$ChildIndex]);
+  in.spinAmount = junctions.in_spinStiffnessScale = priority(
+    owner.owner.freeFallBehaviourInterface.out.armsSpinStiffnessScales[owner.$ChildIndex],
+    owner.owner.armsWindmillBehaviourInterface.out.spinStiffnessScales[owner.$ChildIndex]);
+  in.armsSpinInPhase = junctions.in_armsSpinInPhase = winnerTakesAll(
+    owner.owner.freeFallBehaviourInterface.out.armsSpinInPhase,
+    owner.owner.armsWindmillBehaviourInterface.out.armsSpinInPhase,
+    owner.owner.bodyFrame.bodyBalance.out.armsSpinInPhase);
+  in.spinParams = (owner.owner.armsWindmillBehaviourInterface.out.armsSpinParams);
+  in.ignoreContacts = 
+    junctions.in_ignoreContacts =
+      winnerTakesAll(owner.owner.hazardManagement.grab.out.isHanging,
+       owner.owner.hazardManagement.freeFallManagement.out.isInFreefall);
+}
+
+#endif

@@ -1,0 +1,56 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Drives the position of the chest using 1 or more constrained arms.
+module_def ArmHoldingSupport
+{
+owner: Arm
+data:
+  /// Used to make support more keen to claim that it is supporting on the first update/feedback - so
+  /// that there isn't one frame of unsupported (which would result in other behaviours trying to run).
+  bool hasFeedbackRun;
+
+in:
+  ER::LimbTransform rootDesiredTM;    ///< Desired transform (world space) for the root of the limb.
+  ER::HandFootTransform endDesiredTM; ///< Desired transform (world space) for the end of the limb.
+
+  /// Scaling on the strengths so that modules coordinating support etc can indicate if the
+  /// actions need to be stronger/weaker depending on how many limbs are acting.
+  Weight supportStrengthScale;
+
+  /// Used to control the support when it is hanging/holding. This allows the hold to override conflicting requests such
+  /// as from headAvoid etc.
+  RotationRequest rotationRequest;
+  TranslationRequest translationRequest;
+
+feedOut:
+  /// How much the armSupport is operating, 1 if armSupport is operating, even if it has only loose control of chest.
+  Weight          supportAmount;
+  /// How much chest control due to arm strength, 0 up to 1 if arm can control chest with normal stiffness.
+  WeightWithClamp   chestControlAmount;
+  RotationRequest rootRotationRequest;
+  bool            supportedByConstraint;
+
+out:
+  LimbControl control;
+
+connections<>:
+  in.rotationRequest = (owner.owner.upperBody.out.rotationRequest);
+  in.translationRequest = (owner.owner.upperBody.out.translationRequest);
+
+  in.rootDesiredTM = (owner.owner.bodyFrame.bodyBalance.out.desiredChestTM);
+
+  in.endDesiredTM = (owner.hold.out.endDesiredTM);
+  in.supportStrengthScale = (owner.grab.out.holdStrengthScale);
+}
+
+#endif 

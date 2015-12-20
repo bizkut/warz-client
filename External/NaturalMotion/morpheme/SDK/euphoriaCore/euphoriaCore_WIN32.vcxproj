@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target LE32 Debug|Win32">
+      <Configuration>Target LE32 Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target LE32 Release|Win32">
+      <Configuration>Target LE32 Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target BE32 Debug|Win32">
+      <Configuration>Target BE32 Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target BE32 Release|Win32">
+      <Configuration>Target BE32 Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>euphoriaCore</ProjectName>
+    <ProjectGuid>{DDA9676A-6018-45CC-E9AF-EC1E15BE5476}</ProjectGuid>
+    <RootNamespace>euphoriaCore</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>euphoriaCore_debug</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\euphoriaCore\debug\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>euphoriaCore</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\euphoriaCore\release\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <TargetName>euphoriaCore_target_LE32_debug</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\euphoriaCore\target_le32_debug\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <TargetName>euphoriaCore_target_LE32</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\euphoriaCore\target_le32_release\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <TargetName>euphoriaCore_target_BE32_debug</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\euphoriaCore\target_be32_debug\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <TargetName>euphoriaCore_target_BE32</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\euphoriaCore\target_be32_release\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\NMRuntimeUtils\include;..\physics\include\Physics\PhysX3;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\physics\include;..\core\include;..;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_PHYSX3;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)euphoriaCore_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\NMRuntimeUtils\include;..\physics\include\Physics\PhysX3;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\physics\include;..\core\include;..;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_PHYSX3;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)euphoriaCore.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\NMRuntimeUtils\include;..\physics\include\Physics\PhysX3;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\physics\include;..\core\include;..;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_PHYSX3;NM_TARGET_BIGENDIAN=0;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)euphoriaCore_target_LE32_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\NMRuntimeUtils\include;..\physics\include\Physics\PhysX3;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\physics\include;..\core\include;..;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;NM_PHYSX3;NM_TARGET_BIGENDIAN=0;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)euphoriaCore_target_LE32.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\NMRuntimeUtils\include;..\physics\include\Physics\PhysX3;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\physics\include;..\core\include;..;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_PHYSX3;NM_TARGET_BIGENDIAN=1;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)euphoriaCore_target_BE32_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\..\common\NMRuntimeUtils\include;..\physics\include\Physics\PhysX3;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\physics\include;..\core\include;..;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;NM_PHYSX3;NM_TARGET_BIGENDIAN=1;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)euphoriaCore_target_BE32.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\euphoria\erAttribData.h" />
+    <ClInclude Include="include\euphoria\erBehaviour.h" />
+    <ClInclude Include="include\euphoria\erBody.h" />
+    <ClInclude Include="include\euphoria\erBodyDef.h" />
+    <ClInclude Include="include\euphoria\erCharacter.h" />
+    <ClInclude Include="include\euphoria\erCharacterDef.h" />
+    <ClInclude Include="include\euphoria\erCollisionProbes.h" />
+    <ClInclude Include="include\euphoria\erCollisionProbes.inl" />
+    <ClInclude Include="include\euphoria\erContactFeedback.h" />
+    <ClInclude Include="include\euphoria\erDebugControls.h" />
+    <ClInclude Include="include\euphoria\erDebugDraw.h" />
+    <ClInclude Include="include\euphoria\erDefines.h" />
+    <ClInclude Include="include\euphoria\erDimensionalScaling.h" />
+    <ClInclude Include="include\euphoria\erDimensionalScalingHelpers.h" />
+    <ClInclude Include="include\euphoria\erEndConstraint.h" />
+    <ClInclude Include="include\euphoria\erEuphoriaLogger.h" />
+    <ClInclude Include="include\euphoria\erEuphoriaUserData.h" />
+    <ClInclude Include="include\euphoria\erGravityCompensation.h" />
+    <ClInclude Include="include\euphoria\erHitReaction.h" />
+    <ClInclude Include="include\euphoria\erHitUtils.h" />
+    <ClInclude Include="include\euphoria\erInteractionProxy.h" />
+    <ClInclude Include="include\euphoria\erInteractionProxyDef.h" />
+    <ClInclude Include="include\euphoria\erJunction.h" />
+    <ClInclude Include="include\euphoria\erLimb.h" />
+    <ClInclude Include="include\euphoria\erLimbDef.h" />
+    <ClInclude Include="include\euphoria\erLimbIK.h" />
+    <ClInclude Include="include\euphoria\erLimbInterface.h" />
+    <ClInclude Include="include\euphoria\erLimbTransforms.h" />
+    <ClInclude Include="include\euphoria\erModule.h" />
+    <ClInclude Include="include\euphoria\erNetworkInterface.h" />
+    <ClInclude Include="include\euphoria\erPath.h" />
+    <ClInclude Include="include\euphoria\erPinInterface.h" />
+    <ClInclude Include="include\euphoria\erReachLimit.h" />
+    <ClInclude Include="include\euphoria\erRigConstraint.h" />
+    <ClInclude Include="include\euphoria\erSharedEnums.h" />
+    <ClInclude Include="include\euphoria\erValuePostCombiners.h" />
+    <ClInclude Include="include\euphoria\erValueValidators.h" />
+    <ClInclude Include="include\euphoria\Nodes\erNodeBehaviour.h" />
+    <ClInclude Include="include\euphoria\Nodes\erNodeBehaviourGrouper.h" />
+    <ClInclude Include="include\euphoria\Nodes\erNodeLimbInfo.h" />
+    <ClInclude Include="include\euphoria\Nodes\erNodeOperatorContactReporter.h" />
+    <ClInclude Include="include\euphoria\Nodes\erNodeOperatorFallOverWall.h" />
+    <ClInclude Include="include\euphoria\Nodes\erNodeOperatorHit.h" />
+    <ClInclude Include="include\euphoria\Nodes\erNodeOperatorOrientationInFreeFall.h" />
+    <ClInclude Include="include\euphoria\Nodes\erNodeOperatorPhysicalConstraint.h" />
+    <ClInclude Include="include\euphoria\Nodes\erNodeOperatorRollDownStairs.h" />
+    <ClInclude Include="include\euphoria\Nodes\erNodePerformanceBehaviour.h" />
+    <ClInclude Include="include\euphoria\Nodes\erNodes.h" />
+    <ClInclude Include="include\euphoria\Nodes\erNodeTrajectoryOverride.h" />
+    <ClCompile Include="src\erAttribData.cpp" />
+    <ClCompile Include="src\erBehaviour.cpp" />
+    <ClCompile Include="src\erBehaviourTasks.cpp" />
+    <ClCompile Include="src\erBody.cpp" />
+    <ClCompile Include="src\erBodyDef.cpp" />
+    <ClCompile Include="src\erCharacter.cpp" />
+    <ClCompile Include="src\erCharacterDef.cpp" />
+    <ClCompile Include="src\erCollisionProbes.cpp" />
+    <ClCompile Include="src\erContactFeedback.cpp" />
+    <ClCompile Include="src\erDebugControls.cpp" />
+    <ClCompile Include="src\erDebugDraw.cpp" />
+    <ClCompile Include="src\erDimensionalScaling.cpp" />
+    <ClCompile Include="src\erEndConstraint.cpp" />
+    <ClCompile Include="src\erEuphoriaLogger.cpp" />
+    <ClCompile Include="src\erGravityCompensation.cpp" />
+    <ClCompile Include="src\erHitReaction.cpp" />
+    <ClCompile Include="src\erHitUtils.cpp" />
+    <ClCompile Include="src\erInteractionProxy.cpp" />
+    <ClCompile Include="src\erInteractionProxyDef.cpp" />
+    <ClCompile Include="src\erJunction.cpp" />
+    <ClCompile Include="src\erLimb.cpp" />
+    <ClCompile Include="src\erLimbDef.cpp" />
+    <ClCompile Include="src\erLimbIK.cpp" />
+    <ClCompile Include="src\erLimbInfoTasks.cpp" />
+    <ClCompile Include="src\erLimbTransforms.cpp" />
+    <ClCompile Include="src\erModule.cpp" />
+    <ClCompile Include="src\erPath.cpp" />
+    <ClCompile Include="src\erPerformanceBehaviourTasks.cpp" />
+    <ClCompile Include="src\erRigConstraint.cpp" />
+    <ClCompile Include="src\Nodes\erNodeBehaviour.cpp" />
+    <ClCompile Include="src\Nodes\erNodeBehaviourGrouper.cpp" />
+    <ClCompile Include="src\Nodes\erNodeLimbInfo.cpp" />
+    <ClCompile Include="src\Nodes\erNodeOperatorContactReporter.cpp" />
+    <ClCompile Include="src\Nodes\erNodeOperatorFallOVerWall.cpp" />
+    <ClCompile Include="src\Nodes\erNodeOperatorHit.cpp" />
+    <ClCompile Include="src\Nodes\erNodeOperatorOrientationInFreeFall.cpp" />
+    <ClCompile Include="src\Nodes\erNodeOperatorPhysicalConstraint.cpp" />
+    <ClCompile Include="src\Nodes\erNodeOperatorRollDownStairs.cpp" />
+    <ClCompile Include="src\Nodes\erNodePerformanceBehaviour.cpp" />
+    <ClCompile Include="src\Nodes\erNodeTrajectoryOverride.cpp" />
+    <ClInclude Include="..\sharedDefines\mEuphoriaDebugInterface.h" />
+    <ClInclude Include="..\sharedDefines\mEuphoriaDebugInterface.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\common\NMRuntimeUtils\NMHybridIK_WIN32.vcxproj">
+      <Project>{351BA87A-E918-43AD-24A4-562170385FD1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\physics\morphemePhysicsDriver_PhysX3_WIN32.vcxproj">
+      <Project>{31DFDD31-B92A-4256-0EA9-D69C04633280}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\physics\morphemePhysicsCore_WIN32.vcxproj">
+      <Project>{79CD03AF-41CC-469B-B0B1-DD18BDBD1643}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\core\morphemeCore_WIN32.vcxproj">
+      <Project>{AC5679CC-935C-4BCF-67A4-D937C17D2BC4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMRuntimeUtils\NMRuntimeUtils_WIN32.vcxproj">
+      <Project>{3EBBF790-FDD8-4FCC-81A8-FEA264CAD994}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMPlatform\NMPlatform_WIN32.vcxproj">
+      <Project>{A09CF394-9273-474D-4091-19EB54BF95DA}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

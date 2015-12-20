@@ -1,0 +1,31 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Makes the character appear unconscious by only activating the physical characteristics, such as joint limits, soft limits and hamstrings, but not the animation joints. 
+behaviour_def EuphoriaRagdoll
+{
+interface:
+  version = 2;
+
+  displayname = "Euphoria Ragdoll";
+modules:
+  euphoriaRagdollBehaviourInterface;
+attributes:
+  group("Default")
+  {
+    bool DisableSleeping = false; ///< False allows character to sleep when velocity is below a threshold. Used as an optimisation when there are many stationary characters
+  }
+modules:
+  
+}
+
+#endif

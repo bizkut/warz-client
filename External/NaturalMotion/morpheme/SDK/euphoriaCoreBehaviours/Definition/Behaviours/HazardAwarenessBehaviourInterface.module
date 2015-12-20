@@ -1,0 +1,44 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Non-SPU so it can interface with the system to get data into an appropriate network format etc
+__global_access__ __generate_interface__ module_def HazardAwarenessBehaviourInterface
+{
+owner: MyNetwork<>
+
+userIn:
+  bool useControlledVelocity;
+
+feedOut:
+  TimePeriod hazardFreeTime;
+  float hazardousness; ///< unitless 0-1 value
+  Hazard hazard;
+
+data:
+  TimePeriod hazardFreeTime;
+
+feedIn:
+  Hazard hazard;
+
+out:
+  bool velocityIsControlled; 
+  /// 0  is default, 1 means chest assumes no vertical prediction of velocity or acceleration
+  Weight ignoreVerticalPredictionAmount; 
+
+  Length probeRadius;
+connections<>:
+  feedIn.hazard = (owner.hazardManagement.chestImpactPredictor.feedOut.hazard);
+  feedOut.hazard = (owner.hazardManagement.chestImpactPredictor.feedOut.hazard);
+}
+
+#endif
+

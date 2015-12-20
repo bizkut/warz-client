@@ -1,0 +1,97 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// overall module dealing with applying overall body control, or passing up overall body state
+__pix__ __no_update__ module_def BodyFrame
+{
+owner: MyNetwork<>
+
+privateAPI:
+  void handleKeyboardInput();
+  void visualiseDynamicState();
+
+data:
+  BodyState chestState;
+  
+children:
+  SupportPolygon<Standing> supportPolygon;
+  SupportPolygon<Sitting> sittingSupportPolygon;
+  BodyBalance<> bodyBalance;
+  SittingBodyBalance<> sittingBodyBalance;
+  ReachForBody<> reachForBody;
+  BalanceAssistant<> balanceAssistant;
+
+in:
+  Weight instabilityPreparation; ///< value is size of instability, importance is urgency
+
+out:
+  RotationRequest pelvisRotationRequest;
+
+feedOut:
+  Weight impendingInstability; ///< value is size of instability, importance is urgency
+  BodyState centreOfMassBodyState;
+  BodyState chestState;
+  Weight supportAmount; ///< If the body as a whole is supported (includes standing or stepping or sitting etc)
+  Weight externalSpineSupportAmount;
+  PositionDelta leanVector;
+  Direction armsSupportDirection;
+
+feedIn:
+  Weight externalSpineSupportAmount;
+  Weight supportAmount;
+  Position averageOfSupportingFeet;
+  Position averageOfSupportingHands;
+  Position averageOfSupportingHandsAndFeet;
+  State chestState;
+  Position averageShoulders;
+  bool legsInContact;
+  bool spineInContact;
+  Position averageHips;
+  TimePeriod maxLegCollidingTime; ///< max collision time from all legs
+  bool isBodyBarFeetContacting; ///< any of body in contact apart from feet
+  bool isInContact;             ///< Any of body in contact.
+connections<>:
+  in.instabilityPreparation = (owner.hazardManagement.out.instabilityPreparation);
+
+  feedOut.impendingInstability = (in.instabilityPreparation);
+
+  feedOut.supportAmount = junctions.feedOut_supportAmount = maxFloatValue(
+    bodyBalance.feedOut.balanceAmount,
+    sittingBodyBalance.feedOut.sitAmount,
+    feedIn.externalSpineSupportAmount);
+
+  feedIn.averageHips = junctions.feedIn_averageHips = average(owner.legs[*].feedOut.hipPosition);
+  feedIn.chestState = (owner.spines[0].feedOut.chestState);
+  feedIn.averageOfSupportingHands = junctions.feedIn_averageOfSupportingHands = average(
+    owner.arms[*].standingSupport.feedOut.endSupportPoint);
+  feedIn.averageOfSupportingFeet = junctions.feedIn_averageOfSupportingFeet = average(
+    owner.legs[*].standingSupport.feedOut.endSupportPoint);
+  feedIn.averageOfSupportingHandsAndFeet = junctions.feedIn_averageOfHandsAndFeet = average(
+    owner.arms[*].standingSupport.feedOut.endSupportPoint, 
+    owner.legs[*].standingSupport.feedOut.endSupportPoint);
+  feedIn.averageShoulders = junctions.feedIn_averageShoulders = average(owner.arms[*].feedOut.basePosition);
+  feedIn.legsInContact = junctions.feedIn_legsInContact = isBoolSet(owner.legs[*].feedOut.inContact);
+  feedIn.spineInContact = (owner.spines[0].feedOut.inContact);
+  feedIn.maxLegCollidingTime = junctions.feedIn_maxLegCollidingTime = maxFloatValue(owner.legs[*].feedOut.collidingTime);
+  feedIn.isBodyBarFeetContacting = junctions.feedIn_isBodyBarFeetContacting = isBoolSet(
+    owner.legs[*].feedOut.limbBarEndIsColliding, owner.arms[*].feedOut.inContact, 
+    owner.heads[*].feedOut.inContact, owner.spines[*].feedOut.inContact);
+  out.pelvisRotationRequest = (bodyBalance.out.pelvisRotationRequest);
+  feedIn.isInContact = junctions.out_isInContact = 
+    isBoolSet(owner.legs[*].feedOut.inContact, owner.arms[*].feedOut.inContact, 
+              owner.heads[*].feedOut.inContact, owner.spines[*].feedOut.inContact);
+  feedOut.leanVector = junctions.feedOut_leanVector = winnerTakesAll(
+    supportPolygon.out.offsetFromPolygon,
+    sittingBodyBalance.feedOut.leanVector);
+}
+
+#endif

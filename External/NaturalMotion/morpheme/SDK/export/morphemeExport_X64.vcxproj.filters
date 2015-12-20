@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\export" />
+    <Filter Include="include" />
+    <Filter Include="src" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\export\apExport.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\apExportLUA.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\mcAnimInfo.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\mcAnimInfoXml.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\mcExport.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\mcExportBody.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\mcExportBodyXml.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\mcExportControllerXml.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\mcExportInteractionProxyXml.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\mcExportMessagePresets.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\mcExportMessagePresetsXml.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\mcExportPhysics.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\mcExportPhysicsXml.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\mcExportXml.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClInclude Include="include\export\mcXML.h">
+      <Filter>include\export</Filter>
+    </ClInclude>
+    <ClCompile Include="src\apExportLUA.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mcAnimInfoXml.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mcExport.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mcExportBody.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mcExportBodyXml.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mcExportControllerXml.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mcExportInteractionProxyXml.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mcExportMessagePresetsXml.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mcExportPhysics.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mcExportPhysicsXml.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mcExportXml.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mcXML.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

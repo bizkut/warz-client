@@ -1,0 +1,75 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+module_def ReachForBody
+{
+owner: BodyFrame
+
+in:
+  bool armReachForBodyPartFlags[networkMaxNumArms]; ///< from reachForBodyBehaviourInterface: eg. game side requirement
+  BraceHazard braceHazard;                      ///< from hazardResponse: may yield an arm if importance is high
+  ReachActionParams reachActionParams[networkMaxNumArms];
+  
+feedIn:
+  BodyHitInfo hitInfo[networkMaxNumArms];                   ///< a hit info for each arm
+  float endEffectorDistanceSquaredToTargets[networkMaxNumArms];
+  Weight armStrengthReduction[networkMaxNumArms];           ///< for phasing out arms
+  LimbControl competingArmControls[networkMaxNumArms];      ///< look at brace arm controls so we can yield to brace
+  Position shoulderPositions[networkMaxNumArms];            ///< on yield (to brace) use arm with shouder closest to brace hazard
+  // reach state tells us something about how armReachForBodyPart is getting along and in particular when she's done
+  uint32_t armReachStates[networkMaxNumArms];
+  
+feedOut:
+  bool completed;  
+  
+data:
+  bool haveReachTarget;
+  ReachTarget rt[networkMaxNumArms];
+  Weight reachTargetImportances[networkMaxNumArms];
+  ReachActionParams reachActionParams[networkMaxNumArms];
+  
+  float endEffectorDistanceSquaredToTargets[networkMaxNumArms];
+  Weight armStrengthReduction[networkMaxNumArms];
+  ER::HandFootTransform endEffectorTMs[networkMaxNumArms];
+  bool armReachForBodyPartFlags[networkMaxNumArms];
+  bool isReaching[networkMaxNumArms];
+  float competingControlImportances[networkMaxNumArms];
+  Position shoulderPositions[networkMaxNumArms];
+  uint32_t numArmsReaching;
+  Weight averageReachStrength;
+  Position weightedAverageEffectorPos;
+  
+out:
+  TargetRequest lookTarget;
+  ReachTarget reachTarget;
+  ReachTarget reachTargets[networkMaxNumArms];
+  ReachActionParams reachActionParams[networkMaxNumArms];
+  Position errorWeightedAverageEffectorPosition;
+  bool armReachForBodyPartFlags[networkMaxNumArms];
+
+connections<>:
+  
+  in.armReachForBodyPartFlags[] = (owner.owner.reachForBodyBehaviourInterface.out.armReachForBodyPartFlags[]);
+  in.reachActionParams[] = (owner.owner.reachForBodyBehaviourInterface.out.reachActionParams[]);
+  
+  // info used to yield arms from hit-reacting to brace
+  in.braceHazard = (owner.owner.hazardManagement.hazardResponse.out.braceHazard);
+  feedIn.competingArmControls[] = (owner.owner.arms[].brace.out.control);
+  feedIn.shoulderPositions[] = (owner.owner.arms[].feedOut.basePosition);
+    
+  // effector progress
+  feedIn.armReachStates[] = (owner.owner.arms[].reachForBodyPart.feedOut.state);
+  feedIn.endEffectorDistanceSquaredToTargets[] = (owner.owner.arms[].reachForBodyPart.feedOut.distanceSquaredToTarget);
+  feedIn.armStrengthReduction[] = (owner.owner.arms[].reachForBodyPart.feedOut.armStrengthReduction);
+}
+
+#endif 

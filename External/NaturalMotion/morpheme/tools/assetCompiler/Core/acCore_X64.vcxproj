@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Target LE64 Debug|x64">
+      <Configuration>Target LE64 Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target LE64 Release|x64">
+      <Configuration>Target LE64 Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>acCore</ProjectName>
+    <ProjectGuid>{E02BF743-2306-4EB6-D5B9-ABF6A67628A6}</ProjectGuid>
+    <RootNamespace>acCore</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <TargetName>acCore_target_LE64_debug</TargetName>
+    <IntDir>..\..\..\..\obj\x64\vs$(VisualStudioVersion)\acCore\target_le64_debug\</IntDir>
+    <OutDir>..\..\..\..\bin\x64\vs$(VisualStudioVersion)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <TargetName>acCore_target_LE64</TargetName>
+    <IntDir>..\..\..\..\obj\x64\vs$(VisualStudioVersion)\acCore\target_le64_release\</IntDir>
+    <OutDir>..\..\..\..\bin\x64\vs$(VisualStudioVersion)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;include\core;..\..\..\SDK\assetProcessor\include;..\..\..\SDK\core\include;..\..\..\SDK;..\..\..\..\common\NMRuntimeUtils\include;..\..\..\SDK\export\include;..\..\..\..\common\tinyxml;..\..\..\..\common\NMNumerics\include;..\..\..\..\common\NMPlatform\include;..\..\..\..\common\NMPlatform\include\NMPlatform\win32;..\..\..\..\common\qhull\src;..\..\..\..\common\XMD\include;..\..\..\..\common\NMTL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>AC_CORE_EXPORTS;NM_TARGET_BIGENDIAN=0;WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_USRDLL;_WIN64;_WINDLL;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeAssetProcessor_target_LE64_debug.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeCore_target_LE64_debug.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMRuntimeUtils_target_LE64_debug.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeExport_debug.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMTinyXML_debug.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMNumerics_debug.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMPlatform_target_LE64_debug.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\qhull_debug.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\XMD_debug.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMTL_debug.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\..\..\..\lib\x64\vs$(VisualStudioVersion)\acCore_target_LE64_debug.lib</ImportLibrary>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <ProgramDatabaseFile>$(OutDir)acCore_target_LE64_debug.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;include\core;..\..\..\SDK\assetProcessor\include;..\..\..\SDK\core\include;..\..\..\SDK;..\..\..\..\common\NMRuntimeUtils\include;..\..\..\SDK\export\include;..\..\..\..\common\tinyxml;..\..\..\..\common\NMNumerics\include;..\..\..\..\common\NMPlatform\include;..\..\..\..\common\NMPlatform\include\NMPlatform\win32;..\..\..\..\common\qhull\src;..\..\..\..\common\XMD\include;..\..\..\..\common\NMTL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>AC_CORE_EXPORTS;NDEBUG;NM_ENABLE_EXCEPTIONS=1;NM_TARGET_BIGENDIAN=0;WIN32;_CRT_SECURE_NO_WARNINGS;_USRDLL;_WIN64;_WINDLL;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeAssetProcessor_target_LE64.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeCore_target_LE64.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMRuntimeUtils_target_LE64.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeExport.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMTinyXML.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMNumerics.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMPlatform_target_LE64.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\qhull.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\XMD.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMTL.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\..\..\..\lib\x64\vs$(VisualStudioVersion)\acCore_target_LE64.lib</ImportLibrary>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDatabaseFile>$(OutDir)acCore_target_LE64.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\core\acCore.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisCondition.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisConditionAtFrame.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisConditionCrossedDurationFraction.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisConditionDiscreteEventTriggered.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisConditionInSyncEventRange.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisConditionStateMachineInState.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisInterval.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisParameteriser.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisProperty.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyCustom.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyEulerAngleComponent.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyPositionArcDistance.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyPositionDeltaDistance.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyPositionDeltaInAxis.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyPositionValueInAxis.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyRateOfTurnWithForwardTravel.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyRotationDeltaInAxis.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertySpeed.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertySpeedForCutTurns.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertySpeedInPlane.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyStrideLength.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyTakeOffDirectionInPlane.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyTravelDirectionInPlane.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyTravelSlopeAngle.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyTurningRate.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyUtils.h" />
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyVelocityInAxis.h" />
+    <ClInclude Include="include\core\Analysis\ControlParameterRegularSampleGrid.h" />
+    <ClInclude Include="include\core\Analysis\DemoPredictionModel.h" />
+    <ClInclude Include="include\core\Analysis\NDMeshAnalysisData.h" />
+    <ClInclude Include="include\core\Analysis\NDMeshAPResampleMapBuilder.h" />
+    <ClInclude Include="include\core\Analysis\NDMeshAPSearchMapBuilder.h" />
+    <ClInclude Include="include\core\Analysis\NDMeshBuilder.h" />
+    <ClInclude Include="include\core\Analysis\NDMeshQuantisationData.h" />
+    <ClInclude Include="include\core\Analysis\NDMeshResampleMapExportData.h" />
+    <ClInclude Include="include\core\Analysis\NDMeshResampleMapIntermediteData.h" />
+    <ClInclude Include="include\core\Analysis\NDMeshResampler.h" />
+    <ClInclude Include="include\core\Analysis\NetworkControlPlayer.h" />
+    <ClInclude Include="include\core\Analysis\PredictionModelNDMeshAnalyser.h" />
+    <ClInclude Include="include\core\Analysis\PredictionModelNDMeshBuilder.h" />
+    <ClInclude Include="include\core\Analysis\ScatterBlend1DTask.h" />
+    <ClInclude Include="include\core\Analysis\ScatterBlend2DBSPTreeAnalyser.h" />
+    <ClInclude Include="include\core\Analysis\ScatterBlendTriangleAnnotationAnalyser.h" />
+    <ClInclude Include="include\core\Analysis\ScatterBlendVertexSourceAnalyser.h" />
+    <ClInclude Include="include\core\Analysis\XMDNetworkControlTake.h" />
+    <ClInclude Include="include\core\BasicCharacterController.h" />
+    <ClInclude Include="include\core\CharacterControllerDefBuilder.h" />
+    <ClInclude Include="include\core\EventTrackCurveBuilder.h" />
+    <ClInclude Include="include\core\EventTrackDiscreteBuilder.h" />
+    <ClInclude Include="include\core\EventTrackDurationBuilder.h" />
+    <ClInclude Include="include\core\JointLimitsBuilder.h" />
+    <ClInclude Include="include\core\MessageScaleCharacterBuilder.h" />
+    <ClInclude Include="include\core\MirroredAnimMappingBuilder.h" />
+    <ClInclude Include="include\core\NetworkDefBuilder.h" />
+    <ClInclude Include="include\core\NetworkPredictionDefBuilder.h" />
+    <ClInclude Include="include\core\NodeAnimSyncEventsBuilder.h" />
+    <ClInclude Include="include\core\NodeApplyBindPoseBuilder.h" />
+    <ClInclude Include="include\core\NodeApplyGlobalTimeBuilder.h" />
+    <ClInclude Include="include\core\NodeBasicUnevenTerrainBuilder.h" />
+    <ClInclude Include="include\core\NodeBlend2Builder.h" />
+    <ClInclude Include="include\core\NodeBlend2x2Builder.h" />
+    <ClInclude Include="include\core\NodeBlendAllBuilder.h" />
+    <ClInclude Include="include\core\NodeBlendNBuilder.h" />
+    <ClInclude Include="include\core\NodeBlendNxMBuilder.h" />
+    <ClInclude Include="include\core\NodeCharacterControllerOverrideBuilder.h" />
+    <ClInclude Include="include\core\NodeClosestAnimBuilder.h" />
+    <ClInclude Include="include\core\NodeControlParamBoolBuilder.h" />
+    <ClInclude Include="include\core\NodeControlParamFloatBuilder.h" />
+    <ClInclude Include="include\core\NodeControlParamIntBuilder.h" />
+    <ClInclude Include="include\core\NodeControlParamUIntBuilder.h" />
+    <ClInclude Include="include\core\NodeControlParamVector3Builder.h" />
+    <ClInclude Include="include\core\NodeControlParamVector4Builder.h" />
+    <ClInclude Include="include\core\NodeEmitMessageOnDiscreteEventBuilder.h" />
+    <ClInclude Include="include\core\NodeExtractJointInfoBuilder.h" />
+    <ClInclude Include="include\core\NodeFeatherBlend2Builder.h" />
+    <ClInclude Include="include\core\NodeFilterTransformsBuilder.h" />
+    <ClInclude Include="include\core\NodeFreezeBuilder.h" />
+    <ClInclude Include="include\core\NodeGunAimIKBuilder.h" />
+    <ClInclude Include="include\core\NodeHeadLookBuilder.h" />
+    <ClInclude Include="include\core\NodeHipsIKBuilder.h" />
+    <ClInclude Include="include\core\NodeLockFootBuilder.h" />
+    <ClInclude Include="include\core\NodeMirrorTransformsBuilder.h" />
+    <ClInclude Include="include\core\NodeModifyJointTransformBuilder.h" />
+    <ClInclude Include="include\core\NodeModifyTrajectoryTransformBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorArithmeticBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorArithmeticVector3Builder.h" />
+    <ClInclude Include="include\core\NodeOperatorBooleanBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorCPCompareBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorFloatsToVector3Builder.h" />
+    <ClInclude Include="include\core\NodeOperatorFloatToIntBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorFunctionBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorIntToFloatBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorNoiseGenBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorOneInputArithmeticBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorOneInputArithmeticVector3Builder.h" />
+    <ClInclude Include="include\core\NodeOperatorRampFloatBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorRandomFloatBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorRateOfChangeBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorRayCastBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorSmoothFloatBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorTimeLagInputBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorVector3AngleBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorVector3CrossProductBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorVector3DistanceBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorVector3DotBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorVector3NormaliseBuilder.h" />
+    <ClInclude Include="include\core\NodeOperatorVector3ToFloatsBuilder.h" />
+    <ClInclude Include="include\core\NodePassThroughBuilder.h" />
+    <ClInclude Include="include\core\NodePlaySpeedModifierBuilder.h" />
+    <ClInclude Include="include\core\NodePredictiveUnevenTerrainBuilder.h" />
+    <ClInclude Include="include\core\NodeRetargetBuilder.h" />
+    <ClInclude Include="include\core\NodeScaleCharacterBuilder.h" />
+    <ClInclude Include="include\core\NodeScaleToDurationBuilder.h" />
+    <ClInclude Include="include\core\NodeScatterBlend1DAnnotationExport.h" />
+    <ClInclude Include="include\core\NodeScatterBlend1DBuilder.h" />
+    <ClInclude Include="include\core\NodeScatterBlend2DAnnotation.h" />
+    <ClInclude Include="include\core\NodeScatterBlend2DAnnotationExport.h" />
+    <ClInclude Include="include\core\NodeScatterBlendBuilder.h" />
+    <ClInclude Include="include\core\NodeSequenceBuilder.h" />
+    <ClInclude Include="include\core\NodeSingleFrameBuilder.h" />
+    <ClInclude Include="include\core\NodeSmoothTransformsBuilder.h" />
+    <ClInclude Include="include\core\NodeStateMachineBuilder.h" />
+    <ClInclude Include="include\core\NodeSubtractiveBlendBuilder.h" />
+    <ClInclude Include="include\core\NodeSwitchBuilder.h" />
+    <ClInclude Include="include\core\NodeTransitBuilder.h" />
+    <ClInclude Include="include\core\NodeTransitSyncEventsBuilder.h" />
+    <ClInclude Include="include\core\NodeTwoBoneIKBuilder.h" />
+    <ClInclude Include="include\core\PluginManager.h" />
+    <ClInclude Include="include\core\RigBuilder.h" />
+    <ClInclude Include="include\core\RigRetargetMappingBuilder.h" />
+    <ClInclude Include="include\core\TransitConditionDefBuilderControlParamBoolSet.h" />
+    <ClInclude Include="include\core\TransitConditionDefBuilderControlParamInRange.h" />
+    <ClInclude Include="include\core\TransitConditionDefBuilderControlParamTest.h" />
+    <ClInclude Include="include\core\TransitConditionDefBuilderCrossedCurveEventValueDecreasing.h" />
+    <ClInclude Include="include\core\TransitConditionDefBuilderCrossedDurationFraction.h" />
+    <ClInclude Include="include\core\TransitConditionDefBuilderDiscreteEventTriggered.h" />
+    <ClInclude Include="include\core\TransitConditionDefBuilderFalse.h" />
+    <ClInclude Include="include\core\TransitConditionDefBuilderInDurationEvent.h" />
+    <ClInclude Include="include\core\TransitConditionDefBuilderInSyncEventRange.h" />
+    <ClInclude Include="include\core\TransitConditionDefBuilderNodeActive.h" />
+    <ClInclude Include="include\core\TransitConditionDefBuilderOnMessage.h" />
+    <ClInclude Include="include\core\TransitConditionDefBuilderRayHit.h" />
+    <ClInclude Include="include\core\TransitDeadBlendDefBuilderDefault.h" />
+    <ClCompile Include="src\acCore.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisConditionAtFrame.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisConditionCrossedDurationFraction.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisConditionDiscreteEventTriggered.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisConditionInSyncEventRange.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisConditionStateMachineInState.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisInterval.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisParameteriser.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisProperty.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyCustom.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyEulerAngleComponent.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyPositionArcDistance.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyPositionDeltaDistance.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyPositionDeltaInAxis.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyPositionValueInAxis.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyRateOfTurnWithForwardTravel.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyRotationDeltaInAxis.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertySpeed.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertySpeedForCutTurns.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertySpeedInPlane.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyStrideLength.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyTakeOffDirectionInPlane.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyTravelDirectionInPlane.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyTravelSlopeAngle.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyTurningRate.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyUtils.cpp" />
+    <ClCompile Include="src\Analysis\AnalysisPropertyVelocityInAxis.cpp" />
+    <ClCompile Include="src\Analysis\ControlParameterRegularSampleGrid.cpp" />
+    <ClCompile Include="src\Analysis\DemoPredictionModel.cpp" />
+    <ClCompile Include="src\Analysis\NDMeshAnalysisData.cpp" />
+    <ClCompile Include="src\Analysis\NDMeshAPResampleMapBuilder.cpp" />
+    <ClCompile Include="src\Analysis\NDMeshAPSearchMapBuilder.cpp" />
+    <ClCompile Include="src\Analysis\NDMeshBuilder.cpp" />
+    <ClCompile Include="src\Analysis\NDMeshQuantisationData.cpp" />
+    <ClCompile Include="src\Analysis\NDMeshResampleMapExportData.cpp" />
+    <ClCompile Include="src\Analysis\NDMeshResampleMapIntermediteData.cpp" />
+    <ClCompile Include="src\Analysis\NDMeshResampler.cpp" />
+    <ClCompile Include="src\Analysis\NetworkControlPlayer.cpp" />
+    <ClCompile Include="src\Analysis\PredictionModelNDMeshAnalyser.cpp" />
+    <ClCompile Include="src\Analysis\PredictionModelNDMeshBuilder.cpp" />
+    <ClCompile Include="src\Analysis\ScatterBlend1DTask.cpp" />
+    <ClCompile Include="src\Analysis\ScatterBlend2DBSPTreeAnalyser.cpp" />
+    <ClCompile Include="src\Analysis\ScatterBlendTriangleAnnotationAnalyser.cpp" />
+    <ClCompile Include="src\Analysis\ScatterBlendVertexSourceAnalyser.cpp" />
+    <ClCompile Include="src\Analysis\XMDNetworkControlTake.cpp" />
+    <ClCompile Include="src\BasicCharacterController.cpp" />
+    <ClCompile Include="src\CharacterControllerDefBuilder.cpp" />
+    <ClCompile Include="src\EventTrackCurveBuilder.cpp" />
+    <ClCompile Include="src\EventTrackDiscreteBuilder.cpp" />
+    <ClCompile Include="src\EventTrackDurationBuilder.cpp" />
+    <ClCompile Include="src\JointLimitsBuilder.cpp" />
+    <ClCompile Include="src\MessageScaleCharacterBuilder.cpp" />
+    <ClCompile Include="src\MirroredAnimMappingBuilder.cpp" />
+    <ClCompile Include="src\NetworkDefBuilder.cpp" />
+    <ClCompile Include="src\NetworkPredictionDefBuilder.cpp" />
+    <ClCompile Include="src\NodeAnimSyncEventsBuilder.cpp" />
+    <ClCompile Include="src\NodeApplyBindPoseBuilder.cpp" />
+    <ClCompile Include="src\NodeApplyGlobalTimeBuilder.cpp" />
+    <ClCompile Include="src\NodeBasicUnevenTerrainBuilder.cpp" />
+    <ClCompile Include="src\NodeBlend2Builder.cpp" />
+    <ClCompile Include="src\NodeBlend2x2Builder.cpp" />
+    <ClCompile Include="src\NodeBlendAllBuilder.cpp" />
+    <ClCompile Include="src\NodeBlendNBuilder.cpp" />
+    <ClCompile Include="src\NodeBlendNxMBuilder.cpp" />
+    <ClCompile Include="src\NodeCharacterControllerOverrideBuilder.cpp" />
+    <ClCompile Include="src\NodeClosestAnimBuilder.cpp" />
+    <ClCompile Include="src\NodeControlParamBoolBuilder.cpp" />
+    <ClCompile Include="src\NodeControlParamFloatBuilder.cpp" />
+    <ClCompile Include="src\NodeControlParamIntBuilder.cpp" />
+    <ClCompile Include="src\NodeControlParamUIntBuilder.cpp" />
+    <ClCompile Include="src\NodeControlParamVector3Builder.cpp" />
+    <ClCompile Include="src\NodeControlParamVector4Builder.cpp" />
+    <ClCompile Include="src\NodeEmitMessageOnDiscreteEventBuilder.cpp" />
+    <ClCompile Include="src\NodeExtractJointInfoBuilder.cpp" />
+    <ClCompile Include="src\NodeFeatherBlend2Builder.cpp" />
+    <ClCompile Include="src\NodeFilterTransformsBuilder.cpp" />
+    <ClCompile Include="src\NodeFreezeBuilder.cpp" />
+    <ClCompile Include="src\NodeGunAimIKBuilder.cpp" />
+    <ClCompile Include="src\NodeHeadLookBuilder.cpp" />
+    <ClCompile Include="src\NodeHipsIKBuilder.cpp" />
+    <ClCompile Include="src\NodeLockFootBuilder.cpp" />
+    <ClCompile Include="src\NodeMirrorTransformsBuilder.cpp" />
+    <ClCompile Include="src\NodeModifyJointTransformBuilder.cpp" />
+    <ClCompile Include="src\NodeModifyTrajectoryTransformBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorArithmeticBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorArithmeticVector3Builder.cpp" />
+    <ClCompile Include="src\NodeOperatorBooleanBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorCPCompareBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorFloatsToVector3Builder.cpp" />
+    <ClCompile Include="src\NodeOperatorFloatToIntBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorFunctionBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorIntToFloatBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorNoiseGenBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorOneInputArithmeticBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorOneInputArithmeticVector3Builder.cpp" />
+    <ClCompile Include="src\NodeOperatorRampFloatBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorRandomFloatBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorRateOfChangeBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorRayCastBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorSmoothFloatBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorTimeLagInputBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorVector3AngleBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorVector3CrossProductBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorVector3DistanceBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorVector3DotBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorVector3NormaliseBuilder.cpp" />
+    <ClCompile Include="src\NodeOperatorVector3ToFloatsBuilder.cpp" />
+    <ClCompile Include="src\NodePassThroughBuilder.cpp" />
+    <ClCompile Include="src\NodePlaySpeedModifierBuilder.cpp" />
+    <ClCompile Include="src\NodePredictiveUnevenTerrainBuilder.cpp" />
+    <ClCompile Include="src\NodeRetargetBuilder.cpp" />
+    <ClCompile Include="src\NodeScaleCharacterBuilder.cpp" />
+    <ClCompile Include="src\NodeScaleToDurationBuilder.cpp" />
+    <ClCompile Include="src\NodeScatterBlend1DAnnotationExport.cpp" />
+    <ClCompile Include="src\NodeScatterBlend1DBuilder.cpp" />
+    <ClCompile Include="src\NodeScatterBlend2DAnnotation.cpp" />
+    <ClCompile Include="src\NodeScatterBlend2DAnnotationExport.cpp" />
+    <ClCompile Include="src\NodeScatterBlendBuilder.cpp" />
+    <ClCompile Include="src\NodeSequenceBuilder.cpp" />
+    <ClCompile Include="src\NodeSingleFrameBuilder.cpp" />
+    <ClCompile Include="src\NodeSmoothTransformsBuilder.cpp" />
+    <ClCompile Include="src\NodeStateMachineBuilder.cpp" />
+    <ClCompile Include="src\NodeSubtractiveBlendBuilder.cpp" />
+    <ClCompile Include="src\NodeSwitchBuilder.cpp" />
+    <ClCompile Include="src\NodeTransitBuilder.cpp" />
+    <ClCompile Include="src\NodeTransitSyncEventsBuilder.cpp" />
+    <ClCompile Include="src\NodeTwoBoneIKBuilder.cpp" />
+    <ClCompile Include="src\PluginManager.cpp" />
+    <ClCompile Include="src\RigBuilder.cpp" />
+    <ClCompile Include="src\RigRetargetMappingBuilder.cpp" />
+    <ClCompile Include="src\TransitConditionDefBuilderControlParamBoolSet.cpp" />
+    <ClCompile Include="src\TransitConditionDefBuilderControlParamInRange.cpp" />
+    <ClCompile Include="src\TransitConditionDefBuilderControlParamTest.cpp" />
+    <ClCompile Include="src\TransitConditionDefBuilderCrossedCurveEventValueDecreasing.cpp" />
+    <ClCompile Include="src\TransitConditionDefBuilderCrossedDurationFraction.cpp" />
+    <ClCompile Include="src\TransitConditionDefBuilderDiscreteEventTriggered.cpp" />
+    <ClCompile Include="src\TransitConditionDefBuilderFalse.cpp" />
+    <ClCompile Include="src\TransitConditionDefBuilderInDurationEvent.cpp" />
+    <ClCompile Include="src\TransitConditionDefBuilderInSyncEventRange.cpp" />
+    <ClCompile Include="src\TransitConditionDefBuilderNodeActive.cpp" />
+    <ClCompile Include="src\TransitConditionDefBuilderOnMessage.cpp" />
+    <ClCompile Include="src\TransitConditionDefBuilderRayHit.cpp" />
+    <ClCompile Include="src\TransitDeadBlendDefBuilderDefault.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\SDK\assetProcessor\morphemeAssetProcessor_X64.vcxproj">
+      <Project>{864F5EAC-3E7B-4518-89BA-2C3201C79690}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SDK\core\morphemeCore_X64.vcxproj">
+      <Project>{D90ECD48-E518-4965-D5A1-487523A09108}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\NMRuntimeUtils\NMRuntimeUtils_X64.vcxproj">
+      <Project>{3C388267-640A-4D4B-C8B1-2361CDE77233}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SDK\export\morphemeExport_X64.vcxproj">
+      <Project>{348A8659-5C73-4CB4-20A1-95EDAB98AE5D}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\tinyxml\NMTinyXML_X64.vcxproj">
+      <Project>{9121BE9D-8F56-4D9C-158F-1495BC741C2A}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\NMNumerics\NMNumerics_X64.vcxproj">
+      <Project>{E97AC720-CA8A-49CD-49A9-BBED3C23E192}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\NMPlatform\NMPlatform_X64.vcxproj">
+      <Project>{773E894A-FCA3-4312-37AF-0588248FC43F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\qhull\qhull_X64.vcxproj">
+      <Project>{2A3758B7-E5C1-458F-948A-5DC4298A1CCA}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\XMD\XMD_X64.vcxproj">
+      <Project>{23D1C7B2-4F9B-401E-D08D-7E8CBE00A9B7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\NMTL\NMTL_X64.vcxproj">
+      <Project>{5FF4A11E-1F9C-4999-1E8C-6616EF16DB1C}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

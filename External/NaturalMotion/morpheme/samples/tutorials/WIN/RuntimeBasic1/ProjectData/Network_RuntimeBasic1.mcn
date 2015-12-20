@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NaturalMotion typeString="ConnectNetwork" productVersion="5.2" dataVersion="3530" formatVersion="5">
+	<MorphemeDB name="MorphemeDB" type="node" namespace="mcd">
+		<Networks type="nodeContainer">
+			<Network name="Network" type="node">
+				<ManifestItemBaseVersion type="int">3</ManifestItemBaseVersion>
+				<AnimationLocations type="nodeContainer">
+					<AnimationLocation name="AnimationLocation" type="node">
+						<SourceDirectory type="string">$(RootDir)\Characters\MaleCharacter\Animation\XMD\</SourceDirectory>
+						<MarkupDirectory type="string">$(RootDir)\Characters\MaleCharacter\morphemeMarkup\</MarkupDirectory>
+						<IncludeSubDirectories type="bool">1</IncludeSubDirectories>
+					</AnimationLocation>
+				</AnimationLocations>
+				<PreviewScripts type="nodeContainer">
+					<PreviewScriptNode name="Init script" type="node">
+						<ScriptData type="string"><![CDATA[------------------------------------------------------------------------------------------------------------------------
+-- include some useful utilities
+-- RayCastToolPreview.lua is required for the default ray cast tool functionality
+------------------------------------------------------------------------------------------------------------------------
+require "previewScripts/DebugDraw.lua"
+require "previewScripts/RayCastToolPreview.lua"
+require "previewScripts/VectorMath.lua"
+------------------------------------------------------------------------------------------------------------------------
+
+-- Place init logic here --
+
+local upgradedUpdateScript = function()
+  -- Update any debug drawing that may be specified
+  if (type(viewport.debugDraw.update) == "function") then
+    viewport.debugDraw.update()
+  end
+
+  -- Place per-tick control script logic here
+end
+
+registerUpdateHandler(upgradedUpdateScript)
+]]></ScriptData>
+					</PreviewScriptNode>
+				</PreviewScripts>
+				<GUID type="string">716d757b-3a11-45a0-ac39-567879dc6ed7</GUID>
+				<AnimLibraryGUID type="string">4d02a33a-4b33-4e4c-a317-bb4026aef25c</AnimLibraryGUID>
+				<AssetManagerSelectedSet type="pointer">MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AssetManagerSelectedSet>
+				<ControlParametersNode name="ControlParameters" type="node">
+					<ControlParameterArray type="nodeContainer">
+						<ControlParameter name="speed" type="node">
+							<DataPinEntry type="PinList">
+								<DataPin name="Result"/>
+							</DataPinEntry>
+						</ControlParameter>
+					</ControlParameterArray>
+					<BlendTree name="ControlParameterBlendTree" type="node"/>
+				</ControlParametersNode>
+				<EmittedControlParametersNode name="EmittedControlParameters" type="node"/>
+				<AnimationSetsNode name="AnimationSets" type="node">
+					<AnimationSetArray type="nodeContainer">
+						<AnimationSet name="MaleCharacter" type="node">
+							<Rig type="string">$(RootDir)\Characters\MaleCharacter\morphemeRigs\maleCharacterAnimationRig.mcarig</Rig>
+							<AssetManagerSkin type="pointer">MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter.Skins.Default</AssetManagerSkin>
+							<Skins type="nodeContainer">
+								<Skin name="Default" type="node">
+									<Path type="string">$(RootDir)\characters\malecharacter\morphemerigs\malecharacteranimationrig.mcskin</Path>
+								</Skin>
+							</Skins>
+							<Format type="string">qsa</Format>
+							<RigChannelNames type="stringArray" size="68">
+<e>CharacterWorldSpaceTM</e>
+<e>mainDemoCharacter</e>
+<e>Hips</e>
+<e>Spine1</e>
+<e>Spine2</e>
+<e>Spine3</e>
+<e>Neck</e>
+<e>Head</e>
+<e>HeadEnd</e>
+<e>LeftClavicle</e>
+<e>LeftShoulder</e>
+<e>LeftElbow</e>
+<e>LeftWrist</e>
+<e>LeftMiddle1</e>
+<e>LeftMiddle2</e>
+<e>LeftMiddle3</e>
+<e>LeftMiddleEnd</e>
+<e>LeftIndex1</e>
+<e>LeftIndex2</e>
+<e>LeftIndex3</e>
+<e>LeftIndexEnd</e>
+<e>LeftRing1</e>
+<e>LeftRing2</e>
+<e>LeftRing3</e>
+<e>LeftRingEnd</e>
+<e>LeftPinky1</e>
+<e>LeftPinky2</e>
+<e>LeftPinky3</e>
+<e>LeftPinkyEnd</e>
+<e>LeftThumb1</e>
+<e>LeftThumb2</e>
+<e>LeftThumb3</e>
+<e>LeftThumbEnd</e>
+<e>RightClavicle</e>
+<e>RightShoulder</e>
+<e>RightElbow</e>
+<e>RightWrist</e>
+<e>RightMiddle1</e>
+<e>RightMiddle2</e>
+<e>RightMiddle3</e>
+<e>RightMiddleEnd</e>
+<e>RightIndex1</e>
+<e>RightIndex2</e>
+<e>RightIndex3</e>
+<e>RightIndexEnd</e>
+<e>RightRing1</e>
+<e>RightRing2</e>
+<e>RightRing3</e>
+<e>RightRingEnd</e>
+<e>RightPinky1</e>
+<e>RightPinky2</e>
+<e>RightPinky3</e>
+<e>RightPinkyEnd</e>
+<e>RightThumb1</e>
+<e>RightThumb2</e>
+<e>RightThumb3</e>
+<e>RightThumbEnd</e>
+<e>LeftHip</e>
+<e>LeftKnee</e>
+<e>LeftAnkle</e>
+<e>LeftToes</e>
+<e>LeftToesEnd</e>
+<e>RightHip</e>
+<e>RightKnee</e>
+<e>RightAnkle</e>
+<e>RightToes</e>
+<e>RightToesEnd</e>
+<e>Trajectory</e>
+							</RigChannelNames>
+							<RetargetSrcStartPointLocation type="matrix34">
+								<R0>
+									<C0>1</C0>
+									<C1>0</C1>
+									<C2>0</C2>
+								</R0>
+								<R1>
+									<C0>0</C0>
+									<C1>1</C1>
+									<C2>0</C2>
+								</R1>
+								<R2>
+									<C0>0</C0>
+									<C1>0</C1>
+									<C2>1</C2>
+								</R2>
+								<R3>
+									<C0>1.5</C0>
+									<C1>0</C1>
+									<C2>0</C2>
+								</R3>
+							</RetargetSrcStartPointLocation>
+						</AnimationSet>
+					</AnimationSetArray>
+					<AnimationTreeArray type="nodeContainer">
+						<AnimationTree name="MaleCharacter" type="node">
+							<AnimationSetReference type="pointer">MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSetReference>
+						</AnimationTree>
+					</AnimationTreeArray>
+					<SelectedAnimSet type="pointer">MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</SelectedAnimSet>
+				</AnimationSetsNode>
+				<SceneGraphRootNode name="SceneGraphRoot" type="node"/>
+				<LayersNode name="Layers" type="node"/>
+				<BodyGroupsNode name="BodyGroups" type="node">
+					<BodyGroups type="nodeContainer">
+						<BodyGroup name="RightLeg" type="node"/>
+						<BodyGroup name="LeftLeg" type="node"/>
+						<BodyGroup name="Feet" type="node"/>
+						<BodyGroup name="Torso" type="node"/>
+						<BodyGroup name="LeftArm" type="node"/>
+						<BodyGroup name="RightArm" type="node"/>
+						<BodyGroup name="Head" type="node"/>
+						<BodyGroup name="Pelvis" type="node"/>
+						<BodyGroup name="TopBody" type="node"/>
+						<BodyGroup name="Arms" type="node"/>
+						<BodyGroup name="Hands" type="node"/>
+						<BodyGroup name="Chest" type="node"/>
+					</BodyGroups>
+				</BodyGroupsNode>
+				<MessagesNode name="Messages" type="node"/>
+				<MessagePresetsNode name="MessagePresets" type="node"/>
+				<MessagePresetGroupsNode name="MessagePresetGroups" type="node"/>
+				<CharacterStartPointsNode name="CharacterStartPoints" type="node">
+					<CharacterStartPointsArray type="nodeContainer">
+						<CharacterStartPointLinkNode name="StartPoint" type="node">
+							<AnimationSet type="pointer">MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+						</CharacterStartPointLinkNode>
+					</CharacterStartPointsArray>
+				</CharacterStartPointsNode>
+				<TagNode name="TagsNode" type="node"/>
+				<NodeSetsNode name="SelectionSets" type="node"/>
+				<RootGraphNode type="nodeContainer">
+					<BlendTreeNode name="RootBlendTree" type="node">
+						<GraphEntry type="nodeContainer">
+							<BlendTree name="RootBlendTree" type="node">
+								<FlowEdges type="nodeContainer">
+									<FlowEdge name="_01002_Walk_Result_To_BlendN1_Source0" type="node">
+										<Connection type="PinConnection">
+											<From>MorphemeDB.Networks.Network.RootGraphNode.RootBlendTree.GraphEntry.RootBlendTree.BlendTreeNodes._01002_Walk.Pins.Result</From>
+											<To>MorphemeDB.Networks.Network.RootGraphNode.RootBlendTree.GraphEntry.RootBlendTree.BlendTreeNodes.BlendN1.Pins.Source0</To>
+										</Connection>
+									</FlowEdge>
+									<FlowEdge name="_01005_Jog_Result_To_BlendN1_Source1" type="node">
+										<Connection type="PinConnection">
+											<From>MorphemeDB.Networks.Network.RootGraphNode.RootBlendTree.GraphEntry.RootBlendTree.BlendTreeNodes._01005_Jog.Pins.Result</From>
+											<To>MorphemeDB.Networks.Network.RootGraphNode.RootBlendTree.GraphEntry.RootBlendTree.BlendTreeNodes.BlendN1.Pins.Source1</To>
+										</Connection>
+									</FlowEdge>
+									<FlowEdge name="_01008_Run_Result_To_BlendN1_Source2" type="node">
+										<Connection type="PinConnection">
+											<From>MorphemeDB.Networks.Network.RootGraphNode.RootBlendTree.GraphEntry.RootBlendTree.BlendTreeNodes._01008_Run.Pins.Result</From>
+											<To>MorphemeDB.Networks.Network.RootGraphNode.RootBlendTree.GraphEntry.RootBlendTree.BlendTreeNodes.BlendN1.Pins.Source2</To>
+										</Connection>
+									</FlowEdge>
+									<FlowEdge name="BlendN1_Result_To_Network_Result" type="node">
+										<Connection type="PinConnection">
+											<From>MorphemeDB.Networks.Network.RootGraphNode.RootBlendTree.GraphEntry.RootBlendTree.BlendTreeNodes.BlendN1.Pins.Result</From>
+											<To>MorphemeDB.Networks.Network.RootGraphNode.RootBlendTree.Pins.Result</To>
+										</Connection>
+									</FlowEdge>
+									<FlowEdge name="ControlParametersspeed_Result_To_BlendN1_Weight" type="node">
+										<Connection type="PinConnection">
+											<From>MorphemeDB.Networks.Network.ControlParameters.ControlParameterArray.speed.DataPinEntry.Result</From>
+											<To>MorphemeDB.Networks.Network.RootGraphNode.RootBlendTree.GraphEntry.RootBlendTree.BlendTreeNodes.BlendN1.Pins.Weight</To>
+										</Connection>
+									</FlowEdge>
+								</FlowEdges>
+								<PanX type="float">94</PanX>
+								<PanY type="float">117</PanY>
+								<BlendTreeNodes type="nodeContainer">
+									<BlendTreeNode name="_01002_Walk" type="node">
+										<Attributes type="AttributeList">
+											<Attribute name="AnimationTake">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<animationTake file="$(RootDir)\Characters\MaleCharacter\Animation\XMD\FullBody\Generic\Loops\01002_Walk.xmd" take="untitled" format="nsa" syncTrack="Footsteps"/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="Loop">
+												<bool value="1"/>
+											</Attribute>
+											<Attribute name="PlayBackwards">
+												<bool/>
+											</Attribute>
+											<Attribute name="GenerateAnimationDeltas">
+												<bool/>
+											</Attribute>
+											<Attribute name="ClipStartFraction">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<float/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="ClipEndFraction">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<float value="1"/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="StartEventIndex">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<int/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="PreComputeSyncEventTracks">
+												<bool/>
+											</Attribute>
+											<Attribute name="Tags" type="ManifestBase">
+												<refArray/>
+											</Attribute>
+											<Attribute name="ClipRangeMode">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<int value="3"/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="Disabled" type="ManifestBase">
+												<bool/>
+											</Attribute>
+											<Attribute name="OnEnterExternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+											<Attribute name="OnExitExternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+											<Attribute name="OnEnterInternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+											<Attribute name="OnExitInternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+										</Attributes>
+										<Pins type="PinList">
+											<FunctionalPin name="Result">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+										</Pins>
+										<DisplaySettings type="NodeDisplaySettings" XPosition="-21.1764832" YPosition="81.1764832" Width="210" Height="69.1474609">
+											<GroupsCollapseState size="0" type="stringArray"/>
+										</DisplaySettings>
+										<NodeType type="string">AnimWithEvents</NodeType>
+										<ManifestVersion type="ManifestVersion" Version="10" Arms="0"/>
+									</BlendTreeNode>
+									<BlendTreeNode name="_01005_Jog" type="node">
+										<Attributes type="AttributeList">
+											<Attribute name="AnimationTake">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<animationTake file="$(RootDir)\Characters\MaleCharacter\Animation\XMD\FullBody\Generic\Loops\01005_Jog.xmd" take="untitled" format="nsa" syncTrack="Footsteps"/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="Loop">
+												<bool value="1"/>
+											</Attribute>
+											<Attribute name="PlayBackwards">
+												<bool/>
+											</Attribute>
+											<Attribute name="GenerateAnimationDeltas">
+												<bool/>
+											</Attribute>
+											<Attribute name="ClipStartFraction">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<float/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="ClipEndFraction">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<float value="1"/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="StartEventIndex">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<int/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="PreComputeSyncEventTracks">
+												<bool/>
+											</Attribute>
+											<Attribute name="Tags" type="ManifestBase">
+												<refArray/>
+											</Attribute>
+											<Attribute name="ClipRangeMode">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<int value="3"/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="Disabled" type="ManifestBase">
+												<bool/>
+											</Attribute>
+											<Attribute name="OnEnterExternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+											<Attribute name="OnExitExternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+											<Attribute name="OnEnterInternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+											<Attribute name="OnExitInternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+										</Attributes>
+										<Pins type="PinList">
+											<FunctionalPin name="Result">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+										</Pins>
+										<DisplaySettings type="NodeDisplaySettings" XPosition="-21.1764832" YPosition="160.323944" Width="210" Height="69.1474609">
+											<GroupsCollapseState size="0" type="stringArray"/>
+										</DisplaySettings>
+										<NodeType type="string">AnimWithEvents</NodeType>
+										<ManifestVersion type="ManifestVersion" Version="10" Arms="0"/>
+									</BlendTreeNode>
+									<BlendTreeNode name="_01008_Run" type="node">
+										<Attributes type="AttributeList">
+											<Attribute name="AnimationTake">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<animationTake file="$(RootDir)\Characters\MaleCharacter\Animation\XMD\FullBody\Generic\Loops\01008_Run.xmd" take="untitled" format="nsa" syncTrack="Footsteps"/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="Loop">
+												<bool value="1"/>
+											</Attribute>
+											<Attribute name="PlayBackwards">
+												<bool/>
+											</Attribute>
+											<Attribute name="GenerateAnimationDeltas">
+												<bool/>
+											</Attribute>
+											<Attribute name="ClipStartFraction">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<float/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="ClipEndFraction">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<float value="1"/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="StartEventIndex">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<int/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="PreComputeSyncEventTracks">
+												<bool/>
+											</Attribute>
+											<Attribute name="Tags" type="ManifestBase">
+												<refArray/>
+											</Attribute>
+											<Attribute name="ClipRangeMode">
+												<animationSet>
+													<placeholder>
+														<Attribute>
+															<int value="3"/>
+														</Attribute>
+														<AnimationSet>MorphemeDB.Networks.Network.AnimationSets.AnimationSetArray.MaleCharacter</AnimationSet>
+													</placeholder>
+												</animationSet>
+											</Attribute>
+											<Attribute name="Disabled" type="ManifestBase">
+												<bool/>
+											</Attribute>
+											<Attribute name="OnEnterExternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+											<Attribute name="OnExitExternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+											<Attribute name="OnEnterInternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+											<Attribute name="OnExitInternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+										</Attributes>
+										<Pins type="PinList">
+											<FunctionalPin name="Result">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+										</Pins>
+										<DisplaySettings type="NodeDisplaySettings" XPosition="-21.1764679" YPosition="242.352951" Width="210" Height="69.1474609">
+											<GroupsCollapseState size="0" type="stringArray"/>
+										</DisplaySettings>
+										<NodeType type="string">AnimWithEvents</NodeType>
+										<ManifestVersion type="ManifestVersion" Version="10" Arms="0"/>
+									</BlendTreeNode>
+									<BlendTreeNode name="BlendN1" type="node">
+										<Attributes type="AttributeList">
+											<Attribute name="TimeStretchMode">
+												<int value="1"/>
+											</Attribute>
+											<Attribute name="WrapWeights">
+												<bool/>
+											</Attribute>
+											<Attribute name="SphericallyInterpolateTrajectoryPosition">
+												<bool/>
+											</Attribute>
+											<Attribute name="Loop">
+												<bool value="1"/>
+											</Attribute>
+											<Attribute name="StartEventIndex">
+												<int/>
+											</Attribute>
+											<Attribute name="DurationEventBlendPassThrough">
+												<bool/>
+											</Attribute>
+											<Attribute name="DurationEventBlendIgnoreEventOrder">
+												<bool/>
+											</Attribute>
+											<Attribute name="DurationEventBlendSameUserData">
+												<bool/>
+											</Attribute>
+											<Attribute name="DurationEventBlendOnOverlap">
+												<bool/>
+											</Attribute>
+											<Attribute name="DurationEventBlendWithinRange">
+												<bool/>
+											</Attribute>
+											<Attribute name="SourceWeights">
+												<floatArray>
+													<Values size="12" type="floatArray">
+0
+0.5
+1
+1
+1
+1
+1
+1
+1
+1
+1
+0
+													</Values>
+												</floatArray>
+											</Attribute>
+											<Attribute name="SourceWeightDistributionRange">
+												<floatArray>
+													<Values size="2" type="floatArray">
+0
+1
+													</Values>
+												</floatArray>
+											</Attribute>
+											<Attribute name="SourceWeightDistribution">
+												<int/>
+											</Attribute>
+											<Attribute name="AlwaysBlendTrajectoryAndTransforms">
+												<bool value="1"/>
+											</Attribute>
+											<Attribute name="Tags" type="ManifestBase">
+												<refArray/>
+											</Attribute>
+											<Attribute name="AlwaysCombineSampledEvents">
+												<bool value="1"/>
+											</Attribute>
+											<Attribute name="Disabled" type="ManifestBase">
+												<bool/>
+											</Attribute>
+											<Attribute name="OnEnterExternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+											<Attribute name="OnExitExternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+											<Attribute name="OnEnterInternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+											<Attribute name="OnExitInternalMessages" type="ManifestBase">
+												<requestArray/>
+											</Attribute>
+										</Attributes>
+										<Pins type="PinList">
+											<FunctionalPin name="Source0" input="1">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+											<FunctionalPin name="Source1" input="1">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+											<FunctionalPin name="Source2" input="1">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+											<FunctionalPin name="Source3" input="1">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+											<FunctionalPin name="Source4" input="1">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+											<FunctionalPin name="Source5" input="1">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+											<FunctionalPin name="Source6" input="1">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+											<FunctionalPin name="Source7" input="1">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+											<FunctionalPin name="Source8" input="1">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+											<FunctionalPin name="Source9" input="1">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+											<FunctionalPin name="Source10" input="1">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+											<FunctionalPin name="Result">
+												<Interfaces size="3" type="stringArray">
+<e>Transforms</e>
+<e>Time</e>
+<e>Events</e>
+												</Interfaces>
+											</FunctionalPin>
+											<DataPin name="Weight" input="1" exposedAsPin="1">
+												<float/>
+											</DataPin>
+										</Pins>
+										<DisplaySettings type="NodeDisplaySettings" XPosition="264.705841" YPosition="84.7058792" Width="210" Height="222.135742">
+											<GroupsCollapseState size="0" type="stringArray"/>
+										</DisplaySettings>
+										<NodeType type="string">BlendN</NodeType>
+										<ManifestVersion type="ManifestVersion" Version="12" Arms="0"/>
+									</BlendTreeNode>
+								</BlendTreeNodes>
+								<ControlParamXPosition type="float">10.0000153</ControlParamXPosition>
+								<ControlParamYPosition type="float">346.470581</ControlParamYPosition>
+								<ControlParamWidth type="float">155.614578</ControlParamWidth>
+								<ControlParamHeight type="float">45.1474609</ControlParamHeight>
+								<OutputPinXPosition type="float">539.999939</OutputPinXPosition>
+								<OutputPinYPosition type="float">177.058838</OutputPinYPosition>
+								<OutputPinWidth type="float">62</OutputPinWidth>
+								<OutputPinHeight type="float">45.1474609</OutputPinHeight>
+							</BlendTree>
+						</GraphEntry>
+						<Attributes type="AttributeList">
+							<Attribute name="Tags" type="ManifestBase">
+								<refArray/>
+							</Attribute>
+							<Attribute name="Disabled" type="ManifestBase">
+								<bool/>
+							</Attribute>
+							<Attribute name="OnEnterExternalMessages" type="ManifestBase">
+								<requestArray/>
+							</Attribute>
+							<Attribute name="OnExitExternalMessages" type="ManifestBase">
+								<requestArray/>
+							</Attribute>
+							<Attribute name="OnEnterInternalMessages" type="ManifestBase">
+								<requestArray/>
+							</Attribute>
+							<Attribute name="OnExitInternalMessages" type="ManifestBase">
+								<requestArray/>
+							</Attribute>
+						</Attributes>
+						<Pins type="PinList">
+							<PassDownPin name="Result" reference="1"/>
+						</Pins>
+					</BlendTreeNode>
+				</RootGraphNode>
+			</Network>
+		</Networks>
+	</MorphemeDB>
+</NaturalMotion>

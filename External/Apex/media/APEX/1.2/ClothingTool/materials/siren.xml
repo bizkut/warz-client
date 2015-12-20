@@ -1,0 +1,9 @@
+<material type="lit">
+  <shader name="vertex">vertex/staticmesh.cg</shader>
+  <shader name="vertex">vertex/skeletalmesh_4bone.cg</shader>
+  <shader name="fragment">fragment/simple_uniform_color_normal.cg</shader>
+  <variables>
+    <float4 name="diffuseColor">0.5 0.5 0.5 1.0</float4>
+    <sampler2D name="normalTexture">textures/siren_NORM.dds</sampler2D>
+  </variables>
+</material>

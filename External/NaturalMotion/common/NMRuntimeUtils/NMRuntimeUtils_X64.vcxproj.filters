@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\NMGeomUtils" />
+    <Filter Include="include" />
+    <Filter Include="include\NMIK" />
+    <Filter Include="include\NMRetarget" />
+    <Filter Include="include\NMSplineUtils" />
+    <Filter Include="src\NMGeomUtils" />
+    <Filter Include="src" />
+    <Filter Include="src\NMIK" />
+    <Filter Include="src\NMRetarget" />
+    <Filter Include="src\NMSplineUtils" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\NMGeomUtils\NMGeomUtils.h">
+      <Filter>include\NMGeomUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMGeomUtils\NMGeomUtils.inl">
+      <Filter>include\NMGeomUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMGeomUtils\NMGeomUtilsMP.h">
+      <Filter>include\NMGeomUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMGeomUtils\NMGeomUtilsMP.inl">
+      <Filter>include\NMGeomUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMGeomUtils\NMJointLimits.h">
+      <Filter>include\NMGeomUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMGeomUtils\NMJointLimits.inl">
+      <Filter>include\NMGeomUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMGeomUtils\NMJointLimitsMP.h">
+      <Filter>include\NMGeomUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMGeomUtils\NMJointLimitsMP.inl">
+      <Filter>include\NMGeomUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMIK\NMIKCommon.h">
+      <Filter>include\NMIK</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMIK\NMIKCommon.inl">
+      <Filter>include\NMIK</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMIK\NMPointIK.h">
+      <Filter>include\NMIK</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMIK\NMPointIK.inl">
+      <Filter>include\NMIK</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMIK\NMTwoBoneIK.h">
+      <Filter>include\NMIK</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMRetarget\NMFKRetarget.h">
+      <Filter>include\NMRetarget</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMRetarget\NMFKRetarget.inl">
+      <Filter>include\NMRetarget</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMSplineUtils\NMSplinePath.h">
+      <Filter>include\NMSplineUtils</Filter>
+    </ClInclude>
+    <ClCompile Include="src\NMGeomUtils\NMGeomUtils.cpp">
+      <Filter>src\NMGeomUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMGeomUtils\NMGeomUtilsMP.cpp">
+      <Filter>src\NMGeomUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMGeomUtils\NMJointLimits.cpp">
+      <Filter>src\NMGeomUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMGeomUtils\NMJointLimitsMP.cpp">
+      <Filter>src\NMGeomUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMIK\NMIKCommon.cpp">
+      <Filter>src\NMIK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMIK\NMPointIK.cpp">
+      <Filter>src\NMIK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMIK\NMTwoBoneIK.cpp">
+      <Filter>src\NMIK</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMRetarget\NMFKRetarget.cpp">
+      <Filter>src\NMRetarget</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSplineUtils\NMSplinePath.cpp">
+      <Filter>src\NMSplineUtils</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

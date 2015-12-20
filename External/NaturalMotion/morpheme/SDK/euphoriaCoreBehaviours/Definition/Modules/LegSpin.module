@@ -1,0 +1,51 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// a long term spin motion in order to control the orientation of the body
+module_def LegSpin
+{
+owner: Leg
+
+data: 
+  Torque targetTorque;
+  Position targetDirection;
+  AngularVelocity spineAngVel;
+in:
+  Direction combinedTargetDirection;
+  DynamicState spineState; ///< for smoother angular velocity
+
+  RotationRequest rotationRequest; ///< Rotation this limb will try to achieve by spinning (in world space).
+  Multiplier spinAmount;
+  SpinParameters spinParams;
+  bool ignoreContacts; ///< spin action is supressed when rig is in contact unless this flag is set
+
+feedOut:
+  Direction targetDirection; ///< Used for coordinating control between limbs
+
+out:
+  LimbControl control;
+
+connections<>:
+  in.combinedTargetDirection = (owner.owner.lowerBody.feedIn.spinDirection);
+  in.rotationRequest = junctions.in_rotationRequest = priority(owner.owner.lowerBody.out.rotationRequest,
+    owner.owner.legsPedalBehaviourInterface.out.targetRequests[owner.$ChildIndex]);
+  in.spinAmount = junctions.in_spinStiffnessScale = priority(
+    owner.owner.freeFallBehaviourInterface.out.legsSpinStiffnessScales[owner.$ChildIndex],
+    owner.owner.legsPedalBehaviourInterface.out.spinStiffnessScales[owner.$ChildIndex]);
+  in.spinParams = (owner.owner.legsPedalBehaviourInterface.out.legsSpinParams);
+  in.ignoreContacts = 
+    junctions.in_ignoreContacts =
+      winnerTakesAll(owner.owner.hazardManagement.grab.out.isHanging,
+       owner.owner.hazardManagement.freeFallManagement.out.isInFreefall);
+}
+
+#endif

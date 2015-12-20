@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\euphoria" />
+    <Filter Include="include" />
+    <Filter Include="src" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\euphoria\acPluginEuphoria.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\BodyDefBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\InteractionProxyDefBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\MessageHitBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\NodeBehaviourBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\NodeBehaviourGrouperBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\NodeLimbInfoBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\NodeOperatorContactReporterBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\NodeOperatorFallOverWallBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\NodeOperatorHitBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\NodeOperatorOrientationInFreefallBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\NodeOperatorPhysicalConstraintBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\NodeOperatorRollDownStairsBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\NodePerformanceBehaviourBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\NodeTrajectoryOverrideBuilder.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClCompile Include="src\acPluginEuphoria.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BodyDefBuilderPhysX.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DllMain.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InteractionProxyDefBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MessageHitBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeBehaviourBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeBehaviourGrouperBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeLimbInfoBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorContactReporterBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorFallOverWallBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorHitBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorOrientationInFreefallBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorPhysicalConstraintBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorRollDownStairsBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodePerformanceBehaviourBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeTrajectoryOverrideBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

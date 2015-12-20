@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\euphoria" />
+    <Filter Include="include" />
+    <Filter Include="include\euphoria\Nodes" />
+    <Filter Include="src" />
+    <Filter Include="src\Nodes" />
+    <Filter Include="sharedDefines" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\euphoria\erAttribData.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erBehaviour.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erBody.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erBodyDef.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erCharacter.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erCharacterDef.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erCollisionProbes.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erCollisionProbes.inl">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erContactFeedback.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erDebugControls.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erDebugDraw.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erDefines.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erDimensionalScaling.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erDimensionalScalingHelpers.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erEndConstraint.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erEuphoriaLogger.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erEuphoriaUserData.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erGravityCompensation.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erHitReaction.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erHitUtils.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erInteractionProxy.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erInteractionProxyDef.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erJunction.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erLimb.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erLimbDef.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erLimbIK.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erLimbInterface.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erLimbTransforms.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erModule.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erNetworkInterface.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erPath.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erPinInterface.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erReachLimit.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erRigConstraint.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erSharedEnums.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erValuePostCombiners.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\erValueValidators.h">
+      <Filter>include\euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\Nodes\erNodeBehaviour.h">
+      <Filter>include\euphoria\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\Nodes\erNodeBehaviourGrouper.h">
+      <Filter>include\euphoria\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\Nodes\erNodeLimbInfo.h">
+      <Filter>include\euphoria\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\Nodes\erNodeOperatorContactReporter.h">
+      <Filter>include\euphoria\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\Nodes\erNodeOperatorFallOverWall.h">
+      <Filter>include\euphoria\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\Nodes\erNodeOperatorHit.h">
+      <Filter>include\euphoria\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\Nodes\erNodeOperatorOrientationInFreeFall.h">
+      <Filter>include\euphoria\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\Nodes\erNodeOperatorPhysicalConstraint.h">
+      <Filter>include\euphoria\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\Nodes\erNodeOperatorRollDownStairs.h">
+      <Filter>include\euphoria\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\Nodes\erNodePerformanceBehaviour.h">
+      <Filter>include\euphoria\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\Nodes\erNodes.h">
+      <Filter>include\euphoria\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\euphoria\Nodes\erNodeTrajectoryOverride.h">
+      <Filter>include\euphoria\Nodes</Filter>
+    </ClInclude>
+    <ClCompile Include="src\erAttribData.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erBehaviour.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erBehaviourTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erBody.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erBodyDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erCharacter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erCharacterDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erCollisionProbes.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erContactFeedback.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erDebugControls.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erDebugDraw.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erDimensionalScaling.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erEndConstraint.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erEuphoriaLogger.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erGravityCompensation.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erHitReaction.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erHitUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erInteractionProxy.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erInteractionProxyDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erJunction.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erLimb.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erLimbDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erLimbIK.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erLimbInfoTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erLimbTransforms.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erModule.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erPath.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erPerformanceBehaviourTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\erRigConstraint.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\erNodeBehaviour.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\erNodeBehaviourGrouper.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\erNodeLimbInfo.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\erNodeOperatorContactReporter.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\erNodeOperatorFallOVerWall.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\erNodeOperatorHit.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\erNodeOperatorOrientationInFreeFall.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\erNodeOperatorPhysicalConstraint.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\erNodeOperatorRollDownStairs.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\erNodePerformanceBehaviour.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\erNodeTrajectoryOverride.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClInclude Include="..\sharedDefines\mEuphoriaDebugInterface.h">
+      <Filter>sharedDefines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sharedDefines\mEuphoriaDebugInterface.inl">
+      <Filter>sharedDefines</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

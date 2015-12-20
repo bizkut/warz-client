@@ -1,0 +1,614 @@
+/*
+ * Copyright (c) 2009 NaturalMotion Ltd. All rights reserved.
+ *
+ * Not to be copied, adapted, modified, used, distributed, sold,
+ * licensed or commercially exploited in any manner without the
+ * written consent of NaturalMotion.
+ *
+ * All non public elements of this software are the confidential
+ * information of NaturalMotion and may not be disclosed to any
+ * person nor used for any purpose not expressly approved by
+ * NaturalMotion in writing.
+ *
+ */
+
+#if 0
+
+struct AimInfo
+{
+  Transform  poseEndRelativeToRoot;
+  Multiplier gravityCompensation;
+  Multiplier dampingScale;
+  Multiplier strengthScale;
+  Multiplier swivelAmount;
+  Weight     limbControlPositionWeight;
+  Weight     limbControlOrientationWeight;
+  Multiplier limbControlDeltaStep;     // Advanced IK substepping parameter.
+  Weight     poseTwistWeight;          // How much the limb should twist when aiming.
+  Weight     poseSwingWeight;          // How much the limb should swing when aiming.
+  Multiplier rootRotationCompensation; // How much should the limb target be modified to acount for the rotation of the root.
+  bool       useIncrementalIK;
+
+  DebugDrawFloat aimDirection[3];
+  DebugDrawFloat aimingLimbIndex;
+};
+
+struct BraceState
+{
+  Position error;
+  float mass;
+};
+struct ProtectParameters
+{
+  Weight headLookAmount;
+  Multiplier sensitivityToCloseMovements;
+  Length supportIgnoreRadius;
+  Length objectTrackingRadius;
+  TimePeriod hazardLookTime;
+  PositionDelta offset;
+};
+__no_combiner__ struct ObjectFiltering
+{
+  uint32_t word0;
+  uint32_t word1;
+  uint32_t word2;
+  uint32_t word3;
+};
+
+struct SelectionInfo
+{
+  /// pointer identifying the (physics system) object selected
+  void *selectedActor;
+  /// code to indicate reason/context for selection
+  int32_t selectionCode;
+  /// pos and normal in actor local coordinates
+  Position point;
+  Direction normal;
+  Direction hitDir;
+  /// set to true when a selection is first made and false otherwise
+  /// signals a new selection
+  bool newSelection;
+};
+
+// defines an object by its speed, acceleration etc, used to search for bet objects
+__no_combiner__ struct ObjectMetric
+{
+  /// absolute cutoffs
+  Mass minMass; 
+  Length maxAverageSize;
+  
+  /// coefficients which sum together
+  Multiplier speedSquaredCoefficient;
+  Multiplier accelerationSquaredCoefficient;
+  Multiplier distanceSquaredCoefficient;
+
+  Position charactersPosition;
+  Velocity charactersVelocity;
+  
+  /// A shape to focus on
+  int64_t focusShapeID;
+  float shapeAdvantage; ///< For value hysteresis
+  Frequency interestReductionRate;
+  
+  + float getMetric(const Environment::State &state, float timeStep, float &lastMetric) const;
+};
+
+__no_combiner__ struct BodyHitInfo
+{
+  + BodyHitInfo();
+  + bool isInvalid();
+
+  /// pos and normal of the hit point (coordinate frame maybe body local or world depending on context)
+  Position point;
+  Direction normal;
+  Direction hitDir;
+  /// indexes to identify the limb and part thereof
+  int32_t limbRigIndex;
+  int32_t partIndex;
+  uint64_t actorId; ///< uint repn of the physics system actor pointer
+  /// set to zero when the hit is first created/detected, can be incremented at each tick while it persists
+  float elapsedTime;
+  uint32_t hitCode;
+  int32_t partType;
+};
+
+__no_combiner__ struct BodyPartInfo
+{
+  + BodyPartInfo();
+  + bool isInvalid();
+  
+  /// indexes to identify the limb and part thereof
+  int32_t limbRigIndex;
+  int32_t partIndex;
+  uint64_t actorId; ///< uint repn of the physics system actor pointer
+  uint32_t type;
+};
+
+// used by ReachForWorldBehaviourInfo to store "reach for" info coming in from game/morpheme-side
+//
+__no_combiner__ struct ReachTargetSourceInfo
+{
+  + ReachTargetSourceInfo();
+  + bool isInvalid();
+  + void invalidate();
+  
+  Position point;          ///< surface point
+  Direction normal;        ///< surface normal
+  Transform objTM;         ///< coordinate frame of reference for point and normal
+  uint64_t actorId;        ///< from pointer to the physics obj if it exists, -1 if it doesn't, and 0 if the info is "invalid"
+  TimePeriod elapsedTime;  ///< updated each frame to show how long (in simulation time) we've known about this
+};
+
+__no_combiner__ struct ActorImpulse
+{
+  + ActorImpulse();
+  bool useVelChange;
+  /// pos and direction of the impulse (coords wrt body or world depending on the flag)
+  Position point;
+  Direction hitDir;
+  /// To specify coordinate frame
+  bool positionFrameWorld;
+  bool directionFrameWorld;
+  /// magnitude of impulse
+  float impulseMagnitude;
+  float torqueMultiplier; ///< gives a means to exaggerate/tone down or even reverse the torque associated with the impulse
+  int32_t limbIndex; ///< If negative will be applied to all limbs of the character.
+  int32_t partIndex; ///< If negative will be applied to all parts of the limb (or limbs).
+};
+
+// The 6d vector of force and torque is called a 'wrench', this name comes from screw theory which is applicable to any 3d dynamics
+struct Wrench
+{
+  + Wrench();
+  + void setToZero();
+  Force   force;
+  Torque  torque;
+};
+
+// The 6d vector of force and torque is called a 'wrench', so we can assume that wrenchImpulse is a good name for a vector of impulse and torqueImpulse
+struct WrenchImpulse
+{
+  + WrenchImpulse();
+  + void setToZero();
+  Impulse       impulse;
+  TorqueImpulse torqueImpulse;
+};
+
+__no_combiner__ struct ReachTarget
+{
+  + ReachTarget();
+
+  Position    point;
+  Direction   normal;
+  int32_t     limbRigIndex;
+  int32_t     partIndex;
+  /// set to zero when the selection is made, can be incremented at each tick while it persists
+  TimePeriod  elapsedTime;
+  int32_t     type;
+//  enum RTType
+//  {
+//    RT_Core,
+//    RT_Head,
+//    RT_Leg,
+//    RT_Arm,
+//    RT_World,
+//    RT_Max
+//  };
+};
+
+__no_combiner__ struct ReachWorldParameters
+{
+  + void setToDefaults(const ER::DimensionalScaling &scaling);
+  NMP::Vector3 controlColour;
+  bool slideAlongNormal;
+  // TODO: (see MORPH-22197) this and other items like it are duplicated in ReachActionParams and should be shared
+  int32_t swivelMode;                      ///< A code to direct how reach behaviours should apply swivel.
+  Multiplier swivelAmount;                 ///< User specfied swivel amount in range [-1,1] will only be used if swivelMode is set to REACH_SWIVEL_SPECIFIED
+  Multiplier chestRotationScale;           ///< To allow rotation of the chest towards the target.
+  Multiplier pelvisRotationScale;          ///< To allow rotation of the pelvis towards the target.
+  Multiplier maxChestTranslation;          ///< To clamp the translation required from the chest to reach the target.
+  Multiplier maxPelvisTranslation;         ///< To clamp the translation required from the pelvis to reach the target.
+  Weight unreachableTargetImportanceScale; ///< How much should the character reach for targets that out of range. 0 = not at all, 1 = try as hard as possible. 
+  Weight torsoRadiusMultiplier;            ///< Positive multiplier for torso radius (self-avoidance input)
+  Imminence reachImminence;                
+  Multiplier maxReachScale;                ///< Will clamp the distance of the IKTarget. Relative to the length of the arm.
+  ClampedWeight ikSubstepSize;             ///< Proportion of whole step in "advanced IK" substepping, 1 corresponds to "no substepping".
+  int32_t     selfAvoidanceStrategy;       ///< Which strategy to apply.
+  float selfAvoidanceSlackAngle;           ///< Deadzone in which direction of winding follows current effector position.
+  bool avoidLegsArea;                      ///< Will move up the hand if it is below the pelvis.
+
+  enum Strategies
+  {
+  /*  0 */ disable, ///< To disable self avoidance.
+  /*  1 */ automatic, ///< Will decide between the four others (done in decideStrategy).
+  /*  2 */ shoulderSide, ///< Path (i.e. from hand to target via the temporary target) will always be on the shoulder side (shoulder side is defined by the direction 'root to base' of the arm).
+  /*  3 */ targetSide, ///< Path will always pass on the target side (target side is either shoulder side or the opposite).
+  /*  4 */ shortest ///< Path will be the shortest possible.
+  };
+};
+
+struct LimbParameters
+{
+  Multiplier stiffnessScale;                            ///< Multiplier used to multiply the normalStiffness of the limb.
+  Multiplier dampingScale;                            ///< Multiplier used to multiply the normalDampingRatio of the limb.
+  Multiplier driveCompensationScale;                    ///< Multiplier used to multiply the normalDriveCompensation of the limb.
+};
+
+__no_combiner__ struct ReachActionParams
+{
+  + void setToDefaults(const ER::DimensionalScaling &scaling);
+  float outOfReachDistance;             ///< effector "close enough" threshold
+  TimePeriod outOfReachTimeout;         ///< failed to get "close enough" timeout
+  TimePeriod withinReachTimeout;        ///< hold "close enough" timeout
+  TimePeriod rampDownFailedDuration;    ///< rampdown after failing
+  TimePeriod rampDownCompletedDuration; ///< rampdown after successful reach
+  Weight strength;                      ///< parameter that can be used to modulate reach strength
+  float effectorSpeedLimit;             ///< parameter that can be used to slow effector progress to target
+  // TODO: (see MORPH-22197) this and other items like it are duplicated in ReachWorldParameters and should be shared
+  int32_t swivelMode;                   ///< A code to direct how reach behaviours should apply swivel.
+  Multiplier swivelAmount;              ///< User specfied swivel amount in range [-1,1] will only be used if swivelMode is set to REACH_SWIVEL_SPECIFIED
+  Multiplier maxLimbExtensionScale;     ///< Limit the maximum extension of the limb, expressed as a proportion of the total limb length, 1 is full arm extension
+  Weight torsoRadiusMultiplier;         ///< Positive multiplier for torso radius (self-avoidance input)
+  Length penetrationAdjustment;         ///< a small offset below the surface to be applied wrt the surface normal
+  int32_t    handsCollisionGroupIndex;  ///< collision group that can be enabled to disable hand/hand collisions
+};
+
+__no_combiner__ struct PartData
+{
+  Transform transform;
+  bool isCollidingWithWorld;
+  int64_t lastCollisionID; ///< Cast from pointer
+};
+
+__no_combiner__ struct LimbHandleData ///< used for each limb handle, e.g. the end, the root and the base (eg shoulder)
+{
+  + LimbHandleData();
+  + LimbHandleData(const NMP::Vector3& v, const NMP::Vector3& angVel, bool colliding, int64_t collisionId);
+
+  Velocity velocity;
+  AngularVelocity angularVelocity;
+  bool isCollidingWithWorld;
+  int64_t lastCollisionID; ///< Cast from pointer
+};
+
+// a simple target definition
+struct SpatialTarget
+{
+  + SpatialTarget();
+  + SpatialTarget(const NMP::Vector3 &pos, const NMP::Vector3 &vel);
+  Position position;
+  Velocity velocity;
+  Direction normal;
+};
+
+struct BodyState
+{
+  Position position; 
+  Velocity velocity; 
+  Mass mass;
+  Acceleration acceleration;
+  AccelerationSquared accSqr;
+};
+
+// this is a quite pure meaning of the state of a rigid body, ie its position, orientation and their differentials
+struct State
+{
+  NMP::Matrix34 matrix;
+  Velocity velocity;
+  AngularVelocity angularVelocity;
+};
+
+struct BraceHazard
+{
+  /// put some helper constructors here to allow other modules to call the brace
+  Position position;
+  Velocity velocity;
+  Direction normal;
+  Environment::Patch patch;
+};
+
+struct CushionHazard
+{
+  Position hazardPosition;
+  Velocity hazardVelocity;
+  Position protectPoint;
+  Velocity protectVelocity;
+  Imminence imminence;
+};
+
+struct DodgeHazard
+{
+  Position  position;
+  Velocity  velocity;
+  Length    radius;
+  Weight    dodgeableAmount;   ///< Will normally be set to 0 or 1, but when hazards are combined can be fractional
+  TimePeriod rampDownDurationScale;
+};
+
+// This is a low memory structure containing the most important features of the state of a (roughly spherical) body
+struct DynamicState
+{  
+  + DynamicState(float mass = 1);
+  + void setPosition(const NMP::Vector3 &position);
+  + void setVelocity(const NMP::Vector3 &velocity);
+  + void setAngularVelocity(const NMP::Vector3 &angularVelocity);
+  + NMP::Vector3 getPosition() const;
+  + NMP::Vector3 getVelocity() const;
+  + NMP::Vector3 getAngularVelocity() const;
+  NMP::Vector3    positionTimesMass;
+  Momentum        momentum;
+  AngularMomentum angularMomentum; ///< this value is approximate since it scales by mass, so assumes fixed width
+  Mass            mass;
+};
+
+struct SphereTrajectory
+{
+  Position position;
+  Velocity velocity;
+  Acceleration acceleration;
+  Length radius;
+  Length extraSearchRadius; ///< this uses idle time to search to see if the object is nearby (within this radius) if it isn't approaching
+  TimePeriod maxTime;
+
+  + void set(const NMP::Vector3 &pos, const NMP::Vector3 &vel, const NMP::Vector3 &acc, float rad, float extraSearchRad, float maxT);
+  + static float getCollidePlaneTime(float startPos, float velocity, float acceleration, float &modifiedRadius);
+  + float getCollidePlaneTime(const NMP::Vector3 &point, const NMP::Vector3 &normal);
+  + NMP::Vector3 getPoint(float t) const;
+  + NMP::Vector3 getVelocity(float t) const;
+  + float getCollidePointTime(const NMP::Vector3 &point);
+
+  + void debugDraw(const NMP::Vector3 &startColour, const NMP::Vector3 &endColour, float maximumTime, MR::InstanceDebugInterface* pDebugDrawInst);
+};
+
+__no_combiner__ struct BalanceParameters
+{
+  + BalanceParameters();
+  Angle      footBalanceAmount;
+  Multiplier decelerationAmount;
+  Angle      maxAngle;
+  Distance   footLength;
+  Distance   lowerPelvisDistanceWhenFootLifts;
+
+  Multiplier balanceWeaknessPerLeg[networkMaxNumLegs];
+  Multiplier balanceWeaknessPerArm[networkMaxNumArms];
+  Multiplier supportPointWeightingPerLeg[networkMaxNumLegs];
+  Multiplier supportPointWeightingPerArm[networkMaxNumArms];
+  Multiplier supportFwdOffset;
+  Multiplier supportRightOffset;
+  Multiplier supportFwdRange;
+  Multiplier supportSideRange;
+  Multiplier supportRangeTimescale;
+  Multiplier steppingDirectionThreshold;
+  Multiplier spinAmount;
+  Multiplier spinThreshold;
+};
+
+__no_combiner__ struct BalancePoseClamping
+{
+  + BalancePoseClamping();
+  bool enablePoseClamping;
+  bool dynamicClamping;
+  Angle minPelvisPitch;
+  Angle maxPelvisPitch;
+  Angle minPelvisRoll;
+  Angle maxPelvisRoll;
+  Angle minPelvisYaw;
+  Angle maxPelvisYaw;
+  Distance minPelvisHeight;
+  Distance maxPelvisHeight;
+  TimePeriod pelvisPositionChangeTimescale;
+  TimePeriod pelvisOrientationChangeTimescale;
+};
+
+__no_combiner__ struct StepParameters
+{
+  + StepParameters();
+  int32_t    collisionGroupIndex;
+  
+  TimePeriod stepPredictionTimeForward;
+  TimePeriod stepPredictionTimeBackward;
+  Length     stepUpDistance;
+  Length     stepDownDistance;
+  Length     maxStepLength;
+  Speed      stepDownSpeed;
+  Multiplier footSeparationFraction;
+  Weight     alignFootToFloorWeight;
+  Weight     orientationWeight;
+  Length     limbLengthToAbort;
+  Speed      rootDownSpeedToAbort;
+  Multiplier steppingDirectionThreshold;
+  Weight     steppingImplicitStiffness;
+  Multiplier lowerPelvisAmount;
+  Multiplier IKSubstep;
+  Multiplier gravityCompensation;
+  Multiplier strengthScale;
+  Multiplier dampingRatioScale;
+  Multiplier stepWeaknessPerLeg[networkMaxNumLegs];
+  Multiplier stepWeaknessPerArm[networkMaxNumArms];
+  /// exclusion plane is dot(v, exclusionPlane.[xyz]) + exclusionPlane.w = 0, or +ve when in exclusion zone
+  NMP::Vector3 exclusionPlane;
+  bool       suppressFootCrossing;
+  Distance   footCrossingOffset;
+};
+
+__no_combiner__ struct StepRecoveryParameters
+{
+  + StepRecoveryParameters();
+  bool stepToRecoverPose;
+  Distance fwdDistanceToTriggerStep;
+  Distance sidewaysDistanceToTriggerStep;
+  TimePeriod timeBeforeShiftingWeight;
+  TimePeriod weightShiftingTime;
+};
+
+__no_combiner__ struct SteppingBalanceParameters
+{
+  + SteppingBalanceParameters();
+  
+  Weight     armSwingStrengthScaleWhenStepping; 
+  bool       lookInStepDirection;
+  int32_t    stepsBeforeLooking;
+  Weight     wholeBodyLook;
+  Angle      lookDownAngle;
+  TimePeriod stopLookingTime;
+  Weight     lookWeight;
+  TimePeriod stepCountResetTime;
+  Speed      minSpeedForLooking;
+  TimePeriod stepPoseArmDisplacementTime;
+};
+
+struct BalanceAssistanceParameters
+{
+  Weight reduceAssistanceWhenFalling;
+  Weight orientationAssistanceAmount;
+  Weight positionAssistanceAmount;
+  Weight velocityAssistanceAmount;
+  Weight maxAngularAccelerationAssistance;
+  Weight maxLinearAccelerationAssistance;
+  Weight chestToPelvisRatio;
+  bool   useCounterForceOnFeet;
+  Velocity targetVelocity;
+};
+
+struct RandomLookParameters
+{
+  TimePeriod lookTimescale;  ///< Scale time used to modify the look targets
+  Weight lookAmount;
+  Angle lookRangeUpDown;
+  Angle lookRangeSideways;
+  Weight lookWithWholeBody;
+  Length lookFocusDistance;
+  Distance lookVerticalOffset;
+  TimePeriod lookTransitionTime;
+};
+
+typedef NMP::RNG      {8} __extern_class__("NMPlatform/NMRNG.h");
+
+// Multiply-with-carry (MWCG) RNG for module usage
+__no_combiner__ struct ModuleRNG
+{
+  + ModuleRNG();
+
+  + void setSeed(uint32_t seed);
+  + float genFloat(uint32_t aIndex = 0);
+  + float genFloat(float minfv, float maxfv, uint32_t aIndex = 0);
+  + uint32_t genUInt32(uint32_t aIndex = 0);
+
+private:
+
+  enum Constants
+  {
+    eMaxRNGs = 9
+  };
+
+  NMP::RNG m_rng[eMaxRNGs];
+};
+
+struct PoseData
+{
+  + PoseData(); ///< Constructor will set everything to sensible defaults or zero
+  Transform poseEndRelativeToRoot;                      ///< Transform of the end relative to the root
+  Velocity poseEndRelativeToRootVelocity;               ///< velocity of the end minus the velocity of the root
+  AngularVelocity poseEndRelativeToRootAngularVelocity; ///< Angular velocity of the end minus the anular velocity of the root
+  Multiplier stiffnessScale;                            ///< Multiplier used to scale normalStiffness.
+  Multiplier dampingRatioScale;                         ///< Multiplier used to scale dampingRatio.
+  Multiplier driveCompensationScale;                    ///< Multiplier used to scale normalDriveCompensation.
+  Multiplier gravityCompensation;                       ///< Gravity compensation (defaults to 1)
+  Multiplier strengthReductionTowardsEnd;               ///< Small values result in the end joint being as strong as the base joint. 1.0 will result in the end joint being completely loose. Larger values confine the strength to the joints near the limb base.
+};
+
+__no_combiner__ struct SpinParameters
+{
+  + SpinParameters(); ///< Constructor will set everything to sensible defaults or zero.
+
+  Length maxRadius;
+  AngularSpeed maxAngSpeed;
+  bool synchronised; ///< Synchronization between limbs.
+
+  /// To control which direction he can spin in 
+  Weight spinWeightLateral;
+  Weight spinWeightUp;
+  Weight spinWeightForward;
+
+  /// These are just used for arms spin
+  Distance spinCentreLateral;
+  Distance spinCentreUp;
+  Distance spinCentreForward;
+
+  Distance spinOutwardsDistanceWhenBehind;
+  Weight   spinArmControlCompensationScale;
+  Weight   strengthReductionTowardsEnd;
+};
+
+__no_combiner__ struct WritheParameters
+{
+  bool basedOnDefaultPose; ///< If false will be based on the current endTM.
+  Transform defaultPoseEndRelativeToRoot; ///< Transform of the end relative to the root
+  Weight amplitudeScale; ///< Proportion of limb length
+  TimePeriod resetTargetTP; ///< Time period after which the writhe targets are recalculated
+  Weight stiffnessScale; ///< Multiplier used to multiply the normalStiffness.
+  Weight driveCompensationScale; ///< Multiplier used to multiply the normalDriveCompensation.
+};
+
+__no_combiner__ struct FreefallParameters
+{
+  Weight assistanceAmount;    ///< Unitless value to keep character landing on its feet through pelvis torque
+  Weight dampingAmount;       ///< Unitless value to stop character tumbling by applying pelvis torque
+  Weight angleLandingAmount;  ///< 0 is no angle to landing, 1 is match impact velocity
+
+  float  rotationTime; ///< The amount of time in which to achieve the rotation, in seconds on the standard character.
+  float  armsAmount; ///< Multiplier on the arm movement
+  float  legsAmount; ///< Multiplier on the leg movement
+
+  TimePeriod startOrientationTime; ///< The time to start driving the character's orientation, in seconds on the standard character.
+  TimePeriod stopOrientationTime;  ///< The time to stop driving the character's orientation, in seconds on the standard character.
+
+  bool startOrientationAtTimeBeforeImpact; ///< The StartOrientationTime will be interpreted as time before impact if this is true, else it is interpreted as time after entering freefall.
+  bool stopOrientationAtTimeBeforeImpact;  ///< The StopOrientationTime will be interpreted as time before impact if this is true, else it is interpreted as time after entering freefall.
+
+  NMP::Quat orientation;      ///< Target character orientation, relative to the base orientation.
+  float weight;               ///< Weight determines how strongly the character is driven towards the target orientation.
+
+  int32_t characterAxis[2];   ///< Id of an axis in character space. Character and target axis coincide in the base orientation.
+  int32_t targetAxis[2];      ///< Id of an axis in world space. Character and target axis coincide in the base orientation.
+
+  float secondaryDirectionThreshold; ///< If 1, then the secondary axis will always be used, even if it is parallel to the primary axis (e.g. if primary/secondary are set to up/velocity, and the character is falling vertically). As this value is decreased down to zero then the secondary axis is used only if it is increasingly different from the primary axis.
+  
+  bool disableWhenInContact; ///< Freefall does not drive in the presence of contacts when this flag is set.
+};
+
+struct BalancePoseParameters
+{
+  + BalancePoseParameters();
+  Angle yaw;                   ///< Around spine axis (yaw)
+  Angle pitch;                 ///< Lean fwd/bwd      (pitch)
+  Angle roll;                  ///< Lean left/right   (roll)
+  Multiplier pelvisMultiplier;         ///< Used only for the rotations.
+  Multiplier spineMultiplier;          ///< Used only for the rotations.
+  Multiplier headMultiplier;           ///< Used only for the rotations.
+  Multiplier crouchAmount;     ///< Fraction of the balance pose to crouch
+  PositionDelta chestTranslation;
+};
+
+struct ShieldParameters
+{
+  Speed impactResponseSpeedForShield; ///< Shield will be triggered if the character will change speed by more than this on impact, based on the relative masses.
+  AngularSpeed angularSpeedForShield; ///< The character will shield if he predicts an impact with a hazard and he is rotating faster than this. 
+  Speed tangentialSpeedForShield; ///< The character will shield if his predicted tangential velocity at the time of impact with a hazard is greater than this.
+};
+
+
+struct SitParameters
+{
+  + SitParameters();
+
+  Weight minSitAmount;
+  Weight minStandingBalanceAmount; ///< Only attempt to sit when the standing balance amount is below this threshold.
+
+  Length      armStepHeight;
+  TimePeriod  armStepTargetExtrapolationTime; ///< How far into the future should the chest's velocity be extrapolated to determine the hand placement target position.
+  Length      armStepTargetSeparationFromBody;///< Arm target is placed at least this far away from the hips or shoulder.
+};
+
+#endif
+

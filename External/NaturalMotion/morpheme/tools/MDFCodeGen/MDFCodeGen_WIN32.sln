@@ -1,0 +1,54 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{A05A2F59-30AF-489E-D394-270D55B9817D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDFCodeGen", "MDFCodeGen_WIN32.vcxproj", "{CE813576-CB67-43FD-CCB9-0D904C4B4B3A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDF", "..\..\SDK\MDF\MDF_WIN32.vcxproj", "{3DD564A7-571D-4EAC-8AA6-5D5E2BDD0E66}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NMPlatform", "..\..\..\common\NMPlatform\NMPlatform_WIN32.vcxproj", "{A09CF394-9273-474D-4091-19EB54BF95DA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NMTinyXMLStatic", "..\..\..\common\tinyxml\NMTinyXMLStatic_WIN32.vcxproj", "{48F5B187-BC3C-433B-1CA3-BD411C681D7A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NMTLStatic", "..\..\..\common\NMTL\NMTLStatic_WIN32.vcxproj", "{FD01B990-7B2B-4C94-92AA-0F7092F4C86B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug Tool|Win32 = Debug Tool|Win32
+		Release Tool|Win32 = Release Tool|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DD564A7-571D-4EAC-8AA6-5D5E2BDD0E66}.Debug Tool|Win32.ActiveCfg = Debug Tool|Win32
+		{3DD564A7-571D-4EAC-8AA6-5D5E2BDD0E66}.Debug Tool|Win32.Build.0 = Debug Tool|Win32
+		{3DD564A7-571D-4EAC-8AA6-5D5E2BDD0E66}.Release Tool|Win32.ActiveCfg = Release Tool|Win32
+		{3DD564A7-571D-4EAC-8AA6-5D5E2BDD0E66}.Release Tool|Win32.Build.0 = Release Tool|Win32
+		{CE813576-CB67-43FD-CCB9-0D904C4B4B3A}.Debug Tool|Win32.ActiveCfg = Debug Tool|Win32
+		{CE813576-CB67-43FD-CCB9-0D904C4B4B3A}.Debug Tool|Win32.Build.0 = Debug Tool|Win32
+		{CE813576-CB67-43FD-CCB9-0D904C4B4B3A}.Release Tool|Win32.ActiveCfg = Release Tool|Win32
+		{CE813576-CB67-43FD-CCB9-0D904C4B4B3A}.Release Tool|Win32.Build.0 = Release Tool|Win32
+		{A09CF394-9273-474D-4091-19EB54BF95DA}.Debug Tool|Win32.ActiveCfg = Target LE32 Debug|Win32
+		{A09CF394-9273-474D-4091-19EB54BF95DA}.Debug Tool|Win32.Build.0 = Target LE32 Debug|Win32
+		{A09CF394-9273-474D-4091-19EB54BF95DA}.Release Tool|Win32.ActiveCfg = Target LE32 Release|Win32
+		{A09CF394-9273-474D-4091-19EB54BF95DA}.Release Tool|Win32.Build.0 = Target LE32 Release|Win32
+		{48F5B187-BC3C-433B-1CA3-BD411C681D7A}.Debug Tool|Win32.ActiveCfg = Debug Tool|Win32
+		{48F5B187-BC3C-433B-1CA3-BD411C681D7A}.Debug Tool|Win32.Build.0 = Debug Tool|Win32
+		{48F5B187-BC3C-433B-1CA3-BD411C681D7A}.Release Tool|Win32.ActiveCfg = Release Tool|Win32
+		{48F5B187-BC3C-433B-1CA3-BD411C681D7A}.Release Tool|Win32.Build.0 = Release Tool|Win32
+		{FD01B990-7B2B-4C94-92AA-0F7092F4C86B}.Debug Tool|Win32.ActiveCfg = Debug Tool|Win32
+		{FD01B990-7B2B-4C94-92AA-0F7092F4C86B}.Debug Tool|Win32.Build.0 = Debug Tool|Win32
+		{FD01B990-7B2B-4C94-92AA-0F7092F4C86B}.Release Tool|Win32.ActiveCfg = Release Tool|Win32
+		{FD01B990-7B2B-4C94-92AA-0F7092F4C86B}.Release Tool|Win32.Build.0 = Release Tool|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3DD564A7-571D-4EAC-8AA6-5D5E2BDD0E66} = {F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}
+		{A09CF394-9273-474D-4091-19EB54BF95DA} = {F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}
+		{48F5B187-BC3C-433B-1CA3-BD411C681D7A} = {F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}
+		{FD01B990-7B2B-4C94-92AA-0F7092F4C86B} = {F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}
+		{CE813576-CB67-43FD-CCB9-0D904C4B4B3A} = {A05A2F59-30AF-489E-D394-270D55B9817D}
+	EndGlobalSection
+EndGlobal

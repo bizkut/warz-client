@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Target LE32 Debug|Win32">
+      <Configuration>Target LE32 Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target LE32 Release|Win32">
+      <Configuration>Target LE32 Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target BE32 Debug|Win32">
+      <Configuration>Target BE32 Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target BE32 Release|Win32">
+      <Configuration>Target BE32 Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>acPluginPhysX3</ProjectName>
+    <ProjectGuid>{1BD3928C-EB8F-4B69-E48E-880296275697}</ProjectGuid>
+    <RootNamespace>acPluginPhysX3</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <TargetName>acPluginPhysX3_target_LE32_debug</TargetName>
+    <IntDir>..\..\..\..\..\obj\win32\vs$(VisualStudioVersion)\acPluginPhysX3\target_le32_debug\</IntDir>
+    <OutDir>..\..\..\..\..\bin\win32\vs$(VisualStudioVersion)\plugins\assetCompiler\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <TargetName>acPluginPhysX3_target_LE32</TargetName>
+    <IntDir>..\..\..\..\..\obj\win32\vs$(VisualStudioVersion)\acPluginPhysX3\target_le32_release\</IntDir>
+    <OutDir>..\..\..\..\..\bin\win32\vs$(VisualStudioVersion)\plugins\assetCompiler\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <TargetName>acPluginPhysX3_target_BE32_debug</TargetName>
+    <IntDir>..\..\..\..\..\obj\win32\vs$(VisualStudioVersion)\acPluginPhysX3\target_be32_debug\</IntDir>
+    <OutDir>..\..\..\..\..\bin\win32\vs$(VisualStudioVersion)\plugins\assetCompiler\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <TargetName>acPluginPhysX3_target_BE32</TargetName>
+    <IntDir>..\..\..\..\..\obj\win32\vs$(VisualStudioVersion)\acPluginPhysX3\target_be32_release\</IntDir>
+    <OutDir>..\..\..\..\..\bin\win32\vs$(VisualStudioVersion)\plugins\assetCompiler\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;include\PhysX3;..\..\..\..\SDK\physics\include\Physics\PhysX3;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\..\Physics;..\..\Physics\include\physics;..\..\..\..\SDK\physics\include;..\..\Core;..\..\Core\include\core;..\..\..\..\SDK\assetProcessor\include;..\..\..\..\SDK\core\include;..\..\..\..\SDK;..\..\..\..\..\common\NMRuntimeUtils\include;..\..\..\..\SDK\export\include;..\..\..\..\..\common\tinyxml;..\..\..\..\..\common\NMPlatform\include;..\..\..\..\..\common\NMPlatform\include\NMPlatform\win32;..\..\..\..\..\common\XMD\include;..\..\..\..\..\common\NMTL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_PHYSX3;NM_TARGET_BIGENDIAN=0;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_DEBUG;_USRDLL;_WINDLL;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsDriver_PhysX3_target_LE32_debug.lib";"$(PHYSX3_PATH)\Lib\win32\LowLevelCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\LowLevelClothCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3ExtensionsCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3VehicleCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PhysXProfileSDKCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PhysXVisualDebuggerSDKCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PvdRuntimeCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PxTaskCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\RepX3CHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\SceneQueryCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\SimulationControllerCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3CHECKED_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3CharacterKinematicCHECKED_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3CommonCHECKED_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3CookingCHECKED_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3GpuCHECKED_x86.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\acPhysicsCore_target_LE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsCore_target_LE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\acCore_target_LE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeAssetProcessor_target_LE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeCore_target_LE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMRuntimeUtils_target_LE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeExport_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMTinyXML_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMPlatform_target_LE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\XMD_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMTL_debug.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <ProgramDatabaseFile>$(OutDir)acPluginPhysX3_target_LE32_debug.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;include\PhysX3;..\..\..\..\SDK\physics\include\Physics\PhysX3;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\..\Physics;..\..\Physics\include\physics;..\..\..\..\SDK\physics\include;..\..\Core;..\..\Core\include\core;..\..\..\..\SDK\assetProcessor\include;..\..\..\..\SDK\core\include;..\..\..\..\SDK;..\..\..\..\..\common\NMRuntimeUtils\include;..\..\..\..\SDK\export\include;..\..\..\..\..\common\tinyxml;..\..\..\..\..\common\NMPlatform\include;..\..\..\..\..\common\NMPlatform\include\NMPlatform\win32;..\..\..\..\..\common\XMD\include;..\..\..\..\..\common\NMTL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;NM_PHYSX3;NM_TARGET_BIGENDIAN=0;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_USRDLL;_WINDLL;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsDriver_PhysX3_target_LE32.lib";"$(PHYSX3_PATH)\Lib\win32\LowLevel.lib";"$(PHYSX3_PATH)\Lib\win32\LowLevelCloth.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3Extensions.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3Vehicle.lib";"$(PHYSX3_PATH)\Lib\win32\PhysXProfileSDK.lib";"$(PHYSX3_PATH)\Lib\win32\PhysXVisualDebuggerSDK.lib";"$(PHYSX3_PATH)\Lib\win32\PvdRuntime.lib";"$(PHYSX3_PATH)\Lib\win32\PxTask.lib";"$(PHYSX3_PATH)\Lib\win32\RepX3.lib";"$(PHYSX3_PATH)\Lib\win32\SceneQuery.lib";"$(PHYSX3_PATH)\Lib\win32\SimulationController.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3CharacterKinematic_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3Common_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3Cooking_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3Gpu_x86.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\acPhysicsCore_target_LE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsCore_target_LE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\acCore_target_LE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeAssetProcessor_target_LE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeCore_target_LE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMRuntimeUtils_target_LE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeExport.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMTinyXML.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMPlatform_target_LE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\XMD.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMTL.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDatabaseFile>$(OutDir)acPluginPhysX3_target_LE32.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;include\PhysX3;..\..\..\..\SDK\physics\include\Physics\PhysX3;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\..\Physics;..\..\Physics\include\physics;..\..\..\..\SDK\physics\include;..\..\Core;..\..\Core\include\core;..\..\..\..\SDK\assetProcessor\include;..\..\..\..\SDK\core\include;..\..\..\..\SDK;..\..\..\..\..\common\NMRuntimeUtils\include;..\..\..\..\SDK\export\include;..\..\..\..\..\common\tinyxml;..\..\..\..\..\common\NMPlatform\include;..\..\..\..\..\common\NMPlatform\include\NMPlatform\win32;..\..\..\..\..\common\XMD\include;..\..\..\..\..\common\NMTL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_PHYSX3;NM_TARGET_BIGENDIAN=1;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_DEBUG;_USRDLL;_WINDLL;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsDriver_PhysX3_target_BE32_debug.lib";"$(PHYSX3_PATH)\Lib\win32\LowLevelCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\LowLevelClothCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3ExtensionsCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3VehicleCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PhysXProfileSDKCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PhysXVisualDebuggerSDKCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PvdRuntimeCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PxTaskCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\RepX3CHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\SceneQueryCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\SimulationControllerCHECKED.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3CHECKED_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3CharacterKinematicCHECKED_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3CommonCHECKED_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3CookingCHECKED_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3GpuCHECKED_x86.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\acPhysicsCore_target_BE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsCore_target_BE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\acCore_target_BE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeAssetProcessor_target_BE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeCore_target_BE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMRuntimeUtils_target_BE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeExport_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMTinyXML_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMPlatform_target_BE32_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\XMD_debug.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMTL_debug.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <ProgramDatabaseFile>$(OutDir)acPluginPhysX3_target_BE32_debug.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;include\PhysX3;..\..\..\..\SDK\physics\include\Physics\PhysX3;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\..\Physics;..\..\Physics\include\physics;..\..\..\..\SDK\physics\include;..\..\Core;..\..\Core\include\core;..\..\..\..\SDK\assetProcessor\include;..\..\..\..\SDK\core\include;..\..\..\..\SDK;..\..\..\..\..\common\NMRuntimeUtils\include;..\..\..\..\SDK\export\include;..\..\..\..\..\common\tinyxml;..\..\..\..\..\common\NMPlatform\include;..\..\..\..\..\common\NMPlatform\include\NMPlatform\win32;..\..\..\..\..\common\XMD\include;..\..\..\..\..\common\NMTL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;NM_PHYSX3;NM_TARGET_BIGENDIAN=1;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_USRDLL;_WINDLL;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsDriver_PhysX3_target_BE32.lib";"$(PHYSX3_PATH)\Lib\win32\LowLevel.lib";"$(PHYSX3_PATH)\Lib\win32\LowLevelCloth.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3Extensions.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3Vehicle.lib";"$(PHYSX3_PATH)\Lib\win32\PhysXProfileSDK.lib";"$(PHYSX3_PATH)\Lib\win32\PhysXVisualDebuggerSDK.lib";"$(PHYSX3_PATH)\Lib\win32\PvdRuntime.lib";"$(PHYSX3_PATH)\Lib\win32\PxTask.lib";"$(PHYSX3_PATH)\Lib\win32\RepX3.lib";"$(PHYSX3_PATH)\Lib\win32\SceneQuery.lib";"$(PHYSX3_PATH)\Lib\win32\SimulationController.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3CharacterKinematic_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3Common_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3Cooking_x86.lib";"$(PHYSX3_PATH)\Lib\win32\PhysX3Gpu_x86.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\acPhysicsCore_target_BE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemePhysicsCore_target_BE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\acCore_target_BE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeAssetProcessor_target_BE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeCore_target_BE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMRuntimeUtils_target_BE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\morphemeExport.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMTinyXML.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMPlatform_target_BE32.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\XMD.lib";"..\..\..\..\..\lib\win32\vs$(VisualStudioVersion)\NMTL.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDatabaseFile>$(OutDir)acPluginPhysX3_target_BE32.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\PhysX3\acPluginPhysX3.h" />
+    <ClCompile Include="src\acPluginPhysX3.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\SDK\physics\morphemePhysicsDriver_PhysX3_WIN32.vcxproj">
+      <Project>{31DFDD31-B92A-4256-0EA9-D69C04633280}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Physics\acPhysicsCore_WIN32.vcxproj">
+      <Project>{60F55A8E-5C51-47D3-708E-7A41A0F307B1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDK\physics\morphemePhysicsCore_WIN32.vcxproj">
+      <Project>{79CD03AF-41CC-469B-B0B1-DD18BDBD1643}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\acCore_WIN32.vcxproj">
+      <Project>{1D246D8C-0AD2-4DA0-5790-AB7208DF1D38}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDK\assetProcessor\morphemeAssetProcessor_WIN32.vcxproj">
+      <Project>{17DC67A9-155A-40C1-CD99-91526A1D3548}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDK\core\morphemeCore_WIN32.vcxproj">
+      <Project>{AC5679CC-935C-4BCF-67A4-D937C17D2BC4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\NMRuntimeUtils\NMRuntimeUtils_WIN32.vcxproj">
+      <Project>{3EBBF790-FDD8-4FCC-81A8-FEA264CAD994}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\SDK\export\morphemeExport_WIN32.vcxproj">
+      <Project>{9D5258B4-874D-4D97-A797-857752CE21AC}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\tinyxml\NMTinyXML_WIN32.vcxproj">
+      <Project>{DB83B4BD-06FA-42BE-9C9C-C79CC34E829F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\NMPlatform\NMPlatform_WIN32.vcxproj">
+      <Project>{A09CF394-9273-474D-4091-19EB54BF95DA}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\XMD\XMD_WIN32.vcxproj">
+      <Project>{80C0AC14-53FB-425C-FA8E-2E4A82CD3D6D}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\common\NMTL\NMTL_WIN32.vcxproj">
+      <Project>{BA13B81C-4721-4169-EC83-D3600C9BE1F6}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

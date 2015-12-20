@@ -1,0 +1,102 @@
+/**
+
+\page overview Memory System Overview
+
+<h2>Outline</h2>
+
+<p>We have developed a system within NMPlatform for managing memory in our applications, with specialised support 
+for runtime systems.  This document will attempt to explain it.  </p>
+
+<h2>Important Source Files</h2>
+
+<ol>
+<li>NMMemoryAllocator.cpp / NMMemoryAllocator.h</li>
+<li>NMMemory.cpp / NMMemory.h</li>
+<li>NMFreeList.cpp / NMFreeList.h</li>
+<li>NMStaticFreeList.cpp / NMStaticFreeList.h</li>
+<li>NMFreeListMemoryAllocator.cpp / NMFreeListMemoryAllocator.h</li>
+<li>NMStaticFreeListAllocator.cpp / NMStaticFreeListAllocator.h</li>
+</ol>
+
+<h2>Formats and Resources</h2>
+<p>In NMMemory.h , in the NMP::Memory namespace, there is a structure named Format.  This contains two pieces of 
+information used to specify memory allocations: size and alignment.    Alignment defaults to zero (i.e. no alignment).  
+Also in NMMemory.h, in the NMP::Memory namespace is a structure named Resource.  This describes a block of allocated 
+memory and again contains two pieces of information: a pointer to the block of memory, and a Format structure.  Some 
+functions in NMPlatform require a memory Resource to be passed in, usually for in-place initialisation.
+
+<h2>Original NMP::Memory Functions</h2>
+<p>The NMMemory.cpp / NMMemory.h files contain the original NMPlatform memory management system.  They provide a basic wrapper 
+around allocation and freeing functions, defaulting to using the standard aligned malloc/free library functions.  There
+is a basic logger which can report logging and freeing at two verbosity levels for leak detection and traffic level 
+monitoring.   Of particular help, the function, file, line number, size and pointer address are kept for every 
+allocation made and the current allocation list can be printed out at any time.
+ For many purposes, these statically implemented functions are sufficient.
+</p> 
+
+<h2>Allocators</h2>
+<p>The NM platform memory system provides a flexible framework for users to write their own custom allocators.  
+Furthermore, code which has been written to use the framework can be trivially changed to use an alternative allocator 
+type.
+In NMMemoryAllocator .h, in the NMP namespace, there is a pure virtual interface named MemoryAllocator.  This defines 
+three basic required functions that every allocator must have:
+</p>
+<ul>
+<li>Void* memAlloc(size, alignment)</li>
+<li>Void memFree(pointer)</li>
+<li>Resource allocateFromFormat(Format)		 [see ‘Formats and Resources’ above]</li>
+</ul>
+<p>The allocateFromFormat function is implemented in NMMemoryAllocator.cpp with a simple function that just uses the 
+memAlloc function; this means that the author of a custom memory allocator needs only implement the first two of the 
+above functions.
+Currently NMPlatform contains the following basic allocator implementations:
+</p>
+
+<h4>HeapAllocator </h4>
+<p>Found in NMMemoryAllocator.cpp / NMMemoryAllocator.h.  This is the most straightforward allocator; it just forwards alloc/free requests 
+on to the underlying NMP::Memory system described above.
+</p>
+
+<h4>LoggingMemoryAllocator </h4>
+<p>Found in NMLoggingMemoryAllocator.cpp / NMLoggingMemoryAllocator.h.  This acts in a similar way to the heap allocator, forwarding requests 
+onwards to the underlying NMP::Memory system.  A record is kept of every allocation (up to a compile-time defined limit)
+for debugging, leak tracking and efficiency monitoring purposes though.  Functions exist to print out total, peak and 
+current allocation counts.
+</p>
+
+<h4>FastHeapAllocator</h4>
+<p>Found in NMFastHeapAllocator.cpp / NMFastHeapAllocator.h.  This allocator is useful for situations where allocations are made that need 
+only be kept for a certain defined interval, for example a game frame-tick.   At initialisation the allocator reserves a
+ block of memory to act as a pool and sets a state pointer to the beginning of it.  Each time an allocation is made the 
+ current value of the state pointer is incremented by the requested size and the previous value of the pointer is 
+ returned.  At the end of the interval (usually a game frame) the state pointer is reset to the beginning of the memory 
+ pool for the next frame, invalidating all memory pointers
+</p>
+
+<h2>Free Lists</h2>
+<p>A free list manages a set of data blocks that have a routine size and alignment.  For example, suppose the programmer
+knows that they will be requiring a large number of allocations of 512 bytes must all be 16-byte aligned.  One way to 
+manage this would be to set up a free list with an appropriate Format and an estimate of how many allocations will be 
+needed.  The free list would allocate a chunk of memory large enough to accommodate the estimated number of allocations 
+and divide it into slots.  These slots can then be allocated and freed more efficiently than with conventional heap 
+allocation.  
+There are two types: dynamic (regular) and static.  Dynamic free lists are found in NMFreeList.cpp / NMFreeList.h; they are able to 
+allocated further chunks of memory using the same format if the original allocation estimate proves too low.  While 
+helpful in most circumstances, this allocation would cause problems in a game runtime.  A static free list allocator is 
+provided to address this.  It works with a fixed amount of memory and will not allocate after initialisation, making it 
+more suitable for game-runtime use.
+</p>
+
+<h2>Free List Allocators</h2>
+<p>Free lists are useful up to a point, but become cumbersome to keep track of when a wide variety of sizes and 
+alignments of allocation are needed.  This has been addressed with the ‘free list allocator’ helper classes which act as
+more generalised managers that hold an array of free lists of known formats.  Further free lists are created as needed 
+to deal with incoming allocations.  As with the free lists there are two flavours of free list allocator, dynamic 
+(regular) and static, which use regular and static free lists underneath, respectively.  The static variant reduces the 
+amount of heap thrashing that takes place when repeated allocation and freeing is taking place.  The dynamic version
+can be found in NMFreeListMemoryAllocator.cpp / NMFreeListMemoryAllocator.h and the static version in 
+NMStaticFreeListAllocator.cpp / NMStaticFreeListAllocator.h
+</p>
+
+*/
+

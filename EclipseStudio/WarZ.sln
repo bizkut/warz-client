@@ -1,0 +1,44 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Eternity", "..\Eternity\Eternity.vcproj", "{3D51BE84-6441-4AC7-A73F-587C6B36DDAF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{143F9B67-C223-4F2D-B8F9-B644CA710CA6} = {143F9B67-C223-4F2D-B8F9-B644CA710CA6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Eclipse Studio", "Studio.vcproj", "{22AD274B-9E09-431E-94D7-41780F91B239}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D51BE84-6441-4AC7-A73F-587C6B36DDAF} = {3D51BE84-6441-4AC7-A73F-587C6B36DDAF}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RakNet", "..\External\RakNet\RakNet.vcproj", "{143F9B67-C223-4F2D-B8F9-B644CA710CA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Final|Win32 = Final|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D51BE84-6441-4AC7-A73F-587C6B36DDAF}.Debug|Win32.ActiveCfg = Debug_NoCrashRpt|Win32
+		{3D51BE84-6441-4AC7-A73F-587C6B36DDAF}.Debug|Win32.Build.0 = Debug_NoCrashRpt|Win32
+		{3D51BE84-6441-4AC7-A73F-587C6B36DDAF}.Final|Win32.ActiveCfg = Final|Win32
+		{3D51BE84-6441-4AC7-A73F-587C6B36DDAF}.Final|Win32.Build.0 = Final|Win32
+		{3D51BE84-6441-4AC7-A73F-587C6B36DDAF}.Release|Win32.ActiveCfg = Release|Win32
+		{3D51BE84-6441-4AC7-A73F-587C6B36DDAF}.Release|Win32.Build.0 = Release|Win32
+		{22AD274B-9E09-431E-94D7-41780F91B239}.Debug|Win32.ActiveCfg = Debug|Win32
+		{22AD274B-9E09-431E-94D7-41780F91B239}.Debug|Win32.Build.0 = Debug|Win32
+		{22AD274B-9E09-431E-94D7-41780F91B239}.Final|Win32.ActiveCfg = Final|Win32
+		{22AD274B-9E09-431E-94D7-41780F91B239}.Final|Win32.Build.0 = Final|Win32
+		{22AD274B-9E09-431E-94D7-41780F91B239}.Release|Win32.ActiveCfg = Release|Win32
+		{22AD274B-9E09-431E-94D7-41780F91B239}.Release|Win32.Build.0 = Release|Win32
+		{143F9B67-C223-4F2D-B8F9-B644CA710CA6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{143F9B67-C223-4F2D-B8F9-B644CA710CA6}.Debug|Win32.Build.0 = Debug|Win32
+		{143F9B67-C223-4F2D-B8F9-B644CA710CA6}.Final|Win32.ActiveCfg = Release|Win32
+		{143F9B67-C223-4F2D-B8F9-B644CA710CA6}.Final|Win32.Build.0 = Release|Win32
+		{143F9B67-C223-4F2D-B8F9-B644CA710CA6}.Release|Win32.ActiveCfg = Release|Win32
+		{143F9B67-C223-4F2D-B8F9-B644CA710CA6}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

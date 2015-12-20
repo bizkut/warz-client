@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<Filter Include="include"><!--  -->
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="..\..\include\AgPerfMonEventAPI.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\AgPerfMonEventDefs.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\AgPerfMonEventSrcAPI.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\FrameworkFoundation.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\ODBlock.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleActor.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleApplication.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleArray.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleAsset.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleAssetManager.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleCommandLine.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleDirManager.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleFilesystem.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleFrameworkInputEventIds.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleInputAsset.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleLineDebugRender.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleMaterialAsset.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SamplePointDebugRender.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleProfileDeclareAgPerfmonEventInfo.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleProfileDefineAgPerfmonEventInfo.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SamplePxProfileZone.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleTextureAsset.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleTree.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleTriangleDebugRender.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\SampleXml.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\targa.h">
+			<Filter>include</Filter>
+		</ClInclude>
+	</ItemGroup>
+	<ItemGroup>
+		<Filter Include="src"><!--  -->
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<Filter Include="src\windows"><!--  -->
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClCompile Include="..\..\src\windows\WindowsSampleAssetManager.cpp">
+			<Filter>src\windows</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="..\..\src\nv_dds.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\pvrt.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClCompile Include="..\..\src\AgPerfMonEventSrcAPI.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\nv_dds.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\ODBlock.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\SampleApplication.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\SampleAsset.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\SampleAssetManager.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\SampleCommandLine.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\SampleDirManager.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\SampleInputAsset.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\SampleLineDebugRender.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\SampleMaterialAsset.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\SamplePointDebugRender.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\SamplePxProfileZone.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\SampleTextureAsset.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\SampleTree.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\SampleTriangleDebugRender.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\targa.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+	</ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FBXExport.cpp" />
+    <ClCompile Include="FbxImport.cpp" />
+    <ClCompile Include="FbxImportAnim.cpp" />
+    <ClInclude Include="FBXPlugin.h" />
+    <ClCompile Include="FBXUpdateAnimInfo.cpp" />
+    <ClCompile Include="FBXUtil.cpp" />
+    <ClInclude Include="FBXUtil.h" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,1048 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug Tool|Win32">
+      <Configuration>Debug Tool</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Tool|Win32">
+      <Configuration>Release Tool</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>XMD</ProjectName>
+    <ProjectGuid>{80C0AC14-53FB-425C-FA8E-2E4A82CD3D6D}</ProjectGuid>
+    <RootNamespace>XMD</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <TargetName>XMD_debug</TargetName>
+    <IntDir>..\..\obj\win32\vs$(VisualStudioVersion)\XMD\debug_tool\</IntDir>
+    <OutDir>..\..\bin\win32\vs$(VisualStudioVersion)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <TargetName>XMD</TargetName>
+    <IntDir>..\..\obj\win32\vs$(VisualStudioVersion)\XMD\release_tool\</IntDir>
+    <OutDir>..\..\bin\win32\vs$(VisualStudioVersion)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\NMTL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>WIN32;XMD_EXPORTS;_CRT_SECURE_NO_WARNINGS;_DEBUG;_USRDLL;_WINDLL;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\lib\win32\vs$(VisualStudioVersion)\NMTL_debug.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\..\lib\win32\vs$(VisualStudioVersion)\XMD_debug.lib</ImportLibrary>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <ProgramDatabaseFile>$(OutDir)XMD_debug.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\NMTL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;WIN32;XMD_EXPORTS;_CRT_SECURE_NO_WARNINGS;_USRDLL;_WINDLL;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\lib\win32\vs$(VisualStudioVersion)\NMTL.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\..\lib\win32\vs$(VisualStudioVersion)\XMD.lib</ImportLibrary>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDatabaseFile>$(OutDir)XMD.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\XM2\BoundingBox.h" />
+    <ClInclude Include="include\XM2\Colour.h" />
+    <ClInclude Include="include\XM2\ColourArray.h" />
+    <ClInclude Include="include\XM2\EulerAngles.h" />
+    <ClInclude Include="include\XM2\inl\BoundingBox.inl" />
+    <ClInclude Include="include\XM2\inl\Colour.inl" />
+    <ClInclude Include="include\XM2\inl\ColourArray.inl" />
+    <ClInclude Include="include\XM2\inl\EulerAngles.inl" />
+    <ClInclude Include="include\XM2\inl\Matrix34.inl" />
+    <ClInclude Include="include\XM2\inl\Matrix34Array.inl" />
+    <ClInclude Include="include\XM2\inl\MatrixStack.inl" />
+    <ClInclude Include="include\XM2\inl\Plane.inl" />
+    <ClInclude Include="include\XM2\inl\Quaternion.inl" />
+    <ClInclude Include="include\XM2\inl\QuaternionArray.inl" />
+    <ClInclude Include="include\XM2\inl\QuaternionSOA.inl" />
+    <ClInclude Include="include\XM2\inl\Ray.inl" />
+    <ClInclude Include="include\XM2\inl\RealArray.inl" />
+    <ClInclude Include="include\XM2\inl\Sphere.inl" />
+    <ClInclude Include="include\XM2\inl\sse\BoundingBox.inl" />
+    <ClInclude Include="include\XM2\inl\sse\Colour.inl" />
+    <ClInclude Include="include\XM2\inl\sse\Matrix34.inl" />
+    <ClInclude Include="include\XM2\inl\sse\Plane.inl" />
+    <ClInclude Include="include\XM2\inl\sse\Quaternion.inl" />
+    <ClInclude Include="include\XM2\inl\sse\QuaternionSOA.inl" />
+    <ClInclude Include="include\XM2\inl\sse\RealArray.inl" />
+    <ClInclude Include="include\XM2\inl\sse\Sphere.inl" />
+    <ClInclude Include="include\XM2\inl\sse\Transform.inl" />
+    <ClInclude Include="include\XM2\inl\sse\Trigonometry.inl" />
+    <ClInclude Include="include\XM2\inl\sse\Vector2.inl" />
+    <ClInclude Include="include\XM2\inl\sse\Vector2SOA.inl" />
+    <ClInclude Include="include\XM2\inl\sse\Vector3.inl" />
+    <ClInclude Include="include\XM2\inl\sse\Vector3SOA.inl" />
+    <ClInclude Include="include\XM2\inl\sse\Vector4.inl" />
+    <ClInclude Include="include\XM2\inl\sse\Vector4SOA.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\BoundingBox.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\Colour.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\Matrix34.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\Plane.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\Quaternion.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\QuaternionSOA.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\Sphere.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\Transform.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\Trigonometry.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\Vector2.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\Vector2SOA.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\Vector3.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\Vector3SOA.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\Vector4.inl" />
+    <ClInclude Include="include\XM2\inl\sse2\Vector4SOA.inl" />
+    <ClInclude Include="include\XM2\inl\Transform.inl" />
+    <ClInclude Include="include\XM2\inl\TransformArray.inl" />
+    <ClInclude Include="include\XM2\inl\Trigonometry.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\BoundingBox.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\Colour.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\Matrix34.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\Plane.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\Quaternion.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\QuaternionSOA.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\Sphere.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\Transform.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\Vector2.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\Vector2SOA.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\Vector3.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\Vector3SOA.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\Vector4.inl" />
+    <ClInclude Include="include\XM2\inl\vanilla\Vector4SOA.inl" />
+    <ClInclude Include="include\XM2\inl\Vector2.inl" />
+    <ClInclude Include="include\XM2\inl\Vector2Array.inl" />
+    <ClInclude Include="include\XM2\inl\Vector2SOA.inl" />
+    <ClInclude Include="include\XM2\inl\Vector2SOAArray.inl" />
+    <ClInclude Include="include\XM2\inl\Vector3.inl" />
+    <ClInclude Include="include\XM2\inl\Vector3Array.inl" />
+    <ClInclude Include="include\XM2\inl\Vector3Packed.inl" />
+    <ClInclude Include="include\XM2\inl\Vector3PackedArray.inl" />
+    <ClInclude Include="include\XM2\inl\Vector3SOA.inl" />
+    <ClInclude Include="include\XM2\inl\Vector3SOAArray.inl" />
+    <ClInclude Include="include\XM2\inl\Vector4.inl" />
+    <ClInclude Include="include\XM2\inl\Vector4Array.inl" />
+    <ClInclude Include="include\XM2\inl\Vector4SOA.inl" />
+    <ClInclude Include="include\XM2\inl\Vector4SOAArray.inl" />
+    <ClInclude Include="include\XM2\MathCommon.h" />
+    <ClInclude Include="include\XM2\Matrix34.h" />
+    <ClInclude Include="include\XM2\Matrix34Array.h" />
+    <ClInclude Include="include\XM2\MatrixStack.h" />
+    <ClInclude Include="include\XM2\Plane.h" />
+    <ClInclude Include="include\XM2\pod_stack.h" />
+    <ClInclude Include="include\XM2\pod_vector.h" />
+    <ClInclude Include="include\XM2\Quaternion.h" />
+    <ClInclude Include="include\XM2\QuaternionArray.h" />
+    <ClInclude Include="include\XM2\QuaternionSOA.h" />
+    <ClInclude Include="include\XM2\QuaternionSOAArray.h" />
+    <ClInclude Include="include\XM2\Ray.h" />
+    <ClInclude Include="include\XM2\RealArray.h" />
+    <ClInclude Include="include\XM2\Sphere.h" />
+    <ClInclude Include="include\XM2\Transform.h" />
+    <ClInclude Include="include\XM2\TransformArray.h" />
+    <ClInclude Include="include\XM2\vector.h" />
+    <ClInclude Include="include\XM2\Vector2.h" />
+    <ClInclude Include="include\XM2\Vector2Array.h" />
+    <ClInclude Include="include\XM2\Vector2SOA.h" />
+    <ClInclude Include="include\XM2\Vector2SOAArray.h" />
+    <ClInclude Include="include\XM2\Vector3.h" />
+    <ClInclude Include="include\XM2\Vector3Array.h" />
+    <ClInclude Include="include\XM2\Vector3Packed.h" />
+    <ClInclude Include="include\XM2\Vector3PackedArray.h" />
+    <ClInclude Include="include\XM2\Vector3SOA.h" />
+    <ClInclude Include="include\XM2\Vector3SOAArray.h" />
+    <ClInclude Include="include\XM2\Vector4.h" />
+    <ClInclude Include="include\XM2\Vector4Array.h" />
+    <ClInclude Include="include\XM2\Vector4SOA.h" />
+    <ClInclude Include="include\XM2\Vector4SOAArray.h" />
+    <ClInclude Include="include\XM2\vector_iterators.h" />
+    <ClInclude Include="include\XMD\AimConstraint.h" />
+    <ClInclude Include="include\XMD\Air.h" />
+    <ClInclude Include="include\XMD\AmbientLight.h" />
+    <ClInclude Include="include\XMD\AnimationStream.h" />
+    <ClInclude Include="include\XMD\AnimationTake.h" />
+    <ClInclude Include="include\XMD\AnimCycle.h" />
+    <ClInclude Include="include\XMD\Anisotropic.h" />
+    <ClInclude Include="include\XMD\AreaLight.h" />
+    <ClInclude Include="include\XMD\Attribute.h" />
+    <ClInclude Include="include\XMD\Base.h" />
+    <ClInclude Include="include\XMD\BaseLattice.h" />
+    <ClInclude Include="include\XMD\BaseProperties.h" />
+    <ClInclude Include="include\XMD\BezierCurve.h" />
+    <ClInclude Include="include\XMD\BezierPatch.h" />
+    <ClInclude Include="include\XMD\BlendShape.h" />
+    <ClInclude Include="include\XMD\Blinn.h" />
+    <ClInclude Include="include\XMD\Bone.h" />
+    <ClInclude Include="include\XMD\BumpMap.h" />
+    <ClInclude Include="include\XMD\Camera.h" />
+    <ClInclude Include="include\XMD\ClonePolicy.h" />
+    <ClInclude Include="include\XMD\Cluster.h" />
+    <ClInclude Include="include\XMD\CollisionBase.h" />
+    <ClInclude Include="include\XMD\CollisionBox.h" />
+    <ClInclude Include="include\XMD\CollisionCapsule.h" />
+    <ClInclude Include="include\XMD\CollisionCone.h" />
+    <ClInclude Include="include\XMD\CollisionCylinder.h" />
+    <ClInclude Include="include\XMD\CollisionMesh.h" />
+    <ClInclude Include="include\XMD\CollisionSphere.h" />
+    <ClInclude Include="include\XMD\CompoundProperties.h" />
+    <ClInclude Include="include\XMD\Constraint.h" />
+    <ClInclude Include="include\XMD\CreatePolicy.h" />
+    <ClInclude Include="include\XMD\CubeMap.h" />
+    <ClInclude Include="include\XMD\Deformer.h" />
+    <ClInclude Include="include\XMD\DeletePolicy.h" />
+    <ClInclude Include="include\XMD\DirectionalLight.h" />
+    <ClInclude Include="include\XMD\DisplayLayer.h" />
+    <ClInclude Include="include\XMD\Drag.h" />
+    <ClInclude Include="include\XMD\Emitter.h" />
+    <ClInclude Include="include\XMD\EnvmapBaseTexture.h" />
+    <ClInclude Include="include\XMD\ExportPolicy.h" />
+    <ClInclude Include="include\XMD\ExtendedLight.h" />
+    <ClInclude Include="include\XMD\ExtraAttributes.h" />
+    <ClInclude Include="include\XMD\Factory.h" />
+    <ClInclude Include="include\XMD\FCurveStream.h" />
+    <ClInclude Include="include\XMD\FFD.h" />
+    <ClInclude Include="include\XMD\Field.h" />
+    <ClInclude Include="include\XMD\FileIO.h" />
+    <ClInclude Include="include\XMD\FileTranslator.h" />
+    <ClInclude Include="include\XMD\Geometry.h" />
+    <ClInclude Include="include\XMD\GeometryConstraint.h" />
+    <ClInclude Include="include\XMD\Gravity.h" />
+    <ClInclude Include="include\XMD\HermiteCurve.h" />
+    <ClInclude Include="include\XMD\HermitePatch.h" />
+    <ClInclude Include="include\XMD\HwShaderNode.h" />
+    <ClInclude Include="include\XMD\IkChain.h" />
+    <ClInclude Include="include\XMD\Image.h" />
+    <ClInclude Include="include\XMD\ImportPolicy.h" />
+    <ClInclude Include="include\XMD\Info.h" />
+    <ClInclude Include="include\XMD\InheritedNode.h" />
+    <ClInclude Include="include\XMD\Instance.h" />
+    <ClInclude Include="include\XMD\ItPolygon.h" />
+    <ClInclude Include="include\XMD\JiggleDeformer.h" />
+    <ClInclude Include="include\XMD\JointCluster.h" />
+    <ClInclude Include="include\XMD\Lambert.h" />
+    <ClInclude Include="include\XMD\Lattice.h" />
+    <ClInclude Include="include\XMD\LayeredShader.h" />
+    <ClInclude Include="include\XMD\LayeredTexture.h" />
+    <ClInclude Include="include\XMD\Light.h" />
+    <ClInclude Include="include\XMD\Locator.h" />
+    <ClInclude Include="include\XMD\Logger.h" />
+    <ClInclude Include="include\XMD\LookAtConstraint.h" />
+    <ClInclude Include="include\XMD\Material.h" />
+    <ClInclude Include="include\XMD\Mesh.h" />
+    <ClInclude Include="include\XMD\MeshVertexColours.h" />
+    <ClInclude Include="include\XMD\Model.h" />
+    <ClInclude Include="include\XMD\NewNode.h" />
+    <ClInclude Include="include\XMD\Newton.h" />
+    <ClInclude Include="include\XMD\NodeCollection.h" />
+    <ClInclude Include="include\XMD\NodeProperties.h" />
+    <ClInclude Include="include\XMD\NodeTypeRegister.h" />
+    <ClInclude Include="include\XMD\NonLinearDeformer.h" />
+    <ClInclude Include="include\XMD\NormalConstraint.h" />
+    <ClInclude Include="include\XMD\NurbsCurve.h" />
+    <ClInclude Include="include\XMD\NurbsSurface.h" />
+    <ClInclude Include="include\XMD\ObjectSet.h" />
+    <ClInclude Include="include\XMD\OrientConstraint.h" />
+    <ClInclude Include="include\XMD\ParametricBase.h" />
+    <ClInclude Include="include\XMD\ParametricCurve.h" />
+    <ClInclude Include="include\XMD\ParametricSurface.h" />
+    <ClInclude Include="include\XMD\ParentConstraint.h" />
+    <ClInclude Include="include\XMD\ParticleShape.h" />
+    <ClInclude Include="include\XMD\Phong.h" />
+    <ClInclude Include="include\XMD\PhongE.h" />
+    <ClInclude Include="include\XMD\PointConstraint.h" />
+    <ClInclude Include="include\XMD\PointLight.h" />
+    <ClInclude Include="include\XMD\PoleVectorConstraint.h" />
+    <ClInclude Include="include\XMD\PolygonMesh.h" />
+    <ClInclude Include="include\XMD\PoseStream.h" />
+    <ClInclude Include="include\XMD\Radial.h" />
+    <ClInclude Include="include\XMD\RampShader.h" />
+    <ClInclude Include="include\XMD\RenderLayer.h" />
+    <ClInclude Include="include\XMD\SampledStream.h" />
+    <ClInclude Include="include\XMD\ScaleConstraint.h" />
+    <ClInclude Include="include\XMD\SculptDeformer.h" />
+    <ClInclude Include="include\XMD\ShadingNode.h" />
+    <ClInclude Include="include\XMD\Shape.h" />
+    <ClInclude Include="include\XMD\SkinCluster.h" />
+    <ClInclude Include="include\XMD\Specular.h" />
+    <ClInclude Include="include\XMD\SphereMap.h" />
+    <ClInclude Include="include\XMD\SpotLight.h" />
+    <ClInclude Include="include\XMD\SurfaceShader.h" />
+    <ClInclude Include="include\XMD\TangentConstraint.h" />
+    <ClInclude Include="include\XMD\TexPlacement2D.h" />
+    <ClInclude Include="include\XMD\TexPlacement3D.h" />
+    <ClInclude Include="include\XMD\Texture.h" />
+    <ClInclude Include="include\XMD\TrimData.h" />
+    <ClInclude Include="include\XMD\Turbulence.h" />
+    <ClInclude Include="include\XMD\Uniform.h" />
+    <ClInclude Include="include\XMD\UseBackgroundShader.h" />
+    <ClInclude Include="include\XMD\UserData.h" />
+    <ClInclude Include="include\XMD\VolumeAxis.h" />
+    <ClInclude Include="include\XMD\VolumeBox.h" />
+    <ClInclude Include="include\XMD\VolumeCone.h" />
+    <ClInclude Include="include\XMD\VolumeCylinder.h" />
+    <ClInclude Include="include\XMD\VolumeLight.h" />
+    <ClInclude Include="include\XMD\VolumeObject.h" />
+    <ClInclude Include="include\XMD\VolumeSphere.h" />
+    <ClInclude Include="include\XMD\Vortex.h" />
+    <ClInclude Include="include\XMD\WireDeformer.h" />
+    <ClInclude Include="include\XMD\WrapDeformer.h" />
+    <ClInclude Include="include\XMD\XFn.h" />
+    <ClInclude Include="include\XMU\BlendShapeOptimiser.h" />
+    <ClInclude Include="include\XMU\FileSystem.h" />
+    <ClInclude Include="include\XMU\KeyStripper.h" />
+    <ClInclude Include="include\XMU\Normals.h" />
+    <ClInclude Include="include\XMU\SkinPruner.h" />
+    <ClInclude Include="include\XMU\Tangents.h" />
+    <ClInclude Include="include\XMU\Upgrading.h" />
+    <ClInclude Include="include\XMU\VertexArray.h" />
+    <ClCompile Include="src\XM2\BoundingBox.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Colour.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\ColourArray.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\EulerAngles.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\MathCommon.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Matrix34.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Matrix34Array.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\MatrixStack.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Plane.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Quaternion.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\QuaternionArray.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\QuaternionSOA.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\QuaternionSOAArray.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Ray.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\RealArray.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Sphere.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Transform.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\TransformArray.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector2Array.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector2SOA.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector2SOAArray.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector3.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector3Array.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector3Packed.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector3PackedArray.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector3SOA.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector3SOAArray.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector4.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector4Array.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector4SOA.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector4SOAArray.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\AimConstraint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Air.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\AmbientLight.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\AnimationStream.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\AnimationTake.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\AnimCycle.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Anisotropic.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\AreaLight.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Attribute.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Base.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\BaseLattice.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\BaseProperties.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\BezierCurve.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\BezierPatch.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\BlendShape.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Blinn.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Bone.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\BumpMap.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Camera.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ClonePolicy.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Cluster.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionBox.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionCapsule.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionCone.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionCylinder.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionMesh.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionObject.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionSphere.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CompoundProperties.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Constraint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CreatePolicy.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CubeMap.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Deformer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\DeletePolicy.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\DirectionalLight.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\DisplayLayer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\DocModule.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Drag.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Emitter.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\EnvmapBaseTexture.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ExportPolicy.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ExtendedLight.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ExtraAttributes.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Factory.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\FCurveStream.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\FFD.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Field.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\FileIO.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\FileTranslator.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Geometry.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\GeometryConstraint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Gravity.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\HermiteCurve.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\HermitePatch.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\HwShaderNode.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\IkChain.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Image.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ImportPolicy.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Info.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\InheritedNode.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Instance.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ItPolygon.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\JiggleDeformer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\JointCluster.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Lambert.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Lattice.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\LayeredShader.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\LayeredTexture.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Light.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Locator.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Logger.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\LookAtConstraint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Material.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Mesh.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\MeshVertexColours.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Model.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NewNode.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Newton.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NodeCollection.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NodeProperties.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NodeTypeRegister.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NonLinearDeformer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NormalConstraint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NurbsCurve.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NurbsSurface.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ObjectSet.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\OrientConstraint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ParametricBase.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ParametricCurve.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ParametricSurface.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ParentConstraint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ParticleShape.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Phong.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\PhongE.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\PointConstraint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\PointLight.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\PoleVectorConstraint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\PolygonMesh.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\PoseStream.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Radial.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\RampShader.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\RenderLayer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\SampledStream.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ScaleConstraint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\SculptDeformer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ShadingNode.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Shape.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\SkinCluster.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Specular.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\SphereMap.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\SpotLight.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\SurfaceShader.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\TangentConstraint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\TexPlacement2D.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\TexPlacement3D.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Texture.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\TrimData.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Turbulence.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Uniform.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\UseBackgroundShader.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\UserData.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeAxis.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeBox.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeCone.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeCylinder.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeLight.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeObject.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeSphere.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Vortex.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\WireDeformer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMD\WrapDeformer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMU\BlendShapeOptimiser.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMU\FileSystem.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMU\KeyStripper.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMU\SkinPruner.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMU\Upgrading.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\XMU\VertexArray.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug Tool|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release Tool|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="UnityFile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NMTL\NMTL_WIN32.vcxproj">
+      <Project>{BA13B81C-4721-4169-EC83-D3600C9BE1F6}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

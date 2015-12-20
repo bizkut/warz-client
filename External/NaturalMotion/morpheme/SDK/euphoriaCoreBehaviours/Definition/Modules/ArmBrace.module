@@ -1,0 +1,63 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Reach out towards hazard in order to get arms into the best position to cushion after impact
+// then cushion the impact
+module_def ArmBrace
+{
+owner: Arm
+
+data:
+  Direction reachDirection; ///< Direction to hazard
+  Weight importance;        ///< Importance of the resulting limb control
+  Imminence imminence;      ///< 1/time to impact
+  Position placePos;        ///< Position to place hands
+  int64_t patchShapeID;     ///< Used to tell whether the hand is in contact with the passed in hazard
+  bool doingBrace;          ///< Used for hysteresis
+
+in:
+  BodyState protectState;   ///< pos, vel etc of the protect area, which is around the chest
+  BraceHazard braceHazard;  ///< The main object used for determining the brace
+  bool shouldBrace;         ///< Based on how close that limb is to being able to reach the hazard
+  Position cushionPoint;    ///< Middle of the polygon of support for when cushioning
+  Multiplier braceScale;    ///< Controls how much brace is requested from lower body, since the arm brace is already scaled by braceScale in the braceHazardImportance
+  Weight maxArmExtensionScale; ///< 1 is full arm extension 
+  Multiplier swivelAmount;  ///< refer to the guide poses for the posture at each swivel amount, usually -1 to 1
+
+feedOut:
+  RotationRequest rootRotationRequest; ///< Requests a rotation of the chest
+  BraceState braceState;               ///< Used by the BraceChooser to decide if the arm is in a good position to brace compared to the others
+  Position endCushionPoint;            ///< Passes up hand position to generate averaged cushionPoint as input
+
+feedIn:
+  bool limbInContactWithPatchShapeID; ///< Result of contact test, is any part of the limb in contact with the incoming hazard
+  bool rootInContactWithPatchShapeID; ///< Result of contact test, is the limb's root part in contact with the incoming hazard
+
+out:
+  LimbControl control; ///< IK Control of arm
+  
+connections<>:
+  in.maxArmExtensionScale = junctions.in_maxArmExtensionScale = priority(
+    owner.owner.armsBraceBehaviourInterface.out.maxArmExtensionScale,
+    owner.owner.protectBehaviourInterface.out.maxArmExtensionScale);
+    
+  in.swivelAmount = junctions.in_swivelAmount = priority(
+    owner.owner.armsBraceBehaviourInterface.out.swivelAmount,
+    owner.owner.protectBehaviourInterface.out.swivelAmount);
+    
+  in.protectState = (owner.owner.bodyFrame.feedOut.chestState);
+  in.cushionPoint = (owner.owner.upperBody.feedIn.cushionPoint);
+  in.braceHazard = junctions.in_braceHazard = winnerTakesAll(owner.owner.hazardManagement.hazardResponse.out.braceHazard, owner.owner.armsBraceBehaviourInterface.out.hazard);
+  in.shouldBrace = (owner.in.shouldBrace);
+}
+
+#endif

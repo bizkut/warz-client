@@ -1,0 +1,150 @@
+// Copyright (c) 2012 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Behaviour that drives character to aim a hand gun at a worldspace target.
+behaviour_def Aim
+{
+interface:
+  displayname = "Aim";
+  version = 12;
+
+modules:
+  aimBehaviourInterface;
+
+  arms[*].aim;
+  heads[*].aim;
+  spines[*].aim;
+
+animationInputs:
+  BodyPose Pose __compulsory_input__;
+
+attributes:
+
+  group("Pose")
+  {
+    /// If set then pose will be cached on the first update. This means that the pose that is used will not change if the input changes.
+    bool UseSingleFrameForPose = false __per_anim_set__ __title__("CacheFirstFrame"); 
+  }
+
+  /// Configure the arm that the character is aiming with.
+  group("Aiming Limb")
+  {
+    /// Index of the arm that the character is aiming with (i.e. the arm holding the gun etc).
+    int AimingLimbIndex = 0, 0, 32 __title__("AimingArm");
+  }
+
+  /// Enables special treatment of one of the character's arms to make it look more like it is supporting the aiming arm. This includes calculating its IK target relative to the aiming arm, potentially enabling a physical constraint, controlling the path taken by the hand as it moves toward the aiming hand etc.
+  group("Supporting Arm Behaviour")
+  {
+    /// Turn on or off the ability to have an arm that supports the aiming arm
+    bool EnableSupportingArm = true;
+    /// Select an arm whose hand will always be positioned relative to the aiming hand. This is useful for placing a hand on a rifle stock or representing a two handed grip on a pistol etc.
+    int SupportingLimbIndex = 1, 0, 32 __title__("SupportingArm");
+    /// Stop controlling the supporting hand if it is more than a threshold distance from the aiming hand in the input pose.
+    bool ShouldDisableHandsOnSeparationInPose = false __title__("Disable control on distance from aiming hand");
+    /// Stop controlling the supporting hand if it is more than this distance from the aiming hand in the input pose. In metres (standard character).
+    float DisableHandsSeparationInPoseMax = 0.1f, 0.0f, 2.0f __title__("Disable when separation in pose >");
+    /// The ideal twist in the supporting arm. This is used to determine when the arm is twisted in an uncomfortable way. The behaviour will atempt to unwind the arm in this case. In degrees.
+    float SupportingArmTwist = -115.0f, -180.0f, 180.0f __title__("Desired Twist");
+    /// Create a physical constraint between the supporting hand and the aiming hand. Constraint tries to maintain the relative transforms of the end parts in the input pose. 
+    bool EnableConstraint = true;
+    /// Constrain the orientation of the supporting hand as well as the position.
+    bool EnableOrientationConstraint = false __title__("ConstrainOrientation");
+    /// Maximum acceleration that the constraint can apply, scaled by the one over the separation between the aiming and constrained hands. In metres per second per second (standard character).
+    float ConstraintAccelerationLimit = 1.0f, 0.0f, 10000.0f __title__("AccelerationLimit");
+    /// Deactivate the constraint if the constrained hand is more than a threshold distance from the aiming hand in the input pose.
+    bool ShouldDisableConstraintOnSeparationInPose = true __title__("Disable constraint on distance from aiming hand in pose");
+    /// Deactivate the constraint if the constrained hand is more than this distance from the aiming hand in the input pose. In metres (standard character).
+    float DisableConstraintOnSeparationInPoseMax = 0.2f, 0.0f, 2.0f __title__("Disable when separation in pose >");
+    /// Deactivate the constraint if the constrained hand is more than a threshold distance from the aiming hand in the current rig configuration.
+    bool ShouldDisableConstraintOnSeparationInRig = true __title__("Disable constraint on distance from aiming hand on rig");
+    /// Deactivate the constraint if the constrained hand is more than this distance from the aiming hand in the current rig configuration. In metres (standard character).
+    float DisableConstraintOnSeparationInRigMax = 0.2f, 0.0f, 2.0f __title__("Disable when separation on rig >");
+    /// Scale the inertia of the aiming hand to reduce any movement caused by the constraint.
+    float AimingLimbInertiaScale = 10.0f, 0.0f, 100.0f __title__("InertiaScale");
+  }
+
+  /// When to switch off the aiming behaviour.
+  group("Deactivation Conditions")
+  {
+    bool DisableWhenLyingOnGround      = false __title__("LyingOnGround");         ///< Don't Aim if the character is lying on the ground in any orientation.
+    bool DisableWhenLyingOnFront       = false __title__("LyingOnFront");          ///< Don't Aim if the character is lying with its front facing the ground.
+    bool DisableWhenTargetOutsideRange = false __title__("Target Outside Range");  ///< Don't Aim if the direction from the pelvis to the target is outside of this range. The center of the range points in the pelvis forward direction. Pitch and Yaw are in degrees.
+    float TargetYawRight  = -90.0f, -180.0f, 180.0f __title__("Yaw right (min)");  ///< Don't aim if target yaw is outside of this range. The centre of the range points in the pelvis forward direction and the yaw value increases from the character's right to its left. In degrees.
+    float TargetYawLeft   =  90.0f, -180.0f, 180.0f __title__("Yaw left (max)");   ///< Don't aim if target yaw is outside of this range. The centre of the range points in the pelvis forward direction and the yaw value increases from the character's right to its left. In degrees.
+    float TargetPitchDown = -90.0f, -180.0f, 180.0f __title__("Pitch down (min)"); ///< Don't aim if target pitch is outside of this range. The centre of the range points in the pelvis forward direction and the pitch value increases from character down to up. In degrees.
+    float TargetPitchUp   =  90.0f, -180.0f, 180.0f __title__("Pitch up (max)");   ///< Don't aim if target pitch is outside of this range. The centre of the range points in the pelvis forward direction and the pitch value increases from character down to up. In degrees.
+  }
+
+  /// How much should the aim behaviour change the input pose for each limb.
+  group("Pose Modification Weights")
+  {
+    float TwistBodyAmount = 0.75f, 0.0f, 1.0f;
+    float SwingBodyAmount = 0.0f, 0.0f, 1.0f;
+    float TwistHeadAmount = 1.0f, 0.0f, 1.0f;
+    float SwingHeadAmount = 1.0f, 0.0f, 1.0f;
+  }
+
+  /// Set the amount of gravity compensation applied to each limb. Low values will allow the limbs to drop under the influence of gravity, which may make the character look tierd or weak. Values higher than one may be needed to get the appearence of full gravity compensation on otherwise weak limbs.
+  group("Gravity Compensation")
+  {
+    float ArmGravityCompensation[networkMaxNumArms]     = 1.0f, 0.0f, 2.0f __title__("Arm");  ///< Gravity compensation scale for the arm.
+    float HeadGravityCompensation[networkMaxNumHeads]   = 1.0f, 0.0f, 2.0f __title__("Head"); ///< Gravity compensation scale for the head.
+    float SpineGravityCompensation[networkMaxNumSpines] = 1.0f, 0.0f, 2.0f __title__("Spine");///< Gravity compensation scale for the spine.
+  }
+
+controlParams:
+
+  /// Set the strength and damping scale applied to each limb.
+  group("Control")
+  {
+    float ArmStrength[networkMaxNumArms]                     = 1.0f, 0.0f, 2.0f; ///< Weights this behaviour's influence over the arm against that of other behaviours. Lower values will be weaker if no other arm control active
+    float HeadStrength[networkMaxNumHeads]                   = 1.0f, 0.0f, 2.0f; ///< Weights this behaviour's influence over the head against that of other behaviours. Lower values will be weaker if no other head control active
+    float SpineStrength[networkMaxNumSpines]                 = 1.0f, 0.0f, 2.0f; ///< Weights this behaviour's influence over the spine against that of other behaviours. Lower values will be weaker if no other spine control active
+    float ArmDampingScale[networkMaxNumArms]                 = 1.2f, 0.0f, 2.0f; ///< Damping scale for the arm.
+    float HeadDampingScale[networkMaxNumHeads]               = 1.2f, 0.0f, 2.0f; ///< Damping scale for the head.
+    float SpineDampingScale[networkMaxNumSpines]             = 1.2f, 0.0f, 2.0f; ///< Damping scale for the spine.
+    float ArmRootRotationCompensation[networkMaxNumArms]     = 0.5f, 0.0f, 2.0f; ///< How much to adjust the arm target position to compensate for rotation of the chest.
+    float HeadRootRotationCompensation[networkMaxNumHeads]   = 1.0f, 0.0f, 2.0f; ///< How much to adjust the head target position to compensate for rotation of the chest.
+    float SpineRootRotationCompensation[networkMaxNumSpines] = 1.0f, 0.0f, 2.0f; ///< How much to adjust the chest target position to compensate for rotation of the pelvis.
+  }
+
+  /// Set the IK swivel parameters for each arm.
+  group("Arm IK")
+  {
+    
+    float ArmSwivel[networkMaxNumArms]      = 0.0f, -1.0f, 1.0f;  ///< Positive is elbows out and up, negative is elbows in and down
+    float ArmIKSubStep[networkMaxNumArms]   = 1.0f, 0.0f, 1.0f;   ///< IK sub step (values < 1 make a moving arm follow a straighter line rather than an arc).
+  }
+
+  group("Aiming Limb")
+  {
+    /// The direction of the gun barrel (or whatever is being pointed) in the space of the aiming hand.
+    vector3 BarrelDirection = (0, 1, 0);
+  }
+
+  {
+    /// Current target position in world space.
+    vector3 TargetPositionInWorldSpace __expose_as_pin__ __title__("Target Position"); 
+    /// Enable configured constraint between a non aiming effector and the aiming effector. This can be used to dynamically enable/disable the supporting arm constraint.
+    bool AllowConstraint = true; 
+  }
+
+outputControlParams:
+  float targetPitch;     ///< Rotation from target position for pose to actual target position relative to chest perpendicular to spine direction.
+  float targetYaw;       ///< Rotation from target position for pose to actual target position relative to chest about spine direction.
+  float handSeparation;  ///< How far is the supporting hand from the aiming hand.
+
+}
+
+#endif

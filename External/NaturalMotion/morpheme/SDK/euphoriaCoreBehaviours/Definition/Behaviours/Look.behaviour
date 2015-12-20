@@ -1,0 +1,49 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// This behaviour allows you to look at a target. It is more than a head pose, the whole body will help to look and the 
+// look target is his visual focus meaning he will see things in this surrounding area
+// like other atomic behaviours, it should be used alongside a balance otherwise he'll fall over
+
+/// Makes a character look at a target point.
+behaviour_def Look
+{
+interface:
+  displayname = "Look";
+  version = 4;
+
+modules:
+  lookBehaviourInterface;
+  heads[*].point;
+  heads[*].eyes;
+  
+attributes:
+
+  group("Ignore out of range targets") ///< Don't Look at a target if the direction from the pelvis to the target is outside of this range. The center of the range points in the pelvis forward direction. Pitch and Yaw are in degrees.
+  {
+    bool IgnoreDirectionWhenOutOfRange = false;
+    float TargetYawRight  = -90.0f, -180.0f, 180.0f __title__("Yaw right (min)");  ///< Ignore look target if yaw is outside of this range. The centre of the range points in the pelvis forward direction and the yaw value increases from the character's right to its left. In degrees.
+    float TargetYawLeft   =  90.0f, -180.0f, 180.0f __title__("Yaw left (max)");   ///< Ignore look target if yaw is outside of this range. The centre of the range points in the pelvis forward direction and the yaw value increases from the character's right to its left. In degrees.
+    float TargetPitchDown = -90.0f, -180.0f, 180.0f __title__("Pitch down (min)"); ///< Ignore look target if pitch is outside of this range. The centre of the range points in the pelvis forward direction and the pitch value increases from character down to up. In degrees.
+    float TargetPitchUp   =  90.0f, -180.0f, 180.0f __title__("Pitch up (max)");   ///< Ignore look target if pitch is outside of this range. The centre of the range points in the pelvis forward direction and the pitch value increases from character down to up. In degrees.
+  }
+   
+controlParams:
+  {
+    vector3 LookPosition __title__("Target") __expose_as_pin__;       ///< Sets the position in world space to look at.
+    float WholeBodyLook = 0.2f, 0.0f, 1.0f     __title__("MoveBody");  ///< Sets how much of the body to move when looking. Accepts values in the range 0 to 1.
+    float LookWeight = 1.0f, 0.0f, 1.0f  __title__("Weight");     ///< The weight (importance) of the look behaviour relative to others.
+  }
+}
+
+#endif
+

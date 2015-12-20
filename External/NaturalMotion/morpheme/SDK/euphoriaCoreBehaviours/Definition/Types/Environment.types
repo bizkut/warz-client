@@ -1,0 +1,231 @@
+ /*
+ * Copyright (c) 2009 NaturalMotion Ltd. All rights reserved.
+ *
+ * Not to be copied, adapted, modified, used, distributed, sold,
+ * licensed or commercially exploited in any manner without the
+ * written consent of NaturalMotion.
+ *
+ * All non public elements of this software are the confidential
+ * information of NaturalMotion and may not be disclosed to any
+ * person nor used for any purpose not expressly approved by
+ * NaturalMotion in writing.
+ *
+ */
+
+#if 0
+
+typedef ER::SphereSweep        {32} __extern_struct__("euphoria/erCollisionProbes.h");
+typedef ER::SweepResult        {32} __extern_class__("euphoria/erCollisionProbes.h");
+
+namespace Environment
+{
+  struct ObjectData
+  {
+    int64_t shapeID; ///< Will be cast from a pointer to the PxShape
+    NMP::Vector3 lastVel;
+    NMP::Vector3 secondLastVel;
+    NMP::Vector3 smoothedAcc;
+    NMP::Vector3 smoothedAngVel;
+    float smoothedAccSqr;
+    int32_t inViewFrameCount; ///< how many frames has it been in view
+  };
+
+  __no_combiner__ struct LocalShape
+  {
+    Position corner; ///< this is local to the bound object
+    Direction faceNormals[3]; 
+    Position knownContactPoint;
+    int32_t type;
+    
+    + void fromWorldSpace(const Environment::Patch &patch, const NMP::Matrix34 &matrix);
+    + void toWorldSpace(Environment::Patch &patch, const NMP::Matrix34 &matrix);
+    + bool isConnectedTo(const Environment::LocalShape &object, float epsilon) const;
+  };
+  
+  // This structure stores 3d points, to allow inside outside tests in various plane directions. For simplicity it
+  // requires all the points to be in clockwise order around the plane direction, something which isn't a concern for
+  // under 3 points.
+  struct SupportPoly
+  {
+    Position m_corners[32];
+    uint32_t m_numCorners;
+    bool m_fullySupported; ///< if true the getDistanceToPoint will return 0
+
+    /// distance to the polygon in the plane defined by normal, -ve means penetration. 
+    /// closestPointInPolygon also in plane defined by normal and position
+    + float getDistanceToPoint(const NMP::Vector3 &position, const NMP::Vector3 &normal, 
+                               float radius, NMP::Vector3 *closestPointInPolygon) const;
+    + void debugDraw(const NMP::Vector3 &position, const NMP::Vector3 &normal, 
+                     float radius, const NMP::Vector3 &closestPointInPolygon, 
+                     const NMP::Vector3 &colour, 
+                     MR::InstanceDebugInterface* pDebugDrawInst) const;
+    /// Returns the extent (width) in the direction (must be normalised). 
+    /// May not return the minimum in the case of parallel sides
+    + float getExtentsInDirection(const NMP::Vector3 &direction) const;
+    /// Returns the convex hull of points, based on up vector which is perpendicular to the plane. The points are not
+    /// projected onto the plane - i.e. the points out are a subset of the points in. Convex hull is clockwise wound
+    /// when viewed along the up direction.
+    + void buildConvexHull(const NMP::Vector3 *points, int32_t numPoints, const NMP::Vector3 &up, bool fullySupported = 0);
+    + NMP::Vector3 getCentre() const;
+  };
+    
+  // smaller class just for the bounds and state
+  struct State
+  {
+  public:
+    
+    + State();
+    
+    Position position; 
+    Velocity velocity;
+    AngularVelocity angularVelocity;
+    Acceleration acceleration; 
+    float accSqr; 
+    NMRU::GeomUtils::AABB aabb;
+    Mass mass; ///< this can be the effective mass of that point on the object, but also can be scaled by its dangerousness
+    bool isStatic;
+    int64_t shapeID; ///< Will be cast from a pointer to the PxShape
+    
+    + NMP::Vector3 getInstantVelocityAtPoint(const NMP::Vector3 &point) const;
+    + NMP::Vector3 getVelocityAtPoint(const NMP::Vector3 &point) const;
+    + NMP::Vector3 getAccelerationAtPoint(const NMP::Vector3 &point) const;
+    // bends a path to account for angular velocity of object
+    + void adjustPathForAngularVelocity(SphereTrajectory &path) const; 
+    // All these tests expand the box dimensions by the sphere radius, not inflate it
+    // this means it is only an approximation of a sweeping sphere with a box at the corners
+    + bool getTrajectoryOverlapTimes(const SphereTrajectory &path, float &t1, float &t2);
+    + float sphereTrajectoryCollides(const SphereTrajectory &path, bool forwards); ///< returns -1.f for no collision
+    + bool boundingBoxCull(const SphereTrajectory &path) const; ///< returns true if the box of the path and the object intersect
+    + void debugDraw(const NMP::Vector3 &startColour, const NMP::Vector3 &endColour, MR::InstanceDebugInterface* pDebugDrawInst);
+    + NMP::Vector3 rotateNormal(const NMP::Vector3 &normal, float time) const;
+    + NMP::Vector3 getAverageAngularVel() const;
+    + NMP::Vector3 getAveragedPointVel(const NMP::Vector3 &point, float timePeriod) const;
+  };
+
+  __no_combiner__ struct CollideResult
+  {
+    Speed approachSpeed; ///< how fast the objecta are moving towards eachother at the start
+    Speed impactSpeed;   ///< how fast they move towards eachother at impact
+    Velocity impactVel;  ///< actual full relative impact speed
+    TimePeriod time;     ///< time to impact
+    Length distance;     ///< distance from start to impact
+    Position impactPosition; ///< actual contact point where objects touch
+    Direction normal;        ///< normal on patch where collided
+    bool clippedToBoundingBox;  ///< whether contact is on the actual patch geometry (false) or just clipping with the counding box (true)
+    TimePeriod timeMetric;      ///< time to impact, scaled by the confidence in that patch's accuracy, i.e. a common metric
+    bool initialOverlap;        ///< true if objects are intersecting at time 0
+  };
+
+  // one of these for each environment object the character will be aware of.
+  // I've kept the data to a minimum for the moment.
+  // Like GJK, we can store the last normal (and plane) used in a collision routine for warm starting.
+  // hopefully this can give fast collision results.
+  // Incidentally, Minkowski Portal Refinement might be a good way to extend the collision routines to a more general
+  // polyhedron shape.
+  //
+  // Note that the corner of the patch has a different meaning depending on the type of that patch:
+  // If patch type is EO_Corner this is the global position of the corner of known edges.
+  // If patch type is EO_Edge this is the start point of known edge that extends from length of last edgeLengths[0] in the direction given by the cross product of faceNormals[1] and faceNormals[2].
+  // If patch type is EO_Plane this is the sweep plane contact point global position.
+  // If patch type is EO_Capsule, this is the global position of either the capsule start point or capsule end point, depending on which point is closer to the sweep contact point.
+  // If patch type is EO_Sphere, this is the global position of its centre.
+  // If patch type is EO_ContactPlane this is the sweep contact plane global position.
+  struct Patch 
+  {
+    + Patch();
+  
+    Environment::State  state;
+    Position            corner;  //< Global position of the corner of the patch. Note that the corner has a different meaning depending on the type of the patch.
+    PositionDelta       faceNormals[3];
+    Position            knownContactPoint;
+    Length              edgeLengths[3];
+    int32_t             numKnownEdgeLengths;
+    Length              radius; ///< Radius exclusively defined for EO_Sphere or EO_Capsule patch types. Note that all the other patch types should have their radius set to 0.
+    int32_t             type;   ///< EOType
+    bool                isPredicted;
+
+    enum EOType
+    {
+      EO_NoContact,
+      EO_Corner,
+      EO_Edge,
+      EO_Plane,
+      EO_Capsule,
+      EO_Sphere,
+      EO_ContactPlane,
+      EO_Max
+    };
+  
+    // sweeps a sphere along the trajectory and checks for first collision
+    // can use this same routine for linear sphere sweeps
+    // lastNormal can be used to warm start the iterations for quicker performance by passing in the 
+    // last impactNormal (otherwise pass in zero vector)... though occasionally not using it seems necessary incase it occasionally misses
+    + bool sphereTrajectoryCollides(const SphereTrajectory &path, const NMP::Vector3 &lastNormal, Environment::CollideResult &result, const ER::DimensionalScaling& dimensionalScaling, bool adjustForAngularVelocity = bool(true)) const;
+    // finds the nearest point on the collision object
+    + int32_t nearestPoint(const NMP::Vector3 &pointWorld, NMP::Vector3 &nearestPoint, bool getSurfacePoint=0) const;
+    // Function is a publicly exposed wrapper for the private function getNearestPointInside.
+    + bool getNearestPointInside(const NMP::Vector3& pointWorld, NMP::Vector3& nearestPoint, bool getSurfacePoint) const;
+    // This function converts the sweep result into a format that allows for fast collision testing
+    + void updateFromSweepResult(const ER::SweepResult &sweep, const ER::DimensionalScaling& dimensionalScaling);
+    // Returns true if this object is connected to the arguement object, ie if they share part of their shape
+    + bool isConnectedTo(const Environment::Patch &object, const Environment::LocalShape &shape, const Environment::LocalShape &objectShape, float epsilon = 0.08f); ///< epsilon in m for positions and radians for normals
+    + void update(float timeStep); ///< This updates the position, velocity and orientation of the patch based on its known angular vel and acceleration
+    + void debugDraw(float size, 
+                     MR::InstanceDebugInterface* pDebugDrawInst,
+                     const ER::DimensionalScaling& dimensionalScaling) const;
+    + int32_t getEdgeDirections(NMP::Vector3 *edgeDirections) const; ///< Returns the number that have been filled in
+    + int32_t getNormal1Index(int32_t edgeIndex) const; ///< Returns the first normal touching this edge index
+    + int32_t getNormal2Index(int32_t edgeIndex) const; ///< Returns the second normal touching this edge index
+    + float getReliabilityOfPosition(const NMP::Vector3 &position, const NMP::Vector3 &pathPosition, bool clipped) const; ///< Returns a metric of how reliable a resulting position is 
+
+    // Selection of creation functions for manually generated patch shapes
+    + void createAsPlane(const NMP::Vector3 &position, const NMP::Vector3 &normal, float radius, const NMP::Vector3 &velocity, const NMP::Vector3 &angularVelocity, float mass, int64_t shapeID);
+    + void createAsSphere(const NMP::Vector3 &position, float radius, const NMP::Vector3 &velocity, float mass, int64_t shapeID);
+    
+  private:
+    + bool getNearestPointInside(NMP::Vector3& nearestPoint, const NMP::Vector3& planeIntersectionPoint, const NMP::Vector3* edgeTangents, bool getSurfacePoint) const;
+    + void getEdgeTangents(NMP::Vector3 *edgeTangents) const; ///< Returns the number that have been filled in
+  };
+
+  struct Object
+  {
+    Environment::State state;
+    NMP::Matrix34   matrix;
+    bool            isStill;
+    bool            isACharacter;
+    int32_t         dataIndex; ///< This is ER::PhysXPerShapeData::dataIndex and is the index into the array of EA objects
+  };  
+}
+
+struct PatchSet
+{
+  enum NumPatches {MAX_NUM_PATCHES = 3};
+  Environment::Patch patches[MAX_NUM_PATCHES];
+  int32_t numPatches;
+};
+
+__no_combiner__ struct PatchStore
+{
+  Environment::LocalShape localShapes[4];
+  int32_t patchesHead;
+  int32_t lastObjectIndex;
+  int64_t lastObjectShapeID;
+  int32_t sweepSegment;
+  int32_t staticSweepSegment;
+};
+
+struct Hazard
+{
+  Environment::Patch object;
+  SphereTrajectory protectPath;
+  Mass protectMass;
+  Position impactPosition;
+  Direction contactNormal;
+  TimePeriod impactTime;
+  Speed impactSpeed;
+  Length objectDistance;
+  bool isDodgeable;
+  + void debugDraw(float radius, MR::InstanceDebugInterface* pDebugDrawInst);
+};
+
+#endif

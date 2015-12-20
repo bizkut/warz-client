@@ -1,0 +1,96 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Makes a character reach to the specified target with their hands, using their whole body. 
+behaviour_def ReachForWorld
+{
+interface:
+  displayname = "Reach World";
+  version = 4;
+
+modules:
+  reachForWorldBehaviourInterface;
+  spines[*].support.*;
+  spines[*].control.*;
+  arms[*].reachForWorld;  
+  heads[*].point;
+  heads[*].eyes;
+
+  bodyFrame;
+  upperBody.*;
+   
+attributes:
+
+  /// Set the relative importance of the target position and target orientation (normal) for each arm. 
+  group("Target Weight")
+  {
+    float PositionWeightForArm[networkMaxNumArms] = 1.0f, 0.0f, 1.0f __title__("PositionWeight"); ///< The weight associated with the target position in the IK solver. A larger value means the hand will get closer to the target position but may be further away from the target orientation.
+    float NormalWeightForArm[networkMaxNumArms] = 0.0f, 0.0f, 1.0f __title__("NormalWeight");     ///< The weight associated with the target normal in the IK solver. A larger value means the hand will get closer to the target orientation but may be further away from the target position.
+  }
+
+  /// Determine how each hand approaches the target.
+  group("Arm Movement")
+  {
+    bool SlideAlongNormalForArm[networkMaxNumArms] = false __title__("Slide hand along target normal"); ///< To force the hand to slide along the normal when approaching the target.
+    float IKSubstepSize = 1.0f, 0.01f, 1.0f; ///< Modify IK targets by interpolating between the hands current transform and the original target transform with this weight. A step size of 1 means no substepping.
+    /// Defines how or whether arm swivel should be applied to the reach: "None" means swivel is not required; "Automatic" means swivel will be determined procedurally by the behaviour based on the reach target, "Specified" means the behaviour will use the fixed swivel amount specified below.
+    int SwivelMode[networkMaxNumArms] = 0, -1, 1 __per_anim_set__ __title__("Swivel Mode");
+    /// Swivel value to use when Swivel Mode is set to "Specified". Value in range [-1,1],  positive values drive elbows out and up, negative drive elbows in and down.
+    float SwivelAmountForArm[networkMaxNumArms]  = -1.0f, -1.0f, 1.0f __per_anim_set__ __title__("Swivel");
+    float MaxReachScale[networkMaxNumArms]  = 1.0f, 0.0f, 1.0f __per_anim_set__ __title__("Max reach"); ///< Maximum reach as a scale of the full arm length
+  }
+
+  /// Configure he behaviour to avoid positioning the hands within a specified distance from the spine.
+  group("Self Avoidance")
+  {
+    /// Self-avoidance parameter enable feature.
+    bool SelfAvoidanceEnable[networkMaxNumArms] = true __per_anim_set__ __title__("Enable"); ///< Avoid collisions between the arm and torso when reaching.
+    /// Self-avoidance parameter torso-radius in metres (standard character).
+    float TorsoAvoidanceRadiusMultiplier[networkMaxNumArms] = 1.0f, 0.001f, 1.0f __per_anim_set__ __title__("Scale spine radius");  ///< Scales the self avoidance radius set on the spine limb.
+  }
+
+  group("Full Body Motion")
+  {
+    float ChestRotationScaleForArm[networkMaxNumArms] = 0.0f, 0.0f, 1.0f __per_anim_set__ __title__("RotationScale");    ///< Multiplier applied to any rotation that this arm might request from the chest.
+    float PelvisRotationScaleForArm[networkMaxNumArms] = 0.0f, 0.0f, 1.0f __per_anim_set__ __title__("RotationScale");   ///< Multiplier applied to any rotation that this arm might request from the pelvis
+    float MaxChestTranslationForArm[networkMaxNumArms] = 0.0f, 0.0f, 1.0f __per_anim_set__ __title__("MaxTranslation");  ///< Maximum chest displacement (relative to spineLength) that this arm will request.
+    float MaxPelvisTranslationForArm[networkMaxNumArms] = 0.0f, 0.0f, 1.0f __per_anim_set__ __title__("MaxTranslation"); ///< Maximum pelvis displacement (relative to legLength) that this arm will request.
+  }
+
+  group("Look at Target")
+  {
+    float LookWeightToPositionForArm[networkMaxNumArms] = 0.0f, 0.0f, 1.0f __title__("Weight"); ///< Specifies the weight to look at the reach target for each arm's reach target.
+  }
+
+controlParams:
+
+  group("Target Input Defaults")
+  {
+    vector3 PositionForArm[networkMaxNumArms] __expose_as_pin__ __title__("Position"); ///< Point to reach for in world space.
+    vector3 NormalForArm[networkMaxNumArms] __expose_as_pin__ __title__("Normal");     ///< Normal of the point to be reached to, in world space. The back of the hand will be aligned with this direction.
+  }
+
+  {
+    float ReachImportanceForArm[networkMaxNumArms] = 0.0f, 0.0f, 1.0f __title__("Amount"); ///< Weight for reaching with each arm, 0 will not reach with that arm.
+    float ReachImminenceForArm[networkMaxNumArms] = 1.0f, 0.0f, 10.0f __title__("Imminence");  ///< Reciprocal of the time period in which the reach request needs to achieve its reach target position. Larger values will cause the hands to move with more urgency. In 1/s (standard character).
+
+    float StiffnessScaleForArm[networkMaxNumArms] = 1.0f, 0.0f, 2.0f __title__("Stiffness scale");  ///< A scale on the stiffness of each arm, 1 is normal stiffness.
+    float DampingScaleForArm[networkMaxNumArms] = 1.0f, 0.0f, 5.0f __title__("Damping ratio scale");    ///< A scale on the damping ratio, larger values will give slower movement without oscillation, smaller will give faster movement with more oscillations.
+    float DriveCompensationScaleForArm[networkMaxNumArms] = 1.0f, 0.0f, 1.0f __title__("Drive compensation scale");  ///< A scale on the drive compensation, larger values give more controlled motion, smaller give more springy motion with more oscillations
+
+    float LookImminenceForArm[networkMaxNumArms] = 1.0f, 0.0f, 10.0f __title__("Look imminence"); ///< Reciprocal of the time period in which the look request needs to achieve its look at goal. Larger values will cause the head to move with more urgency. In 1/s (standard character).
+    float UnreachableTargetImportanceScale = 1.0f, 0.0f, 1.0f __title__("Unreachable target importance"); ///< How much should the character reach for targets that out of range. 0 = not at all, 1 = try as hard as possible. 
+  }
+
+}
+
+#endif

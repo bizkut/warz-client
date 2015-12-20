@@ -1,0 +1,117 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Non-SPU so it can interface with the system to get data into an appropriate network format etc
+__global_access__ __generate_interface__ module_def BalanceBehaviourInterface
+{
+owner: MyNetwork<>
+
+data:
+  TimePeriod standingStillTime;
+  TimePeriod fallenTime;
+  TimePeriod runningTime;
+  TimePeriod onGroundTime;
+
+  /// Cached pose is only used if the behaviour param UseSingleFrameForBalancePose is set
+  PoseData cachedBalancePose[networkMaxNumLimbs];
+
+  // stepping
+  Transform cachedReadyPoseArmEndRelativeToRoot[networkMaxNumArms];
+  Weight    cachedReadyPoseArmEndRelativeToRootWeights[networkMaxNumArms];
+
+in:
+  Multiplier legStrengthReduction[networkMaxNumLegs];
+  Multiplier armStrengthReduction[networkMaxNumArms];
+
+out:
+  // These poses will always be set, if we're running, even if the importances are almost (but will
+  // never be exactly) 0! If there was no animation input, it will default to the default pose.
+  Transform armBalancePoseEndRelativeToRoot[networkMaxNumArms];
+  Transform headBalancePoseEndRelativeToRoot[networkMaxNumHeads];
+  Transform spineBalancePoseEndRelativeToRoot[networkMaxNumSpines];
+  Transform legBalancePoseEndRelativeToRoot[networkMaxNumLegs];
+
+  /// If 1 then the incoming horizontal pelvis offset from support should be kept. If 0 then the CoM will be used
+  /// for balance. 
+  ClampedWeight balanceUsingAnimationHorizontalPelvisOffsetAmount;
+
+  Transform averageBalancePoseArmEndRelativeToRoot;
+  Transform averageBalancePoseLegEndRelativeToRoot;
+
+  /// The requested world-space pelvis direction. Importance indicates how much of this to use.
+  Direction targetPelvisDirection;
+
+  /// These will only be output if there was really an incoming pose and we're balanced.
+  PoseData armBalancePose[networkMaxNumArms];
+  
+  BalanceParameters balanceParameters;  
+  BalancePoseClamping balancePoseClamping;
+
+  bool supportWithLegs;
+  bool supportWithArms;
+
+  // stepping
+  StepParameters stepParameters;
+  SteppingBalanceParameters steppingBalanceParameters;
+  StepRecoveryParameters stepRecoveryParameters;
+  bool stepWithLegs;
+  bool stepWithArms;
+  Weight armPoseStrengthWhenStepping;
+  Transform armReadyPoseEndRelativeToRoot[networkMaxNumArms];
+
+  // assist
+  BalanceAssistanceParameters balanceAssistanceParameters;
+
+feedIn:
+  ER::LimbTransform supportTM;
+  Velocity supportVelocity;
+  Weight balanceAmount;
+  TimePeriod maxLegCollidingTime;
+  BodyState CoMBodyState;
+
+  // stepping
+  TimePeriod timeSinceLastStep;
+  TimePeriod steppingTime;
+  int32_t    stepCount;
+  Multiplier legStepFractions[networkMaxNumLegs]; ///< Approximately how far through the step (will be 0 if not stepping)
+
+feedOut:
+  TimePeriod standingStillTime; ///< Time that the character has been standing still - will be zero if stepping or fallen.
+  TimePeriod fallenTime;        ///< Time that the character has been fallen. 
+  TimePeriod onGroundTime;      ///< Time that the character has been touching something that appears to be "ground"
+  Weight balanceAmount;         ///< Indicator of how balanced the character is from 0 to 1
+  BodyState CoMBodyState; 
+
+  // stepping
+  TimePeriod steppingTime;
+  int32_t    stepCount;
+
+connections<>:
+  in.legStrengthReduction[] = (owner.characteristicsBehaviourInterface.out.legStrengthReduction[]);
+  in.armStrengthReduction[] = (owner.characteristicsBehaviourInterface.out.armStrengthReduction[]);
+
+  feedIn.supportTM =  (owner.bodyFrame.bodyBalance.feedOut.supportTM);
+  feedIn.supportVelocity = (owner.bodyFrame.bodyBalance.feedOut.supportVelocity);
+  feedIn.balanceAmount = (owner.bodyFrame.bodyBalance.feedOut.balanceAmount);
+  feedIn.maxLegCollidingTime = (owner.bodyFrame.feedIn.maxLegCollidingTime);
+  feedIn.timeSinceLastStep = (owner.balanceManagement.steppingBalance.feedOut.timeSinceLastStep);
+  feedIn.stepCount = (owner.balanceManagement.steppingBalance.feedOut.stepCount);
+  feedIn.steppingTime = (owner.balanceManagement.steppingBalance.feedOut.steppingTime);
+  feedIn.legStepFractions[] = (owner.legs[].step.feedOut.stepFraction);
+  feedIn.CoMBodyState = (owner.bodyFrame.feedOut.centreOfMassBodyState);
+
+  out.averageBalancePoseArmEndRelativeToRoot = junctions.out_averageArmEndRelativeToRoot = average(out.armBalancePoseEndRelativeToRoot[*]);
+  out.averageBalancePoseLegEndRelativeToRoot = junctions.out_averageLegEndRelativeToRoot = average(out.legBalancePoseEndRelativeToRoot[*]);
+}
+
+#endif
+

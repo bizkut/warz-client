@@ -1,0 +1,40 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// module containing modules which deal with detecting and managing hazards
+__no_feedback__ __no_update__ module_def HazardManagement
+{
+owner: MyNetwork<>
+
+children:
+  GrabDetection<> grabDetection;
+  Grab<> grab;
+  HazardResponse<> hazardResponse;
+  FreeFallManagement<> freeFallManagement;
+  ImpactPredictor<chest> chestImpactPredictor;
+  ShieldManagement<> shieldManagement;
+  
+feedIn:
+  Weight supportAmount;       ///< How well the character is supported, affects character's acceleration
+  BodyState chestState;       ///< Current pos, vel etc of chest
+  
+out:
+  Weight instabilityPreparation; ///< This value is the magnitude of the instability, and the importance is 1/(1+ time to instability)
+  
+connections<>:
+  out.instabilityPreparation = (hazardResponse.out.instabilityPreparation);
+  feedIn.supportAmount = (owner.bodyFrame.feedOut.supportAmount);
+  feedIn.chestState = (owner.bodyFrame.feedOut.chestState);
+}
+
+#endif
+

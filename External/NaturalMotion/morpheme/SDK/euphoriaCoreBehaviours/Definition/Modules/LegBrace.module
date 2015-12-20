@@ -1,0 +1,55 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// reach out towards hazard in order to get legs into the best position to cushion after impact
+// then cushions the impact
+module_def LegBrace
+{
+owner: Leg
+
+data:
+  bool doingBrace;            ///< Used for hysteresis
+  Direction reachDirection;   ///< Direction to brace in
+  Position placePos;          ///< Where exactly to place the feet
+  int64_t patchShapeID;       ///< The shape to test is contacted
+  Position protectPoint;      ///< The point to be protected, roughly the stomach, depending on protectChestAmount
+  Weight importance;          ///< Importance of the resulting limb control
+  Imminence imminence;        ///< How soon the impact is
+  
+in:
+  BodyState protectState;     ///< Pos, vel etc of point to be protected
+  BraceHazard braceHazard;    ///< The description of the incoming hazard
+  bool shouldBrace;           ///< Flag so only the closest legs will brace
+  Position cushionPoint;      ///< Centre of support when several legs are cushioning
+  Multiplier swivelAmount;    ///< Refer to the guide poses for the posture at each swivel amount, usually -1 to 1
+
+
+feedOut:
+  BraceState braceState;      ///< Roughly the proximity of foot to hazard, used to determine which legs to brace with
+  RotationRequest rootRotationRequest; ///< To help with bracing, a rotation of the pelvis is requested
+  Position endCushionPoint;   ///< Individual foot position, used to calculated averaged cushion point (centre of support)
+feedIn:
+  bool limbInContactWithPatchShapeID; ///< Result of contact test, is any part of the limb in contact with the incoming hazard
+  bool rootInContactWithPatchShapeID; ///< Result of contact test, is the limb's root part in contact with the incoming hazard
+
+out:
+  LimbControl control; ///< IK control of the leg
+
+connections<>:
+  // use the chest state here... in future we could simplify legBrace by perhaps using the COM state if it worked
+  in.protectState = (owner.owner.bodyFrame.feedOut.chestState);
+  in.cushionPoint = (owner.owner.lowerBody.feedIn.cushionPoint);
+  in.braceHazard = (owner.owner.hazardManagement.hazardResponse.out.braceHazard);
+  in.shouldBrace = (owner.in.shouldBrace);
+}
+
+#endif

@@ -1,0 +1,47 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Non-SPU so it can interface with the system to get data into an appropriate network format etc
+__global_access__ __generate_interface__ module_def ReachForBodyBehaviourInterface
+{
+owner: MyNetwork
+
+data:
+  // hit info is stored, maintained by the module and made available as output for other modules as a BodyHitInfo
+  BodyHitInfo lastBodyHitInfo[networkMaxNumArms];
+  ReachActionParams reachActionParams[networkMaxNumArms];
+  bool armReachForBodyPartFlags[networkMaxNumArms];
+      
+  // behaviour state flags
+  bool isReacting;  
+  
+out:
+  // info required for reach reaction
+  BodyHitInfo bodyHitInfo[networkMaxNumArms];
+  ReachActionParams reachActionParams[networkMaxNumArms];
+  
+  // Transform matrix of the end of the limb relative to root space. Used to pose the arm when hit
+  Transform armHitPoseEndRelRoot[networkMaxNumArms];
+  // set of flags used to tell the network which arms are available for reaching
+  bool armReachForBodyPartFlags[networkMaxNumArms];
+  
+feedIn:
+  bool isComplete;
+
+connections<>:
+  feedIn.isComplete = (owner.bodyFrame.reachForBody.feedOut.completed);
+  
+  
+}
+
+#endif
+

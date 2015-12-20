@@ -1,0 +1,86 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// reach to a target (point + normal)
+module_def ArmReachForBodyPart
+{
+owner: Arm
+
+data:
+  
+  enum State
+  {
+    State_Waiting,
+    State_Reaching,
+    State_Holding,
+    State_FailedRampdown,
+    State_CompletedRampdown,
+    State_Done,
+    State_numStates
+  };
+  
+  ReachTarget target;
+  ReachTarget referenceTargetRelSupport; // Initial target position relative and  wrt the support tm, only referenced when in support.
+  ReachActionParams reachActionParams;
+  Importance targetImportance;
+  Weight supportAmount;
+  TimePeriod elapsedTime;
+  TimePeriod elapsedTimeToTarget;
+  TimePeriod elapsedTimeOnTarget;
+  uint32_t state;
+  Weight armStrengthReduction;
+  Direction cachedTargetNormalLocal; ///< target reach normal stored in chest local frame
+  Length maxArmExtension;
+
+in:
+  ReachTarget target;
+  ReachActionParams reachActionParams;
+  bool beenHit;
+  /// If the body as a whole is supported (includes standing or stepping)
+  Weight supportAmount;
+  bool reachEnabled;
+  ER::LimbTransform supportTM;    ///< in support this is considered the "fixed root" of the system
+
+out:
+  LimbControl control;
+
+feedIn:
+  // data used to locate the body and compute full body reach responses
+  float armReachReactionDistanceFromTarget;
+
+feedOut:
+  float distanceSquaredToTarget;
+  RotationRequest rotationRequest;
+  DirectionRequest pelvisDirectionRequest;
+  TranslationRequest pelvisTranslationRequest;
+  DirectionRequest chestDirectionRequest;
+  TranslationRequest chestTranslationRequest;
+  Weight armStrengthReduction;
+  ReachTarget currentReachTarget; ///< broadcast if arm has a current reach target
+  uint32_t state;
+
+connections<>:
+  // what to reach for
+  in.target = (owner.owner.bodyFrame.reachForBody.out.reachTargets[owner.$ChildIndex]);
+  
+  // is a reach on? is this arm enabled for reaching? what are the reach action params?
+  in.reachEnabled      = (owner.owner.bodyFrame.reachForBody.out.armReachForBodyPartFlags[owner.$ChildIndex]);
+  in.reachActionParams = (owner.owner.bodyFrame.reachForBody.out.reachActionParams[owner.$ChildIndex]);  
+      
+  in.supportAmount = (owner.owner.bodyFrame.feedOut.supportAmount);
+  in.supportTM = (owner.owner.bodyFrame.bodyBalance.out.supportTM);
+
+  feedIn.armReachReactionDistanceFromTarget  = junctions.armReachReactionDistanceFromTarget 
+    =  winnerTakesAll( owner.owner.arms[*].reachReaction.out.distanceToTarget);
+}
+
+#endif

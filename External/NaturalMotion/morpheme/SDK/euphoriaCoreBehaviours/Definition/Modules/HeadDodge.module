@@ -1,0 +1,35 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// this module predicts the path of a moving hazard and moves laterally out of the way, either leaning or ducking
+module_def HeadDodge
+{
+owner: Head
+data:
+  Multiplier stiffnessScale;  ///< 1 means use normal stiffness in the head dodge
+  PositionDelta headShift;    ///< Lateral shift in order to dodge
+  Weight dodgeable;           ///< Can object be dodged, if it is too big then shifting the head laterally would not help at all
+  Weight importance;          ///< Used in the output control
+  ProcessRequest process;     ///< Structure for processed request, to use update info in the feedback
+in:
+  DodgeHazard dodgeHazard;    ///< The hazard to dodge out the way of
+out:
+  LimbControl control;        ///< IK head control
+feedOut:
+  // Request motion from the chest to aid in dodging
+  TranslationRequest rootTranslationRequest;
+  RotationRequest rootRotationRequest;
+connections<>:
+  in.dodgeHazard = junctions.in_dodgeHazard = average(owner.owner.hazardManagement.hazardResponse.out.dodgeHazard, owner.owner.headDodgeBehaviourInterface.out.dodgeHazard);
+}
+
+#endif

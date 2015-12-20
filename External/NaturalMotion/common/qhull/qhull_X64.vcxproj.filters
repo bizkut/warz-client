@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src\libqhull" />
+    <Filter Include="src" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="COPYING.txt" />
+    <None Include="README.txt" />
+    <ClCompile Include="src\libqhull\geom.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClInclude Include="src\libqhull\geom.h">
+      <Filter>src\libqhull</Filter>
+    </ClInclude>
+    <ClCompile Include="src\libqhull\geom2.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libqhull\global.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libqhull\io.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClInclude Include="src\libqhull\io.h">
+      <Filter>src\libqhull</Filter>
+    </ClInclude>
+    <ClCompile Include="src\libqhull\libqhull.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClInclude Include="src\libqhull\libqhull.h">
+      <Filter>src\libqhull</Filter>
+    </ClInclude>
+    <ClCompile Include="src\libqhull\mem.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClInclude Include="src\libqhull\mem.h">
+      <Filter>src\libqhull</Filter>
+    </ClInclude>
+    <ClCompile Include="src\libqhull\merge.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClInclude Include="src\libqhull\merge.h">
+      <Filter>src\libqhull</Filter>
+    </ClInclude>
+    <ClCompile Include="src\libqhull\poly.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClInclude Include="src\libqhull\poly.h">
+      <Filter>src\libqhull</Filter>
+    </ClInclude>
+    <ClCompile Include="src\libqhull\poly2.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClInclude Include="src\libqhull\qhull_a.h">
+      <Filter>src\libqhull</Filter>
+    </ClInclude>
+    <ClCompile Include="src\libqhull\qset.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClInclude Include="src\libqhull\qset.h">
+      <Filter>src\libqhull</Filter>
+    </ClInclude>
+    <ClCompile Include="src\libqhull\random.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClInclude Include="src\libqhull\random.h">
+      <Filter>src\libqhull</Filter>
+    </ClInclude>
+    <ClCompile Include="src\libqhull\rboxlib.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libqhull\stat.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClInclude Include="src\libqhull\stat.h">
+      <Filter>src\libqhull</Filter>
+    </ClInclude>
+    <ClCompile Include="src\libqhull\user.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClInclude Include="src\libqhull\user.h">
+      <Filter>src\libqhull</Filter>
+    </ClInclude>
+    <ClCompile Include="src\libqhull\usermem.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libqhull\userprintf.c">
+      <Filter>src\libqhull</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

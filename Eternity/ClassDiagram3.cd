@@ -1,0 +1,3511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="r3dBezierGradient" Collapsed="true">
+    <Position X="46.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBAAAOAAIAAIBCAAAQIAIAAAAgBAQAAAABAggAAIAAA=</HashCode>
+      <FileName>Include\BezierGradient.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CVarContainer" Collapsed="true">
+    <Position X="55.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAIAIAAAkAAAJAAAAAAACAAEAAAA=</HashCode>
+      <FileName>Source\CVar.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CVar" Collapsed="true">
+    <Position X="14.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAABAAAAAAAAAAAAAAAgAAAAAAAAAAgg=</HashCode>
+      <FileName>Include\CVar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CVarFloat" Collapsed="true">
+    <Position X="12.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAABAAAAAAEAAAAAAAAAAAAAAgAAAAAg=</HashCode>
+      <FileName>Include\CVar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CVarInt" Collapsed="true">
+    <Position X="14.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAABABAAABAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Include\CVar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CVarString" Collapsed="true">
+    <Position X="16.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAABAEAg=</HashCode>
+      <FileName>Include\CVar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CD3DFont" Collapsed="true">
+    <Position X="7.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIGAACEgAAICAAKCQAIABAAAIIAkCIAUAAAAQkIIg=</HashCode>
+      <FileName>Include\d3dFont.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JobChief" Collapsed="true">
+    <Position X="46.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAoAAAFAAAAIAAAgAAAABAAAABCAACAAAA=</HashCode>
+      <FileName>Include\JobChief.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ParallelQSort" Collapsed="true">
+    <Position X="57.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAIAUAAIQAIAAAQAAIAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Include\ParallelQuickSort.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ParticleZSort" Collapsed="true">
+    <Position X="59" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Particle.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ParticleZSortNew" Collapsed="true">
+    <Position X="60.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Particle.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dParticleData" Collapsed="true">
+    <Position X="48.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQIAkNCCQIEAkoQAQRgVBEAiCAEGIIACGSYAAABDQAA=</HashCode>
+      <FileName>Include\Particle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dParticleSystem" Collapsed="true">
+    <Position X="52" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EoQEQQCAAAdkGgIgACQCwIpJKNQxAAwYYEIaAACAAwA=</HashCode>
+      <FileName>Include\Particle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dSingleParticle" Collapsed="true">
+    <Position X="62.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQBAAAIEIAAgACAgCAAAAACAAAAgAUEQAAAmAIM=</HashCode>
+      <FileName>Include\Particle_Int.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dParticleTrailData" Collapsed="true">
+    <Position X="55.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAQAAAAoEAAAAAAAAASAAgAAAAAAAIABAAAA=</HashCode>
+      <FileName>Include\Particle_Int.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dParticleTrailCache" Collapsed="true">
+    <Position X="53.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIBAAgAAAAAAAAAAAACIAAAQABAAAAA=</HashCode>
+      <FileName>Include\Particle_Int.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dParticleEmitter" Collapsed="true">
+    <Position X="50.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAWigaDFJFCIBDJAhQEhASQDIwQkDkAEgygJBwCwCBA=</HashCode>
+      <FileName>Include\Particle_Int.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dRenderPipeline" Collapsed="true">
+    <Position X="55.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAECAAACQAAAALAAAAAAEQAACgEQAQBACCACBAAA=</HashCode>
+      <FileName>Include\Pipeline.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dPixelShader" Collapsed="true">
+    <Position X="60.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEAEgACAAAAAAAAAAAAAAAQAAggAAAAACAACAIBAAAA=</HashCode>
+      <FileName>Include\pShader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dCSHolder" Collapsed="true">
+    <Position X="59" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAAAAAAgAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dLogIndent" Collapsed="true">
+    <Position X="50.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dAnimData" Collapsed="true">
+    <Position X="64.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEoCAgTAAAIAQQAAgIAkAQACCgAMAgIAGYQAAAsCAAA=</HashCode>
+      <FileName>Include\r3dAnimation.H</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dAnimPool" Collapsed="true">
+    <Position X="43.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEIAAACAAIAIAABACAAAAQAACAABAAAACAAAAAABAAA=</HashCode>
+      <FileName>Include\r3dAnimation.H</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dAnimation" Collapsed="true">
+    <Position X="62.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQSAAACABABAQAAEJEAMAQAAAgAAAQAEoAQCBIAAAAA=</HashCode>
+      <FileName>Include\r3dAnimation.H</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dTaskParramsArray&lt;T&gt;" Collapsed="true">
+    <Position X="55.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAEAAAgAABACAAAAAQACAAAAAAA=</HashCode>
+      <FileName>Include\r3dBackgroundTaskDispatcher.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dBackgroundTaskDispatcher" Collapsed="true">
+    <Position X="45" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACQAAUAIAAAAEgAAAgCAEAAAAAAACAAGAACAAAA=</HashCode>
+      <FileName>Include\r3dBackgroundTaskDispatcher.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dMatLib_BinFmt" Collapsed="true">
+    <Position X="57.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dBinMat.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dMaterial_BinFmt" Collapsed="true">
+    <Position X="53.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dBinMat.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dBitMaskArray" Collapsed="true">
+    <Position X="48.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAjAAAABAAAAABAAQQAAQAAAggAAwAACAMAAAA=</HashCode>
+      <FileName>Include\r3dBitMaskArray.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dBitMaskArray2D" Collapsed="true">
+    <Position X="50.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAhBAAABARBAABAAABAAQAAAACAAgAAAEEAAAA=</HashCode>
+      <FileName>Include\r3dBitMaskArray.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dBox3DEx" Collapsed="true">
+    <Position X="19.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEIAAAAAIAAACAAAAEAAAAEAAAAAAABAAAAg=</HashCode>
+      <FileName>INCLUDE\r3dBoxEx.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dBudgeter" Collapsed="true">
+    <Position X="53.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAIAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAABCIAAAABA=</HashCode>
+      <FileName>Include\r3dBudgeter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dD3DQuery" Collapsed="true">
+    <Position X="23.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAECAAAAAACAAAAABAAAAAQEAgAAAIABCAAAA=</HashCode>
+      <FileName>INCLUDE\r3dbuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dD3DBuffer" Collapsed="true">
+    <Position X="29.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIAAqgAAAAAECADAAAAAwQBQAAADAFQACAQAAAYAAAA=</HashCode>
+      <FileName>INCLUDE\r3dbuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dIBuffer16" Collapsed="true">
+    <Position X="32.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dbuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dIBuffer32" Collapsed="true">
+    <Position X="25.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dbuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dVBuffer" Collapsed="true">
+    <Position X="28" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dbuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dVBufferT&lt;T&gt;" Collapsed="true">
+    <Position X="30.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAACAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dbuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dVertexArray" Collapsed="true">
+    <Position X="3.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAISEAAAAgQkAyEAAAAAgQBCAAABAUAAAIAQEABKABg=</HashCode>
+      <FileName>INCLUDE\r3dbuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dScreenBuffer" Collapsed="true">
+    <Position X="5.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgCAgBAARDBAigJICCBTBEFIJQAAA0EsDAAkAAKAAAk=</HashCode>
+      <FileName>INCLUDE\r3dbuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dCamera" Collapsed="true">
+    <Position X="40.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAJAEAAEQAhAgAAEgAAAAAAgAAAAACAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dCam.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dCameraAccelerometer" Collapsed="true">
+    <Position X="55.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACBAIAAAAAAAQAICAAAAAAABAIACAAAAAACQIA=</HashCode>
+      <FileName>INCLUDE\r3dCam.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dColor24" Collapsed="true">
+    <Position X="15.25" Y="32.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAQAAAYAYUAAIgAAAAAAAEIAAAKAEAB6A=</HashCode>
+      <FileName>INCLUDE\r3dColor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dCone" Collapsed="true">
+    <Position X="57.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAABAgAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Include\r3dCone.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dCubeMap" Collapsed="true">
+    <Position X="10" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAEACAAAACAAAAIBAAAAAAEAAABACAAABABA=</HashCode>
+      <FileName>Include\r3dCubeMap.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dCylinder" Collapsed="true">
+    <Position X="60.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAIAAAEAAAABAAAAAAAA=</HashCode>
+      <FileName>Include\r3dCylinder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDirect3D9Cache" Collapsed="true">
+    <Position X="62.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoAABgAABAFABAAAQAAAQAgAAACQIBAAAAAAAAACAgA=</HashCode>
+      <FileName>Include\r3dD3DCache.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dThreadAutoInstallCrashHelper" Collapsed="true">
+    <Position X="59" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAIAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dDebug.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContextRingBuffer" Collapsed="true">
+    <Position X="52" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAQAAGAAAAAgAAAAAAAAAAAACAACAAAI=</HashCode>
+      <FileName>Source\r3dDeviceQueue.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dFileLoc" Collapsed="true">
+    <Position X="45" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEABAAAAAAAAABAAgA=</HashCode>
+      <FileName>INCLUDE\r3dFileMan.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dFile" Collapsed="true">
+    <Position X="43.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAIAgAAAAIoAAIAAQAAAAAAACAAQAAACAAA=</HashCode>
+      <FileName>INCLUDE\r3dFileMan.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dUnpackedFile" Collapsed="true">
+    <Position X="64.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAEAA=</HashCode>
+      <FileName>INCLUDE\r3dFileMan.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dChunkedFileT&lt;T&gt;" Collapsed="true">
+    <Position X="22.25" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAGAEAARBAIACACAAAAAkgAABBAAAUBBAAAAGAAIA=</HashCode>
+      <FileName>INCLUDE\r3dFileMan.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dHash" Collapsed="true">
+    <Position X="59" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAQAAAAAAAAAQAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dHash.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dHeap&lt;OBJECT, KEY&gt;" Collapsed="true">
+    <Position X="60.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAAAAACAABAAgAACCAAgACACAAIAEAhIAQICAA=</HashCode>
+      <FileName>Include\r3dHeap.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dIniFileReader" Collapsed="true">
+    <Position X="64.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkAAAACIAAAAAgAAAAAQAAEEAAAIAAAAAAACAEAAAAE=</HashCode>
+      <FileName>Source\r3dIniFile.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dMouse" Collapsed="true">
+    <Position X="64.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAiEAAACAAAAAAAAEAEAAAAAEAAMAMiAAICAAAEQBAg=</HashCode>
+      <FileName>INCLUDE\r3dInput.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dKeyboard" Collapsed="true">
+    <Position X="46.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAEAAAAAEAAAAAggAAAAEAAQBAg=</HashCode>
+      <FileName>INCLUDE\r3dInput.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dGamepad" Collapsed="true">
+    <Position X="55.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQEAMAAXEAABABAAAAEQAAAEAAAAAAAIAAABAABBAg=</HashCode>
+      <FileName>INCLUDE\r3dInput.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dInputMappingMngr" Collapsed="true">
+    <Position X="43.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAEAAAAACAAAAAABBAQCAAAQAAAAAAAAAAAKQAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dInput.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dSlerpInterpolator" Collapsed="true">
+    <Position X="45" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACSkAgSAAAAABAAAAQAAAQAAAAQAEAAEBAAgAAgIAAg=</HashCode>
+      <FileName>Include\r3dInterpolator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dLight" Collapsed="true">
+    <Position X="38.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhIAxNBg4CUkkDAAFiSKBkBYAQESBmGUSZoAG0nDQxE=</HashCode>
+      <FileName>INCLUDE\r3dLight.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dLightSystem" Collapsed="true">
+    <Position X="48.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAABAACAAAIIhBAAABgABAABAAEAEEQACEAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dLight.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dMaterial" Collapsed="true">
+    <Position X="52" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYADAiJ46FApGQ+DQADgkUAUgQAGBCDAJqCACRggRU=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dMaterialLibrary" Collapsed="true">
+    <Position X="55.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CCSAAEEAQAAABAAARAgAAiIiAABACAQAAAQoQAAABAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dPerlinNoise" Collapsed="true">
+    <Position X="59" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAEQAAQiEAAAQAAACEIAAIAAAAAAAAAAQ=</HashCode>
+      <FileName>INCLUDE\r3dMath.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModifiedVDecl" Collapsed="true">
+    <Position X="53.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAIAAgAAiAgA=</HashCode>
+      <FileName>Source\r3dMeshTexDensityVisualizer.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeshTextureDensityVisualizer" Collapsed="true">
+    <Position X="50.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgQAUAQBAAAAAgAACAAABIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dMeshTexDensityVisualizer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dNetworkImpl" Collapsed="true">
+    <Position X="46.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEBAAAAAAAIAAAAAAFAAABABAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dNetwork.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dNetCallback" Collapsed="true">
+    <Position X="43.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACBAAACAAAAAAAAAAAAAAAAAAAAAAAJAAABAAAAA=</HashCode>
+      <FileName>Include\r3dNetwork.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dNetwork" Collapsed="true">
+    <Position X="45" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEACQCBAAQgQBAAAIgGJAAAEBQQIIAAAAAAAAAECE=</HashCode>
+      <FileName>Include\r3dNetwork.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dMesh" Collapsed="true">
+    <Position X="60.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAUOlgyIUdxoEjQ8MDDWyCZlmXLIyoWAL1pmDgDDgQ0=</HashCode>
+      <FileName>INCLUDE\r3dObj.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dPlane" Collapsed="true">
+    <Position X="62.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAhAAAAgAAAQAAAAAIAARAAQAAAFAAAAA=</HashCode>
+      <FileName>Include\r3dPlane.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dPoint2D" Collapsed="true">
+    <Position X="64.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GgAAAAQAAAAABAEAcAUACABACAAAAAwAAABgAAAAYIA=</HashCode>
+      <FileName>INCLUDE\r3dPoint.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dPoint3D" Collapsed="true">
+    <Position X="39.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GwAAWIQAAgAAFEEAcAUACABgGEAAAGwAgEDgAQAAYIE=</HashCode>
+      <FileName>INCLUDE\r3dPoint.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dMatrix" Collapsed="true">
+    <Position X="59" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAARAAAgAAAGAAAAAAAgAAAAAgAgAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dPoint.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dBox3D" Collapsed="true">
+    <Position X="19.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAEAAwAAAAAAEAIQEAAAAIAAgAAAAAAAIBJA=</HashCode>
+      <FileName>INCLUDE\r3dPoint.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dSegment3" Collapsed="true">
+    <Position X="60.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAACAAAAAAAAABAAAQAAAAAAgAAAA=</HashCode>
+      <FileName>INCLUDE\r3dPoint.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dRect" Collapsed="true">
+    <Position X="52" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABBAAQBAIAAEAAAAIAEAAAAACAAAAAAAAAAAQAQAAA=</HashCode>
+      <FileName>Include\r3dPoly.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dPolygon2D" Collapsed="true">
+    <Position X="43.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIACABIAAAAYAAAAAAEBQAAUAAAAAAQJCAAAQYAQ=</HashCode>
+      <FileName>Include\r3dPoly.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QueryPool" Collapsed="true">
+    <Position X="14.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AISgAIAIAIAEBAMAAIAAAgBAAgAAAEAIIACDACAAAgA=</HashCode>
+      <FileName>Source\r3dProfiler.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dProfilerHistory" Collapsed="true">
+    <Position X="13.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAEAAAAAQAAAEAAAhAAAAEAAAgAEAAgAAAA=</HashCode>
+      <FileName>Include\r3dProfiler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dProfilerItem" Collapsed="true">
+    <Position X="13.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECAAABAAAAAABgAAAAAAAQAAAAAgAAIAAAAAAABABIA=</HashCode>
+      <FileName>Include\r3dProfiler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dProfilerSample" Collapsed="true">
+    <Position X="13.25" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQAAAAAAgCAAJEAAAAEAAAQABAAAgAAQIBIAAACABAI=</HashCode>
+      <FileName>Include\r3dProfiler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dProfiler" Collapsed="true">
+    <Position X="45" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIKBCQMAgCEAkAAAgAIwABBCQABAAUgAQAAqYCBBBAA=</HashCode>
+      <FileName>Include\r3dProfiler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dProfilerObject" Collapsed="true">
+    <Position X="48.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Include\r3dProfiler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dProfileRender" Collapsed="true">
+    <Position X="46.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAACgCQAIAIAAgQoABAgGlAAEEwwhAEAICEEAA=</HashCode>
+      <FileName>Include\r3dProfilerRender.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dSec_type&lt;TYPE, CRYPT_KEY&gt;" Collapsed="true">
+    <Position X="59" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAQQAAAAAAAAAAAAA0AAIAAAA=</HashCode>
+      <FileName>Include\r3dProtect.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dSec_string&lt;STRING_LEN, CRYPT_KEY&gt;" Collapsed="true">
+    <Position X="57.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEQASAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dProtect.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dRay" Collapsed="true">
+    <Position X="50.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAEAAAAAAAAAAAACEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dRay.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dGPUStats" Collapsed="true">
+    <Position X="57.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAIQyARjEUIkJoE9pHgVNGnAJkDpQLABkEC9ChCAIMQ=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dRenderLayer" Collapsed="true">
+    <Position X="53.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>7Z3nq4Xi/t0f7ydE/SY+yH/b7H68UiO/Pt8/uWf8u14=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dD3DResourceTunnel" Collapsed="true">
+    <Position X="5.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAABAAAAAAAAAAAAAAAAAAAAEBAAACAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dD3DResourceTunnelT&lt;T&gt;" Collapsed="true">
+    <Position X="5.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAAAAAAAAAAAAAAAAAAAAFAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dD3DVertexBufferTunnel" Collapsed="true">
+    <Position X="2.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dD3DIndexBufferTunnel" Collapsed="true">
+    <Position X="4.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dD3DTextureTunnel" Collapsed="true">
+    <Position X="6.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAIBAAAAAACAIAAAAABAAAAgAAAAAAAEABAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dD3DSurfaceTunnel" Collapsed="true">
+    <Position X="9" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAFAAAAAAAAAAAAgAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dDeviceTunnel" Collapsed="true">
+    <Position X="62.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQUAAAAIwAAAAAAAAAAACAAAABAEAQAQAABAAEAEA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dIntegrityGuardian" Collapsed="true">
+    <Position X="45" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dIResource" Collapsed="true">
+    <Position X="18" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACgAAAAAAAAAAAAAAAABAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dMeshObject_BinFmt" Collapsed="true">
+    <Position X="62.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dBone" Collapsed="true">
+    <Position X="52" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAEAAAAAAAAAAgABAACIQAACAgAAAgAAAAEAAIAQA=</HashCode>
+      <FileName>Include\r3dSkeleton.H</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dSkeleton" Collapsed="true">
+    <Position X="64.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgAAgiAgBAAEAAAAcCAAAYASCEiEACAACAiEAgQABA=</HashCode>
+      <FileName>Include\r3dSkeleton.H</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dSkinMesh" Collapsed="true">
+    <Position X="43.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADARCIAAAgBAAAAEBABAAAAAAAAgwEBAAQAEoCAAA=</HashCode>
+      <FileName>Include\r3dSkin.H</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dSphere" Collapsed="true">
+    <Position X="46.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAgAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dSphere.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dSpline3D" Collapsed="true">
+    <Position X="48.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAABgGAAAAAAggAAAJIAAgAAQAAADAAgAEQAAgAAAA=</HashCode>
+      <FileName>Include\r3dSpline.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dString" Collapsed="true">
+    <Position X="53.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAKAEAACAAQBAAAAAAAgAAAIQAAAAAAA=</HashCode>
+      <FileName>include\r3dString.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="URandomGenerator" Collapsed="true">
+    <Position X="48.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAACBACAAAA=</HashCode>
+      <FileName>Source\r3dSys_WIN.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dTexture" Collapsed="true">
+    <Position X="57.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>xBH8loOALAAAigKIGA4joElQBaBoIEIgTQJDRWKDAAA=</HashCode>
+      <FileName>INCLUDE\r3dTex.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dThumbnailTexture" Collapsed="true">
+    <Position X="60.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQEACAAAAjBAAAAAgBRAxAACAIAMCApAACAkCAEAA=</HashCode>
+      <FileName>INCLUDE\r3dTex.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dTreeNode&lt;T&gt;" Collapsed="true">
+    <Position X="16.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RAAEBAIAAAAAEAAAAAomgABAAAIAIAIAAkQAAgQAgAA=</HashCode>
+      <FileName>Include\r3dTreeNode.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dPerfCounter" Collapsed="true">
+    <Position X="57.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACCIAAAgAKAAAAAAAAAAAAAAgAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>INCLUDE\r3dUtils.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dFunctionStack" Collapsed="true">
+    <Position X="53.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dUtils.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dImageLoader" Collapsed="true">
+    <Position X="62.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQgAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>INCLUDE\r3dUtils.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VertexCacheData" Collapsed="true">
+    <Position X="53.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAIACAAIAQAAAAgCAAAAAAAAAAAAAAAAAAAAAkAAA=</HashCode>
+      <FileName>Include\r3dVCacheOptimize.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TriangleCacheData" Collapsed="true">
+    <Position X="59" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABIAAAAAAgAAAAAAAAAAgAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Include\r3dVCacheOptimize.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VertexCache" Collapsed="true">
+    <Position X="52" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAQIAAAAAAAAAAAAAAAABCAAAAKAAAAACAABAAAA=</HashCode>
+      <FileName>Include\r3dVCacheOptimize.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VertexCacheOptimizer" Collapsed="true">
+    <Position X="55.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAQB0AAAABCBCQAAAAAAIAABABAgAAhACgECAAAA=</HashCode>
+      <FileName>Include\r3dVCacheOptimize.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackWalkerInternal" Collapsed="true">
+    <Position X="50.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAgAABIAQEAABAAABAACAAAIAIEIQBCABgKgAA=</HashCode>
+      <FileName>Source\StackWalker.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StackWalker" Collapsed="true">
+    <Position X="48.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgiAAAQAAAAQABBAAAICCBAIAAAIJAAQAAAAAAAAA=</HashCode>
+      <FileName>Source\StackWalker.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dTimeGradient2" Collapsed="true">
+    <Position X="62.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MBAAAGAAIAAABCAAAQIAIAAAAAAAAAAAARAggAAAAAA=</HashCode>
+      <FileName>Include\TimeGradient.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Timer" Collapsed="true">
+    <Position X="55.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAABBAAAAAAAAAQAAAAAAAAAAAABAAAEAQA=</HashCode>
+      <FileName>Include\timer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dDXInclude" Collapsed="true">
+    <Position X="64.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAIAAAAIAAAAAAAAAAAAAAAAAAAAAAAAASAAAA=</HashCode>
+      <FileName>Source\VShader.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dVertexShader" Collapsed="true">
+    <Position X="43.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAEgACAAAAAAAAAAAAAAAQAggAAAAEACAACAIBAAAA=</HashCode>
+      <FileName>Include\VShader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dXPSObject&lt;vert_s&gt;" Collapsed="true">
+    <Position X="45" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gKAUhwAAAAAAAgAAIAgoAAUIQQDBABABAIAjAAACgAA=</HashCode>
+      <FileName>Include\xpsobject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dFS_FileList" Collapsed="true">
+    <Position X="50.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAECAAEAIAAgADRAAQAAoAEAAAAAAgAAAAAA=</HashCode>
+      <FileName>Source\FileSystem\r3dFileSystem.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dFileSystem" Collapsed="true">
+    <Position X="46.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABgCABAQAAKBVAgAgqRAARMEEACAIAACRCAAAAUQ=</HashCode>
+      <FileName>Source\FileSystem\r3dFileSystem.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dFSCompress" Collapsed="true">
+    <Position X="52" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQAAAAAAAAAAAAAQAACAAAAgCAAAkAAAgAAAAAAAAAE=</HashCode>
+      <FileName>Source\FileSystem\r3dFSCompress.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dFS_FileEntry" Collapsed="true">
+    <Position X="48.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAACAAAAAAAAAIAIgBAAAEAAAEAAAAACAEAAACAAQ=</HashCode>
+      <FileName>Source\FileSystem\r3dFSStructs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HashTableDynamic&lt;Type, Key, HashFunc, nSize&gt;" Collapsed="true">
+    <Position X="60.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgJBAAAAAAEGiAAgAAAABAAAAgAMAAAQAAgAAABohQA=</HashCode>
+      <FileName>Include\Tsg_stl\HashTable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="String_T&lt;iLength&gt;" Collapsed="true">
+    <Position X="20.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CABgQAACAVAAgGAEQBDAEQBABCAAELpACAgAgAAABqA=</HashCode>
+      <FileName>Include\Tsg_stl\TString.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuLayer" Collapsed="true">
+    <Position X="16" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACIAEAAJgAAAIBJAQBoAAAAAAQAASAAJgAQAMII=</HashCode>
+      <FileName>Include\UI\r3dMenu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MRect" Collapsed="true">
+    <Position X="55.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAhgBAAQAAA=</HashCode>
+      <FileName>Include\UI\r3dMenu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MListBox" Collapsed="true">
+    <Position X="52" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAgEABgAAIKAAAAoAAAAAQAgAABASAAAIAIA=</HashCode>
+      <FileName>Include\UI\r3dMenu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuLayer2" Collapsed="true">
+    <Position X="16" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABIAAAABAgoBACAAAAAARAABACRAAABACBAAAIAA=</HashCode>
+      <FileName>Include\UI\r3dMenu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuLayersMgr" Collapsed="true">
+    <Position X="48.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQgAEAAAAAAAoABQAAABAAAAAAAAAgAgAAAhAAAAIA=</HashCode>
+      <FileName>Include\UI\r3dMenu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UICurveEditor" Collapsed="true">
+    <Position X="64.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAgAAAAhCAAAACAIIAACBQAAAAABBgAAAAFOA=</HashCode>
+      <FileName>Include\UI\UICurveEditor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIElm" Collapsed="true">
+    <Position X="45" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAEAAAAAgBAAAAAAAAAAAAEAIEAAAAAQAAAAIA=</HashCode>
+      <FileName>Include\UI\UIElements.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIElements" Collapsed="true">
+    <Position X="43.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BCBIAAEAAAAAAgAAAAAAACAAAAAIAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Include\UI\UIElements.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Desktop_c" Collapsed="true">
+    <Position X="57.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQCAABgAABAAyBAEBAAKBAAAMUAgMAAYAAAACIBAAA=</HashCode>
+      <FileName>Include\UI\UIimEdit.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DesktopManager_c" Collapsed="true">
+    <Position X="59" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAIAAAAkAAAAAAAACCAAAAEAAQAAACABBBIAA=</HashCode>
+      <FileName>Include\UI\UIimEdit.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="imguiAddControl" Collapsed="true">
+    <Position X="64.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAQAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Source\UI\UIimEdit2.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dRenderBuffer" Collapsed="true">
+    <Position X="18" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAASggAAAAAgAAAAAECIAEAAASASAEAAYCAAAAAAAAA=</HashCode>
+      <FileName>SF\RenderBuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dVertexBuffer" Collapsed="true">
+    <Position X="16.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAASAAAAAAAABAAAAAAAAABAAAAAAEAAAAAASACAAAA=</HashCode>
+      <FileName>SF\RenderBuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dIndexBuffer" Collapsed="true">
+    <Position X="19" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAQAAAAAAAABAAAAAAAAABAAAAAAEAAAIAASACAAAA=</HashCode>
+      <FileName>SF\RenderBuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Script_c" Collapsed="true">
+    <Position X="46.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAIQkAACCGBAAAAAABBAggEABAAkCAAQoQAAiqBBA=</HashCode>
+      <FileName>SF\script.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CmdConsole" Collapsed="true">
+    <Position X="16" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAgAAAAAAEAAJABAQAAAQAAAQgAIAAACAwEBEIAA=</HashCode>
+      <FileName>SF\CmdProcessor\CmdConsole.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CEventVar" Collapsed="true">
+    <Position X="43.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAUBAQCAAAKAIAAAABQAAgAAAAAJAAQAAAQAAEgA=</HashCode>
+      <FileName>SF\CmdProcessor\CmdEvent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VarsContainer_c" Collapsed="true">
+    <Position X="50.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIARMAACAAAIAAIAAIBAAABAAAAAAEABAAIAAAAFA=</HashCode>
+      <FileName>SF\CmdProcessor\CmdEvent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cmd" Collapsed="true">
+    <Position X="46.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DAQgACABBAAQAAgAAAAAACAAAAAAAQIAAAAAAAgBBAA=</HashCode>
+      <FileName>SF\CmdProcessor\CmdProcessor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommandProcessor" Collapsed="true">
+    <Position X="50.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABgAAggCQAQCCAEAQAgCAAABIIkEIAACKBAkAAA=</HashCode>
+      <FileName>SF\CmdProcessor\CmdProcessor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CmdVar" Collapsed="true">
+    <Position X="48.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BASAACgAACQAAgAMAEAABSAIAKgAAAgAgAAIAACABAA=</HashCode>
+      <FileName>SF\CmdProcessor\CmdVar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EngineConsole" Collapsed="true">
+    <Position X="16" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABwMAIQCIBAQgEoJAUAkKQADBIAAgMACwDRCABAEMAI=</HashCode>
+      <FileName>SF\Console\EngineConsole.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IUndoItem" Collapsed="true">
+    <Position X="45" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAgMRAAABAAAAAAAAAABAAJAAABAAAAAwBgIAAA=</HashCode>
+      <FileName>UndoHistory\UndoHistory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UndoHistory" Collapsed="true">
+    <Position X="46.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAFAECBgAABAASIAQAAAQBAARAgCAAAAAAAwEQAAA=</HashCode>
+      <FileName>UndoHistory\UndoHistory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CHWInfo" Collapsed="true">
+    <Position X="45" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAJACiAAAIAGECgBACAhAAIEAADAAIACIEQAgQAAAQ=</HashCode>
+      <FileName>Include\HWInfo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRectPlacement" Collapsed="true">
+    <Position X="53.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIAAAACAAAAgEAAAAEAAAAIQAAAQAAgAAhCEAIAwAA=</HashCode>
+      <FileName>Include\AtlasComposer\RectPlacement.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dSTLCustomAllocator&lt;T, AT&gt;" Collapsed="true">
+    <Position X="50.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEAAAAACAAIAAAEAAAAIAAAAAAgAAAAAAAAI=</HashCode>
+      <FileName>Include\r3dSTLAllocators.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dSTLCustomAllocator&lt;void, AT&gt;" Collapsed="true">
+    <Position X="52" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dSTLAllocators.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="`anonymous-namespace'::xml_buffered_writer" Collapsed="true">
+    <Position X="60.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAABAAAAAAAAAAAAAAQAAAAAAAIAAkQhAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dTL::T2DArray&lt;T&gt;" Collapsed="true">
+    <Position X="52" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAABAAABAAAEABAAEQAAACBAAgAAAAAAAFAAio=</HashCode>
+      <FileName>Include\Tsg_stl\T2DArray.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dTL::TArray&lt;T&gt;" Collapsed="true">
+    <Position X="15.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAABAEIEAAAAgAAYAAQAAQQACAAREAwAAAACAQNgAAI=</HashCode>
+      <FileName>Include\Tsg_stl\TArray.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dTL::TFixedAllocator&lt;T&gt;" Collapsed="true">
+    <Position X="53.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEAAAAAAECIACAUAAAAIAAAIAAAAAAAAAAiI=</HashCode>
+      <FileName>Include\Tsg_stl\TFixedAllocator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dTL::TFixedArray&lt;T, N&gt;" Collapsed="true">
+    <Position X="3.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAQAQAAAQAAEAABAwAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\Tsg_stl\TFixedArray.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dTL::IsPOD&lt;T&gt;" Collapsed="true">
+    <Position X="43.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Include\Tsg_stl\THelpers.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dTL::TLinkedArray&lt;T, S&gt;" Collapsed="true">
+    <Position X="57.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IABAAEACAAAAAAggAACAAQQACAAIAAAAAIAAAAAAAAI=</HashCode>
+      <FileName>Include\Tsg_stl\TLinkedArray.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dTL::TSlice&lt;T&gt;" Collapsed="true">
+    <Position X="60.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAYAAAAAAAwAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\Tsg_stl\TSlice.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dTL::TStaticArray&lt;T, N&gt;" Collapsed="true">
+    <Position X="62.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIQAAAAAAAAAAAAAAAAAAAQICAAAAAwAAgAAAAFAAAA=</HashCode>
+      <FileName>Include\Tsg_stl\TStaticArray.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="r3dTL::TTabArray&lt;T, TAB&gt;" Collapsed="true">
+    <Position X="24.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IARBAAIEAAAAgAQIAAAAAQQACAABEAwAAAACAQFgAAI=</HashCode>
+      <FileName>Include\Tsg_stl\TTabArray.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="pugi::xml_writer" Collapsed="true">
+    <Position X="5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="pugi::xml_writer_file" Collapsed="true">
+    <Position X="5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAQAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="pugi::xml_attribute" Collapsed="true">
+    <Position X="57.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAJiAAxBCABAEALAAgQIACAAAByg=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="pugi::xml_node" Collapsed="true">
+    <Position X="2" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gKRIAAACIAAQgiRICpTqKgISIMEFCTBAAkAQGjAEJyA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="pugi::xml_node_iterator" Collapsed="true">
+    <Position X="62.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAIAAAIAAQAAAAAAIAAAAEAAAAAig=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="pugi::xml_attribute_iterator" Collapsed="true">
+    <Position X="59" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAIAAAIAAQAAAAAAIAAAAEAAAAAig=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="pugi::xml_tree_walker" Collapsed="true">
+    <Position X="64.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAIAAACAAAAAAAAAAAAAAAQAAAAABAAAAAgIAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="pugi::xml_document" Collapsed="true">
+    <Position X="2" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAwAoCBIAAAIAAAAUgIAAACAgAAAABAQAAAIAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="AtlasDesc" Collapsed="true">
+    <Position X="48.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAICAAAAABAAAIAAAIQAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\atlasDesc.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TextureRectangle" Collapsed="true">
+    <Position X="50.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAIAAAgAAAEAQAAAAAAA=</HashCode>
+      <FileName>Include\atlasDesc.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TextureAtlas" Collapsed="true">
+    <Position X="48.5" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\atlasDesc.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="InitVBIBParams" Collapsed="true">
+    <Position X="43.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAQAAEAA=</HashCode>
+      <FileName>Source\MeshGlobalBuffer.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MeshGlobalBuffer" Collapsed="true">
+    <Position X="60.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBAAAACAAACAAQAAAAAAAAAAAABAAAAAAAAAAABgABA=</HashCode>
+      <FileName>Include\MeshGlobalBuffer.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PARTICLE_INSTANCE" Collapsed="true">
+    <Position X="48.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Particle.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PARTICLE_INDEX" Collapsed="true">
+    <Position X="46.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAIAAIIQAQAAAAAMAAAAAgAAAAAA=</HashCode>
+      <FileName>Source\Particle.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ParticleBuffers" Collapsed="true">
+    <Position X="21.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAABAAAAAAEAAAEAAAAAAAAA=</HashCode>
+      <FileName>Source\Particle.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="paramsss" Collapsed="true">
+    <Position X="45" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Particle.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="LightAndScore" Collapsed="true">
+    <Position X="57.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\Particle.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ParticlePShaderId" Collapsed="true">
+    <Position X="52" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUCAAAAAAAAAAAEAAAAABgAAAAEAAAAAAUAAAAAAAA=</HashCode>
+      <FileName>Include\Particle.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_PARTICLE_VERTEX" Collapsed="true">
+    <Position X="59" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAgAAAAAAAAAAAAAAAAAggAACAAAGAAAAAAAACAQA=</HashCode>
+      <FileName>Include\Particle_Int.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_PARTICLE_VERTEX_BUMP" Collapsed="true">
+    <Position X="60.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAgAAAAAAAAAAAAAAAAAggAACAAAGAAAQAAAACAQA=</HashCode>
+      <FileName>Include\Particle_Int.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dSingleParticle_OverTime" Collapsed="true">
+    <Position X="59" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAgIAAAAAAAAAgACAAAAAAAEAAgAAACQA=</HashCode>
+      <FileName>Include\Particle_Int.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ScreenShotSaveTaskParams" Collapsed="true">
+    <Position X="11.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAgAAAAAAAEAAAAAAABA=</HashCode>
+      <FileName>Source\r3d.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dCSHolderWithDeviceQueue" Collapsed="true">
+    <Position X="48.5" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAABAAAAAAAAg=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_WORLD_VERTEX" Collapsed="true">
+    <Position X="45" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAgAAAAAAAAAAAAAAAAAgAAACIAAQAAAAAAAACAQA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_MESH_VERTEX" Collapsed="true">
+    <Position X="55.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAIgAAAAAAgAQAAAAAgACAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_BENDING_MESH_VERTEX" Collapsed="true">
+    <Position X="62.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAIgAAAAAAgCQAAAAAgACAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_MESH_PRECISE_VERTEX" Collapsed="true">
+    <Position X="53.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAIgAAAAAAgAAAAAAAgACAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_DEBUG_VERTEX" Collapsed="true">
+    <Position X="52" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAgAAAAAEAAAAAAAAAAAgAAACIAACAAAAAAAACAQA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_SIMPLEWORLD_VERTEX" Collapsed="true">
+    <Position X="43.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAgAAAAAAAAAAAAAAAAAgAAACIAACAAAAAAAACAQA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_SCREEN_VERTEX" Collapsed="true">
+    <Position X="64.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAgAAAAAAAAAAAAAAAAAgAAAAAAAKAAABgAQBCAQA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_MINIMALIST_VERTEX_2D" Collapsed="true">
+    <Position X="57.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_POS_VERTEX" Collapsed="true">
+    <Position X="62.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Renderable" Collapsed="true">
+    <Position X="5.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAAAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dTriBatch" Collapsed="true">
+    <Position X="43.25" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAADAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dDrawLineDesc" Collapsed="true">
+    <Position X="53.75" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAEAAACAgAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dDrawTriDesc" Collapsed="true">
+    <Position X="55.5" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAEAAACAgAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dSetRestoreFSQuadVDecl" Collapsed="true">
+    <Position X="57.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAABAABAAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="BipedBoneIds_s" Collapsed="true">
+    <Position X="50.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dAnimation.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dTaskParams" Collapsed="true">
+    <Position X="6.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Include\r3dBackgroundTaskDispatcher.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dTaskPtrParams" Collapsed="true">
+    <Position X="4.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dBackgroundTaskDispatcher.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_BIN_MESH_HEADER" Collapsed="true">
+    <Position X="43.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAwAAAAAAAAAQAAAAAAAAAAAIAAAABAEA=</HashCode>
+      <FileName>Include\r3dBinMesh.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_BIN_MESH_VERTEX" Collapsed="true">
+    <Position X="46.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Include\r3dBinMesh.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_BIN_MESH_VCP" Collapsed="true">
+    <Position X="45" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Include\r3dBinMesh.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_BIN_MESH_FACE" Collapsed="true">
+    <Position X="64.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAABAAAAABAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dBinMesh.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ShadowZBuffer" Collapsed="true">
+    <Position X="12.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAEAAAAAACAAAAAAAAABAAAAAAEAAAAAAAAAAYAA=</HashCode>
+      <FileName>Source\r3dBuffer.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dColorFormat" Collapsed="true">
+    <Position X="46.75" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABECAQAAIgACAAAAAAAAAABAAAAQAQAIgAIQAAQ=</HashCode>
+      <FileName>INCLUDE\r3dColor.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DeviceQueueItem" Collapsed="true">
+    <Position X="60.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQgAABAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAIA=</HashCode>
+      <FileName>Include\r3dDeviceQueue.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dWindowsFileHandle" Collapsed="true">
+    <Position X="45" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dFileMan.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dMappedViewOfFile" Collapsed="true">
+    <Position X="52" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAgAAACAAAAAAAQAAAAAIAAAAAAAAAAAI=</HashCode>
+      <FileName>INCLUDE\r3dFileMan.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dFileSystemLock" Collapsed="true">
+    <Position X="57.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAEAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dFileMan.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="FileTrackNameHashFunc_T" Collapsed="true">
+    <Position X="43.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dFileTracker.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="__unnamed_015c_1" Collapsed="true">
+    <Position X="43.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAA=</HashCode>
+      <FileName>Source\r3dInput.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dSSSBParams" Collapsed="true">
+    <Position X="62.5" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAQAAACAAAAAAAAAAAAAAAAAAAAAAQAEAAAA=</HashCode>
+      <FileName>INCLUDE\r3dLight.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dSSScatterParams" Collapsed="true">
+    <Position X="64.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAgAAAAACAAEAAAAACAAAAAAAAIA=</HashCode>
+      <FileName>INCLUDE\r3dLight.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="EllipsoidParams" Collapsed="true">
+    <Position X="64.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dLight.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="FillGBufferConstantId" Collapsed="true">
+    <Position X="45" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAAQAAAAAAAEAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SMDepthVShaderID" Collapsed="true">
+    <Position X="60.75" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAEAAAAAAAgAAAFAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SkinSMDepthVShaderID" Collapsed="true">
+    <Position X="57.25" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAIAAEAAAAAAAAAAAFAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ForestVShaderID" Collapsed="true">
+    <Position X="52" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAmAEAAAAAAAAAEAAAAABAAAAAEAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SMDepthPShaderID" Collapsed="true">
+    <Position X="59" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAAAAAAFAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dNetPacketHeader" Collapsed="true">
+    <Position X="11" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAACAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dNetwork.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dNetPacketMixin&lt;PKT_ID&gt;" Collapsed="true">
+    <Position X="11" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dNetwork.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="VBData" Collapsed="true">
+    <Position X="62.5" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAIAAAAAAAAQAAAAAAAAAAAIAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Source\r3dObj.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="InstancingMeshVBCache" Collapsed="true">
+    <Position X="46.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAQAAEAAAEAAAAAgAAAAAAIAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Source\r3dObj.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_2UV_MESH_VERTEX" Collapsed="true">
+    <Position X="60.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAgAAAAAAAAAAAAAAAAIgAAAAAAgAQAAAAAgACAAA=</HashCode>
+      <FileName>Source\r3dObj.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dSkinnedMeshVertex" Collapsed="true">
+    <Position X="60.75" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAQAAAAAAAAAAAAAAAAIgAAAAAQgAAAAAAAgACAAA=</HashCode>
+      <FileName>INCLUDE\r3dObj.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dInstancedDataVertex" Collapsed="true">
+    <Position X="45" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>INCLUDE\r3dObj.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dInstancedUnionMeshVertex" Collapsed="true">
+    <Position X="48.5" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>INCLUDE\r3dObj.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dInstancedUnionMeshVertex2UV" Collapsed="true">
+    <Position X="50.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>INCLUDE\r3dObj.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PrecalculatedMeshShaderConsts" Collapsed="true">
+    <Position X="57.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dObj.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MeshDeferredRenderable" Collapsed="true">
+    <Position X="2.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAgAAAAAAAAAAAAAAAAAAAQAAgAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dObj.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MeshDeferredRenderableInstancing" Collapsed="true">
+    <Position X="4.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dObj.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MeshDeferredHighlightRenderable" Collapsed="true">
+    <Position X="6.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAABAAAAAAAAQACgAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dObj.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MeshShadowRenderable" Collapsed="true">
+    <Position X="9" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIEAAAAAAAAgAAAAAEAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dObj.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="InstancedData" Collapsed="true">
+    <Position X="45" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQCAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dObj.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="VBCacheInfo" Collapsed="true">
+    <Position X="60.75" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAQAQAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dObj.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MeshLoadParams" Collapsed="true">
+    <Position X="9" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAABAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dObjLS.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dSampleQueryLink" Collapsed="true">
+    <Position X="55.5" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgIAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAE=</HashCode>
+      <FileName>Source\r3dProfiler.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ScaleFormSample" Collapsed="true">
+    <Position X="46.75" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAEAAAAAABAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Include\r3dProfiler.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="__unnamed_0199_1" Collapsed="true">
+    <Position X="45" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DDRAW_MATCH" Collapsed="true">
+    <Position X="55.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAECAAAACAAAAAAAAAABAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="VLockParams" Collapsed="true">
+    <Position X="64.25" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABYAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ILockParams" Collapsed="true">
+    <Position X="60.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABYAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CreateTextureParamsAutoDownScale" Collapsed="true">
+    <Position X="64.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAADAAAAAAAAAAAAEAEAAgACAABAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CreateTextureParams" Collapsed="true">
+    <Position X="62.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAADAAAAAAAAAAAAEAEAAgACAABAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CreateVolumeTextureParams" Collapsed="true">
+    <Position X="46.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAADAAAAAAAAAAAAEAEAAgACAAhAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CreateCubeTextureParams" Collapsed="true">
+    <Position X="55.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAEAAgACAABAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CreateVertexBufferParams" Collapsed="true">
+    <Position X="45" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAABEAAAACAAABAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CreateIndexBufferParams" Collapsed="true">
+    <Position X="59" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABEAAgACAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CreateRenderTargetParams" Collapsed="true">
+    <Position X="60.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAQAAQgEBAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CreateDepthStencilParams" Collapsed="true">
+    <Position X="57.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAQAAAgMBAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CreateVDeclParams" Collapsed="true">
+    <Position X="43.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAg=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="D3DXCreateTextureFFIMEXParams" Collapsed="true">
+    <Position X="52" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAIAjAAAAAAAAgAAAGAEABgACAAAQAAABAEEAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="D3DXCreateVolumeTextureFFIMEXParams" Collapsed="true">
+    <Position X="53.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAjAAAAAAAAgAAAEAEABgACAAgQAAABAEEAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="D3DXCreateCubeTextureFFIMEXParams" Collapsed="true">
+    <Position X="50.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAiAAAgAAAAgAAAAAEABgACAAAQAAABAEEAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SetPDataParams" Collapsed="true">
+    <Position X="48.5" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAE=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="GetLevelCountParams" Collapsed="true">
+    <Position X="55.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="GetLevelDescParams" Collapsed="true">
+    <Position X="57.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAABAAAAIAAAAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="GetTexFmtParams" Collapsed="true">
+    <Position X="59" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="LockRectParams" Collapsed="true">
+    <Position X="59" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABQAAAAAAAAAAIAAAAAAAAAAgAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="UnlockRectParams" Collapsed="true">
+    <Position X="64.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dFogState" Collapsed="true">
+    <Position X="59" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACAAAIAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dDisplayResolution" Collapsed="true">
+    <Position X="52" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dInstancedDraw" Collapsed="true">
+    <Position X="46.75" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dDeviceInfo" Collapsed="true">
+    <Position X="50.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQKAAAAIAAAAAAAACAgAAAQQAAAgAAgAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SetRestoreZDir" Collapsed="true">
+    <Position X="50.25" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAABAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="URandomState" Collapsed="true">
+    <Position X="43.25" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Source\r3dSys_WIN.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DefaultThreadRandInit" Collapsed="true">
+    <Position X="57.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dSys_WIN.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dRandInitInTread" Collapsed="true">
+    <Position X="53.75" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Include\r3dSys_WIN.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TextureUnloadTaskParams" Collapsed="true">
+    <Position X="2.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dTex.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TextureLoadTaskParams" Collapsed="true">
+    <Position X="6.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dTex.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PostLoadStuffParams" Collapsed="true">
+    <Position X="53.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAACAAAAAQAAAAAAAAAAAAAAAAAAAABAAAE=</HashCode>
+      <FileName>Source\r3dTex.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ubyte3" Collapsed="true">
+    <Position X="59" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAABgAQAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ubyte4" Collapsed="true">
+    <Position X="60.75" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAhgAQAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="short2" Collapsed="true">
+    <Position X="52" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ushort2" Collapsed="true">
+    <Position X="45" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="short3" Collapsed="true">
+    <Position X="53.75" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAABgAQAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ushort3" Collapsed="true">
+    <Position X="46.75" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAABgAQAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="float2" Collapsed="true">
+    <Position X="46.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBgAAAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="float3" Collapsed="true">
+    <Position X="48.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBgAQAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="float4" Collapsed="true">
+    <Position X="50.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAChgAQAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="short4" Collapsed="true">
+    <Position X="55.5" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAhgAQAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="int2" Collapsed="true">
+    <Position X="48.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="int3" Collapsed="true">
+    <Position X="50.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAQAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="int4" Collapsed="true">
+    <Position X="52" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhgAQAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_BMP_HEADER" Collapsed="true">
+    <Position X="48.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAABAAIAgJAAAAAAGQAAAAACCAAAEAAEAAAAAk=</HashCode>
+      <FileName>Source\r3dUtils.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="R3D_BMP_RGBQUAD" Collapsed="true">
+    <Position X="50.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAQIBAAAAAAA=</HashCode>
+      <FileName>Source\r3dUtils.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PostTLCacheStatistics" Collapsed="true">
+    <Position X="55.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAADAAAAAQAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dVCacheAnalyze.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dFS_DirEntry" Collapsed="true">
+    <Position X="60.75" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAQAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Source\FileSystem\r3dFSStructs.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dFS_ListHeader" Collapsed="true">
+    <Position X="64.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAgA=</HashCode>
+      <FileName>Source\FileSystem\r3dFSStructs.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dFS_ListHeader_v1" Collapsed="true">
+    <Position X="43.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAACAAAAAAAAAAAAAABAAAAAAAAAAAAAAUAAAAAAA=</HashCode>
+      <FileName>Source\FileSystem\r3dFSStructs.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dFS_FileHeader" Collapsed="true">
+    <Position X="62.5" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Source\FileSystem\r3dFSStructs.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="config_s" Collapsed="true">
+    <Position X="3.25" Y="32.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAEAAEAAAAAAAAAABAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.c</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="static_tree_desc_s" Collapsed="true">
+    <Position X="29.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.c</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ct_data_s" Collapsed="true">
+    <Position X="48.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="tree_desc_s" Collapsed="true">
+    <Position X="55.5" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAhAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="internal_state" Collapsed="true">
+    <Position X="53.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zlib.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="inflate_state" Collapsed="true">
+    <Position X="64.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAEMIpACMAAGQAUASgAAAAABAAAAOAEAAYCIAQgQ=</HashCode>
+      <FileName>Source\ZLib\src\inflate.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="__unnamed_01c5_1" Collapsed="true">
+    <Position X="7.25" Y="30.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAEAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\inftrees.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="z_stream_s" Collapsed="true">
+    <Position X="9.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAQAAAEAAAIAAAACQAAAIICAAEEAAQAAAEAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zlib.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="gz_header_s" Collapsed="true">
+    <Position X="23.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBACAAQAAEAAAABAABAAAAAAAEAAAIAAkQAAAAAQA=</HashCode>
+      <FileName>Source\ZLib\src\zlib.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="gzFile_s" Collapsed="true">
+    <Position X="15.25" Y="25.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAIAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zlib.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ColorStringList" Collapsed="true">
+    <Position X="53.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACCAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\UI\UIimEdit.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DesktopHashFunc_T" Collapsed="true">
+    <Position X="59" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\UI\UIimEdit.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="imgui_State" Collapsed="true">
+    <Position X="62.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAABAAEAgAAAAAAhgAAAAIAA=</HashCode>
+      <FileName>Source\UI\UIimEdit2.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TUnlock&lt;T&gt;" Collapsed="true">
+    <Position X="57.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAIAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>SF\RenderBuffer.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CmdHashFunc_T" Collapsed="true">
+    <Position X="52" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>SF\CmdProcessor\CmdProcessor.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="UndoAction_t" Collapsed="true">
+    <Position X="62.5" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAIAAAAAA=</HashCode>
+      <FileName>UndoHistory\UndoHistory.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::JobDesc" Collapsed="true">
+    <Position X="55.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAACAAAAAgAAAAAAAAAAAAAABAACAABAAAAAAA=</HashCode>
+      <FileName>Source\JobChief.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::ThreadData" Collapsed="true">
+    <Position X="52" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAQAAAAAAAQAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Source\JobChief.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::ParticleFillParams" Collapsed="true">
+    <Position X="50.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAABICAAAAAAAAIAAAAQCAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Source\Particle.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::ProfilerItem" Collapsed="true">
+    <Position X="59" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAEAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dProfileDataRecorder.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::DownTexParams" Collapsed="true">
+    <Position X="62.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAgAACAAAAA=</HashCode>
+      <FileName>Source\r3dTex.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::Adjacency" Collapsed="true">
+    <Position X="46.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAQAAABAAAAAAAAAAAUAAAAAAA=</HashCode>
+      <FileName>Source\r3dVCacheOptimize.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::OverrunChecker" Collapsed="true">
+    <Position X="43.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SF\script.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::opt_false" Collapsed="true">
+    <Position X="62.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::opt_true" Collapsed="true">
+    <Position X="64.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::utf8_counter" Collapsed="true">
+    <Position X="57.25" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::utf8_writer" Collapsed="true">
+    <Position X="59" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAACAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::utf16_counter" Collapsed="true">
+    <Position X="50.25" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::utf16_writer" Collapsed="true">
+    <Position X="52" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAACAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::utf32_counter" Collapsed="true">
+    <Position X="53.75" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::utf32_writer" Collapsed="true">
+    <Position X="55.5" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAACAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::wchar_selector&lt;2&gt;" Collapsed="true">
+    <Position X="43.25" Y="21.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::wchar_selector&lt;4&gt;" Collapsed="true">
+    <Position X="45" Y="21.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::utf_decoder&lt;Traits, opt_swap&gt;" Collapsed="true">
+    <Position X="48.5" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAEAAAAAAEAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::gap" Collapsed="true">
+    <Position X="53.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAACAAAAAAAAAIAAAAAAAAAAAAAAAAgIAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::strconv_pcdata_impl&lt;opt_eol, opt_escape&gt;" Collapsed="true">
+    <Position X="45" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::strconv_attribute_impl&lt;opt_escape&gt;" Collapsed="true">
+    <Position X="43.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAgAAAAAAgAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="`anonymous-namespace'::xml_parser" Collapsed="true">
+    <Position X="55.5" Y="21.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAABAAAQAAAAACAgAAgAAAAAAAAIAAAAAAAAAIgI=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="static_assert::STATIC_ASSERT_FAILURE&lt;true&gt;" Collapsed="true">
+    <Position X="62.5" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dCompileAssert.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="static_assert::static_assert_test&lt;x&gt;" Collapsed="true">
+    <Position X="64.25" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dCompileAssert.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="r3dTL::TDefaultLinkedArraySettings" Collapsed="true">
+    <Position X="46.75" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\Tsg_stl\TLinkedArray.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="pugi::xml_memory_page" Collapsed="true">
+    <Position X="50.25" Y="21.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAIAAAAAAAAAAAAAAAABQAAIBBAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="pugi::xml_memory_string_header" Collapsed="true">
+    <Position X="52" Y="21.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="pugi::xml_allocator" Collapsed="true">
+    <Position X="46.75" Y="21.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAABAAQAQQCAAAAAIAEAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="pugi::xml_attribute_struct" Collapsed="true">
+    <Position X="48.5" Y="21.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAQAAAAAAAAAAAAAAgBAAAAEACAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="pugi::xml_node_struct" Collapsed="true">
+    <Position X="8" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAYAAAAAAABAAAAAIBAAAAAEACBAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="pugi::xml_document_struct" Collapsed="true">
+    <Position X="8" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAABAAAABAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="pugi::transfer_ownership_tag" Collapsed="true">
+    <Position X="53.75" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="pugi::xml_parse_result" Collapsed="true">
+    <Position X="53.75" Y="21.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAAAAAAAAEIAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="`anonymous-namespace'::ThreadDataVec" Collapsed="true">
+    <Position X="18.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\JobChief.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::IdleHandles" Collapsed="true">
+    <Position X="18.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\JobChief.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="CompareFunc" Collapsed="true">
+    <Position X="57.25" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\ParallelQuickSort.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="ParticlePSIds" Collapsed="true">
+    <Position X="6.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\Particle.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="CaptureStackBackTraceFunc" Collapsed="true">
+    <Position X="48.5" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3d.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="r3dVector" Collapsed="true">
+    <Position X="39.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="RenderArray" Collapsed="true">
+    <Position X="23.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="r3dSTLString" Collapsed="true">
+    <Position X="43.25" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dAllocatorInterface.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="stringlist_t" Collapsed="true">
+    <Position X="52" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dAnimation.H</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="r3dColor" Collapsed="true">
+    <Position X="15.25" Y="30.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dColor.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="r3dfnMakeColor" Collapsed="true">
+    <Position X="60.75" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dColor.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="r3dfnSplitColor" Collapsed="true">
+    <Position X="62.5" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dColor.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="threadEntry_fn" Collapsed="true">
+    <Position X="57.25" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dDebug.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="DeviceQueueItems" Collapsed="true">
+    <Position X="12.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dDeviceQueue.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="r3dChunkedFile" Collapsed="true">
+    <Position X="25.25" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dFileMan.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="r3dChunkedWriteFile" Collapsed="true">
+    <Position X="22.25" Y="25.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dFileMan.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="CallbackFileChange_t" Collapsed="true">
+    <Position X="46.75" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dFileTracker.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="FillGBufferConstantPSIds" Collapsed="true">
+    <Position X="0.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="FillbufferPixelShadersArr" Collapsed="true">
+    <Position X="0.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SMDepthVShaderIDs" Collapsed="true">
+    <Position X="6.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SkinSMDepthVShaderIDs" Collapsed="true">
+    <Position X="0.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="ForestVShaderIDs" Collapsed="true">
+    <Position X="3.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="SMDepthPShaderIDs" Collapsed="true">
+    <Position X="3.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="r3dBoundBox" Collapsed="true">
+    <Position X="19.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dPoint.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="ScaleFormSamples" Collapsed="true">
+    <Position X="45" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dProfiler.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="PfnCoSetProxyBlanket" Collapsed="true">
+    <Position X="57.25" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="ModesArray" Collapsed="true">
+    <Position X="18.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="DisplayResolutions" Collapsed="true">
+    <Position X="12.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="ShaderMacros" Collapsed="true">
+    <Position X="15.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="r3dQuat" Collapsed="true">
+    <Position X="64.25" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dSkeleton.H</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="TextureReloadListeners" Collapsed="true">
+    <Position X="15.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dTex.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="TextureReloadListener" Collapsed="true">
+    <Position X="55.5" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dTex.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="uint32_t" Collapsed="true">
+    <Position X="45" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dTypedefs.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="uint16_t" Collapsed="true">
+    <Position X="43.25" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dTypedefs.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="uint8_t" Collapsed="true">
+    <Position X="46.75" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dTypedefs.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="int32_t" Collapsed="true">
+    <Position X="48.5" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dTypedefs.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="int16_t" Collapsed="true">
+    <Position X="46.75" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dTypedefs.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="int8_t" Collapsed="true">
+    <Position X="50.25" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dTypedefs.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="size2int_t" Collapsed="true">
+    <Position X="46.75" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dTypedefs.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="ubyte" Collapsed="true">
+    <Position X="60.75" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="ushort" Collapsed="true">
+    <Position X="52" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dTypeTuples.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Win32MsgProc_fn" Collapsed="true">
+    <Position X="62.5" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\WinMain.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="block_state" Collapsed="true">
+    <Position X="11.25" Y="30.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.c</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="compress_func" Collapsed="true">
+    <Position X="59" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.c</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="config" Collapsed="true">
+    <Position X="3.25" Y="30.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.c</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="ct_data" Collapsed="true">
+    <Position X="60.75" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="static_tree_desc" Collapsed="true">
+    <Position X="29.25" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="tree_desc" Collapsed="true">
+    <Position X="59" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Pos" Collapsed="true">
+    <Position X="11.25" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Posf" Collapsed="true">
+    <Position X="59" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="IPos" Collapsed="true">
+    <Position X="53.75" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="deflate_state" Collapsed="true">
+    <Position X="64.25" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="inflate_mode" Collapsed="true">
+    <Position X="19.25" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\inflate.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="code" Collapsed="true">
+    <Position X="7.25" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\inftrees.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="codetype" Collapsed="true">
+    <Position X="27.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\inftrees.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Byte" Collapsed="true">
+    <Position X="27.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zconf.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="uInt" Collapsed="true">
+    <Position X="26.25" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zconf.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="uLong" Collapsed="true">
+    <Position X="26.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zconf.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Bytef" Collapsed="true">
+    <Position X="27.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zconf.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="charf" Collapsed="true">
+    <Position X="52" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zconf.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="intf" Collapsed="true">
+    <Position X="52" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zconf.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="uIntf" Collapsed="true">
+    <Position X="26.25" Y="26.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zconf.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="uLongf" Collapsed="true">
+    <Position X="26.25" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zconf.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="voidpc" Collapsed="true">
+    <Position X="57.25" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zconf.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="voidpf" Collapsed="true">
+    <Position X="59" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zconf.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="voidp" Collapsed="true">
+    <Position X="55.5" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zconf.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="z_crc_t" Collapsed="true">
+    <Position X="64.25" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zconf.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="alloc_func" Collapsed="true">
+    <Position X="43.25" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zlib.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="free_func" Collapsed="true">
+    <Position X="43.25" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zlib.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="z_stream" Collapsed="true">
+    <Position X="7.25" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zlib.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="z_streamp" Collapsed="true">
+    <Position X="7.25" Y="25.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zlib.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="gz_header" Collapsed="true">
+    <Position X="22.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zlib.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="gz_headerp" Collapsed="true">
+    <Position X="22.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zlib.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="in_func" Collapsed="true">
+    <Position X="45" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zlib.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="out_func" Collapsed="true">
+    <Position X="55.5" Y="27" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zlib.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="gzFile" Collapsed="true">
+    <Position X="15.25" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zlib.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="uch" Collapsed="true">
+    <Position X="62.5" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zutil.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="uchf" Collapsed="true">
+    <Position X="64.25" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zutil.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="ush" Collapsed="true">
+    <Position X="11.25" Y="25.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zutil.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="ushf" Collapsed="true">
+    <Position X="50.25" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zutil.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="ulg" Collapsed="true">
+    <Position X="48.5" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\zutil.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="FixedString32" Collapsed="true">
+    <Position X="23.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\Tsg_stl\TString.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="FixedString" Collapsed="true">
+    <Position X="22.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\Tsg_stl\TString.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="FixedString256" Collapsed="true">
+    <Position X="20.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\Tsg_stl\TString.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="clrstringlist_t" Collapsed="true">
+    <Position X="53.75" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\UI\UIimEdit.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="vartype" Collapsed="true">
+    <Position X="3.25" Y="25.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SF\CmdProcessor\CmdEvent.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="CmdFunc_t" Collapsed="true">
+    <Position X="55.5" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SF\CmdProcessor\CmdProcessor.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="VarChangeCallback" Collapsed="true">
+    <Position X="53.75" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SF\CmdProcessor\CmdVar.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::wchar_writer" Collapsed="true">
+    <Position X="60.75" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::strconv_pcdata_t" Collapsed="true">
+    <Position X="50.25" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="`anonymous-namespace'::strconv_attribute_t" Collapsed="true">
+    <Position X="48.5" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="pugi::char_t" Collapsed="true">
+    <Position X="50.25" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="pugi::allocation_function" Collapsed="true">
+    <Position X="45" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="pugi::deallocation_function" Collapsed="true">
+    <Position X="62.5" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="TCreateUndoFunc" Collapsed="true">
+    <Position X="53.75" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UndoHistory\UndoHistory.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="__unnamed_0131_1" Collapsed="true">
+    <Position X="59" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQECAAAAAAAAABAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Source\Particle.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dPartEmitType_e" Collapsed="true">
+    <Position X="60.75" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAACAAAAAAAAAAgAAAAAAAgAAABAA=</HashCode>
+      <FileName>Include\Particle_Int.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dPartType_e" Collapsed="true">
+    <Position X="62.5" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAEAAAAAAAIABAACAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Include\Particle_Int.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dBudgetCategories" Collapsed="true">
+    <Position X="60.75" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABACERBAJIgEDAgAABEAAASMCIAhAEgAEg=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_00d3_1" Collapsed="true">
+    <Position X="43.25" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_00d3_2" Collapsed="true">
+    <Position X="45" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAEA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="eRenderStageID" Collapsed="true">
+    <Position X="50.25" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAQMQIAAAgAAAAAAAEgBAEAAAICAAAAACwAAUEAgAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GAME_OPTIONS_QUALITY" Collapsed="true">
+    <Position X="53.75" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEABAAAAAAAQQAAABAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dFilter" Collapsed="true">
+    <Position X="45" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAgAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dDevStrength" Collapsed="true">
+    <Position X="43.25" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAAAAAAAAIAgAA=</HashCode>
+      <FileName>INCLUDE\r3d.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dDataBreakpointByteLen" Collapsed="true">
+    <Position X="62.5" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAEAAQAAA=</HashCode>
+      <FileName>Include\r3dDebug.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dDataBreakpointCondition" Collapsed="true">
+    <Position X="64.25" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dDebug.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dKeyboardScanCodes_e" Collapsed="true">
+    <Position X="48.5" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BaECUIAUAP7//5X+B4AAKAxIIkEAIC4FtggQAKQRQSE=</HashCode>
+      <FileName>INCLUDE\r3dInput.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GamepadStates_e" Collapsed="true">
+    <Position X="55.5" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACEAgAAAAAAQAAAkIAAAAQAAAAAEAAAAgABABAAAI=</HashCode>
+      <FileName>INCLUDE\r3dInput.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dLightTypes" Collapsed="true">
+    <Position X="53.75" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAoAAAAAAACAAAAAAAAIAAAACAAAABAAAABAACAAAA=</HashCode>
+      <FileName>INCLUDE\r3dLight.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dLightFunction" Collapsed="true">
+    <Position X="52" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAMAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dLight.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dLightFlags" Collapsed="true">
+    <Position X="50.25" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAiAAAAAAAAAIAAAIAAAAAAAAAAg=</HashCode>
+      <FileName>INCLUDE\r3dLight.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_0162_1" Collapsed="true">
+    <Position X="60.75" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Source\r3dMat.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TexType" Collapsed="true">
+    <Position X="50.25" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgAAAAEAAAAAAAEAICAAAKAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Source\r3dMat.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dMatFlags_e" Collapsed="true">
+    <Position X="55.5" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAgAAAAAAAAAAACAAAAQAADAIAwQAAIAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dMatVSType" Collapsed="true">
+    <Position X="59" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAABAAAAgAEAAAAAACCBgAAAAAAAAGAI=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dMatPathFlags" Collapsed="true">
+    <Position X="57.25" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGABAAAAAEAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_00ff_1" Collapsed="true">
+    <Position X="53.75" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_00ff_2" Collapsed="true">
+    <Position X="55.5" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABoiAAkAgQACiAAAAAQEAAQIAQACACAAAAAAhSAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SMVSType" Collapsed="true">
+    <Position X="46.75" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAgAAAAAAABAQABAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SMPSType" Collapsed="true">
+    <Position X="45" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAQABAAAACAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dMat.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_0169_1" Collapsed="true">
+    <Position X="62.5" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dNetwork.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_00ec_1" Collapsed="true">
+    <Position X="46.75" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dPoint.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_0193_1" Collapsed="true">
+    <Position X="64.25" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dProfilerRender.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PackedD3DFormat" Collapsed="true">
+    <Position X="59" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYT0CQwwAgAiBCqEAIAAAAAIkJBDQECAQBADpFmmSAg=</HashCode>
+      <FileName>Source\r3dRender.CPP</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ShadowPassTypeEnum" Collapsed="true">
+    <Position X="43.25" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAoAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="StereoEyeEnum" Collapsed="true">
+    <Position X="48.5" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAIAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="VisibilityInfoEnum" Collapsed="true">
+    <Position X="55.5" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAQAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_00fe_1" Collapsed="true">
+    <Position X="50.25" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAQAFAAAAVAAIAAACAAEAAAAAAAAKAAQAEAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dZRange" Collapsed="true">
+    <Position X="64.25" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAIACAACAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dFrustumType" Collapsed="true">
+    <Position X="46.75" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_00fe_2" Collapsed="true">
+    <Position X="52" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>INCLUDE\r3dRender.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_010d_1" Collapsed="true">
+    <Position X="57.25" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dSkeleton.H</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_01a8_1" Collapsed="true">
+    <Position X="43.25" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Source\r3dSys_WIN.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="UtilGeomType" Collapsed="true">
+    <Position X="53.75" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAIAAAABAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Source\r3dUtils3D.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_01c2_1" Collapsed="true">
+    <Position X="11.25" Y="32.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAABAAAAAAAAAAAAAAIAACAAAA=</HashCode>
+      <FileName>Source\ZLib\src\deflate.c</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_01c6_1" Collapsed="true">
+    <Position X="19.25" Y="26.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAFEECACQgABAwYAABAQQECAQcAAAEAAAEAAAQAAAEs=</HashCode>
+      <FileName>Source\ZLib\src\inflate.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_01c5_2" Collapsed="true">
+    <Position X="29.25" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAABAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Source\ZLib\src\inftrees.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FillFilesType" Collapsed="true">
+    <Position X="52" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAQAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Source\UI\UIimEdit2.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_01de_1" Collapsed="true">
+    <Position X="3.25" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAgAAQAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>SF\CmdProcessor\CmdEvent.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_01de_2" Collapsed="true">
+    <Position X="45" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>SF\CmdProcessor\CmdEvent.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_00f8_1" Collapsed="true">
+    <Position X="48.5" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAIAAGAAAAAACAAAAAAAAAAAAgA=</HashCode>
+      <FileName>SF\CmdProcessor\CmdVar.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="UndoAction_e" Collapsed="true">
+    <Position X="52" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiQIAwAAACAIEAKiCACAgCAABSAAJgAoAAABiEDAI=</HashCode>
+      <FileName>UndoHistory\UndoHistory.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="`anonymous-namespace'::chartype_t" Collapsed="true">
+    <Position X="46.75" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAARCAAAAAgBAAAAAAAAAAAAAAEAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="`anonymous-namespace'::output_chartype_t" Collapsed="true">
+    <Position X="57.25" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="r3dStats::Confidence" Collapsed="true">
+    <Position X="48.5" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAIAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Include\r3dStats.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="pugi::xml_node_type" Collapsed="true">
+    <Position X="59" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEADAACAgAAAAAAAAAAAAAACAAAAAAAAAAAAAQAAACA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="pugi::xml_encoding" Collapsed="true">
+    <Position X="57.25" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAUAAEAiEAQAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="pugi::xml_parse_status" Collapsed="true">
+    <Position X="60.75" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgggAAAAAAIABAAAAAAAAAAAEAAAIBgEAqAQQAAAAAA=</HashCode>
+      <FileName>c:\WarZ\src\External\pugiXML\src\pugixml.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

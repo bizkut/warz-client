@@ -1,0 +1,106 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// All controllers and sensors that are specific to just the legs
+/*__spuEntryPoint__*/ __limb__(Legs) module_def Leg
+{
+owner: MyNetwork<>
+
+data:
+  int32_t limbRigIndex;     ///< index into all the rig's limbs
+  int32_t limbNetworkIndex; ///< index into all the network's limbs
+  int32_t childIndex;       ///< index into network's array of legs
+  
+  /// _Current_ leg length as a sum of all the joint-joint distances, ignoring the offset from the root joint
+  Length length;
+  TimePeriod collidingTime; ///< +ve for time we've been colliding, -ve for time we've been not colliding
+  /// +ve for time the foot has been colliding with ground, -ve for time we've been not colliding
+  TimePeriod endGroundCollidingTime;
+  /// Amount the foot is on the ground - stays positive for a short while after the foot leaves the ground
+  Weight endOnGroundAmount;
+  Stiffness normalStiffness;                ///< Usual stiffness, e.g. for lifting and placing the foot
+  DampingRatio normalDampingRatio;          ///< 1 = critical damping
+  Compensation normalDriveCompensation;     ///< Larger is more controlled, less spongey
+  ER::DimensionalScaling dimensionalScaling;
+  Weight previousExternalSupportAmount;     ///< Used for getting the collided flag correct on first frame
+publicAPI:
+  bool canReachPoint(const NMP::Vector3 &position, bool &canReach) const;
+
+children:
+  LegBrace<> brace;
+  LegStandingSupport<> standingSupport;
+  LegSittingSupport<>  sittingSupport;
+  LegStep<> step;
+  LegSwing<> swing;
+  LegPose<> pose;
+  LegSpin<> spin;
+  LegReachReaction<> reachReaction;
+  LegWrithe<> writhe;
+
+feedOut:
+  bool inContact;                    ///< Whether any part of the whole leg is in contact
+  bool supportedByConstraint;        ///< Whether any part of the whole leg is supported by a constraint
+  bool limbBarEndIsColliding;         ///< Whether any part of the whole leg is except the foot is in contact
+  Position hipPosition;              ///< Used for calculating an average of hips
+  TimePeriod collidingTime;          ///< Time any part of the leg is in contact
+  Weight endOnGroundAmount;          ///< Timed ramp of whether foot is contacting an external object
+
+
+in:
+  Position centreOfHips;             ///< Calculated from averaging the feedOut.hipPositions
+  Position centreOfSupport;          ///< Average of feet weighted by support amount
+  bool shouldBrace;                  ///< Calculated from the BraceChooser, to choose which legs are best for bracing with
+  bool isBodyBarFeetContacting;      ///< Any body part apart from the feet, contacting an external object
+
+  // 1 is full reduction, so no stiffness
+  Multiplier limbStiffnessReduction; 
+  Multiplier limbControlCompensationReduction;
+  Multiplier limbDampingRatioReduction;
+
+out:
+  LimbControl control;                ///< IK control of the leg
+  LimbControl winnerTakesAll;         ///< This is a temporary output to get rid of junctions feeding into junctions
+  EndConstraintControl endConstraint; ///< Controls grabbing of the foot onto objects
+  bool useFullAnkleRange;             ///< Makes ankles only rotate when from specified modules, such as step and support
+
+connections<>:
+  // out
+  out.winnerTakesAll = junctions.wta01 = winnerTakesAll(spin.out.control, swing.out.control);
+  out.control = junctions.out_control = priority(
+    pose.out.controlLowImp, 
+    out.winnerTakesAll,
+    brace.out.control, 
+    sittingSupport.out.control,
+    standingSupport.out.control,
+    step.out.control, ///< Note that step must be able to override support (etc)
+    reachReaction.out.control, 
+    writhe.out.control, 
+    pose.out.controlHighImp ); 
+  out.useFullAnkleRange = junctions.out_useFullAnkleRange = 
+    winnerTakesAll(step.out.useFullEndJointRange, standingSupport.out.useFullEndJointRange);
+
+  // feedout
+  feedOut.supportedByConstraint = (standingSupport.feedOut.supportedByConstraint);
+
+  // in
+  in.limbStiffnessReduction = (owner.characteristicsBehaviourInterface.out.legStrengthReduction[$ChildIndex]);
+  in.limbControlCompensationReduction = 
+    (owner.characteristicsBehaviourInterface.out.legControlCompensationReduction[$ChildIndex]);
+  in.limbDampingRatioReduction = (owner.characteristicsBehaviourInterface.out.legDampingRatioReduction[$ChildIndex]);
+  in.centreOfHips = (owner.bodyFrame.feedIn.averageHips);
+  in.centreOfSupport = (owner.bodyFrame.feedIn.averageOfSupportingFeet);
+
+  in.shouldBrace = (owner.lowerBody.braceChooser.out.shouldBrace[$ChildIndex]);
+  in.isBodyBarFeetContacting = (owner.bodyFrame.feedIn.isBodyBarFeetContacting);
+}
+
+#endif

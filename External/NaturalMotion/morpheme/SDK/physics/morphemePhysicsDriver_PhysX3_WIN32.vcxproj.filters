@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\physics\PhysX3" />
+    <Filter Include="include\physics" />
+    <Filter Include="include" />
+    <Filter Include="src\PhysX3" />
+    <Filter Include="src" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\physics\PhysX3\mrCharacterControllerInterfacePhysX3.h">
+      <Filter>include\physics\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX3\mrPhysicsDriverDataPhysX3.h">
+      <Filter>include\physics\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX3\mrPhysicsRigPhysX3.h">
+      <Filter>include\physics\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX3\mrPhysicsRigPhysX3Articulation.h">
+      <Filter>include\physics\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX3\mrPhysicsRigPhysX3Jointed.h">
+      <Filter>include\physics\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX3\mrPhysicsScenePhysX3.h">
+      <Filter>include\physics\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX3\mrPhysX3.h">
+      <Filter>include\physics\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX3\mrPhysX3Configure.h">
+      <Filter>include\physics\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX3\mrPhysX3Deprecated.h">
+      <Filter>include\physics\PhysX3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\PhysX3\mrPhysX3Includes.h">
+      <Filter>include\physics\PhysX3</Filter>
+    </ClInclude>
+    <ClCompile Include="src\PhysX3\mrCharacterControllerInterfacePhysX3.cpp">
+      <Filter>src\PhysX3</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX3\mrPhysicsDriverDataPhysX3.cpp">
+      <Filter>src\PhysX3</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX3\mrPhysicsRigPhysX3.cpp">
+      <Filter>src\PhysX3</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX3\mrPhysicsRigPhysX3Articulation.cpp">
+      <Filter>src\PhysX3</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX3\mrPhysicsRigPhysX3Jointed.cpp">
+      <Filter>src\PhysX3</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysX3\mrPhysicsScenePhysX3.cpp">
+      <Filter>src\PhysX3</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

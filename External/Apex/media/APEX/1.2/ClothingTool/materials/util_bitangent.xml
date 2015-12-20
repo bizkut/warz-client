@@ -1,0 +1,5 @@
+<material type="unlit">
+  <shader name="vertex">vertex/staticmesh.cg</shader>
+  <shader name="vertex">vertex/skeletalmesh_4bone.cg</shader>
+  <shader name="fragment">fragment/simple_unlit_bitangents.cg</shader>
+</material>

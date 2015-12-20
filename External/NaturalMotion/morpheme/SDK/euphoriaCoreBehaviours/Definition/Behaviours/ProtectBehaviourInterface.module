@@ -1,0 +1,44 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Non-SPU so it can interface with the system to get data into an appropriate network format etc
+__global_access__ __generate_interface__ __no_feedback__ module_def ProtectBehaviourInterface
+{
+owner: MyNetwork<>
+
+userIn:
+  bool useControlledVelocity; ///< means character's velocity is not considered capable of being a hazard
+  /// Toggles hazard filtering that uses additional information associated with a hazard to evaluate whether it should be considered or not.
+  bool useFiltering;
+  /// Bitmask used by filter shader function.
+  uint32_t filterBitmaskWord[4];
+
+
+out:
+  Multiplier crouchDownAmount;            ///< Larger crouches down more when preparing for an incoming hazard
+  Multiplier crouchPitchAmount;           ///< Larger pitches forwards more when preparing for an incoming hazard
+  Multiplier swivelAmount;                ///< Elbows in or out
+  Weight maxArmExtensionScale;            ///< 1 is full arm extension
+  
+  Weight headAvoidWeight;
+  Weight headDodgeWeight;
+  Weight braceWeight;
+  Weight armsPlacementWeight;
+  Multiplier armsSwingWeight;
+  Multiplier legsSwingWeight;
+
+  ProtectParameters toImpactPredictorParameters;
+  ObjectFiltering toImpactPredictorHazardFiltering; ///< Protect hazard filtering that uses additional information associated with a hazard to evaluate whether it should be considered or not.
+}
+
+#endif
+

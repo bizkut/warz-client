@@ -1,0 +1,42 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Moves a character's head to the side of an incoming hazard to avoid hitting it. 
+behaviour_def HeadDodge
+{
+interface:
+  displayname = "Head Dodge";
+  version = 2;
+  
+modules:
+  headDodgeBehaviourInterface;
+  heads[*].dodge;
+  
+controlParams:
+
+  /// Describes a hazard that the character should dodge in terms of its position, velolcity and radius. In absolute world space units.
+  group("Hazard")
+  {
+    vector3 HazardPosition  __title__("Position"); ///< Position in absolute units and in world space
+    vector3 HazardVelocity  __title__("Velocity"); ///< Velocity in absolute units.
+    float HazardRadius = 0.0f, 0.0f, 100.0f __title__("Radius"); ///< Radius of the hazard, this affects how far the character lean when dodging. In absolute units.
+  }
+  
+  group("Importance")
+  {
+    /// Sets the importance of this behaviour relative to others. The pin accepts values in the range 0 to 1.
+    float Weight = 1.0f, 0.0f, 1.0f;
+  }
+}
+
+#endif
+

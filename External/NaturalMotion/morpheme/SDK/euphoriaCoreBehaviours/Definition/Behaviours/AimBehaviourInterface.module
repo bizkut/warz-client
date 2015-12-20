@@ -1,0 +1,74 @@
+// Copyright (c) 2012 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Non-SPU so it can interface with the system to get data into an appropriate network format etc
+__global_access__ __generate_interface__ module_def AimBehaviourInterface
+{
+owner: MyNetwork<>
+
+data:
+  Transform supportingRelAimingEndTM;  ///< Supporting hand's TM relative to aiming hand.
+  Transform poseSupportRelPelvisTM;    ///< support TM relative to the pelvis in the input pose.
+  Transform rigSupportRelPelvisTM;     ///< support TM relative to the pelvis n the current rig configuration.
+  Position  targetPosition;            ///< Current target position in world space.
+  Direction windingDirection;          ///< Which way has the character twisted about its spine, determined by the aiming limb.
+
+  Angle    targetPitch;                   ///< Angle between the support TM's forward direction and the target position about the pelvis' right direction (so +ve is up, -ve is down).
+  Angle    targetYaw;                     ///< Angle between the support TM's forward direction and the target position about the pelvis' up directions (so +ve is left, -ve is right).
+  Distance handSeparation;                ///< Distance between the aiming and supporting hands.
+  Weight   supportingLimbStrengthScale;   ///< Multiplier applied to the strength used in the supporting arm's limb control.
+  Angle    lastTargetPelvisRotationAngle; ///< Used to prevent oscillations in target pelvis orientation.
+
+  bool isLyingOnGround;
+  bool areFeetOnGround;                ///< Internal state determined by testing feetOnGroundAmount feedIn
+  bool isUnwindingSupportingArm;       ///< Internal state used to drive hysterisis on supporting arm unwinding.
+
+  // Following are only used if the behaviour param UseSingleFrameForPose is set to true
+  Transform cachedPoseEndRelativeToRoots[networkMaxNumLimbs];
+  Weight    cachedPoseWeights[networkMaxNumLimbs];
+  int32_t   constrainedLimbIndex; ///< Index of a non-aiming limb that has been constrained to the aiming one, -1 if no limbs constrained.
+
+out:
+  // Misc aiming data that must be passed to each limbs Aim module
+  AimInfo armAimInfo[networkMaxNumArms];
+  AimInfo headAimInfo[networkMaxNumHeads];
+  AimInfo spineAimInfo[networkMaxNumSpines];
+  
+  Orientation       targetPelvisOrientation;
+  ER::LimbTransform targetPelvisTM;
+
+  Position targetPositionForPose;      ///< Effectively the position the character is aiming at in the input pose (in character space)
+  Position targetPositionInWorldSpace; ///< The position the character should aim at now (in world space).
+
+  int32_t aimingLimbIndex;
+
+  Direction poseAimDirRelChest;  ///< Aiming direction relative to the chest in the input pose.
+  Direction poseAimDirRelPelvis; ///< Aiming direction relative to the pelvis in the input pose.
+  Direction windingDirection;    ///< Axis of rotation for the aiming arm about the chest. Used to ensure that all other limbs twist in the same direction.
+
+feedIn:
+  LimbControl armFinalLimbControl[networkMaxNumArms];
+  LimbControl armAimLimbControl[networkMaxNumArms];
+  bool   spineInContact;
+  Weight feetOnGroundAmount;
+
+connections<>:
+  // feedIn
+  feedIn.armFinalLimbControl[] = (owner.arms[].out.control);
+  feedIn.armAimLimbControl[]   = (owner.arms[].aim.out.control);
+  feedIn.spineInContact = (owner.spines[0].feedOut.inContact);
+  feedIn.feetOnGroundAmount = junctions.feedIn_averageFootOnGroundAmount =
+    average(owner.legs[*].feedOut.endOnGroundAmount);
+}
+
+#endif
+

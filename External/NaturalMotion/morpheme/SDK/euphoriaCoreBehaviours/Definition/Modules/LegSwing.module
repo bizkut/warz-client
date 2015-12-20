@@ -1,0 +1,46 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// attempt to adjust the angle of the body by accelerating the swing of the legs in the opposite angular direction
+__no_feedback__ module_def LegSwing
+{
+owner: Leg
+
+data:
+  TimePeriod timeLegsOrSpineCollided; ///< Used to turn swing off after having collided too long.
+  /// Buffer for frame-by-frame chest collision registration (0-no collision,1-collision).
+  uint8_t chestContactInfoHysteresis;
+
+in:
+  RotationRequest rotationRequest;  ///< Specifies how to try and rotate the pelvis, and how urgently.
+  bool spineInContact;              ///< Spine contacting external object.
+  Multiplier swingStiffnessScale;   ///< 1 is normal stiffness.
+  TimePeriod maxSwingTimeOnGround;  ///< Max time before disabling the swing when on ground.
+
+out:
+  LimbControl control; ///< IK control of leg.
+
+connections<>:
+  in.spineInContact = (owner.owner.bodyFrame.feedIn.spineInContact);
+    
+  in.swingStiffnessScale = junctions.swingFrequencyScale = priority(
+    owner.owner.sitBehaviourInterface.out.legsSwingWeight,
+    owner.owner.protectBehaviourInterface.out.legsSwingWeight,
+    owner.owner.legsPedalBehaviourInterface.out.swingStiffnessScales[owner.$ChildIndex]);
+    
+  in.rotationRequest = junctions.pri01 = priority(
+    owner.owner.lowerBody.out.rotationRequest, 
+    owner.owner.legsPedalBehaviourInterface.out.targetRequests[owner.$ChildIndex]);
+  in.maxSwingTimeOnGround = (owner.owner.legsPedalBehaviourInterface.out.maxSwingTimeOnGround);
+}
+
+#endif

@@ -1,0 +1,38 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// simply reads requests for rotations of a core (chest or pelvis) and forwards them on to be used by swing/spine etc
+module_def RotateCore
+{
+owner: BodySection<>
+
+in:
+  RotationRequest rotationRequest;              ///< Requested rotation from higher level modules
+
+feedIn:
+  RotationRequest oneWayRotationRequest;        ///< Requested rotation from lower level modules
+
+out:
+  RotationRequest rotationRequest;              ///< Rotation request forwarded on from lowerlevel modules
+  RotationRequest rotationUnsupportedRequest;   ///< Separate request for when body is unsupported. Since you don't for instance rotate the chest with the arms when the spine is supported
+  RotationRequest oneWayRotationRequest;        ///< Request forwarded from feedIn.oneWayTranslationRequest
+
+feedOut:
+  RotationRequest rotationRequest;              ///< Rotation request forwarded up from lowerlevel modules
+
+connections<>:
+
+  // in connections are given priority as they are an order from above
+  in.rotationRequest = junctions.in_rotationRequest = priority(owner.feedIn.rotationRequest, owner.in.rotationRequest);
+  feedIn.oneWayRotationRequest = (owner.feedIn.oneWayRotationRequest);
+}
+#endif

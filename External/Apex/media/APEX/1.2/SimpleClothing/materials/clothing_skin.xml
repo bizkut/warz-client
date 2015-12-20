@@ -1,0 +1,5 @@
+<material type="lit">
+    <shader name="vertex">vertex/staticmesh.cg</shader>
+    <shader name="vertex">vertex/skeletalmesh_4bone.cg</shader>
+    <shader name="fragment">fragment/simple.cg</shader>
+</material>

@@ -1,0 +1,142 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// All controllers and sensors that are specific to just the arms.
+/*__spuEntryPoint__*/ __limb__(Arms) module_def Arm 
+{
+owner: MyNetwork<>
+
+
+publicAPI:
+  bool canReachPoint(const NMP::Vector3 &position, bool &canReach, float lookOutOfRangeWeight = 0,
+    MR::InstanceDebugInterface* pDebugDrawInst = 0) const;
+
+  float lowerTargetWhenBehindBack(
+    const NMP::Vector3 &worldTarget, NMP::Vector3 &desiredPosition, const NMP::Vector3 &shoulderOffset,
+    MR::InstanceDebugInterface* pDebugDrawInst = 0) const;
+    
+  NMP::Vector3 avoidSpineUsingAngleCoefficient(
+    const NMP::Vector3& target, 
+    const NMP::Vector3& pelvisPos, 
+    float selfAvoidanceSlackAngle,
+    MR::InstanceDebugInterface* pDebugDrawInst,
+    float* effectorToTargetAngleOffset = 0,
+    NMP::Vector3 *adjustedApproach = 0) const;
+
+data:
+  int32_t limbRigIndex;     ///< index into all the rig's limbs.
+  int32_t limbNetworkIndex; ///< index into all the network's limbs.
+  int32_t childIndex;       ///< index into network's array of arms.
+  Length length;            ///< Length of arm when extended.
+  Stiffness    normalStiffness;         ///< Usual value, e.g. for pointing or lifting a ball.
+  DampingRatio normalDampingRatio;      ///< 1 is critical damping.
+  Compensation normalDriveCompensation; ///< Greater gives more internal control / less wobbly.
+  ER::DimensionalScaling dimensionalScaling;
+  
+  /// +ve for time we've been colliding, -ve for time we've been not colliding.
+  TimePeriod collidingTime;
+  /// +ve for time the hand has been colliding with ground, -ve for time we've been not colliding.
+  TimePeriod endGroundCollidingTime;
+  /// Amount the hand is on the ground - stays positive for a short while after the hand leaves the ground.
+  Weight endOnGroundAmount;
+
+children:
+  ArmGrab<> grab;
+  ArmAim<> aim;
+  ArmHold<> hold;
+  ArmBrace<> brace;
+  ArmStandingSupport<> standingSupport;
+  ArmHoldingSupport<> holdingSupport;
+  ArmSittingStep<> sittingStep;
+  ArmStep<> step;
+  ArmSpin<> spin;
+  ArmSwing<> swing;
+  ArmReachForBodyPart<> reachForBodyPart;
+  ArmReachForWorld<> reachForWorld;
+  ArmPlacement<> placement;
+  ArmPose<> pose;
+  ArmReachReaction<> reachReaction;
+  ArmWrithe<> writhe;
+
+in:
+  Position centreOfShoulders;   ///< Passed in to provide a point to brace underneath.
+  bool isBodyBarFeetContacting; ///< The swing needs to know if the body (excluding feet) is in contact.
+  
+  Multiplier limbStiffnessReduction;           ///< 0 is no reduction, 1 is full reduction so no stiffness.
+  Multiplier limbControlCompensationReduction; ///< 0 is no reduction, 1 is full reduction.
+  Multiplier limbDampingRatioReduction;        ///< 0 is no reduction, 1 is full reduction.
+  bool shouldBrace; ///< Will only brace if this limb is chosen to do so here.
+
+feedOut:
+  bool inContact;
+  bool supportedByConstraint;        ///< Whether any part of the whole arm is supported by a constraint.
+  Weight endOnGroundAmount;          ///< Ramps up and down over time.
+  /// +ve for time the hand has been colliding with ground, -ve for time we've been not colliding.
+  TimePeriod endGroundCollidingTime;
+  Position basePosition;             ///< Roughly the shoulder.
+  
+out:
+  LimbControl control;               ///< Default control of the arm.
+  LimbControl winnerTakesAll;        ///< This is a temporary output to get rid of junctions feeding into junctions.
+  LimbControl wtaBracePlacementSitting;
+  LimbControl wtaSittingStepStandingSupport;
+
+  EndConstraintControl endConstraint; ///< Controls how to pin the hand to an object.
+
+  // The higher this is, the more probably that a constraint can be broken as long as other arms are still holding on.
+  Weight holdBreakageOpportunity; 
+  Weight wristLimitReduction;         ///< If its 1 then IK cannot bend the wrist.
+
+connections<>:
+  // out
+  out.winnerTakesAll = junctions.wta01 = winnerTakesAll(spin.out.control, swing.out.control);
+  out.wtaBracePlacementSitting = junctions.wtaBracePlacementSitting = winnerTakesAll(
+    brace.out.control,
+    placement.out.control,
+    owner.bodyFrame.sittingBodyBalance.out.armControl[$ChildIndex]);
+  out.wtaSittingStepStandingSupport = junctions.wtaSittingStepStandingSupport = 
+    winnerTakesAll(standingSupport.out.control, sittingStep.out.control);
+  out.control = junctions.out_control = priority(
+        pose.out.controlLowImp,
+        aim.out.control,
+        out.winnerTakesAll,
+        out.wtaBracePlacementSitting,
+        out.wtaSittingStepStandingSupport,
+        holdingSupport.out.control,
+        step.out.control, ///< Note that step must be able to override support (etc).
+        reachForWorld.out.control,
+        reachForBodyPart.out.control,
+        reachReaction.out.control,
+        writhe.out.control,
+        pose.out.controlHighImp);
+
+  out.wristLimitReduction = (placement.out.wristLimitReduction);
+
+  // feedout
+  feedOut.supportedByConstraint = junctions.feedOut_supportedByConstraint =
+    isBoolSet(holdingSupport.feedOut.supportedByConstraint, standingSupport.feedOut.supportedByConstraint);
+
+  // in
+  in.limbStiffnessReduction = (owner.characteristicsBehaviourInterface.out.armStrengthReduction[$ChildIndex]);
+  in.limbControlCompensationReduction = 
+    (owner.characteristicsBehaviourInterface.out.armControlCompensationReduction[$ChildIndex]);
+  in.limbDampingRatioReduction = (owner.characteristicsBehaviourInterface.out.armDampingRatioReduction[$ChildIndex]);
+  in.centreOfShoulders = (owner.bodyFrame.feedIn.averageShoulders);
+
+  out.endConstraint = (hold.out.endConstraint);
+  out.holdBreakageOpportunity = (grab.out.breakageOpportunity);
+  in.shouldBrace = (owner.upperBody.braceChooser.out.shouldBrace[$ChildIndex]);
+
+  in.isBodyBarFeetContacting = (owner.bodyFrame.feedIn.isBodyBarFeetContacting);
+}
+
+#endif

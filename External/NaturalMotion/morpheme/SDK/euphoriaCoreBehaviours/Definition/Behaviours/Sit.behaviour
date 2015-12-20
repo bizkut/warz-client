@@ -1,0 +1,81 @@
+// Copyright (c) 2012 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Drives the character toward a specifed sitting pose by using the feet, pelvis and arms to hold the spine in the pose.
+behaviour_def Sit
+{
+interface:
+  displayname = "Sit";
+  version = 2;
+  
+modules:
+  sitBehaviourInterface;
+
+  arms[*].standingSupport.*;
+  arms[*].sittingStep.*;
+  arms[*].placement.*;
+  arms[*].pose.*;
+
+  legs[*].sittingSupport.*;
+  legs[*].pose.*;
+
+  spines[*].support.*;
+  spines[*].control.*;
+
+  heads[*].support.*;
+
+  bodyFrame.sittingBodyBalance;
+  bodyFrame.sittingSupportPolygon.*;
+
+attributes:
+  group( "Supporting Limbs" )
+  {
+    bool SupportWithArms = true __per_anim_set__; ///< The arms will be used to help maintain a sitting position if this attribute is true.
+  }
+
+  group( "Activation" )
+  {
+    /// Only attempt to sit when the standing balance amount is below this threshold.
+    float MinStandingBalanceAmount = 0.5f, 0.0f, 1.0f __per_anim_set__ __title__("StartWhenBalanceAmountLessThan");
+    /// Don't try to maintain sitting balance when sitting amount is below this threshold.
+    float MinSitAmount = 0.1f, 0.0f, 1.0f __per_anim_set__ __title__("StopWhenSitAmountLessThan");
+  }
+
+  /// Configure how the behaviour repositions the hands when attempting to use them for support whilst sitting.
+  group( "Hand Stepping" )
+  {
+    /// The maximum height the hands will be raised to when stepping. Increase this to lift the hands further from the ground when stepping. In metres (standard character).
+    float ArmStepHeight = 0.3f, 0.0f, 1.0f __per_anim_set__ __title__("Height");
+
+    /// How far into the future should the chest's position be extrapolated to determine the hand placement target position. Increase this to move the hands further from the character when stepping. In seconds (standard character).
+    float ArmStepTargetExtrapolationTime = 0.2f, 0.0f, 1.0f __per_anim_set__ __title__("ExtrapolationTime");
+
+    /// Arm target is placed at least this far away from the characters body, as defined by the self avoidance radius. Increase this to move the hands further from the body when the character is stepping. In metres (standard character).
+    float ArmStepTargetSeparationFromBody = 0.2f, 0.0f, 1.0f__per_anim_set__ __title__("SeparationFromBody");
+  }
+
+  group("Pose")
+  {
+    bool  UseSingleFrameForPose = false __per_anim_set__ __title__("CacheFirstFrame");
+  }
+
+animationInputs:
+  //              arms head legs spine
+  BodyPose Pose = 1,   1,   1,   1;    ///< Target pose when sitting
+
+outputControlParams:
+  float SitAmount; ///< An indicator of how well the character is sitting from 0 to 1.
+
+}
+
+#endif
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <NXPATH>E:/A/3-w/b/p4sw-ro-4006/sw/physx/PhysXSDK/3.2/RELEASE/3.2.4</NXPATH>
+  </PropertyGroup>
+	<ItemGroup>
+		<BuildMacro Include="NXPATH">
+      <Value>$(NXPATH)</Value>
+		</BuildMacro>
+	</ItemGroup>
+</Project>

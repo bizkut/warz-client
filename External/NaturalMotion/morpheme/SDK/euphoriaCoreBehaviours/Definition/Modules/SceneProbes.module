@@ -1,0 +1,32 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Takes requests from the EnvironmentAwareness and probes the environment using physics engine level calls, then passes this information
+// back to the environment awareness module.
+__global_access__ module_def SceneProbes
+{
+owner: MyNetwork
+data:
+  enum ProbeFrequency {NUM_FRAMES_BETWEEN_PROBES = 4};
+
+  bool justStarted; ///< Used for optimising the timing of collision probes
+in: 
+  Length focalRadius;
+  Position focalCentre;
+feedOut:
+  bool requestNextProbe;
+connections<>:
+  in.focalRadius = (owner.heads[0].eyes.out.focalRadius);
+  in.focalCentre = (owner.heads[0].eyes.out.focalCentre);
+}
+
+#endif

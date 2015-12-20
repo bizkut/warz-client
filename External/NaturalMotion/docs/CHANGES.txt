@@ -1,0 +1,1230 @@
+This is version 5.2 of morpheme:runtime
+
+5.2
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Fixed an issue with the LiveLinkNetworkPreview tutorial which prevented any more than a single new network
+  instance being sent to the target.
+- [BUG FIX] Fixed an issue when compiling partial animations with the QSA animation format. The common root bone needs
+  to be a valid animation channel.
+- [BUG FIX] Fixed a crash when there are zero arms or legs in a euphoria rig.
+- Visual Studio 2010 projects can now be seamlessly upgraded to Visual Studio 2012. See UPGRADE.txt.
+- Removed the copyPhysX3Dlls batch files. Moved xcopy directly into post build step. Makes upgrading to newer versions
+  of Visual Studio easier.
+- [BUG FIX] Fixed an asset compiler crash when setting a start state when using a prediction model.
+- [BUG FIX] Fixed a crash when compiling animations by enforcing that there are exactly the required number of
+  quantisation sets (in some circumstances the compounder could generate fewer than the requested number of sets).
+- [BUG FIX, HOTFIX-12] The euphoria runtime no longer crashes when there are invalid bones in the root node's transform
+  buffer between the interaction proxy and the character root.  The bind pose is used for any missing channels.
+- [BUG FIX] Fixed bugs that could cause physically simulated characters (typically ragdolls, but other simulation
+  methods too) to either not sleep when they should be able to, or to sleep when sleeping should be disabled.
+- NMP::RingBuffer class updated. New functions: create, locate, dislocate, getNumActiveEntries, getMaxNumEntries. push
+  and pop functions replaced with pushHead, forcePushHead, popTail, popHead. getReadItem function replaced with
+  getNthEntryFromHead and getNthEntryFromTail. empty function replaced with isEmpty. full function replaced with isFull.
+- New OperatorTimeLagInput node allows delayed output of control parameter input values, by buffering the input.
+  Supports float, int, bool, vector3 and quat. It has 2 outputs, a delayed output pin and a pass through that allows the
+  operator to be updated (buffering continues) even when the delayed output pin is not active. Also supports either
+  fixed time sampling of the input or recording of every frames input. This allows for a trade off between recoding
+  accuracy and memory requirements.
+- PC Asset Compilers in release will dump callstack info to the error log in the event of a crash.
+
+5.1
+------------------------------------------------------------------------------------------------------------------------
+
+- The default value for MAX_NUM_DURATION_EVENTS has been increased from 64 to 128.
+- The sum of the twist in all the joints in a limb can be measured using the calculateLimbTwist member function on
+  erLimb.
+- Added RuntimeSimple_Euphoria tutorial.
+- Limb IK can now be switched into a non-incremental mode which may reduce performance. This mode is only used by the
+  aim behaviour when the supporting arm is twisted.
+- Asset compiler configuration files are now stored in the runtime zip in \morpheme\tools\assetCompiler\configs. 
+  Building the asset compiler will copy them to the output bin directory as a post-build step.
+- New node: Modify Joint Transform. Allows setting or adding to a joints transform, either in local, character or world
+  space.
+- New node: Modify Trajectory Transform. Allows setting or adding to the delta trajectory transform of the current
+  frame. This affects the root movement of the character.
+- Added a MR_CIRCDEPS_DEBUGGING define for debugging potential circular task dependencies in networks.
+- [BUG FIX] Corrected BlendOpsBase::interpQuatAddPosPartialFeathered to include previously ignored boneAlphaScale in its
+  position interpolation and corrected BlendOpsBase::interpQuatAddPosPartial to included alpha clamping there. Also
+  added alpha clamping to align BlendOpsSIMD functions interpQuatAddPosPartial, interpQuatSubtractPosPartial and
+  subtractQuatInterpPosPartial with their BlendOpsBase equivalents.
+- The NMP socket implementation is now inside the NMP namespace.  This prevents it conflicting with other
+  implementations of POSIX socket API.
+- [BUG FIX] Fixed and assert that was firing in some blend node configurations, particularly when transitioning in or
+  out of non looping animations.
+- [BUG FIX] CharacterEuphoria::updatePrePhysics was not applying cached physics rig channel data to the physics engine
+  for physics, but non euphoria, characters.
+- Corrected function name spelling: renamed CharacterManager isCharacterDefRegisterd to isCharacterDefRegistered.
+- Changes to the InteractionProxy initialisation/update - see UPGRADE.txt.
+- [BUG FIX] Floating point accuracy error occurring in calcCurrentPlaybackValuesFromParentDeltaTimeAdjSpace corrected.
+  No longer breaks playback pos if the delta update is 0.
+- [BUG FIX] Output Control parameters no longer have a 1 frame delay. They are now updated at the end of the morpheme
+  update and are consistent with the current frame number for game logic.
+- Aim behaviour interface now outputs an effective aim direction for the chest and pelvis instead of an effective pose
+  target.
+- Allow setting a handler for PhysX articulation explosions.
+- [BUG FIX] Removed non-existent and invalid projects from the PhysX3 tutorial solutions.
+- New OperatorBoolean node performs boolean logic on up to 6 inputs. Located in the Scalar Operators node palette tab.
+- New OperatorCompare node performs logical comparison between 2 inputs or between an input and a constant. Supported
+  types for comparison are float, int and uint. Located in the Scalar Operators node palette tab.
+- [BUG FIX] Mirror node now correctly mirrors sync event tracks, so the resulting event durations are now correct.
+- Game::Character m_name changed to a pointer so that the class size is constant between debug and release.
+- Simplified update of Game characters, by changing the way that overriding the delta translation is done.
+- Removed unnecessary updateInit step from Game::CharacterControllerPhysX2.
+- Sampled event blending options added for Blend2, FeatherBlend and SubtractiveBlend. In the 'Blending' section there is
+  now an 'Events' field. This can be either 'Merge' or 'Add'. 'Merge' is the previous behaviour (the sampled events
+  weights being multiplied by blend weight. source 0 x (1-blend weight), source 1 x blend weight). 'Add' keeps the
+  sampled event weight of source 0 unmodified and source 1 is multiplied by blend weight as before.
+- Do not produce animations nor create attrib data for animation sets that cannot be reached. This occurs through use of
+  the Retarget node. Custom nodes that require the same functionality should add the code for their node type into the
+  getNodeValidAnimSets() function in the NetworkDefBuilder class in the asset compiler.
+- Removed state names from the m_nodeIDNamesTable string table used primarily in the function
+  getNodeIDFromNodeName("Name"). See UPGRADE.TXT.
+
+5.0.2
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Fixed runtime crashes when using hinge joints with PhysX 3.
+- [BUG FIX] Fixed problem where the swing1 and swing2 limits could get flipped with jointed PhysX 3 rigs.
+- [BUG FIX] Fixed a failure to update connections in networks with two active BlendAll nodes.
+- [BUG FIX] Fixed a crash bug in the Morpheme PhysX 3 runtime target when using Z-up assets.
+- Added an NM_COMPILER_LLVM define. Previously, LLVM compilers were identified as GCC in the runtime code.
+- Removed MR_TASKID_BASIC_UNEVEN_TERRAIN_TRAJECTORY_DELTA_AND_TRANSFORMS, MR_TASKID_PREDICTIVE_UNEVEN_TERRAIN_TRANSFORMS
+  and MR_TASKID_PREDICTIVE_UNEVEN_TERRAIN_TRAJECTORY_DELTA_AND_TRANSFORMS as they all refer to the same task as
+  MR_TASKID_BASIC_UNEVEN_TERRAIN_TRANSFORMS.
+- [BUG FIX] Fixed problem blending duration event tracks when the number of sync events in the sources are not multiples
+  of each other.
+- [BUG FIX] Fixed a maths issue in QuatMP::logAtan2 which could cause animation artifacts when using the QSA animation
+  format.
+- [BUG FIX] The ScaleCharacter node will no longer assert/crash if you send messages to it while the node is inactive.
+- [BUG FIX] Fixed an issue where the limitContactDistance on a joint limit can be larger than the limit range, causing
+  validation failures in PhysX.
+- [BUG FIX] m_combinedTrajectoryAndTransforms was not being initialised on a call to Network::init.
+- [BUG FIX] Fixed crash where an UnevenTerrain node (Predictive or Basic) was downstream (toward children) of certain
+  physics nodes (Active Animation, Ragdoll, Local Soft Key Frame).
+- As a result of the above bug fix; when an UnevenTerrain node is downstream of either an Active Animation, Ragdoll,
+  Local Soft Key Frame node, the root control method changes from ROOT_CONTROL_PHYSICS to
+  ROOT_CONTROL_PHYSICAL_ANIMATION.
+
+5.0.1
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] The ApplyPhysicsJointLimit node now functions by itself without needing any additional physics node.
+- [BUG FIX] Transit messages now reset on the transition and its destination on the conclusion of the transition.
+- [BUG FIX] Fixed an issue with the LiveLinkNetworkPreview runtime tutorial that prevented network def data being sent
+  dynamically to the runtime.
+
+5.0
+------------------------------------------------------------------------------------------------------------------------
+
+- All node builders can now declare data pins as having attribute data specified in Connect, optionally per animation
+  set. Any such attribute data defined for a control parameter of a node is stored in a non-visible output pin of the
+  same node. This allows the runtime to operate as before whether the input data for a control parameter comes from a
+  connected pin or such a specified attribute data.
+- [BUG FIX] Fixed Blend2 and FeatherBlend2 initTaskQueuingFnsEvents() so they correctly always queue tasks to generate
+  sync and duration event tracks when event matching.
+- The DefaultDataManager::getNodeOutputData and DefaultRuntime::getNodeOutputData methods now correctly return false if
+  there is no attrib data to be retrieved.
+- [BUG FIX] The target of a self transition is reset.
+- Dependencies/lib/includes in build files are now in dependency order across all platforms.
+- Static libraries now have project references explicitly set up in vcxproj files.
+- [BUG FIX] Changed the comparison of the hashed names in the Asset Compiler to prevent false positives.
+- [BUG FIX] The transition condition "in duration event" was returning a false positive in certain cases when "true if
+  not set" was selected.
+- [BUG FIX] The buffer for sampled events was mistakenly being sized based on MAX_NUM_FOUND_EVENTS and
+  MAX_NUM_SAMPLED_TRACKS. It now uses MAX_NUM_FOUND_EVENTS and MAX_NUM_DURATION_EVENTS.
+- Refactored MR::BlendOpsBase::accumulateTransforms to only handle full transform buffers. Its consideration for
+  non-full transform buffers was inefficient and redundant because of the existence of accumulateTransformsPartial.
+- [BUG FIX] Fixed an assert/crash from improper testing of nodes becoming active the frame after being deleted.
+- [HOTFIX-8] Subtractive blend node now supports event passthrough.
+- [HOTFIX-10] Fixed integer overflow bug and performance issue while compressing animations with large numbers of bones.
+- Operator nodes are now updated for a specific anim set. Network::updateOutputCPAttribute now takes an AnimSetIndex
+  parameter.
+- [BUG FIX] Fixed up the Blend2 node so that it now correctly samples events when passing through on source 0 or 1 but
+  not time stretching.
+- Rename MR::GameGroup enum members: GROUP_CAPSULE_CONTROLLER to GROUP_CHARACTER_CONTROLLER,  GROUP_CHARACTERS to 
+  GROUP_CHARACTER_PART, GROUP_PROXY_CHARACTER to GROUP_INTERACTION_PROXY.
+- Temporarily removed the Node Wizard until it has been updated to reflect recent runtime changes.
+- Prediction models now support resample maps to perform fast inverse queries from analysis properties to control
+  parameters.
+- Added support for zero dimension prediction models.
+- Removed unused member m_modifyTime from MR::AnimSourceBase.
+- Rename for clarity NMP::DataBuffer.copy(const Memory::Resource& resource) to NMP::DataBuffer.copyTo(const
+  Memory::Resource& resource).
+- Rename for clarity NMP::DataBuffer.copy(DataBuffer* destBuffer) to NMP::DataBuffer.copyTo(DataBuffer* destBuffer).
+- [BUG FIX] Prevent duplicate activePhysicsNodeIDs and activeGrouperNodeIDs being stored within the Network.
+- [BUG FIX] Address a buffer overrun issue in NMP_STRCAT_S and NMP_STRCPY_S; also renamed these to NMP_STRNCAT_S and
+  NMP_STRNCPY_S.
+- [BUG FIX] OperatorRampFloat the "Start" value is no longer ignored.
+- OperatorRampFloat modified so that the internal float value is no longer clamped with Clamping enabled only the
+  output.
+- [BUG FIX] Added a NODE_FLAG_NO_PHYSICAL_CHILDREN to optimise the performance of isNodeOrChildPhysical (note that this
+  API has been renamed, see upgrade.txt).
+- [BUG FIX] Fixed up TransitConditionDefControlParamIntInRange and TransitConditionDefControlParamUIntInRange to
+  correctly use the m_invert flag.
+
+4.1.1
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Fixed an issue where the FastHeapAllocator would crash when NMP_MEMORY_LOGGING was enabled.
+
+4.1
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Multithreaded tutorials occasional asserts because of unsafe access to shared management components.
+- [BUG FIX] Animations for PS3 are compiled with smaller section sizes than for other platforms, but this was not taken
+  account of in the anim cache. Adding a maxSectionSize to the anim cache key has fixed the problem. Note that this
+  prevents use of old cache formats with the new AssetCompiler.
+- [BUG FIX] Active state transitions not triggering correctly from some of the specified sources.
+- Refactored the UniformQuantisationInfoCompounder so that it doesn't maintain a matrix of costs for the joints. This
+  was requesting extremely large amounts of memory for rigs with high bone counts.
+- Added a utility function for the ScaleCharacter node to make it easier to generate scale character messages.
+- Expanded the livelink runtimeTargetInterface with getNodeTagCount and getNodeTag functions.  These functions must be
+  added to your live link integration if not using the simpleDataManager.
+- Added getNumTagsOnNode and getTagOnNode functions to the NodeTagTable.
+- Added StrideLength and EulerAngleComponent analysis property types.
+- [BUG FIX] Fixed issues with ScatterBlend1D which meant that it was always being analysed with 1 sub-division level.
+- [BUG FIX] Fixed issues with ScatterBlend1D for analysing angular properties that wrap the -pi:pi range.
+- Added a new TempMemoryAllocator interface class.  This class abstracts FastHeapAllocator away from the morpheme API,
+  allowing applications to replace FastHeapAllocator with another allocator which implements the TempMemoryAllocator
+  interface. Instead of using the implementation-specific get/setCurrentPointer system to perform roll-backs of
+  allocated memory, the TempMemoryAllocator interface provides a mechanism to create and destroy child allocators.
+- Added gameManagement library which provides an example of how morpheme might be integrated in to a game. Tutorials use
+  this library rather than TutorialManagement. This library provides an easy start point to getting morpheme up and
+  running in your application. There are physics and no physics versions of this library.
+- [BUG FIX] Fix for dead reckoning in dead blends to animation.
+
+4.0.1
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Dead blend transitions that were initialised with a zero delta time (at Network initialisation for example)
+  could cause a division by zero in initialiseDeadBlendSeparateTransformsAndTrajectory.
+- Removed AssetExporter and NodeWizard binaries from source zip.
+- Reduced the size of size of NMRU::FKRetarget::PerJointParams by 16 bytes.
+- [BUG FIX] Fixed mass modification of hard keyframed parts which was causing jitter in partial body physics.
+
+4.0
+------------------------------------------------------------------------------------------------------------------------
+
+- Main runtime tutorials now link against tutorialManagement library.
+- Allow PhysX2 users to specify whether the runtime target uses a fixed or variable timestep.
+- [BUG FIX] Made vpu::mask4i safe for processor modes flushing denormals to zero.
+- NMP memory allocation functions no longer need NMP_MEMORY_TRACKING_ARGS specified for memory logging.
+- Added priorities to transitions.
+- In transitGenerateFirstFrameTimeValues and transitDeadBlendGenerateFirstFrameTimeValues switched the order of
+  conditions so that; if (transitDef->m_destinationInitMethod ==
+  AttribDataTransitDef::INIT_DEST_USE_START_DURATION_FRACTION), comes before; else if (!destSyncEventTrack), so that we
+  don't unnecessarily output warnings. the; else if (!destSyncEventTrack), case outputs a warning in both functions now.
+- When applying a Network restore point retain any StateMachineAttribData state change callbacks that already exist on
+  the destination network. This is because we cannot reliably store function pointers in a NetworkRestorePoint.
+- [BUG FIX] AttribDataStateMachine::relocate would not function correctly if the AttribDataStateMachineDef was not in
+  the same location as at creation time. Removed registered relocate function from AttribDataStateMachine. Added
+  specialist locate and relocate functions to AttribDataStateMachine that take the NetworkDef* as a reference.
+- Add a way for the Asset Compiler to return fail, without asserting in debug. Added a m_processingFailFlag to the
+  AssetProcessor. If any stage of asset processing sets this flag the asset compiler will return an error code from its
+  execution.
+- Stopped AssetProcessor::processAsset from pointlessly returning a bool that was always set to true.
+- [BUG FIX] Removed ASSERT in nodeStateMachineDeleteInstance that could actually fire under legitimate circumstances.
+- [BUG FIX] Breakout transitions from ActiveState node could crash runtime. Breakout self transition was being detected,
+  but not flagged correctly so that the calling function could deal with it.
+- [BUG FIX] CharacterControllerDef::setSkinWidth() was not storing the value passed in, due to a name shadowing bug.
+- [BUG FIX] Fixed a memory leak in NodeStateMachineBuilder.cpp.
+- DISPATCHER_TASK_MAX has been removed.  There is now no limit to the number of tasks you can register with a
+  Dispatcher.  See UPGRADE.TXT for more info.
+- [BUG FIX] Fixed variable naming confusion between useDeadBlend and useDeadReckoning in mrTransitDeadBlend.inl.
+- [BUG FIX] There was not enough memory being allocated for AttribDataDurationEventTrackSet in some circumstances.
+- Platform-specific NMPlatform implementation details are now abstracted into separate files.  Added NMHost.h for each
+  platform.
+- Added NM_HOST_64_BIT to denote that the host platform is 64-bit (e.g. Windows x64).
+- Renamed XMDPluginFBX asset compiler library to acFBX.
+- Moved copying of PhysX dlls in morphemePhysicsDriver_PhysX3 from the pre build step into a batch file called from the
+  pre build step and use xcopy.
+- Added MCN_PATH macro to the AssetExporter.
+- Removed the owning node parameter from MR::Network::TaskAddXXXOutput functions to make it explicit that a node can
+  only output its own data.
+- Moved the creation of MR::AttribData from task execution to a new stage between task queuing and task execution.
+- Factored out some member functions previously in MR::Network into MR::NodeBin.
+- Changed typedef TransitCondInstanceUpdateFn to now return a bool indicating if the condition is true or not.
+- Improved the update of State Machine Conditions.
+- Added typedefs for StateID, ConditionIndex, MessageID. Note that these are uint16_t as opposed to previous uint32_t.
+- New NMP::Flags function: isSet avoids a load hit stall when checking if a single flag is set (majority use).
+- [BUG FIX] Binary invariance caused by unfixing NULL pointers.
+- Changed typedef for DeleteNodeInstance so that the node ptr parameter is const i.e. const NodeDef* node.
+- Moved large functions and a large list of includes from mrNodes.h to mrNodes.cpp.
+- Added Character Controller Override node to allow the network to influence the character controller.
+- Removed ControllerHeightFraction and ControllerRadiusFraction from SoftKeyFrame, HardKeyFrame and
+  SoftKeyFrameAndActiveAnimation nodes. Use the Character Controller Override node instead.
+- Added an m_invert flag to the condition base class, and removed equivalent flag from
+  TransitConditionDefControlParamFloatInRange, TransitConditionDefInDurationEvent, TransitConditionDefOnMessage.
+- Made TransitConditType uint16_t rather than uint16_t. 32 bits are not necessary.
+- Renamed m_controllerOffset to m_originOffset in character controller implementations.
+- Improved API for character controller.
+- Events in the target node of a zero-duration, non-sync events transition that occur at the exact target start point of
+  the transition are now sampled during the first frame the target node is active. AtEvent transition conditions will
+  also be considered satisfied under the same circumstances.
+- Added getBoneNameFromIndex() for rigs.
+- Added NMP memory allocation and allocator macros to wrap the NMP_MEMORY_TRACKING_ARGS which previously were required
+  explicitly in allocation calls for the debug memory logging.
+- Changed win32 and x64 VS2010 project files to explicitly set the name of the intermediate.manifest file (Manifest)
+  property to not include the app name. It is redundant as the app name is already part of the $(IntDir) path. Helps
+  reduce msbuild errors due to long path names.
+- Added node tags support. Each node has a list of user authored tags. Check if a node has a tag by using
+  MR::NetworkDef::getNodeTagTable::nodeHasTag(NodeID nodeID, uint32_t tagIndex). A tag index can be obtained using
+  MR::NetworkDef::::getNodeTagTable::findTagIndex(const char* tag).
+- Added ExpandLimits node which, whilst active, expands the physical joint limits (if the physics rig is active) to
+  encompass the node's input transforms.
+- [BUG FIX] The HipsIK node now works correctly in Z-up worlds.
+- [BUG FIX] The HipsIK node now works correctly with split rigs, when the Hips is not the direct parent of the left and
+  right hip joints.
+- Only check for PHYSX3_PATH environment variable in morphemePhysicsDriverPhysX3 prebuild step rather than everywhere
+  that PhysX is accessed. Makes it easier to change or remove this behaviour. Also done for PhysX2 environment
+  variables.
+- Removed the 'AlwaysBlendEvents' flag on blend nodes since it was not being used.
+- The nodeDefs now store the maximum number of expected active child connections so that the network only needs to
+  allocate the required amount.
+- Sanitised the number of required queuing functions for the blend nodes. The blend node update connections functions
+  determine any queuing optimisations.
+- Added source weights and optimisation flags to blend2x2 node.
+- Transposed the (x,y) coordinate mapping between the child sources for the NxM blend node to make it consistent with
+  the runtime tasks and 2x2 blend node.
+- Fixed the over-allocation of memory for the child weights arrays in the NxM node.
+- Added X & Y range distribution and wrapping support on the BlendNxM node to make it consistent with the BlendN nodes.
+- Source blend weights can now be either increasing or decreasing on all blend nodes.
+- Added a AttribDataBlendWeights attrib to unify the X & Y blend weights for the 2D blend nodes and provide a consistent
+  way of passing multiple blend weight about.
+- Added a AttribDataFeatherBlend2ChannelAlphas attrib to hold the bone weights and the trajectory bone index. This means
+  that the rig does not need to be DMA'd to SPU just to determine the trajectory index.
+- Added NetworkControlSerialisation which tracks control parameter changes and broadcast messages. These changes can be
+  serialised and sent to another target to synchronise networks. See the NetworkControlSerialisation tutorial.
+- The closest anim node now updates the network's post update access attributes for transforms and trajectories when
+  it's instantiated lowering memory usage.
+- Removed padding from MR::AttribData which has lowered the memory requirements of all attrib data, making all networks
+  and network restore points smaller.
+- MR::NetworkRestorePoint has been re-written so that it's in a single block of memory allowing it to be relocated once
+  dislocated. See UPGRADE.TXT.
+- Added new callback API to MR::Network. These allow applications to get notifications on various events which happen to
+  the network. The current API on MR::Network to set these callbacks is: setStateMachineStateChangeCB,
+  setNodeActivationCB, setNodeDeactivationCB, setEventTriggeredCB.
+- XMD library now uses a unity build for a lower build time.
+
+3.6.3
+------------------------------------------------------------------------------------------------------------------------
+
+- [HOTFIX-4] Network uses the trajectory channel even when flagged as unused (i.e. when channel is filtered out for
+  partial animation or similar).
+- [HOTFIX-6] Fraction through source conditions can fail to trigger with some network structures.
+- [HOTFIX-7] BlendAll node can sometimes free memory that was still in use, leading to memory corruption.
+
+3.6.2
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Fixed an issue where the Asset Compiler could crash when MR_RESET_SM_MESSAGE_STATUSES_POST_UPDATE was
+  enabled, as it tried to update state machines that hadn't yet been constructed.
+- [BUG FIX] The dependent attribute address passed to addConditionAttrib used by some transit conditions no longer uses
+  the wrong owning node ID.
+- [BUG FIX] Fixed problems where using NMP_MEMORY_LOGGING in the asset compiler would report memory being freed that
+  hadn't be allocated.
+- [BUG FIX] BlendNxM node now uses duration event track sets from the correct anim set.
+- [BUG FIX] TaskQueue::startQueuing now uses the correct alignment for the task queue.
+- [BUG FIX] Resolved an issue where jointed (i.e. non-articulation) PhysX3 rigs containing boxes or spheres could crash
+  the runtime on being initialised.
+- [BUG FIX] The ray cast operator node is now capable of supporting Z-up scenes.
+- Upgraded to support the latest platform SDKs.
+- Added NetworkDefBuilder::addRigToRigInfoVector so that multiple rigs per animation sets can be added.
+- [BUG FIX] Fixed a few bugs in runtime tutorials that were causing memory leaks.
+- [BUG FIX] Resolved an issue where the "initial value" attribute of a SmoothFloat and SmoothVector3 operator were
+  ignored. A bool attribute has also been added to allow network authors to choose between using an initial value, or
+  initialising the node from the input control parameter.
+
+3.6.1
+------------------------------------------------------------------------------------------------------------------------
+
+- No changes.
+
+3.6
+------------------------------------------------------------------------------------------------------------------------
+
+- LiveLinkDataManager files have been moved into tutorial Common Files.
+- [BUG FIX] Tutorials now use correct directory if default network is changed.
+- Added VS2010 build support for win32 and x64.
+- Various build output directories and filenames have changed slightly. See UPGRADE.TXT.
+- Added base MR::PhysicsJointDef type from which all physics joints inherit.
+- Added new ragdoll physics joint type MR::PhysicsRagdollDef.
+- All soft joint related members of MR::PhysicsSixDOFDef have been moved to a new sub-class
+  MR::PhysicsSixDOFDef::SoftLimit.
+- Added 'm_' prefix to all MR::PhysicsSixDOFDef member variables.
+- The six DOF joint class MR::PhysicsRigDef::Joint::SixDOF is no longer a subclass of MR::PhysicsRigDef and has been
+  renamed to MR::PhysicsSixDOFDef.
+- All references to joint frame1 and frame2 have been renamed to parentFrame and childFrame respectively.
+- [BUG FIX] Fixed a packaging bug whereby the AssetExporter and NodeWizard tool solution files were not being included
+  in the zip. Now they are.
+- [BUG FIX] The freeze node no longer preserves the trajectory delta when activated while generating the semantic
+  ATTRIB_SEMANTIC_TRAJECTORY_DELTA_TRANSFORM_BUFFER.
+- [BUG FIX] The feather blend node wasn't respecting the pass through mode when time stretching was disabled for some
+  semantics.
+- [BUG FIX] Transitions now generate an ATTRIB_SEMANTIC_TIME_POS which prevents a crash when an ancestor requires it.
+- [BUG FIX] Transitions correctly use the delta trajectory source value when generating the semantic
+  ATTRIB_SEMANTIC_TRAJECTORY_DELTA_TRANSFORM_BUFFER.
+- [BUG FIX] A time position with the value 0 is produced from freeze nodes when requested.
+- Asset compiler variations have been reduced to one for each target platform that takes a list of plugins. See
+  UPGRADE.TXT for more information.
+- Physics rig assets are now engine specific. Make sure you use the correct plugins for the physics engine used at
+  runtime.
+- Added a new IK node HipsIK, for moving the character root without changing foot placement.
+- Improved retarget solver memory usage.
+- Added mechanism to serialize PhysX calls that modifies the physics rig's properties.
+- Fixed some compile issues that could prevent the runtime from compiling if MR_ATTRIB_DEBUG_BUFFERING was not defined.
+- Network::getControlParameter fixed and now only requires the NodeID of the control parameter being queried. Also added
+  a templated version that includes type validation.
+
+3.5.1
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Fixed animation loading functions in runtime tutorials for x64 solution.
+- Significantly improved network compilation time in the asset compiler in large networks with many multiply connected
+  passdown pins in the same hierarchy.
+- LiveLinkAnimationBrowser tutorial now follows the same initialisation steps as the runtime target.
+- Improved RuntimeBasics1 & 2 tutorials so that their bundle handling functions are consistent with later tutorials.
+- Improved the pre-build steps for copying PhysX dlls, making them less verbose.
+- [BUG FIX] The runtime tutorial's NM_DEBUG_PRINT macro now contains the correct arguments.
+- [BUG FIX] The runtime target interface is now notified of all closed connections when the comms server is terminated.
+- [BUG FIX] The AttribDataScaleCharacterState in the scale character node now supports the maximum number of bones out
+  of all animation sets so that sensible default scale values are used when the active animation set changes even if a
+  scale message isn't sent.
+- Changed relevant projects to link to officially named FBX libs. See UPGRADE.TXT.
+- [BUG FIX] Fixed a crash that occurred when compiling mrAnimSectionQSA.cpp in release in visual studio 2010.
+- [BUG FIX] Fixed un-initialised memory when move controllers are not calibrated.
+- [BUG FIX] Physics rig part physics IDs were not unassigned when the rig was destroyed in PhysX2 targets.
+- Added ATTRIB_SEMANTIC_TRAJECTORY_DELTA_TRANSFORM_BUFFER which is a transform buffer that contains the trajectory delta
+  in the first array element. This allows for unified tasks when both trajectory deltas and transforms are used which
+  reduces the total number of tasks required for a network. See UPGRADE.TXT for more information.
+- [BUG FIX] Constraints created on physics bodies in a PhysX2 runtime target were positioned incorrectly if the
+  orientation of the body wasn't identity.
+- [BUG FIX] Physics bodies belonging to a connection were not cleared up the runtime target if that connection was lost.
+
+3.5
+------------------------------------------------------------------------------------------------------------------------
+
+- Upgraded FBXSDK version to 2012.1.
+- Added runtime target flag -physicsRigType to choose between PhysX3 jointed or articulation rigs. Valid options are
+  TYPE_JOINTED or TYPE_ARTICULATED with TYPE_ARTICULATED as the default.
+- [BUG FIX] State machines used as inputs to multiply referenced passdown pins are now correctly reset to their default
+  state when they become active after a period of inactivity.
+- (NMMathPlatform.h) NMP_PLATFORM_SIMD is now defined for all platforms supporting SIMD vector processing. Code using
+  the NMP::vpu namespace will compile on all supported platforms. See NMvpu.h for implementation.
+- The networks AttribDataCharacterController now manages m_worldRootTransform, m_prevWorldRootTransform,
+  m_achievedRequestedMovement and m_groundContactTime, making them accessible to SPU code.
+- NMFreelistMemoryAllocator now provides, along with the standard list of freelists, a freelist array of standard sizes,
+  such as 128, 256, 512 and 1024. All allocations fitting within these sizes are 'bucketed' together which results in a
+  less fragmented range of allocations, cutting down on the number of freelists to search, and significantly reducing
+  the overall memory allocation.
+- Removed lifespan argument from TaskAddInputParam, TaskAddNetInputParam, TaskAddOptionalNetInputParam,
+  TaskAddInputParamWithOptionallyInvalidOwningNode, TaskAddOptionalNetInputParamRecurseFilterNodes,
+  TaskAddOptionalNetInputParamRecurseToParent, TaskAddInputParamOptionallyInvalidOwningNode, TaskAddParamAndDependency
+  and RootTaskAddParamAndDependency in Network. Input parameters don't determine the lifespan of attrib data so the
+  parameter was removed to simplify the interface.
+- Removed the DWA animation format. Networks using DWA will be upgraded to NSA.
+- QSA now compresses the animation channels in local space whenever the animations are compiled with full quality. This
+  provides a decompression speed improvement.
+- [BUG FIX] Fixed decompression issue with QSA and partial animations.
+- Added MR::Network::setTempMemoryAllocator, allowing the temporary memory allocator to be changed between frames. This
+  eases use of MR::Network across multiple threads.
+- DispatcherBasic::getCachedPtr uses a linked list of cached data blocks meaning it now executes in constant time rather
+  than linear.
+- State machine transforms are no longer cached for 3 frames if a state machine will never blend which provides some
+  memory savings.
+- The uneven terrain nodes now optionally consider the vertical trajectory motion of the input source when computing
+  foot lifting and surface alignment.
+- Renamed all HasQueuingFunctionForSemantic functions to FindGeneratingNodeForSemantic, because that's what they are
+  actually doing.
+- Renamed MR::Manager::finalizeSematicRegistration to MR::Manager::allocateRegistry to give better indication of what
+  this function is doing and in order to not restrict its operation to semantics.
+- Removed the static array nodeAttributeSemanticNames as an array of AttribSemantic names is now stored in the manager.
+- Renamed define NM_DISABLE_OUTPUT_DEBUGGING to MR_DISABLE_OUTPUT_DEBUGGING.
+- Renamed define UNUSED_IF_NO_OUTPUT_DEBUGGING to MR_OUTPUT_DEBUG_ARG.
+- Renamed define NULL_IF_NO_OUTPUT_DEBUGGING to MR_NULL_NO_OUTPUT_DEBUGGING.
+- Renamed define NM_OUTPUT_DEBUGGING to MR_OUTPUT_DEBUGGING.
+- Added 'Always Blend Events' and 'Always Blend Transforms', in Blend nodes, which work in the same way as the existent
+  'Always Blend' flag, now renamed to 'Always Blend Transforms'.
+- Added Output replace task parameters which re-use existing attrib data.
+- Added InputOutput task parameters which are used to reduce the number of task parameters.
+- Ordered libs alphabetically in build files.
+- [BUG FIX] Fixed an issue adding parent state machines and blend trees after the network had been previewed.
+- The TwoBoneIK, HeadLook and GunAimIK nodes have the option to specify their IK targets in character space, as before,
+  or in world space.
+- LockFoot has a new option to track the character position using the character controller, making it robust to
+  downstream or external edits to the trajectory.
+- [BUG FIX] In the LockFoot node when toe ground penetration is being corrected, the behaviour was incorrect when the
+  toe was buried deep under the ground plane.
+- [BUG FIX] In the LockFoot node when foot orientation is also being fixed up for valid interaction with the ground
+  plane, the smoothing of foot orientation during the catch-up period after a footplant was not being applied.
+- [BUG FIX] Correct arm fixup on GunAimIK when blend weight is not 0 or 1.
+- HeadLook and GunAimIK nodes have an option to keep the aiming source upright while aiming.
+- HeadLook and GunAimIK nodes have an option to apply joint limits.
+- Kinematic joint limit attrib data added to the network definition, so any joint limits you define on your kinematic
+  rig will be available to custom nodes.
+- Improvements and optimisations to the implementations of the IK nodes, including centralisation of core IK
+  functionality to the NMIK library (TwoBoneIK and new PointIK solver).
+- Improvements and performance optimisations for NSA and QSA animation formats.
+- Compression to rig channel mappings have been removed from the rigToAnim maps. NSA and QSA animation formats now store
+  compression to animation channel maps inside each compiled animation.
+- Fixed an issue with NSA animations not working with different LOD rigs whenever an animation has been compiled with
+  more than one sub-section.
+- Improvements to the animation compilation pipeline for better detection of unchanging animation channels.
+- Optimisation of data quantisation for NSA and QSA animation compressors for large rig support.
+- [BUG FIX] Active animation would drive to incorrect rotations if a physics rig did not directly map to an animation
+  rig.
+- Build configurations now make a distinction between 'tool' configurations and 'game' configurations. See UPGRADE.TXT
+  for more details.
+- 'Target PC' configurations added to asset compiler and dependent libraries. See UPGRADE.TXT for more details.
+- The PhysX2 driver project now attempts to copy the required PhysX dlls into the bin folder.
+- Added ExtractJointInfo node, called before OutputJointPosCP Node, that allows you to extract the position and angle of
+  a certain joint.
+- [BUG FIX] Fixed a crash when there are 2 transitions coming off the ActiveState node and you quickly flick between the
+  two.
+- [BUG FIX] The random float operator now generates different numbers for different character instances.
+- [BUG FIX] Fixed an issue when selecting a destination was not working properly with self transitions with zero
+  duration.
+- Added a predictive uneven terrain node.
+- Improvements to NodeDef, NetworkDef and their builders to allow partially built networks to be instanced and run
+  during asset compilation. This enables sub-network evaluation to be performed by nodes during asset compilation to
+  pre-compute data.
+- The closest anim node now has the option to pre-compute the source transforms offline for faster matching (See
+  UPGRADE.TXT for further details).
+- Renamed MR::Manager::initAnimFileHandlingFunctions() to MR::Manager::setAnimFileHandlingFunctions().
+- Moved the request anim and release anim arguments from MR::Manager::initMorphemeLib() to
+  MR::Manager::setAnimFileHandlingFunctions().
+- Added runtime messages which allow user defined data to be passed to a node. Transition request conditions are met
+  using a message request now. Deprecated the request interface which has been superseded by the messages. (see
+  Upgrade.txt for further details).
+- Renamed BitArray::isFull() to BitArray::calculateAreAllSet().
+- AttribDataStateMachine::getMessageIDsFromActiveState( now requires an extra NetworkDef* parameter.
+- Added AttribDataStateMachine::getMessageIDsFromState( that allows you to get MessageIDs on any state.
+- Added AttribDataStateMachineDef::getMessageIDsOnBreakoutsFromStateID() &
+  AttribDataStateMachineDef::getGlobalMessageIDs() to complement the already existing
+  AttribDataStateMachineDef::getMessageIDsFromStateID().
+- When using NM_PROFILING it is now possible to output results direct to a log file. See
+  PROFILING_LOG_INIT("MorphProfiling.log") in runtimeTarget.cpp.
+- The function ::close(socket_t) which was used to close a socket has been renamed to ::closesocket(), to prevent name
+  clashes.
+- [BUG FIX] Resolved an issue in the sequence node that resulted in crashes when it was used as inputs to pass down
+  pins.
+
+3.0.4
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Avoid an assertion when printing the logged allocations from the FastHeapMemoryAllocator.
+- Now using a custom allocator to help improve performance of working with FBX files.
+- Added a function to return the size of a block of memory allocated by the FreeListMemoryAllocator.
+- [BUG FIX] Resolved an issue that caused transform buffer flags to be set inconsistently, leading to asserts.
+- [BUG FIX] A transition with a duration of 0 into a state that contains a multiple pass down pin will no longer
+  sometimes cause an assert to trigger.
+- [BUG FIX] 32bit and 64bit asset compilers no longer share each others cached files.
+- [BUG FIX] PlaySpeedModifier now scales the absolute non-fractional time updates passed from parent.
+- [BUG FIX] EventTrackCurveDef::getValueAtTime() correctly interpolates at the end of the interpolation range.
+- [BUG FIX] SIMD Blend operations correctly ignore invalid data.
+- [BUG FIX] Issue where BlendN would sometimes select the incorrect animation when always blend was disabled has been
+  resolved.
+- [BUG FIX] Avoided getting the timer frequency more than once in NMP::Timer().
+- [BUG FIX] State machines now correctly clears requests on ActiveState transitions when
+  MR_RESET_SM_REQUESTS_POST_UPDATE is defined.
+- [BUG FIX] State machines now queue pass through tasks unless there's a possible dead blend. This improves performance.
+- [BUG FIX] Changed NM_DEBUG to NMP_ENABLE_ASSERTS in the 2 Float operator so the operator can output an error in
+  release builds with asserts enabled if the divisor is 0.
+- [BUG FIX] BasicUnevenTerrain node will no longer crash if there is no input IK state attribute to use.
+- [BUG FIX] Per-node timings in Runtime Debugging are now consistent with section timings.
+- [BUG FIX] Network inspection workflow now displays control parameters correctly in Connect.
+
+3.0.3
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Added MR_USED_FOR_NETWORK_LOGGING to improve builds under MR_NETWORK_LOGGING.
+- [BUG FIX] Requests used on normal transitions now also work for breakout and active state transitions.
+- Improved compatibility of COMMS library with alternative STL implementations.
+- [BUG FIX] Resolved an issue with compiling NSA animations when there are more animated position channels than quat
+  channels.
+- [BUG FIX] Fixed an uninitialized variable that could cause a crash while processing queued tasks.
+
+3.0.2
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Fixed an issue with blend nodes connected to the closest anim node crashing runtime. Also fixed closest anim
+  setup data not being located properly.
+- [BUG FIX] Resolved an issue where NSA animations with 6 subsections could cause joints to not appear.
+- [BUG FIX] Asset Compiler: Non-deterministic junk data in unused areas of binary network files eliminated by passing
+  the pattern initialising set of memory configuration functions to all asset compiler plugin DLLs.
+- [BUG FIX] Fixed a size calculation error in the 64 bit asset compiler that could lead to memory corruption.
+- [BUG FIX] Avoid division by zero when Input 1 of Operator2Float node is 0.
+- [BUG FIX] Padding of assets in the simple bundle fixed to constantly write zeros. (Was writing random values).
+
+3.0.1
+------------------------------------------------------------------------------------------------------------------------
+
+- Removed orphaned network files from the resource directory in morpheme:runtime packages.
+- [BUG FIX] When no commands are available on the receiving socket, allow the target to step if running asynchronously.
+- [BUG FIX] When a connection stops the session stops, it also needs to reset the pause status.
+- Changed the runtime tutorial's bundle loading and unloading to be more in line with the runtime target.
+- Replaced the persistent memory allocator, set up in networkInstanceRecordManager.cpp, with one based on a FastFreeList
+  for performance gains on all platforms.
+- Added an initial update to the runtime tutorials during createCharacter to ensure nodes are correctly initialised
+  before the update loop.
+- [BUG FIX] Fixed lower twist limits issues when using ApplyPhysicsJoinLimits nodes.
+- Improvement to the Collapse functionality. Added the possibility to collapse only part of a network.
+- As it is now mandatory to have a character controller definition for every exported animation set, the asset compiler
+  will fail if it cannot find a CCD for each anim set.
+- Likewise, there are now no default fallback values for the character controller def at runtime. The runtime requires a
+  CharacterControllerDef for the active animation set.
+- The NoPhysics runtime target now creates a character controller representation for the CharacterControllerDef it is
+  supplied. This is to prevent confusion about the CC being required in Connect, but not appearing in the viewport on
+  simulate. Note that this has not added any collision functionality to the NoPhysics runtime target.
+- The ControllerParameters class has been removed from the runtime target code as it was simply duplicating
+  functionality of MR::CharacterControllerDef.
+- The usePhysicalBody function has been removed from the runtime target as it was causing unclear program flow. Physics
+  rigs are now created and destroyed in DefaultPhysicsMgr::createPhysicsRig and destroyPhysicsRig.
+- DefaultControllerMgr::createController is now called createControllerRecord. DefaultControllerMgr::removeController is
+  now called destroyControllerRecord.
+- [BUG FIX] Initialising destination position in instant transitions is now robust. Previously if the destination root
+  node was a filter node but processed sync events itself, the destination might not have started at the expected
+  position.
+- [BUG FIX] Initialisation of Duration event tracks in source anim nodes now a lot more robust, properly taking in to
+  account PlayBackwards and StartEventIndex.
+- Changed build so that static library pdbs are stored alongside the library in the lib directory rather than in the obj
+  intermediate directory. Resolves issue of debug info not being found if obj directory not present.
+- Changed build so that the solutions have sensible default projects - the runtimeTarget where possible.
+- Changed build so that solution configurations of the form 'Debug Target <platform>' are now called 'Target <platform>
+  Debug'. This is to workaround a Visual Studio issue where for some reason the default configuration on opening a
+  solution would be 'Debug Target <platform>' rather than Debug. This does not affect the name of any libraries or
+  executables but does affect the name of the intermediate folders for these configurations.
+- Removed 'Debug Target <platform>' configurations from x64 projects. It is currently not possible to target a 32 bit
+  platform with a 64 bit asset compiler.
+- Overhauled RTTI and exception settings (all platforms/compilers).
+- Increased optimisation levels for PC projects to Full Optimisation (/Ox).
+- [BUG FIX] Specifying destination start position in active state transitions and self transitions now works in the
+  targets real sync event space (rather than adjusted sync event space). Basically makes transition authoring a lot
+  clearer.
+- [BUG FIX] TransitConditionInSyncEventRange is now only true when crossing an event range if the prev node ID (where we
+  got the last frames value from) is the same as the current node. Changing the active node was causing an event jump in
+  some cases and this was causing the condition to incorrectly become true.
+- The OutputJointPosCP Node has been removed.
+
+3.0
+------------------------------------------------------------------------------------------------------------------------
+
+- Implemented the asynchronous stepping mode on runtime side so that the RTT can implement its own stepping model and it
+  doesn't need to wait for a step command indefinitely.
+- Changed all the network traffic to be big endian so that big endian runtimes don't need to perform any endian
+  swapping.
+- Added runtime target interface to teleport a character to a specific location via the character controller.
+- Improved the main loop of the standard runtime target. It now supports the ability of following the frame rate that
+  Connect suggests.
+- Streamlined RuntimeTutorials and their folders to be more readable and easier to follow.
+- Changed EventsRequestsAndControlParameters name to ControlAndFeedback.
+- Tutorials that do not use physics will now initialise Physics in the PhysX version of morpheme. This ensures that the
+  networks will run correctly when using the PhysX Asset compiler and Runtime.
+- The BasicUnevenTerrain node now supports a choice of foot clamping modes whenever the terrain slope is greater than
+  the maximum limit.
+- [BUG FIX] Fixed an issue when the hip height controller in the BasicUnevenTerrain node is at its maximum and the
+  character then becomes ungrounded snapping the feet back to their animation poses.
+- Default IkFkBlendWeight for the BasicUnevenTerrain node is no longer stored in the node def when a control parameter
+  is not connected to the node.
+- The morpheme runtime now supports x64 platforms. There are solutions available for the asset compiler and runtime
+  target for Windows x64. Note that you cannot currently use a native x64 asset compiler to build assets for 32-bit
+  platforms. You will need to continue to use the 32-bit AC for these platforms.
+- Build system has been improved and is fully consistent. Build artifacts are now generated in top level bin/lib/obj
+  folders, not in local library folders, as far as build environments will allow.
+- Moved animation resampling into the AnimationCompressor class so that AnimSourceUncompressed can be used as a useful
+  intermediate representation of the anim data in the XMD.
+- SimpleBundle now stores the runtime version number that contained assets were cooked with. The target platform is also
+  stored. Asset loading will raise asserts if the assets' version doesn't match the runtime they are being loaded into,
+  or if the platforms are mismatched.
+- SimpleBundle has been optimised to reduce un-necessary padding. NMP_GLOBAL_OBJECT_ALIGNMENT has been removed.
+- MR_TASK_QUEUE_MAX_TASKS has been removed. There is no longer a maximum number of Tasks that can be queued. This change
+  will make support of larger networks more memory-efficient.
+- CustomPhysicsInterface has been removed from the runtime, simplifying the physics interface.
+- It is now no longer allowed to switch animation sets if they contain two different physics rigs. This used to be
+  implicitly allowed, even though it was not properly supported and would cause incorrect behaviour or crashes.
+- Added NetworkBuilderPlugin to allow plug-ins to the asset compiler to insert attrib data into the network.
+- Moved the Physics def data into new NetworkBuilderPlugin system.
+- Added an assert to make sure a task is registered with the network's dispatcher at queuing time. This will make it
+  much easier to work out why it's failing to get the task pointer.
+- Modified PhysicsRig<engine>::getRoot to take a CharacterControllerDef so we can sensibly scale the raycast into the
+  world (and the foot offset) rather than assuming meter units.
+- Improved the ability for the asset compiler to report back to the user via connect when something goes wrong. Replaced
+  NMP_ASSERT* with NMP_VERIFY* in all AC-only code.
+- Cleaned up the use of RuntimeAssetID and AssetType in simpleBundle.
+
+2.3.3
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Fixed event conditions failing to fire when using start event index offsets.
+- [BUG FIX] Made switch node evaluate whether to change input based on whether it has finished rather than whether it
+  will finish.
+- [BUG FIX] Fix problems with the root offset rotation for Z-up characters in the closest anim node.
+- [BUG FIX] The quaternion resulting from the uneven terrain angular velocity and acceleration joint control function is
+  now normalised to prevent numerical drift over time.
+- Improvements to uneven terrain to prevent leg jitter when walking down steep slopes or when the character controller
+  jumps between steps.
+- [BUG FIX] All conditions for a possible breakout transition from a destination state are now evaluated, rather than
+  just the first.
+- [BUG FIX] Included the 'Animation Scale' setting in the id of runtime animations to avoid conflicts.
+- [BUG FIX] State Machines now clear their activeStateID on deletion to prevent broadcast condition requests being set
+  in inactive states.
+- [BUG FIX] mr::Manager no longer accepts registration of null pointers or Object ID of 0.
+- [BUG FIX] The default null physics rig now has a non zero asset ID.
+- [BUG FIX] Improved dead blend during breakout transitions.
+- Added "Always Blend" to BlendN nodes. Turning this value off will passthrough a single animation transform rather than
+  blend 2 together when the blend weight is on a source blendweight. See mrNodeBlendNOpt.cpp/h for threshold.
+- New LockFoot node features, including ankle joint ground correction, and foot orientation fixup.
+- New SmoothTransforms node, for removing noise and sudden motion in an animation.
+- All IK nodes (TwoBoneIK, HeadLook, LockFoot, GunAimIK and BasicUnevenTerrain) now add required channels automatically
+  if they are missing.
+
+2.3.2.1
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Fixed handling of node data where a certain type of data was requested but is not available from the node.
+- Optimized LiveLink protocol for improved performance.
+
+2.3.2
+------------------------------------------------------------------------------------------------------------------------
+
+- Added support for transitions to an active state by dead blending. 'Dead blend source on breakout' enabled transitions
+  cache their source state so dead reckoning can be used to approximate their evolution over a short period of time,
+  freeing the source state for another transition. If a physics rig is available, it will also be used to enforce joint
+  limits.
+- [BUG FIX] Prevented transitions from transitions firing when their target state is active.
+- Changed m_assetDef and m_assetData to m_characterDef and m_characterData. Other tutorial layout improvements.
+- [BUG FIX] Stop the trajectory freezing for a single update when transitioning from soft/hard keyframing to
+  ragdoll/active animation.
+- [BUG FIX] Made sure that Closest Anim Node restores the old task queue on dispatcher as well as on the network after
+  sub network evaluation.
+- [BUG FIX] Made sure that def data that is of a ref counted type is handled correctly.
+- [BUG FIX] Fixed a potential buffer overrun when using NSA and QSA compression with SIMD enabled.
+- [BUG FIX] Removed code which registers a collision callback that was never used.
+- Removed the need for any nodeInstanceStaticMemReqs functions. All AttribData on Network now goes through persistent or
+  temp mem allocators. This also fixes the functionality of the NetworkRestorePoint class.
+- Modified animation compressor to take into account the blend frame translation as well as the rotation when compiling
+  animations.
+- [BUG FIX] Fixed issue where RigToAnim maps were generating GUIDs that collided.
+- [BUG FIX] createDefaultDiscreteEventTrack() now checks the manager for an instance of the default track that could
+  have been created by another network.
+- [BUG FIX] NM_LOG_ASSERT_MESSAGE will now assert when NMP_ENABLE_ASSERTS is defined rather than NM_DEBUG.
+- Runtime tutorialBasic3 and others now create an ExampleCharacterController that will track the position and
+  orientation of the character network. The accumulated transforms now use this data to correctly update the transforms.
+- Converted all projects to VisualStudio 2008.
+- Upgraded morpheme:runtime to be compatible with PhysX 2.8.3.
+- Added a basic uneven terrain node.
+- Incremented MAX_NUM_QUEUED_TASKS_PER_NODE to 9 since the uneven terrain node queues 9 tasks for evaluation in
+  conjunction with lock foot nodes and a transit match events between states. This adds 8 bytes per node to the memory
+  footprint.
+- [BUG FIX] The asset compiler now takes into account the blend frame orientation when generating the mirror node
+  mappings.
+- Added Multiple Networks tutorials 1-3. These tutorials look at running multiple instances of morpheme networks
+  simultaneously.
+- [BUG FIX] Incorrect trajectory used by mirror node, caused large gnomon to be drawn in Connect.
+- [BUG FIX] Added sync event track pass-through support to FeatherBlend2 node.
+- [BUG FIX] Rewrote calculateSyncEventIndexDelta(), adding correct handling of looping with only 1 event in track to
+  avoid negative SyncEventPos fraction.
+- [BUG FIX] Changed sampling of duration event to ensure that FractionThroughDurationEvent of 1 is successful, but only
+  producing a zero once.
+- [BUG FIX] Added limitToSyncEventSpace() to EventTrackSync::convEventInAdjustedSpaceToRealSpace() to prevent out of
+  range sync event index.
+- [BUG FIX] Fixed assert in SyncEventPos::set() caused by a parent multiple event delta during a single update not being
+  limited to the target sync event space.
+
+2.3.1
+------------------------------------------------------------------------------------------------------------------------
+
+- Improved binary asset invariance by initialising padding memory and pointers in serialised assets.
+- Added const return values for AssetProcessor API.
+- Asset compiler now uses the GUID of the Rig to generate the GUID of the RigToAnimMap.
+- The Asset Compiler now defaults to initialising all allocated memory to 0xcdcdcdcd.
+- Networks no longer reset temporary allocators passed in at creation time.
+- [BUG FIX] Fixed FractionThroughDurationEvent not triggering in some cases.
+- [BUG FIX] Fixed issue with animations having un-even section sizes.
+- [BUG FIX] Raised the value of ACCURATE_DIVISION_ERROR_LIMIT in NMVector3.cpp to take into account 360 floating point
+  accuracy.
+- [BUG FIX] Changed Vector3::slerp to check for parallel cases using just the dotproduct instead of an angle.
+- [BUG FIX] Corrected the owning nodeID for task index 3 of nodeTransitBlend2QueueSampledEventsBuffers.
+- [BUG FIX] Changed the method transits used to trigger end of transit in reverse cases. No longer sets blendweights to
+  -1.0f and instead sets them to 0.0f (solves an assert case in scaleBlendWeight()).
+- [BUG FIX] broadcastRequestToStateMachines() now returns false if the request was not picked up by any state.
+- Store the 'blend weight' in sampled events to inform at to how much the events contributed to the final result.
+- Added Temporary and Persistent memory allocators to the runtime tutorials that call Netowrk::createAndInit() instead
+  of using the default ones.
+- Modified Switch node to delete all child instances when they become inactive and to re-initialize them when they are
+  reactivated.
+- QSA sections now check the memory size during bitstream decoding.
+- Asset compiler can now handle single frame animations.
+- [BUG FIX] Made it so Sequence nodes can be the parent or child of another Sequence node and operate as expected.
+- [BUG FIX] Fixed a bug that caused the nodes to become idle with the wrong lifespan when using Sequence Nodes.
+- Added Customisable BlendWeights to the nodes Blend2, Blend2MatchEvents, Featherblend2 and FeatherBlend2MatchEvents.
+  This feature acts the same as it does for BlendN nodes.
+- Modified the runtime physics tutorials to better distinguish between initialising PhysX and the morphemePhysicsScene.
+- [BUG FIX] fixed a bug in the tutorials that where registerNodeInitDatas() wasn't being called on initialisation.
+- Modified the runtime tutorials to be clearer and more streamlined.
+- NXPhysics calls have been moved out tutorial functions and into main and the update functions have been simplified.
+- [BUG FIX] Fixed a bug where FeatherBlend2MatchedEvents nodes where allocating more memory than they where actually
+  using.
+- [BUG FIX] The LockFoot node could have invalid output on console if the 'Damping' was 0.
+- [BUG FIX] PassThrough Node was allocating memory for filter weights Unnecessarily. This has been removed.
+- [BUG FIX] Changed the assertion checks for duplicate registrations of tasks to only happen in Debug. This removes the
+  false positives in release, with asserts on, due to compiler optimisations.
+- Added faster buffer access for Pos/Quat and Vel/AngVel type buffers.
+- Renamed NMP::Buffer::SetChannelUsed() to SetChannelUsedFlag() and added SetChannelUsed()/SetChannelUnused() to be used
+  in places there the used flag is constant.
+- [BUG FIX] The TwoBoneIK, LockFoot and GunAimIK nodes did not work correctly if the hinge axis was not perpendicular to
+  the bones.
+
+2.3
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Add missing endian swaps to AttribDataSourceDurationEventTrackSet locate() and dislocate().
+- Fix asymmetric clamp to limits.
+- Added API to MR::Manager to report whether an object has already been registered for a given AssetID.
+- Modified the AttribDataSourceAnim to store the anim type in serialised assets.
+- Renamed the 'loadAnim' and 'unloadAnim' callbacks in the MR::Manager to 'requestAnim' and 'releaseAnim'.
+- QSA animation compressor no longer just reports that it is unable to compress an animation with a very low compression
+  rate, but will compile the animation using the lowest valid compression rate.
+- [BUG FIX] Fix QSA compressor hitting divide by zero condition with rigs with a single bone.
+- Added helper functions nodeTransitGetSourceState() and nodeTransitGetDestinationState() to retrieve the source and
+  destination of a transit node.
+- Bool control parameters are now stored in bool attribute data.
+- Added int control parameters.
+- Prefixed all tinyxml headers and include guards with 'NM', to remove clashes with other versions of tinyxml.
+- [BUG FIX] Closest anim node now supports finding the offset rotation at the character root that aligns the input
+  source with the network output. This offset rotation is distributed over time between the character root and the
+  trajectory channel so that the character appears in the correct place whilst blending the controlled root orientation
+  to the correct pose.
+- [BUG FIX] Runtime IDs for duration events are no longer always set to zero.
+- [BUG FIX] Fixed MBA animation format locate() and relocate() memory alignment issue.
+- [BUG FIX] QSA compressor handles delta transforms for additive animation more sensibly. Error analysis could get into
+  problems where the average bone length was zero, resulting in poor quantisation.
+- Replaced the morpheme:runtime examples with new Runtime Tutorials that have been updated to work with the latest
+  version of morpheme and have been redesigned to be more re-usable and clearer tutorial code. These can be found in the
+  "/samples/tutorials" directory in the runtime source.
+
+2.2.1
+------------------------------------------------------------------------------------------------------------------------
+
+- Significant performance and memory improvements throughout the code. See UPGRADE.TXT for more details.
+- [BUG FIX] Fixed mem alignment issues in MBA.
+- Exposed the node names string table with NetworkDef::getNodeIDNamesTable().
+- [BUG FIX] Fixed issues with very short discrete events.
+- Asserts can be enabled in release by defining NMP_ENABLE_ASSERTS.
+- [BUG FIX] DataBlockExportXML::Element::getBytes could potentially overrun the buffer.
+- Removed Switch with Events source as it contained redundant code that the Switch node could already handle. Now the
+  difference lies only in the manifest.
+- Network::startUpdate has had a new parameter added to allow you to prevent transforms being calculated. This is set to
+  true by default so no action should be required.
+- [BUG FIX] Fixed issues with very short discrete events.
+- Replaced the m_tasks vector in the TaskQueue with a simple array.
+- [BUG FIX] Fixed erroneous NMP::Quat::isNormal() return values.
+- [BUG FIX] Fixed reconnection issue when using multiple networks.
+
+2.2
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] unfix/refix the memory requirements array during dislocate/locate OF AttribDataSourceDiscreteEventTrackSet,
+  AttribDataSourceDurationEventTrackSet and AttribDataSourceCurveEventTrackSet.
+- Use fast heap and the roll back point system to allocate temporary working memory in HeadLook task, rather than using
+  the heap.
+- Renamed m_eventTrackNames to m_eventTrackIDNamesTable for consistency with all other tables in NetworkDef.
+- [BUG FIX] NodeOperatorSmoothFloat was using cached data from frames older than the last frame in some cases. Now
+  initialises to input value if cached data is older than last frame.
+- [BUG FIX] Closest anim node problem: Update connectivity wasn’t called on the children of the closest anim node on the
+  first update.
+- [BUG FIX] Fixed the dislocate of AttribDataNoiseGenDef (Missing endian swaps).
+- Better parameter validation inside Dispatcher::TaskParameters::createOutputAttrib when using the replace option (To
+  make sure param flags actually match the param creation options).
+- [BUG FIX] queuing a param to be replace but not creating the param with replace in the task itself
+  (TaskBlend2SyncEventTracks & TaskTransitSyncEventsBlendSyncEventTracks).
+- Improved Network::debugValidateAttribContents to display log error messages and to catch node attrib bins growing too
+  large.
+- Added initAnimFileHandlingFunctions function to Manager to allow setting of these functions independent of the manager
+  initialisation.
+- Moved initialisation of morpheme lib/Manager and hence NMP::Memory out of live link and into the main RTT function, to
+  avoid initialising it twice.
+- Added init and deinit functions to DefaultSceneObjectMgr to prevent heap allocation inside the constructor. Added some
+  error checking when allocating/deallocating environment attributes vector.
+- Added an initialised flag to the memory system to introduce more robust error checking.
+- [BUG FIX] Fixed attempts to deallocate memory that was not allocated in some cases in
+  NetworkDefBuilder::createRequestIDNameMappingTable.
+- [BUG FIX] Fixed mem leak: Free allocated memory that is used to store the compiled compressed animations in
+  macProcessAnimFunc.
+- [BUG FIX] Memory logging print out or remaining allocation was overstepping the static buffer length and trashing
+  memory.
+- When the physics node is acting as a rag doll it has no children and hence needs to be able to provide a full
+  complement of tasks and queuing functions, much like an anim source node. This is now the case.
+- [BUG FIX] Failing to update the connectivity of a transit when a child of the transit changed.
+- Make conditions that inspect control param or operator node data, update the connected nodes immediate op before
+  trying to find its data. This is safe because conditions are evaluated in the updateConnections phase of the network
+  update.
+- [BUG FIX] Stopped nodeTransitSyncEventsUpdateConnections() from crashing in some cases when source had not retained
+  its ATTRIB_SEMANTIC_SYNC_EVENT_TRACK and the transit was attempting to init a dead blend.
+- [BUG FIX] Fixed the conversion from an event duration to a time duration in nodeTransitSyncEventsUpdateConnections().
+- Made all sync event nodes retain their ATTRIB_SEMANTIC_SYNC_EVENT_TRACK attrib data to improve our overall dead blend
+  behaviour. (Able to make a more accurate calculation of how long the dead blend should last).
+- Added utility function BlendOpsBase::accumulateTransforms to find the accumulating transform of a single bone.
+- Fixed bug in PhysicsRig::toTransformBuffer: Converting physics rig world transforms to anim rig local transforms was
+  assuming that if a physics joint did not have a parent then it was connected directly to the anim world root.
+- Renamed Rig to AnimRigDef.
+- Renamed RigBuilder to AnimRigDefBuilder.
+- [BUG FIX] Fixed several bits of code that were assuming Y up in runtime code. Mostly in the character controller and
+  physics.
+- [BUG FIX] Initialise gravity from scene environment data rather than just assuming that it acts in y axis.
+- Removed wasteful m_name from NodeDef. This data is repeated in the NetworkDef.
+- Renamed NetworkDef::m_requestIDString table to NetworkDef::m_requestIDNamesTable.
+- Renamed NetworkDef::m_nodeIDStringTable table to NetworkDef::m_nodeIDNamesTable.
+- Added #define MR_RESET_SM_REQUESTS_POST_UPDATE to allow the state of requests to be reset between each update (if the
+  application is managing the state of requests itself).
+- Renamed NETWORK_LOGGING to MR_NETWORK_LOGGING.
+- Clarified that op nodes as well as control param nodes could be connected to a tree node by renaming
+  m_controlParamNodeIDs to m_controlParamAndOpNodeIDs.
+- Changed Network::getActiveRequestIDsFromAllActiveStateMachines to return a count.
+- Moved to consistently using 'connections' rather than 'connectivity' terminology in all function names etc. Includes
+  rename of all UpdateConnectivity to UpdateConnections.
+- Renamed Network::getCurrentStateNodeId to the more explicit Network::getStateMachineCurrentStateNodeId.
+- Changed Blend2SyncEvents and TransitSyncEvents to output a fractional update time value.
+- [BUG FIX] Blend2SyncEvents node trying to queue update of a control param pin that was not necessarily connected.
+- Renamed filterNodeQueuePassThrough to queuePassThroughChild0 and filterNodeQueuePassThroughSecondChild to
+  queuePassThroughChild1.
+- Refactor of update of time and sync events in nodes that handle sync events.
+- Improved interface to EventTrackSync.
+- Made Network::getAttribData actually return an AttribData and added Network::getAttribDataNodeBinEntry.
+- Added comprehensive getAttribData, getAttribDataNodeBinEntry, getAttribDataNodeBinEntryRecurseFilterNodes and
+  getAttribDataRecurseFilterNodes functions to Network.
+- Changed NET_LOG_OUTPUT_ATTRIB_ADDRESS to align output for easy comparison.
+- Changed NetworkDef::getDefAttribData to return an AttribData and added NetworkDef::getAttribDataHandle.
+- Changed ATTRIB_SEMANTIC_FRACTIONAL_POS to ATTRIB_SEMANTIC_FRACTION_POS.
+- Added ATTRIB_TYPE_INT.
+- Added getTime and getFraction functions to AttribDataUpdatePlaybackPos.
+- [BUG FIX] Pair all pragma warning pushes with pops.
+- Added reversed and completed flags to AttribDataTransitSyncEvents so that they do not have to have individual attrib
+  datas.
+- Allow a set of specified ranges in the network logger, o give better control over log messages that are displayed.
+- [BUG FIX] Changed AttribData copy functions to not overwrite base attrib data including m_refCount and m_allocator.
+- Separated NET_LOG priorities on output of queueing info to allow easier focusing on priority areas.
+- Changed transitMatchEvents to initialise the destination sync event track offset, so that when it completes this
+  information is not lost.
+- All HasQueuingFunctionForSemantic functions now return the NodeID of the actual node that provides the support, or
+  NA_NODE.
+- [BUG FIX] Set deleted nodes as inactive.
+- [BUG FIX] Stopped directly accessing node delete functions (always go through network).
+- [BUG FIX] buildDummyRootTaskAndQueueDependents allows specifying of which attrib types to queue on the root node.
+- [BUG FIX] In state machine updateConnectivity moved adding of queueConditionDeps to happen after any active child
+  state changes.
+- Added NET_LOG_OPTIONAL_MESSAGE, only outputs message on condition being true.
+- TaskAddParam now copes with empty parameters via use of INVALID_NODE_ID.
+- Added new TaskParamFlag TPARAM_FLAG_OPTIONAL to improve task param validation.
+- Remove pointless ability for blend2 nodes to operate without connected cp nodes. Removes large amounts of code and
+  additional complexity that was giving up very little if any gain.
+- Removed Blend2Opt as a stand alone node; instead added "AlwaysBlend" flag to Blend2 and Blend2MatchEvents that allows
+  these nodes to operate in a Blend2Opt style.
+- [BUG FIX] Failing to get root node attributes when the root was a filter. (Time line event oddities in Connect).
+- [BUG FIX] transitSyncEvents. When transit starts on very first frame it is unable to initialise its start event pos
+  from the source.
+- Made duration event blending cope much better with looping tracks.
+- Allow findTaskParamAttribDataFromNetDef to validly return Null if attrib not found. It is up to caller to know if data
+  must be there or not.
+- [BUG FIX] Transit conditions can now queue the update of attributes that they want to monitor.
+- Removed global variables from the state machine, instead the data is stored in the network instance.
+- Platform independent optimization layer improves performance of animation decompression and blending operations.
+- Added memory usage stats for network instances to the network logger.
+- [BUG FIX] Added new lines to end of network logger separators.
+- [BUG FIX] Made the network logger work with indentation.
+- [BUG FIX] Runtime crashing when at a higher level a node or state requests events when they are not available such as
+  for instance during a simple transit or transitAtEvent between two event supporting states.
+- CustomPhysicsInterface has been removed.
+- NMBitComparisonTable has been removed from NMPlatform. It was unused.
+- NMSocketWrapper has been moved from MCOMMS namespace to NMP as it is in NMPlatform. It has also been renamed to
+  SocketWrapper.
+- getDefInputAttrib and getOptionalDefInputAttrib have been removed. Replace all instances of these function calls in
+  your code with getInputAttrib and getOptionalInputAttrib. They are functionally identical.
+- [BUG FIX] Asset processor can now handle empty string for eventTrackName in AnimSyncEvents node.
+- MR::NetworkRestorePoint class added. This class allows you to create a snapshot of the state of a network, then apply
+  it back to a network at a later point, restoring the network to it's original state.
+- The JBA animation format has been removed.
+- The QSA animation format has been refactored to incorporate variable bit rate compression. The runtime decompression
+  has been optimised for SIMD.
+- MR_QUEUING_FUNC_ARGS has been removed.
+- Removed references to the physics rig def and the character controller definition from the animation rig definition.
+- [BUG FIX] Runtime crashing when at a higher level a node or state requests events when they are not available such as
+  for instance during a simple transit or transitAtEvent between two event supporting states.
+- [BUG FIX] Multiple networks. Physics deactivation on the master connection when a client connection destroy the
+  network instance.
+
+2.1
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Converting XMD animations into the uncompressed runtime ready format: Modified the functions that check for
+  unvarying channels. The previous check for quat channels with small rotations was unreliable.
+- [BUG FIX] Asset compiler incorrectly identifying override channels when compiling anims. (Regression from 1.3 to 2.x).
+- Added a new Discrete Wavelet Animation compression format (DWA).
+- New Reversible Transitions Feature. You can now reverse the direction of a transitions during its execution using a
+  boolean control parameter.
+- New SwitchWithEvents node that works as the Switch node but passes through events.
+- [BUG FIX] fix to Switch node when input nodes are not AnimMatchEvent nodes and EvalAtEndOfAnim is true.
+- Changed the MR::Network::update and MR::Dispatcher::execute API to return an ExecuteResult enum with the current
+  execution status.
+- Removed getGravity and setGravity from the MR::PhysicsScene interface class (as it's not used by morpheme itself).
+- Removed reference to the PhysicsScene from the DefaultSceneObjectMgr. The PhysicsMgr is responsible for setting any
+  data on the physics scene now.
+- Removed a large amount of unused code from the Null Physics integration.
+- Moved all animation source builder code into the asset compiler and moved all animation decompression code into a
+  subdirectory AnimSource.
+- Removed the use of STL and therefore new/delete from PhysicsRigPhysX.
+- Removed PhysicsRigDef::createPhysicsRig() and destroyPhysicsRig() and replaced them with
+  PhysicsRig::getMemoryRequirements(), init() and term() to prevent masses of small allocations under the new scheme.
+- Removed PhysicsRigPhysX::setPhysicsScene as it's no longer applicable to swap scenes on an existing PhysicRigPhysX.
+- Changed the mechanism for creating dispatchers so that instead of calling constructors, there is a createAndInit
+  function for them.
+- [BUG FIX] Uses of new() and delete() in the runtime API that would cause allocations to be made outside NMP::Memory
+  have been removed.
+- Changed the mechanism for creating dispatchers so that instead of calling constructors (and therefore using new),
+  there are createAndInit/release functions for them.
+- Renamed MR::AttribDataPhysicsRigAndRigDef to MR::AttribDataPhysicsRig and removed the pointer to the rig def (as you
+  can get it from the rig anyway so it was redundant). The containing file has also been renamed from
+  mrPhysicsRigAndRigDef.h/cpp to mrPhysicsAttribData.h/cpp.
+- NMP::FreeListManager has been removed from NMPlatform.
+- NMP::FreeLists will now automatically grow to accommodate new allocations when they are full.
+- NMP::FreelistMemoryAllocator has been added to NMPlatform.
+- MR::Networks now use the FreelistAllocator instead of the HeapAllocator to manage persistent memory. This brings a
+  performance increase and will prevent Networks using malloc and free while running (once the freelists have grown to
+  their required capacity).
+
+2.0.2.1
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] The debug configuration of the NoPhysics runtime target was incorrectly linking the release mode SPU
+  executable against the debug NMPlatform library, causing crashes. This has been fixed.
+- AnimationSourceHandle::openAnimation() now uses the registered animation format functions from the runtime manager to
+  locate() the animation data in memory. This replaces the static list of switch-case statements.
+- The NMP_MEMORY_LOGGING switch is now supported, allowing you to gather statistical information about memory
+  allocations the runtime SDK makes.
+- All known memory leaks in the runtime SDK have been fixed.
+
+2.0.2
+------------------------------------------------------------------------------------------------------------------------
+
+- Finished removing copyright symbol and replacing it with (c) - .inl files had previously been missed.
+- [BUG FIX] Fixed crash on animation set swap.
+- [BUG FIX] Fixed a timing issue in the RuntimeExample2.
+- Updated the testNetwork for the RuntimeExample2.
+- Implemented getRequestIDFromRequestName and getRequestNameFromRequestID functions.
+- [BUG FIX] NodeBlend2Opt was crashing if the control parameter input was routed from an operator node, due to a bug in
+  getControlParameter.
+
+2.0.1
+------------------------------------------------------------------------------------------------------------------------
+
+- RuntimeExample2 has been added, demonstrating Physics integration support.
+- Changed copyright symbol to (c) to avoid compilation errors on some systems.
+- Restored the samples directory.
+- [BUG FIX] Sync events were being spammed on the timeline due to uninitialised data. This has been fixed.
+- [BUG FIX] Fixed a bug in the Task structure where the count of extra dependencies was not being updated correctly.
+- Added a getReadItem to NMP::RingBuffer, allowing you to inspect the first item in the buffer without popping it.
+- [BUG FIX] Fixed a couple of bugs in the RingBuffer::relocate function.
+- Added Get/Set functions to the FastHeapAllocator to allow it to be moved to a different memory space more easily.
+
+2.0.0.1
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Ensure Quat::toRotationVector() returns the tan quarter angle rotation vector corresponding to the quat in
+  the positive hemisphere.
+
+2.0
+------------------------------------------------------------------------------------------------------------------------
+
+- For morpheme 2.0, the morpheme:runtime library has been re-written. Therefore an explicit list of changes would be
+  inappropriate for this release. Please refer to https://docs.naturalmotion.com/morpheme2/index.php/RuntimeChanges for
+  a high-level overview of the major API-level changes for this release. Refer to the documentation wiki topics for more
+  in-depth explanation of the workings of morpheme:runtime 2.0.
+- The NMPlatform library has undergone an incremental development schedule from 1.3.x to 2.0, instead of a rewrite, so
+  the following section is a list of NMPlatform related changes.
+- Added the NMP::MemoryAllocator class, providing a swappable intermediate for memory allocation. This allows app code
+  to rapidly change the memory allocation system used (e.g. from FastHeap to Freelist style allocation) without changing
+  client code. Several default allocators also provided.
+- Added extra asserts and more helpful messages when asserts fail.
+- Removed many references to NM-specific types (such as nu32, ni32, etc), replacing them with C99 types.
+- Added relocate() functions to many objects, allowing them to be moved around in memory.
+- Copyrights updated to 2009.
+- Improved Quat::forRotation()'s handling of anti-parallel input vectors.
+- Made Quat::forRotation() robust to zero-length input vectors.
+- Overhaul Quat::forRotation to try to squeeze more accuracy out of it for small angles.
+- [BUG FIX] Fixed a bug with expending freelists.
+- [BUG FIX] Fixed a bug in FreeList::reduceRequestedCapacity().
+
+1.3
+------------------------------------------------------------------------------------------------------------------------
+
+- Split the runtime target interface into component parts.
+- Added API to get the name of network instances from running runtime targets.
+- The Network operations queuing order has been changed within mrNetwork.cpp within the functions: Network::startUpdate
+  and Network::createAndInit. ATTRIB_OP_TYPE_SampleEvents must now be queued before ATTRIB_OP_TYPE_UpdateTransforms
+  rather than after. Note also that ATTRIB_OP_TYPE_SampleEvents also pushes a flag from the root indicating if we want
+  to sample from duration event buffers.
+- File > SaveAs changes the GUIDs to make sure that they are unique.
+- Completely reworked the runtime zip directory structure to be much cleaner and more intuitive. It is intended that
+  this structure is final and will not be changed again.
+- Reworked the deployment of the runtime zips. There is now a 'base' zip, on top of which can be unzipped multiple
+  platform zips, which just contain the extra files necessary for that platform.
+- Improved deployment practices. All configurations of all solutions are now built automatically as part of the QA
+  process which has removed errors in rarely used configurations.
+- morpheme:runtime now has its own versioning scheme and changes.txt. The current version can be found in mrVersion.h.
+- [BUG FIX] AnimSourceWithEvents has inlined functions defined in the header.
+- NMP::Memory is now a namespace rather than a class.
+- Changed the default Network Execution to Sample the Events before Updating the Transforms.
+- Added option to spherically interpolate delta trajectory translations in all default blend node types. This prevents
+  foot sliding in situations such as blending a strafe right with a walk forwards.
+- Added a NOT condition to request condition types.
+- Renamed any function names of 'initialise' to 'init' to conform to the same standard used throughout runtime code.
+- Renamed ATTRIB_OP_TYPE_UpdateTrajectoryChannelDeltas to ATTRIB_OP_TYPE_UpdateTrajectoryChannel.
+- Renamed ATTRIB_DATA_TYPE_TrajectoryChannelDeltas to ATTRIB_DATA_TYPE_PosQuatChannel.
+- [BUG FIX] Animation sections now set their flags correctly.
+- [BUG FIX] Transition smoothing for all transitions was incorrect, causing a jerk at the start of transitions. This has
+  been fixed to give good smooth in and smooth out of transitions.
+- Animation IDs stored within the AnimationSet have been changed from strings to an integer m_globalAnimID stored in
+  each AnimSetEntry. It is the app's responsibility to convert this to a filename, or resolve it to a resource handle,
+  depending on their asset packing scheme. This would be done in the app's registered ProcessAnimFunc.
+- Added Task-specific IK nodes: TwoBoneIK, HeadLook, and LockFoot.
+- FreelistManager is now in the NMPlatform library instead of the morpheme runtime.
+- Added NMSync to NMPlatform. This provides a cross-platform mutex object.
+- Added mutex protection to the temporary memory freelist manager in MR::Manager. This restores morpheme's thread safety
+  for update API calls.
+- "Warnings treated as errors" is now enabled across all code in the morpheme codebase on every platform.
+- Performance optimisations to the blend operations. Roughly 2% reduction to network update time (on demo 3).
+- NMPlatform and morpheme moved over to using ptrdiff_t and size_t instead of uint32_t for pointer arithmetic.
+- Separated TrajectoryControl into TrajectoryControlBase (which morpheme runtime interfaces with) and
+  TrajectoryControlCompressed (which is the implementation that AnimSourceCompressed provides).
+- Added the new AnimSourceBasic animation format, an uncompressed version of AnimSourceCompressed.
+- Updated the Matrix34::toQuat function so it works for matrices which are not exactly orthonormal.
+- Moved the responsibility for deciding on the number of entries per block for the freelist manager into the code that
+  uses it (rather than hardcoding it to 8).
+- The AssetCompiler now re-uses the existing runtime ID in the animation cache if an animation file must be
+  re-processed.
+- Removed the need to use TempRig.xmd in the AssetCompiler.
+- AssetCompiler no longer reloads the animation files after processing. This significantly speeds up animation set
+  compilation time, especially when the anims are cached.
+- Moved the generation of RigToAnimMaps into the animation processor rather than the AssetProcessor.
+- RigToAnimMaps are now cached with the animations that they are generated to work against.
+- When a RigToAnimMap is inserted into an AnimationSet, We now binary compare it against all other RigToAnimMaps in the
+  set to see if they are duplicates, and combine them if they are.
+- The AssetProcessor has been moved to its own library, rather than the source files being directly included in the
+  assetCompiler project.
+- An AnimationLibrary runtime object has been added. It contains a collection of AnimationSets which are all targeting a
+  common network.
+- Added NMP::Vector3::isValid function that allows you to check for QNANs and INFs in the vector's components.
+- MR::Rigs now contain the bind pose which was exported in the source XMD file.
+- If an animation source generates invalid channels for some channels, the bind pose positions and orientations are
+  copied into those channels.
+- The FeatherBlend, AnimWithEvents and FilterTransforms nodes now have AnimationSet specific attributes .
+- Buffered Transform data from nodes now copies the Rig bind pose into any channels that were marked in the source
+  NMP::DataBuffer as invalid.
+- [BUG FIX] Changed several incorrect spellings of "ouput" to "output".
+- Correctly moved all content of the AssetProcessor in to the namespace AP.
+- [BUG FIX] Location and Dislocation of NodeDefOperatorNoiseGen now works.
+- [BUG FIX] Bug fix: Single frame node outputs a zero delta trajectory update, rather than not outputting any trajectory
+  delta at all.
+- NodeApplyBindPose: New filter node type that applies the rig bind pose transforms to any un-initialised transforms in
+  the input buffer.
+- Animation application to multiple rigs now supported through the generation of RigToAnimMaps.
+- An animation will only be compiled against 2 Rigs if the Rigs are determined to be compatible. i.e. their hierarchies
+  up to the trajectory bone and the character root bone are identical.
+- Animation compilation now only includes those animation bones that are also present in the Rigs that the animation is
+  being compiled against.
+- RigToAnimMap members and functions have been renamed for consistency.
+- New documentation: RigToAnimMaps and Sharing Animations between Rigs: Explains how RigToAnimMaps are used and how they
+  can be used to have an anim used on more than one rig and the process of generating data for animations to be shared
+  between more than one rig.
+- New documentation: The morpheme Event Handling System: Explains the updated event handling system.
+- Event sequences authored as Duration event sequences in 1.2 are now interpreted as the new DurationEventSequence type
+  exhibiting different behaviour. In order to produce the same behaviour as 1.2 re-author these event sequences as Float
+  event sequences.
+- New runtime event sequence type: Duration event sequence.
+- All event sequence Defs inherit from EventsSequenceDefBase which now has: A runtime id (m_runtimeID) that can be used
+  to find the sequences name in the AnimationSet andUser data (m_userData), an integer ID that comes from Connect.
+- Removed use of bit fields in manifest from transit match events, in class NodeDefTransitMatchEvents NMP::Flags
+  m_transitFlags is now bool m_usingDestStartEventIndex.
+- Added interface functions to Network to access array of state machines in a Network.
+- Simplified and improved the interface for setting and clearing requests.
+- In NodeStateMachine renamed getRootNode to getActiveNode and getRootNodeID to getActiveNodeID to avoid confusion with
+  the root node of the Network.
+
+1.2
+------------------------------------------------------------------------------------------------------------------------
+
+- Removed the tidy() function from nodes, it was never being called and any necessary functionality should be in term().
+- TransformBuffer, TransformBufferMatrix and TransformBufferPosQuat have all been replaced by NMP::DataBuffer, a
+  relocatable, streamable container.
+- Buffers to store the output of each node are now allocated when they are required, rather than when the node is
+  created. Additionally, they are released as soon as they have been used, if they are no longer needed for buffering
+  operations.
+- All nodes node have a pointer to their parent node (i.e. the one which consumes their output). This is accessible via
+  Node::getParentNode.
+- Added network restore points, allowing the state of a network to be cached away and restored at a later date, forcing
+  the network into a known configuration.
+- NMP::Memory::alloc and NMP::Memory::free have been renamed to memAlloc and memFree to prevent clashes with other
+  products which may #define alloc or free.
+- [BUG FIX] Fixed a logic bug in TransformBuffer::setAllChannelsUsed.
+- [BUG FIX] Fixed logic bugs in NMP::BitArray which were causing arrays to be constructed the wrong size.
+- Input weighting values now specifiable on BlendN node types.
+- Weighting values on BlendN node types can now be specified within any range rather than just between 0 and 1.
+- [BUG FIX] Required ops queue and attrib data queue sizes are now estimated in the asset compiler.
+- [BUG FIX] Much faster and more robust calculation of network instance transform buffer and node pool requirements in
+  asset compiler.
+- [BUG FIX] Allow update of trajectory delta without necessity for update of transforms in a network update sequence.
+- New JBA animation compression scheme.
+- [BUG FIX] Fixed additive blending of bone position data. Was just adding the bone translations rather than scaling the
+  one to be added by the weighting value first.
+- [BUG FIX] Fixed direct setting of a state machine into a desired state using setStateByStateID.
+- Unified executable names for the Asset Compiler and runtime target executables across all platforms.
+- [BUG FIX] StateMachine::requestSetState() now functions correctly.
+- Naming convention for identification of nodes made consistent throughout code, including function names;
+  nodeNetworkID, networkNodeID, networkIndex, networkNodeIndex, and nodeIndex all renamed to nodeID. e.g.
+  Network::getCurrentStateNetworkId renamed to getCurrentStateNodeId.
+- Naming convention for identification of states made consistent throughout code, including function names; stateIndex
+  renamed to stateID.
+- Naming convention for identification of requests made consistent throughout code.
+- [BUG FIX] Fixed setting state on a state machine.
+- Added 'min' and 'max' operations to NodeOperator2Float.
+
+1.1
+------------------------------------------------------------------------------------------------------------------------
+
+- [BUG FIX] Matrix transform buffers can now be used in nodes in the same was as PosQuat transform buffers.
+- [BUG FIX] Fixed transform blending jitter caused by bug in slerp functions.
+- It's now possible to know from which track an event is coming from. The name to trackID is stored on the animation
+  set.
+- [BUG FIX] Delta trajectory jumping on looping of curved trajectory paths.
+- All transition types now ramp in and out, to give a smoother result (rather than simple linear interpolation).
+- Added m_destStartEventFraction to NodeTransitAtEvent to allow building of more responsive transitions of this type.
+- Renamed AnimationBinding to a more descriptive AnimSetEntry.
+- Removed enum BufferType and replaced with TRANSFORM_TYPE_ defines to make adding of new types by clients more
+  accessible.
+- Removed unused animComputeAtTimeSingleBone and added more useful animComputeAtTimeSingleTransform in AnimBase and
+  AnimSourceCompressed.
+- New transition condition type; true when event pos in a marked event range.
+- Renamed TrajectoryAnimData to TrajectoryControl.
+- Renamed internal init functions initDirect to avoid confusion with pseudo virtual init in several node types.
+- Removed unnecessary tidy functions. Moved functionality into term functions.
+- [BUG FIX] AssetCompiler: Indexes to conditions calculated incorrectly when some transitions are left with a single
+  FALSE condition. Making incorrect assumption about how Connect stores condition data in its export.
+- [BUG FIX] AssetCompiler: insertComponentSorted inserting in wrong place sometimes, meant that memory pool requirements
+  were incorrectly calculated.
+- AssetCompiler made a lot quicker when calculating node pool requirements.
+- Improved performance of asset compiler for large networks.
+- Changed findIndexOfStateWithNetworkID() to findStateIndexOfNetworkID() in the state machine.
+- [BUG FIX] Fixed Endian Swapping for Float Control Parameter default value.
+- [BUG FIX] Fixed Endian Swapping for Operator Nodes.
+- Moved calculation of trajectory bone data to off line process.
+- [BUG FIX] Initialise the sample events attrib data for Blend2 and Blend2MatchEvents.
+- Added a 'Single Frame' node type.
+- [BUG FIX] SetTime on Blend2MatchEvents now functions correctly.
+- Added Duration and Set/Update Time Fraction AttribOps to Blend2 and BlendN.
+- Changed clip start time and clip duration attributes to clip start fraction and clip duration fraction in NodeAnim and
+  NodeAnimWithEvents.
+- Made single frame clip lengths work on animation nodes.
+- [BUG FIX] Fixed endian swap bug in EventSequence objects that caused assert on big-endian machines.
+- [BUG FIX] Fixed use of uninitialized memory causing asserts in runtime.
+

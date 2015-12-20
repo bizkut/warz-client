@@ -1,0 +1,75 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Spins a character's arms in circles in order to achieve a rotation of the chest within a specified time period. 
+behaviour_def ArmsWindmill
+{
+interface:
+  version = 5;
+
+modules:
+  armsWindmillBehaviourInterface;
+  upperBody;
+  arms[*].spin;
+  
+attributes:
+  /// Settings that control how the arms spin. This the motion to change the torsos orientation and will last for a couple of seconds.
+  group("Spin")
+  {
+    /// Maximum angular speed of the arm, in revolutions/second (standard character).
+    float MaxAngSpeed = 3.0f, 0.0f, 5.0f     __per_anim_set__  __title__("MaximumAngularSpeed"); 
+    
+    /// Maximum radius of spin around the spin centre, in metres (standard character).. 
+    float MaxRadius = 0.6f, 0.0f, 2.0f        __per_anim_set__  __title__("MaximumRadius"); 
+    
+    /// If true then both hands will have the same phase in their respective circles, if false then the hands will circle independently from their initial positions
+    bool Synchronised = true                  __per_anim_set__ __title__("SynchroniseArms");
+
+
+    float SpinAmounts[networkMaxNumArms] = 1.0f, 0.0f, 2.0f __title__("SpinAmount");      ///< Affects how strongly a request to spin the arms is applied. 1 is normal or average stiffness, 0 has no effect, the spin is turned off.
+    bool ArmsInPhase = true; ///< If true the the arms will move in phase.
+
+    float SpinCentreLateral = 0.25f, -0.5f, 1.0f  __per_anim_set__; ///< Centre of spin circle sideways away from the shoulder. In metres (standard character).
+    float SpinCentreUp = 0.0f, -1.0f, 1.0f  __per_anim_set__;      ///< Centre of spin circle locally upwards from the shoulder. In metres (standard character).
+    float SpinCentreForward = 0.1f, -1.0f, 1.0f  __per_anim_set__;///< Centre of spin circle forwards from the shoulder. In metres (standard character).
+    
+    float SpinWeightLateral = 1.0f, 0.0f, 1.0f __per_anim_set__; ///< Weight of control in the local sideways axis from the chest
+    float SpinWeightUp = 0.5f, 0.0f, 1.0f __per_anim_set__;      ///< Weight of control in the local upwards  axis from the chest
+    float SpinWeightForward = 0.5f, 0.0f, 1.0f __per_anim_set__; ///< Weight of control in the local forwards axis from the chest
+
+    float SpinOutwardsDistanceWhenBehind = 0.2f, 0.0f, 2.0f __per_anim_set__ __title__("Hand offset when behind"); ///< Distance to push the hands out when they are at the back of the spin cycle. Increase this if the character tends to get his arms caught on the shoulder joint limits. In metres (standard character).
+    float SpinArmControlCompensationScale = 1.0f, 0.0f, 2.0f __per_anim_set__ __title__("Arm control scale"); ///< Small values make the arm appear more loose, larger values make the arm appear more controlled
+    float StrengthReductionTowardsHand = 0.8f, 0.0f, 10.0f __per_anim_set__ __title__("Wrist looseness"); ///< Small values result in the wrist being as strong as the shoulder. 1.0 will result in the wrist being completely loose. Larger values confine the strength to the joints in the upper arm.
+  }
+  
+  /// Settings that control how the arms swing. This is a one off motion to apply an impulse to the torso to change it's velocity. 
+  group("Swing")
+  {
+    float SwingAmounts[networkMaxNumArms] = 0.0f, 0.0f, 3.0f __title__("SwingAmount"); ///< Affects how strongly a request to swing the arms is applied. 1 is normal or average stiffness, 0 has no effect, the swing is turned off.
+    bool SwingOutwardsOnly = false;                           ///< If true, this prevent arms from swinging across the body laterally, they will only swing away from the body.
+  }  
+  
+  group("Input Defaults")
+  {
+    /// The target rotation delta will be interpretted in local space of the chest, .z value is the rightwards axis used for spinning forwards or backwards, .x value is for spinning around the forwards axis, and .y for spinning around the local vertical or spine axis 
+    bool SpinInLocalSpace = true             __per_anim_set__ __title__("OperateInLocalSpace"); 
+  }
+
+controlParams:
+  {
+    vector3 TargetRotationDelta = (0.0f, 0.0f, 90.0f) __title__("Rotation");   ///< Sets a world space rotation vector whose direction determines the axis and magnitude determines the angle of rotation of the chest, in degrees. When operating in local space, the x axis points forwards, z points right and y points up (along the spine).
+    float   RotationTime = 0.5f, 0.0f, 5.0f;                                  ///< Sets the amount of time in which to achieve the rotation, in seconds (standard character). Smaller values lead to faster movements. For times under about 0.5s the arms will swing rather than spin.
+    float  ImportanceForArm[networkMaxNumArms] = 1.0f, 0.0f, 1.0f __title__("Weight"); ///< Sets the strength of control over each arm. Accepts values in the range 0 to 1.
+  }
+}
+
+#endif

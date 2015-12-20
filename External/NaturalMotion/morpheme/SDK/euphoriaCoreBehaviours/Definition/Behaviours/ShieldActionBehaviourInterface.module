@@ -1,0 +1,46 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Non-SPU so it can interface with the system to get data into an appropriate network format etc
+__global_access__ __generate_interface__ module_def ShieldActionBehaviourInterface
+{
+owner: MyNetwork<>
+
+data:
+  // Pose caching is only used if the behaviour param UseSingleFrameForBalancePose is set
+  PoseData cachedPose[networkMaxNumLimbs];
+  Weight cachedPoseImportance[networkMaxNumLimbs];
+
+feedIn:
+  Angle hazardAngle; ///< Relative to the support forwards direction
+  Weight doShieldWithUpperBody;
+  Weight doShieldWithLowerBody; ///< Will be sent only if character is not supported.
+  ER::LimbTransform currPelvisPartTM;
+  
+out:
+  PoseData armPose[networkMaxNumArms];
+  PoseData headPose[networkMaxNumHeads];
+  PoseData spinePose[networkMaxNumSpines];
+  PoseData legPose[networkMaxNumLegs];
+  Direction shieldActionDirectionToHazard;///< in world space
+  Multiplier turnAwayScale; ///< Scale used to set the amount of rotation to turn away from the hazard (0 - 1).
+  TimePeriod smoothReturnTP; ///< Time character will need to stop completely to do a shield. 
+  bool isRunning;
+  BalancePoseParameters poseParameters;
+  
+connections<>:
+  feedIn.hazardAngle = (owner.hazardManagement.shieldManagement.feedOut.hazardAngle);
+  feedIn.doShieldWithUpperBody = (owner.hazardManagement.shieldManagement.feedOut.doShieldWithUpperBody);
+  feedIn.doShieldWithLowerBody = (owner.hazardManagement.shieldManagement.feedOut.doShieldWithLowerBody);
+}
+
+#endif

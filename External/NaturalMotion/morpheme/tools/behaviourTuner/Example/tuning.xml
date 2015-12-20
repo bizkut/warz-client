@@ -1,0 +1,63 @@
+<Configuration
+  RTExe = "..\..\..\..\bin\win32\vs10.0\scriptedRuntime.exe"
+  RTArgs = "--scenario steppingTuning --simulationRate 30"
+  RTTimeout = "600"
+  connectExe = "..\..\..\..\bin\win32\vs10.0\euphoriaConnect.exe" 
+  connectTimeout = "240"
+  assetCompilerExe = "..\..\..\..\bin\win32\vs10.0\morphemeAssetCompiler_target_LE32.exe" 
+  assetCompilerBaseDir = "..\..\..\..\assets\Y-up_Metres"
+  assetCompilerPluginDir ="..\..\..\..\bin\win32\vs10.0\plugins\assetCompiler"
+  assetCompilerConfigFile = "..\..\..\..\morpheme\tools\assetCompiler\configs\Euphoria.cfg" 
+  assetCompilerTimeout = "240"
+  workingDir = "WorkingDir"
+  network = "BalanceTuning.mcn"
+  projectFile = "..\..\..\..\assets\Y-Up_Metres\ProcessAssetsPhysX3.mcp"
+  GAPopulationFile = "LatestPopulation.txt"
+/>
+
+<!--
+Note that when continuing from an existing run, these parameters are allowed to be different - 
+if the population size is different then the original will either be truncated, or else it will 
+be padded with randomly initialised genes.
+-->
+<GeneticAlgorithmParameters
+  populationSize = "128"
+  demeWidth = "16"
+  maxMutation = "0.2"
+  recombinationRate = "0.5"
+  initialPopulationVariance = "1.0" 
+/>
+
+<!--
+Note that when continuing from an existing run the tuneables list can't be modified (unless 
+LatestPopulation.txt is altered too).
+-->
+<Tuneables>
+  <NodeTypeAttributes nodeType="Balance">
+    <Attribute name="FootBalanceAmount"                minValue="50"  maxValue="600" defaultValue="400"/>
+    <Attribute name="DecelerationAmount"               minValue="0"   maxValue="1" defaultValue="0.433082"/>
+    <Attribute name="FootLength"                       minValue="0.1" maxValue="0.5" defaultValue="0.25"/>
+    <Attribute name="LowerPelvisDistanceWhenFootLifts" minValue="0"  maxValue="1" defaultValue="0.148603"/>
+    <Attribute name="StepPredictionTimeForward"        minValue="0"  maxValue="1" defaultValue="0.158619"/>
+    <Attribute name="StepPredictionTimeBackward"       minValue="0"  maxValue="1" defaultValue="0.348002"/>
+    <Attribute name="StepUpDistance"                   minValue="0"  maxValue="1" defaultValue="0.640434"/>
+    <Attribute name="StepDownDistance"                 minValue="0"  maxValue="1" defaultValue="0.470797"/>
+    <Attribute name="MaxStepLength"                    minValue="0"  maxValue="2" defaultValue="0.656455"/>
+    <Attribute name="StepDownSpeed"                    minValue="0"  maxValue="1" defaultValue="0.124305"/>
+    <Attribute name="FootSeparationFraction"           minValue="0.8"  maxValue="1" defaultValue="0.9"/>
+    <Attribute name="AlignFootToFloorWeight"           minValue="0"  maxValue="5" defaultValue="3.351677"/>
+    <Attribute name="LowerPelvisAmount"                minValue="0"  maxValue="1" defaultValue="0.457218"/>
+    <Attribute name="StrengthScale"                    minValue="1.0"  maxValue="1.6" defaultValue="1.4"/>
+    <Attribute name="DampingRatioScale"                minValue="0.5"  maxValue="2" defaultValue="0.947534"/>
+    <Attribute name="SteppingOrientationWeight"        minValue="0"  maxValue="1" defaultValue="1.0"/>
+    <Attribute name="SteppingGravityCompensation"      minValue="0"  maxValue="1" defaultValue="0.0"/>
+    <Attribute name="SteppingDirectionThreshold"       minValue="-1" maxValue="1" defaultValue="-0.3"/>
+    <Attribute name="SteppingImplicitStiffness"        minValue="0"  maxValue="1" defaultValue="0.5"/>
+  </NodeTypeAttributes>
+  <ControlParameters>
+    <!--
+    <ControlParameter name="speed"  minValue="0" maxValue="1" defaultValue="0.5"/>
+    <ControlParameter name="turn"  minValue="0" maxValue="1" defaultValue="0.5"/>
+    -->
+  </ControlParameters>
+</Tuneables>

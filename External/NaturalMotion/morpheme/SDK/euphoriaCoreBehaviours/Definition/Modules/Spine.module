@@ -1,0 +1,137 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// All controllers and sensors that are specific to just the spine.
+/*__spuEntryPoint__*/ __limb__(Spines) module_def Spine
+{
+owner: MyNetwork<>
+
+data:
+  int32_t childIndex;                       ///< index into the root module's spines array
+  int32_t limbRigIndex;                     ///< index into all the rig's limbs
+  int32_t limbNetworkIndex;                 ///< index into all the network's limbs
+  Length spineLength;                       ///< From chest to pelvis
+  TimePeriod timeSinceStep;                 ///< Affects drive compensation
+  /// +ve for time we've been colliding, -ve for time we've been not colliding
+  TimePeriod collidingTime;
+  /// +ve for time the chest has been colliding with ground, -ve for time we've been not colliding
+  TimePeriod endGroundCollidingTime;
+  /// +ve for time the pelvis has been colliding with ground, -ve for time we've been not colliding
+  TimePeriod rootGroundCollidingTime;
+  /// Amount the chest is on the ground - stays positive for a short while after the chest leaves the ground
+  Weight endOnGroundAmount;
+  /// Amount the pelvis is on the ground - stays positive for a short while after the pelvis leaves the ground
+  Weight rootOnGroundAmount;
+  Stiffness normalStiffness;                ///< Usual stiffness, e.g. for supporting or turning to look
+  DampingRatio normalDampingRatio;          ///< 1 = critical damping
+  Compensation normalDriveCompensation;     ///< Larger is more controlled
+  ER::DimensionalScaling dimensionalScaling;
+  
+  // Objects for processing a request and storing the resulting stiffness/importance in affecting the request
+  ProcessRequest processEndRotation;
+  ProcessRequest processRootRotation;
+  ProcessRequest processEndTranslation;
+  ProcessRequest processRootTranslation;
+  
+  // Stored so update and feedback can use the same data
+  RotationRequest upperRotationRequest; 
+  RotationRequest lowerRotationRequest; 
+  TranslationRequest upperTranslationRequest;
+  TranslationRequest lowerTranslationRequest;
+
+  // Importances stored as we can't write directly to a child anymore
+  Weight upperRotationRequestImp; 
+  Weight lowerRotationRequestImp; 
+  Weight upperTranslationRequestImp;
+  Weight lowerTranslationRequestImp;
+
+children:
+  SpineSupport<> support;
+  SpinePose<> pose;
+  SpineControl<> control;
+  SpineReachReaction<> reachReaction;
+  SpineWrithe<> writhe;
+  SpineAim<> aim;
+
+in:
+  Weight defaultPoseWeight;             ///< Desired amount to use the default pose if there's no "real" input pose. 
+  WeightWithClamp chestControlledAmount;  ///< 1 means chest can move with normalStiffness
+  WeightWithClamp pelvisControlledAmount; ///< 1 means pelvis can move with normalStiffness
+  bool isStepping;                      
+
+  // Desired rotation and offset of the end of the spine relative to the root (in root's space)
+  RotationRequest endRotationRequest; 
+  RotationRequest rootRotationRequest; 
+  TranslationRequest endTranslationRequest;
+  TranslationRequest rootTranslationRequest;
+
+  // 1 is full reduction so no strength
+  Multiplier limbStiffnessReduction;
+  Multiplier limbControlCompensationReduction;
+  Multiplier limbDampingRatioReduction;
+
+out:
+  LimbControl control; ///< IK control of spine
+
+
+feedOut:
+  bool inContact;     ///< Spine contacting an external object
+
+  State chestState;   ///< Pos, vel etc of the chest
+  // Calculated from the feedIns
+  WeightWithClamp pelvisControlledAmount; 
+  WeightWithClamp chestControlledAmount;
+
+  // Data forwarded on from inputs
+  RotationRequest upstreamOnlyRotationRequest;
+  RotationRequest downstreamOnlyRotationRequest;
+  TranslationRequest upstreamOnlyTranslationRequest;
+  TranslationRequest downstreamOnlyTranslationRequest;
+ 
+  // These are the default relative TMs for the bind pose
+  OrientationDelta desiredEndRotationRelRoot; 
+  PositionDelta desiredEndTranslationRelRoot; 
+
+  Weight endOnGroundAmount;
+  Weight rootOnGroundAmount;
+
+  Weight externalSupportAmount;
+
+connections<>:
+  out.control = junctions.out_control = priority(
+    pose.out.controlLowImp, 
+    control.out.control,
+    aim.out.control,
+    reachReaction.out.control,
+    writhe.out.control,
+    pose.out.controlHighImp);
+  in.endRotationRequest = junctions.in_endRotationRequestPri = priority(
+    owner.upperBody.out.oneWayRotationRequest, 
+    owner.hazardManagement.shieldManagement.out.spineRotationRequest[$ChildIndex]);
+
+  in.rootRotationRequest = (owner.lowerBody.out.oneWayRotationRequest);
+  in.endTranslationRequest = (owner.upperBody.out.oneWayTranslationRequest);
+  in.rootTranslationRequest = (owner.lowerBody.out.oneWayTranslationRequest);
+  in.isStepping = (owner.bodyFrame.bodyBalance.feedOut.isStepping);
+  in.limbStiffnessReduction = (owner.characteristicsBehaviourInterface.out.spineStrengthReduction[$ChildIndex]);
+  in.limbControlCompensationReduction = 
+    (owner.characteristicsBehaviourInterface.out.spineControlCompensationReduction[$ChildIndex]);
+  in.limbDampingRatioReduction = (owner.characteristicsBehaviourInterface.out.spineDampingRatioReduction[$ChildIndex]);
+  in.pelvisControlledAmount = (owner.lowerBody.feedIn.controlledAmount);
+  in.chestControlledAmount = (owner.upperBody.feedIn.controlledAmount);
+  in.defaultPoseWeight = junctions.in_defaultPoseWeight = winnerTakesAll(
+    owner.idleAwakeBehaviourInterface.out.useSpineDefaultPose,
+    owner.bodyFrame.feedOut.supportAmount);
+}
+
+#endif
+

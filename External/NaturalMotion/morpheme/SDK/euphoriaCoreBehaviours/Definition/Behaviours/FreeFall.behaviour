@@ -1,0 +1,126 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Allows a character to try to keep a desired orientation when it is in the air by spinning its arms and legs. 
+behaviour_def FreeFall
+{
+interface:
+  version = 9;
+  displayname = "Free Fall";
+
+modules:
+  freeFallBehaviourInterface;
+  hazardManagement;
+  hazardManagement.freeFallManagement;
+  hazardManagement.hazardResponse;
+  hazardManagement.chestImpactPredictor;
+  environmentAwareness;
+  sceneProbes;
+  spines[*].support.*;
+  spines[*].control.*;
+  spines[*].pose.*;
+  legs[*].spin;
+  arms[*].spin;
+  legs[*].swing;
+  arms[*].swing;
+  bodyFrame;
+  lowerBody;
+  upperBody;
+  lowerBody.rotate;
+  upperBody.rotate;
+  heads[*];
+  heads[*].point;
+  heads[*].eyes;
+
+attributes:
+
+  //  Settings that control when, during free fall, the orientation of the character should be controlled.
+  group("When To Rotate")
+  {
+    /// The time to start driving the character's orientation, in seconds (standard character).
+    float StartOrientationTime = 0.2f, 0.0f;
+
+    /// The time to stop driving the character's orientation, in seconds (standard character).
+    float StopOrientationTime = 0.4f, 0.0f;
+
+    /// The StartOrientationTime will be interpreted as time before impact if this is true, else it is interpreted as time after entering free fall.
+    bool StartOrientationAtTimeBeforeImpact = false;
+
+    /// The StopOrientationTime will be interpreted as time before impact if this is true, else it is interpreted as time after entering free fall.
+    bool StopOrientationAtTimeBeforeImpact = true;
+  }
+
+  /// Settings that control when position of the body during free fall
+  group("Orientation Control")
+  {
+    /// Amount of externally applied torque used to achieve the desired orientation. Unitless. No need to alter for larger or heavier characters
+    float AssistanceAmount = 0.0f, 0.0f, 10.0f __per_anim_set__ __title__("Assistance");
+
+    /// Amount of externally applied torque used to damp existing rotation (tumbling). Unitless. No need to alter for larger or heavier characters
+    float DampingAmount = 0.0f, 0.0f, 2.0f __per_anim_set__ __title__("Rotation damping");
+
+    /// Sets the amount of time in which to achieve the rotation, in seconds (standard character). Smaller values lead to faster movements. For times under about 0.5s the arms will swing rather than spin.
+    float RotationTime = 0.5f, 0.0f __per_anim_set__;
+
+    /// The amount to use the arms - when spinning or swinging
+    float ArmsAmount = 1.0f, 0.0f, 2.0f __per_anim_set__ __title__("Arm Amount");
+
+    /// The amount to use the legs - when spinning or swinging
+    float LegsAmount = 1.0f, 0.0f, 2.0f __per_anim_set__ __title__("Leg Amount");
+  }
+  
+  /// Settings that control how the arms windmill in free fall
+  group("Arm Windmill")
+  {
+    float ArmsSpinAmount[networkMaxNumArms] = 1.0f, 0.0f, 2.0f __title__("Spin Amount"); ///< Affects how strongly a request to spin the arms is applied. 1 is normal or average movement, 0 has no effect, the spin is turned off.
+    bool ArmsInPhase = true __title__("In phase"); ///< If true the the arms will move in phase.
+  }
+  
+  /// Settings that control how the legs spin in free fall
+  group("Leg Spin")
+  {
+    float LegsSpinAmount[networkMaxNumLegs] = 1.0f, 0.0f, 2.0f __title__("Spin Amount"); ///< Affects how strongly a request to spin the legs is applied. 1 is normal or average movement, 0 has no effect, the swing is turned off.
+  }
+  
+  /// Define the target orientation for the character's pelvis by choosing to align one or two axis in character space with axis in world space.
+  group("Orientation Configuration")
+  {
+    int characterAxis0 = 1, 0, 6; ///< The primary axis local to the character that should be alligned to the primary target axis.
+    int characterAxis1 = 0, 0, 6; ///< The secondary axis local to the character that should be alligned to the secondary target axis.
+    int targetAxis0 = 2, 0, 3;    ///< The primary world space axis with which to align the primary character axis.\n1. Velocity: The direction of movement of the Character's hips in world space.\n2. Landing Up: The best alignment for the character's up direction for a successful landing.\n3. World Up: The "up" direction of the scene, in world space.
+    int targetAxis1 = 0, 0, 3;    ///< The secondary world space axis with which to align the secondary character axis. \n1. Velocity: The direction of movement of the Character's hips in world space. \n2. Landing Up: The best alignment for the character's up direction for a successful landing. \n3. World Up: The "up" direction of the scene, in world space.
+    float secondaryDirectionThreshold = 0.9f, 0.0f, 1.0f; ///< The secondary axis is ignored if the dot product between the primary and secondary axis is greater than this value. This is useful for preventing undesired rotation around the primary axis in order to face the tiny perpendicular component of an almost parallel secondary axis.
+  }
+
+  /// Define how the "Landing Up Axis" orientation target axis is calculated.
+  group("Landing Up Axis")
+  {
+    /// How much to angle the landing to match the lateral velocity of the character. 0 will land vertically, 1 will land oriented in the direction of velocity, like an arrow when it sticks into the ground where it lands. This is only relevant if the "Landing Up" target axis is used in the Base Orientation configuration.
+    float AngleLandingAmount = 0.5f, 0.0f, 1.0f __per_anim_set__ __title__("Orientation");
+  }
+
+controlParams:
+
+  {
+    vector3 orientation = (0.0f, 0.0f, 0.0f) __title__("Pelvis orientation"); ///< A rotation vector specifiying an offset to the target orientation for the character's pelvis relative to the orientation defined in "Orientation Configuration".
+    float   weight = 1.0f, 0.0f, 1.0f;        ///< Multiplier applied to the strength with which the character's orientation is driven.
+    bool disableWhenInContact = true;         ///< If true, then free fall will not attempt to orientate the character when it's in contact.
+  }
+
+outputControlParams:
+
+  float orientationError; ///< Angle between the current and target orientation of the character, in degrees.
+
+}
+
+
+#endif

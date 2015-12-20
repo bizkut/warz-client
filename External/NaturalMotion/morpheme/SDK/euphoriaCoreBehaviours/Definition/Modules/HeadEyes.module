@@ -1,0 +1,52 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// controls the direction that the eyes look in, and forwards the information down to the headPoint
+module_def HeadEyes
+{
+owner: Head
+  
+data:
+  PositionDelta eyeVector; ///< Vector from head to look target
+  bool doingPoint;         ///< Used for hysteresis
+  Position focalCentre;    ///< Look target in world space
+  Length focalRadius;      ///< Radius of sphere of vision
+  
+in:
+  TargetRequest target;    ///< Target to look at
+  bool shutEyes;           ///< Choose whether to shut the character's eyes
+  
+out:
+  Position focalCentre;    
+  Length focalRadius;      
+  TargetRequest lookTarget;
+  
+feedOut:
+  Position focalCentre;    ///< Actual point that he can look at
+  Direction focalDirection;///< Actual direction that he is looking (with eyes, not head)
+  Length focalRadius;      ///< Actual radius of view used
+  
+connections<>:
+  in.target = junctions.in_target = winnerTakesAll(
+    owner.owner.lookBehaviourInterface.out.target,
+    owner.owner.randomLook.out.lookTarget,
+    owner.owner.balanceManagement.steppingBalance.out.lookTarget,
+    owner.owner.observeBehaviourInterface.out.focalCentre,
+    owner.owner.hazardManagement.chestImpactPredictor.out.focalCentre,
+    owner.owner.hazardManagement.freeFallManagement.out.focalCentre,
+    owner.owner.bodyFrame.reachForBody.out.lookTarget,
+    owner.owner.reachForWorldBehaviourInterface.out.lookTarget,
+    owner.owner.hazardManagement.grabDetection.out.lookTarget,
+    owner.owner.hazardManagement.grab.out.lookTarget);
+}
+
+#endif

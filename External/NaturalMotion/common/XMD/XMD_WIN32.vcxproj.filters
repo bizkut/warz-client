@@ -1,0 +1,1280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\XM2" />
+    <Filter Include="include" />
+    <Filter Include="include\XM2\inl" />
+    <Filter Include="include\XM2\inl\sse" />
+    <Filter Include="include\XM2\inl\sse2" />
+    <Filter Include="include\XM2\inl\vanilla" />
+    <Filter Include="include\XMD" />
+    <Filter Include="include\XMU" />
+    <Filter Include="src\XM2" />
+    <Filter Include="src" />
+    <Filter Include="src\XMD" />
+    <Filter Include="src\XMU" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\XM2\BoundingBox.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Colour.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\ColourArray.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\EulerAngles.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\BoundingBox.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Colour.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\ColourArray.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\EulerAngles.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Matrix34.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Matrix34Array.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\MatrixStack.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Plane.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Quaternion.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\QuaternionArray.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\QuaternionSOA.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Ray.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\RealArray.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Sphere.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\BoundingBox.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\Colour.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\Matrix34.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\Plane.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\Quaternion.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\QuaternionSOA.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\RealArray.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\Sphere.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\Transform.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\Trigonometry.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\Vector2.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\Vector2SOA.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\Vector3.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\Vector3SOA.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\Vector4.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse\Vector4SOA.inl">
+      <Filter>include\XM2\inl\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\BoundingBox.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\Colour.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\Matrix34.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\Plane.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\Quaternion.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\QuaternionSOA.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\Sphere.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\Transform.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\Trigonometry.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\Vector2.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\Vector2SOA.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\Vector3.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\Vector3SOA.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\Vector4.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\sse2\Vector4SOA.inl">
+      <Filter>include\XM2\inl\sse2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Transform.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\TransformArray.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Trigonometry.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\BoundingBox.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\Colour.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\Matrix34.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\Plane.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\Quaternion.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\QuaternionSOA.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\Sphere.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\Transform.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\Vector2.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\Vector2SOA.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\Vector3.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\Vector3SOA.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\Vector4.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\vanilla\Vector4SOA.inl">
+      <Filter>include\XM2\inl\vanilla</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector2.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector2Array.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector2SOA.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector2SOAArray.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector3.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector3Array.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector3Packed.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector3PackedArray.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector3SOA.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector3SOAArray.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector4.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector4Array.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector4SOA.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\inl\Vector4SOAArray.inl">
+      <Filter>include\XM2\inl</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\MathCommon.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Matrix34.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Matrix34Array.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\MatrixStack.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Plane.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\pod_stack.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\pod_vector.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Quaternion.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\QuaternionArray.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\QuaternionSOA.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\QuaternionSOAArray.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Ray.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\RealArray.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Sphere.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Transform.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\TransformArray.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\vector.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector2.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector2Array.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector2SOA.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector2SOAArray.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector3.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector3Array.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector3Packed.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector3PackedArray.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector3SOA.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector3SOAArray.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector4.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector4Array.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector4SOA.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\Vector4SOAArray.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XM2\vector_iterators.h">
+      <Filter>include\XM2</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\AimConstraint.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Air.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\AmbientLight.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\AnimationStream.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\AnimationTake.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\AnimCycle.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Anisotropic.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\AreaLight.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Attribute.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Base.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\BaseLattice.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\BaseProperties.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\BezierCurve.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\BezierPatch.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\BlendShape.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Blinn.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Bone.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\BumpMap.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Camera.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ClonePolicy.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Cluster.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\CollisionBase.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\CollisionBox.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\CollisionCapsule.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\CollisionCone.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\CollisionCylinder.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\CollisionMesh.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\CollisionSphere.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\CompoundProperties.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Constraint.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\CreatePolicy.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\CubeMap.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Deformer.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\DeletePolicy.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\DirectionalLight.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\DisplayLayer.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Drag.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Emitter.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\EnvmapBaseTexture.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ExportPolicy.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ExtendedLight.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ExtraAttributes.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Factory.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\FCurveStream.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\FFD.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Field.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\FileIO.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\FileTranslator.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Geometry.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\GeometryConstraint.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Gravity.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\HermiteCurve.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\HermitePatch.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\HwShaderNode.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\IkChain.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Image.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ImportPolicy.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Info.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\InheritedNode.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Instance.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ItPolygon.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\JiggleDeformer.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\JointCluster.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Lambert.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Lattice.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\LayeredShader.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\LayeredTexture.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Light.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Locator.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Logger.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\LookAtConstraint.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Material.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Mesh.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\MeshVertexColours.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Model.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\NewNode.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Newton.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\NodeCollection.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\NodeProperties.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\NodeTypeRegister.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\NonLinearDeformer.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\NormalConstraint.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\NurbsCurve.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\NurbsSurface.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ObjectSet.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\OrientConstraint.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ParametricBase.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ParametricCurve.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ParametricSurface.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ParentConstraint.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ParticleShape.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Phong.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\PhongE.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\PointConstraint.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\PointLight.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\PoleVectorConstraint.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\PolygonMesh.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\PoseStream.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Radial.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\RampShader.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\RenderLayer.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\SampledStream.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ScaleConstraint.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\SculptDeformer.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\ShadingNode.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Shape.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\SkinCluster.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Specular.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\SphereMap.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\SpotLight.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\SurfaceShader.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\TangentConstraint.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\TexPlacement2D.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\TexPlacement3D.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Texture.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\TrimData.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Turbulence.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Uniform.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\UseBackgroundShader.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\UserData.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\VolumeAxis.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\VolumeBox.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\VolumeCone.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\VolumeCylinder.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\VolumeLight.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\VolumeObject.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\VolumeSphere.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\Vortex.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\WireDeformer.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\WrapDeformer.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMD\XFn.h">
+      <Filter>include\XMD</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMU\BlendShapeOptimiser.h">
+      <Filter>include\XMU</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMU\FileSystem.h">
+      <Filter>include\XMU</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMU\KeyStripper.h">
+      <Filter>include\XMU</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMU\Normals.h">
+      <Filter>include\XMU</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMU\SkinPruner.h">
+      <Filter>include\XMU</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMU\Tangents.h">
+      <Filter>include\XMU</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMU\Upgrading.h">
+      <Filter>include\XMU</Filter>
+    </ClInclude>
+    <ClInclude Include="include\XMU\VertexArray.h">
+      <Filter>include\XMU</Filter>
+    </ClInclude>
+    <ClCompile Include="src\XM2\BoundingBox.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Colour.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\ColourArray.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\EulerAngles.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\MathCommon.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Matrix34.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Matrix34Array.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\MatrixStack.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Plane.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Quaternion.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\QuaternionArray.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\QuaternionSOA.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\QuaternionSOAArray.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Ray.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\RealArray.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Sphere.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Transform.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\TransformArray.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector2.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector2Array.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector2SOA.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector2SOAArray.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector3.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector3Array.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector3Packed.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector3PackedArray.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector3SOA.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector3SOAArray.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector4.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector4Array.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector4SOA.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XM2\Vector4SOAArray.cpp">
+      <Filter>src\XM2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\AimConstraint.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Air.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\AmbientLight.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\AnimationStream.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\AnimationTake.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\AnimCycle.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Anisotropic.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\AreaLight.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Attribute.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Base.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\BaseLattice.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\BaseProperties.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\BezierCurve.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\BezierPatch.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\BlendShape.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Blinn.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Bone.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\BumpMap.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Camera.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ClonePolicy.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Cluster.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionBox.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionCapsule.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionCone.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionCylinder.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionMesh.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionObject.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CollisionSphere.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CompoundProperties.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Constraint.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CreatePolicy.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\CubeMap.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Deformer.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\DeletePolicy.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\DirectionalLight.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\DisplayLayer.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\DocModule.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Drag.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Emitter.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\EnvmapBaseTexture.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ExportPolicy.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ExtendedLight.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ExtraAttributes.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Factory.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\FCurveStream.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\FFD.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Field.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\FileIO.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\FileTranslator.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Geometry.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\GeometryConstraint.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Gravity.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\HermiteCurve.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\HermitePatch.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\HwShaderNode.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\IkChain.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Image.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ImportPolicy.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Info.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\InheritedNode.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Instance.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ItPolygon.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\JiggleDeformer.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\JointCluster.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Lambert.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Lattice.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\LayeredShader.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\LayeredTexture.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Light.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Locator.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Logger.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\LookAtConstraint.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Material.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Mesh.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\MeshVertexColours.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Model.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NewNode.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Newton.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NodeCollection.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NodeProperties.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NodeTypeRegister.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NonLinearDeformer.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NormalConstraint.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NurbsCurve.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\NurbsSurface.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ObjectSet.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\OrientConstraint.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ParametricBase.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ParametricCurve.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ParametricSurface.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ParentConstraint.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ParticleShape.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Phong.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\PhongE.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\PointConstraint.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\PointLight.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\PoleVectorConstraint.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\PolygonMesh.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\PoseStream.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Radial.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\RampShader.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\RenderLayer.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\SampledStream.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ScaleConstraint.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\SculptDeformer.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\ShadingNode.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Shape.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\SkinCluster.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Specular.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\SphereMap.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\SpotLight.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\SurfaceShader.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\TangentConstraint.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\TexPlacement2D.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\TexPlacement3D.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Texture.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\TrimData.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Turbulence.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Uniform.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\UseBackgroundShader.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\UserData.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeAxis.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeBox.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeCone.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeCylinder.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeLight.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeObject.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\VolumeSphere.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\Vortex.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\WireDeformer.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMD\WrapDeformer.cpp">
+      <Filter>src\XMD</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMU\BlendShapeOptimiser.cpp">
+      <Filter>src\XMU</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMU\FileSystem.cpp">
+      <Filter>src\XMU</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMU\KeyStripper.cpp">
+      <Filter>src\XMU</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMU\SkinPruner.cpp">
+      <Filter>src\XMU</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMU\Upgrading.cpp">
+      <Filter>src\XMU</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XMU\VertexArray.cpp">
+      <Filter>src\XMU</Filter>
+    </ClCompile>
+    <ClCompile Include="UnityFile.cpp" />
+  </ItemGroup>
+</Project>

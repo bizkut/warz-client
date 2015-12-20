@@ -1,0 +1,23 @@
+This is version 5.2 of morpheme:runtime
+
+- Euphoria characters with zero arms or zero legs defined may crash the runtime.
+- Operator Nodes with Animation Set Specific data may be updated multiple times per frame.
+- Setting OutputSourceAnimation to true on a HardKeyFrame node that is inside a PartialBodyCompositor node can result in
+  incorrect behaviour.
+- Hand placement when bracing/protecting is not as accurate as it should be.
+- Runtime may crash if the ApplyImpulse node is connected directly to the network output.
+- Using many physics characters in PhysX 2 with hardware acceleration enabled may exceed the maximum number of
+  materials. Please contact the Support Team if you experience this.
+- Placing a node between a physics node and a grouper will result in a runtime crash.
+- The -fixedPhysicsUpdate argument will have no effect on PhysX 3 runtime targets.
+- Sampled events optimisation is only being performed on Blend2 nodes, other blends do not yet benefit from this
+  optimisation.
+- On some systems, precompiled headers in the runtimes will fail to build, and will generate an error similar to: “fatal
+  error C1859: header file name unexpected precompiled header, simply rerunning the compiler might fix this problem.”.
+  If rerunning the compiler does not fix the issue, a hotfix for Visual Studio 2008 is available at:
+  http://archive.msdn.microsoft.com/KB976656.
+- TransitToSelf may fail to set the destination start point correctly if the destination state contains a
+  multi-connection pass down pin.
+- The mirroring of event user data by the mirror node may produce incorrect results. This will be addressed in an
+  upcoming release.
+

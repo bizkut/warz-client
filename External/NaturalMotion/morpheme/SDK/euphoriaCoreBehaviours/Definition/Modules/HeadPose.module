@@ -1,0 +1,39 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+__no_feedback__ module_def HeadPose
+{
+owner: Head
+
+in:
+  PoseData headPoseLowImp;
+  PoseData headPoseHighImp;
+
+out:
+  LimbControl controlLowImp;
+  LimbControl controlHighImp;
+
+connections<>:
+  in.headPoseLowImp = junctions.lowImportance = priority(
+    owner.owner.animateBehaviourInterface.out.headPoseLowPriority[owner.$ChildIndex],
+    owner.owner.idleAwakeBehaviourInterface.out.headPose[owner.$ChildIndex],
+    owner.owner.writheBehaviourInterface.out.headPose[owner.$ChildIndex]);
+
+  in.headPoseHighImp = junctions.highImportance = 
+  winnerTakesAll(
+    owner.owner.shieldBehaviourInterface.out.headPose[owner.$ChildIndex],
+    owner.owner.shieldActionBehaviourInterface.out.headPose[owner.$ChildIndex],
+    owner.owner.animateBehaviourInterface.out.headPoseHighPriority[owner.$ChildIndex]
+  );
+}
+
+#endif

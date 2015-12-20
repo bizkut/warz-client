@@ -1,0 +1,37 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+__no_feedback__ module_def SpinePose
+{
+owner: Spine
+
+in:
+ PoseData spinePoseLowImp;
+ PoseData spinePoseHighImp;
+  
+out:
+  LimbControl controlLowImp;
+  LimbControl controlHighImp;
+
+connections<>:
+  in.spinePoseLowImp = junctions.lowImportance = priority(
+    owner.owner.hazardManagement.freeFallManagement.out.spinePose,
+    owner.owner.animateBehaviourInterface.out.spinePoseLowPriority[owner.$ChildIndex],
+    owner.owner.idleAwakeBehaviourInterface.out.spinePose[owner.$ChildIndex]);
+
+  in.spinePoseHighImp = junctions.highImportance = winnerTakesAll(
+    owner.owner.shieldBehaviourInterface.out.spinePose[owner.$ChildIndex],
+    owner.owner.shieldActionBehaviourInterface.out.spinePose[owner.$ChildIndex],
+    owner.owner.animateBehaviourInterface.out.spinePoseHighPriority[owner.$ChildIndex]);
+}
+
+#endif

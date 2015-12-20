@@ -1,0 +1,54 @@
+// Copyright (c) 2009 NaturalMotion.  AllRights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// coordinates the shielding of the whole character
+module_def ShieldManagement
+{
+owner: HazardManagement<>
+
+data:
+  Angle yawAngle;
+  TimePeriod shieldTimer;
+
+feedIn:
+  ER::LimbTransform supportTM;    ///< in support this is considered the "fixed root" of the system
+  
+in:
+  Direction directionToHazard; ///< In world space - from the character pelvis to the hazard
+  TimePeriod smoothReturnTP; ///< Time character will need to stop completely to do a shield. 
+  Multiplier turnAwayScale; ///< Scale used to set the amount of rotation to turn away from the hazard (0 - 1).
+
+feedOut:
+  Angle shieldSpineYawAngle; ///< Yaw angle to turn away from the hazard.
+  Angle hazardAngle; ///< Relative to the support forwards direction
+  Weight doShieldWithUpperBody;
+  Weight doShieldWithLowerBody; ///< Will be sent only if character is not supported.
+  Multiplier driveCompensationScale; ///< Multiplier used to multiply the normalDriveCompensation of each limb.
+  
+out:
+  RotationRequest spineRotationRequest[networkMaxNumSpines]; ///< Angle to turn away from the hazard, imminence is 0.5f if danger is not max or 10 if it is.
+  
+connections<>:
+  in.turnAwayScale = junctions.wta02 = winnerTakesAll(
+    owner.owner.shieldBehaviourInterface.out.turnAwayScale,
+    owner.owner.shieldActionBehaviourInterface.out.turnAwayScale);
+  in.smoothReturnTP = junctions.wta03 = winnerTakesAll(
+    owner.owner.shieldBehaviourInterface.out.smoothReturnTP, 
+    owner.owner.shieldActionBehaviourInterface.out.smoothReturnTP);
+  in.directionToHazard = junctions.wta04 = winnerTakesAll(
+    owner.hazardResponse.out.shieldDirectionToHazard,
+    owner.owner.shieldActionBehaviourInterface.out.shieldActionDirectionToHazard);  
+  feedIn.supportTM = (owner.owner.bodyFrame.bodyBalance.feedOut.supportTM);
+}
+
+#endif
+

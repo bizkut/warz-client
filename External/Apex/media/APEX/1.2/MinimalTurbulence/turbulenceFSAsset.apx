@@ -1,0 +1,35 @@
+<!DOCTYPE NxParameters>
+<NxParameters numObjects="1" version="1.0">
+<value type="Ref" className="TurbulenceFSAssetParams">
+<struct name="">
+  <value name="gridSizeWorld" type="Vec3">8, 8, 8</value>
+
+  <!-- longDescription: the number of simulation grid cells in the x dimension.
+ -->
+<!-- shortDescription: grid sizeX Range -->
+<struct name="gridXRange">
+  <value name="min" type="F32">16</value>
+  <value name="max" type="F32">32</value>
+</struct>
+
+  <!-- longDescription: the number of simulation grid cells in the y dimension.
+ -->
+  <!-- shortDescription: grid sizeY Range -->
+  <struct name="gridYRange">
+    <value name="min" type="F32">16</value>
+    <value name="max" type="F32">32</value>
+  </struct>
+
+  <!-- longDescription: the number of simulation grid cells in the z dimension.
+ -->
+  <!-- shortDescription: grid sizeZ Range -->
+  <struct name="gridZRange">
+    <value name="min" type="F32">16</value>
+    <value name="max" type="F32">32</value>
+  </struct>
+
+  <value name="boundaryFadePercentage" type="F32">1.0</value> 
+  
+</struct>
+</value>
+</NxParameters>

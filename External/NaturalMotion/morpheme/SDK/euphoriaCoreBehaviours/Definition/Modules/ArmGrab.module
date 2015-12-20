@@ -1,0 +1,78 @@
+ // Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// coordinates the reaching out for and holding on to an object in the environment
+module_def ArmGrab
+{
+owner: Arm
+
+data:
+  TimePeriod grabAttemptPeriod;     ///< How long has this arm been trying to grab the edge.
+  TimePeriod handBehindBodyPeriod;  ///< How long has this arm's hand been "stuck" behind the back.
+  Position previousGrabPoint;       ///< This arm's hand target.
+  bool havePreviousGrabPoint;       ///< True if the previous grab point is valid
+  Weight reachImportance;           ///< How important is it to reach for the edge (rather than protect for example).
+  Edge lastGrabbedEdge;             ///< Cache the previous edge, in case we want to prevent grabbing the same edge twice (optional)
+  float cachedEdgeT;                ///< Cache the t value along the edge to avoid drift when constrained
+
+in:
+  Edge edgeToGrab;                  ///< Edge passed in by Grab module.
+  bool edgeIsObstructed;
+  EndConstraintControl endConstraintOptions;  ///< Configures the physical constraint.
+  GrabFailureConditions failureConditions;    ///< Configures the conditions for aborting a hold attempt.
+  GrabAliveParams aliveParams;                ///< Configures behaviour while hanging (e.g. "pullUps")
+  Velocity chestVelocity;           ///< Smoothed value already calculated by GrabDetection and passed in here
+  uint16_t numConstrainedArms;      ///< Total number of currently constrained hands.
+  bool hasTwistedAround;            ///< Is the character not facing the edge anymore?
+  bool isHanging;                   ///< Is the character stably hanging (as opposed to still falling).
+  float importance;                 ///< Allows game to manipulate hold importance for individual arms.
+
+out:
+  EndConstraintControl endConstraint; ///< Configures the physical constraint.
+  ReachWorldParameters reachParams;   ///< Configure the type of reach used by Hold.
+  LimbControl limbControl;            ///< Specifies the hand target (for ArmReachForWorld).
+  /// Arm strength, incorporating fatigue. 1 when just constrained, 0 when maxHoldTime is reached, 
+  /// ramping down linearly in between.
+  Weight holdStrengthScale;
+
+  /// The higher this value, the more likely this arm's constraint is destroyed if other arms are still holding
+  Weight breakageOpportunity; 
+
+feedIn:
+  Weight timeHeldProportion;  ///< Ratio of maxHoldTime that this arm has been constrained.
+  
+feedOut:
+  bool isHighPriority;                ///< If true, suppresses the shield behaviour.
+
+
+connections<>:
+  in.edgeToGrab = (owner.owner.hazardManagement.grab.out.edgeToGrab);
+  in.edgeIsObstructed = (owner.owner.hazardManagement.grab.out.edgeIsObstructed);
+  in.numConstrainedArms = (owner.owner.hazardManagement.grab.out.numConstrainedArms);
+  in.hasTwistedAround = (owner.owner.hazardManagement.grab.out.hasTwistedAround);
+  in.endConstraintOptions = (owner.owner.hazardManagement.grab.out.endConstraintOptions);
+  in.isHanging = (owner.owner.hazardManagement.grab.out.isHanging);
+
+  in.failureConditions = junctions.in_failureConditions = priority(
+    owner.owner.holdBehaviourInterface.out.grabFailureConditions,
+    owner.owner.holdActionBehaviourInterface.out.grabFailureConditions);
+  in.aliveParams = junctions.in_aliveParams = priority(
+    owner.owner.holdBehaviourInterface.out.grabAliveParams,
+    owner.owner.holdActionBehaviourInterface.out.grabAliveParams);
+  in.importance = junctions.in_importance = maxFloat(
+    owner.owner.holdBehaviourInterface.out.holdPerArmImportance[owner.$ChildIndex],
+    owner.owner.holdActionBehaviourInterface.out.holdPerArmImportance[owner.$ChildIndex]);
+
+  feedIn.timeHeldProportion = (owner.hold.feedOut.timeHeldProportion);
+}
+
+#endif

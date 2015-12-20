@@ -1,0 +1,45 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// To modify how hazards are predicted.
+behaviour_def HazardAwareness
+{
+interface:
+  displayname = "Hazard Awareness";
+  version = 3;
+  
+modules:
+  hazardAwarenessBehaviourInterface;
+  hazardManagement.chestImpactPredictor.*;
+  environmentAwareness.*;
+  sceneProbes.*;
+  heads[*].eyes.*;
+  bodyFrame.supportPolygon.*; 
+  arms[*];
+
+attributes:
+  group("Default")
+  {
+    bool  UseControlledVelocity = false __title__("MovingHazardsOnly"); ///< When set then the chest's velocity is not considered hazardous, hazards are only moving objects
+    float IgnoreVerticalPredictionAmount = 0.0f, 0.0f, 1.0f __per_anim_set__; ///< How much the vertical component of the character's velocity is ignored when predicting impacts. 0 is the default, 1 means that the vertical velocity of the chest is completely ignored so the ground will not present a hazard when the character is falling.
+    float HazardLevelThreshold = 0.43f, 0.0f, 4.0f;         ///< Used, as feedback info, to determine the time since the last hazard, as feedback info. Is 1/(1+time to impact), in 1/seconds (standard character).
+    float ProbeRadius = 0.5f, 0.1f, 2.0f;                   ///< Radius around the chest that the character has "hazard awarenesss" for, in metres (standard character).
+  }
+  
+outputControlParams:
+  float HazardFreeTime;   ///< The amount of time that has passed since a hazard has existed at a hazard level higher than hazardLevelThreshold above. In absolute units.
+  float HazardLevel;      ///< A unitless value in the range 0-infinity indicating the threat posed by the current hazard. Calculated as 1/time to impact, scaled by a 0-1 measure of the mass of the hazard.
+  float TimeToImpact;     ///< The time left until the hazard collides with the character or 0 if there is no hazard. In absolute units.
+  float ImpactSpeed;      ///< The speed with which the hazard will impact the character or 0 if there is no hazard. In absolute units.
+}
+
+#endif

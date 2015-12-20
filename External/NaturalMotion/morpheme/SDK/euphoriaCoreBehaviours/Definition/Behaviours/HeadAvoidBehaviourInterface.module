@@ -1,0 +1,25 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Non-SPU so it can interface with the system to get data into an appropriate network format etc
+__global_access__ __no_feedback__ module_def HeadAvoidBehaviourInterface
+{
+owner: MyNetwork<>
+
+out:
+  SpatialTarget avoidTarget; ///< choice of output defines whether it has priority or not when competing
+  Length avoidRadius;        ///< Max radius at which to avoid, equilibrium will be less than this radius 
+  bool twoSidedTarget;       ///< Since we avoid a plane, the plane can optionally be two-sided
+}
+
+#endif
+

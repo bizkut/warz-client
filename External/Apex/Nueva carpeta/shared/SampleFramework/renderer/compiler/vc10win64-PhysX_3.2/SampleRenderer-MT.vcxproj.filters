@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<Filter Include="include"><!--  -->
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<Filter Include="include\windows"><!--  -->
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="..\..\include\windows\WindowsGLIncludes.h">
+			<Filter>include\windows</Filter>
+		</ClInclude>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="..\..\include\GLIncludes.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\PxTaskIncludes.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\Renderer.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererBoxShape.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererCapsuleShape.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererClothShape.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererColor.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererConfig.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererDesc.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererDirectionalLight.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererDirectionalLightDesc.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererFoundation.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererGridShape.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererIndexBuffer.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererIndexBufferDesc.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererInstanceBuffer.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererInstanceBufferDesc.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererInteropableBuffer.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererLight.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererLightDesc.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererMaterial.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererMaterialDesc.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererMaterialInstance.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererMemoryMacros.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererMesh.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererMeshContext.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererMeshDesc.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererMeshShape.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererParticleSystemShape.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererProjection.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererShape.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererSpotLight.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererSpotLightDesc.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererTarget.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererTargetDesc.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererTerrainShape.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererTexture.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererTexture2D.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererTexture2DDesc.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererTextureDesc.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererUtils.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererVertexBuffer.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererVertexBufferDesc.h">
+			<Filter>include</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\include\RendererWindow.h">
+			<Filter>include</Filter>
+		</ClInclude>
+	</ItemGroup>
+	<ItemGroup>
+		<Filter Include="src"><!--  -->
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<Filter Include="src\d3d11"><!--  -->
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="..\..\src\d3d11\D3D11Renderer.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererDirectionalLight.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererIndexBuffer.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererInstanceBuffer.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererMaterial.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererMemoryMacros.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererMesh.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererResourceManager.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererSpotLight.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererTarget.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererTexture2D.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererTexture3D.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererTextureCommon.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererTraits.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererUtils.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererVariableManager.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d11\D3D11RendererVertexBuffer.h">
+			<Filter>src\d3d11</Filter>
+		</ClInclude>
+		<ClCompile Include="..\..\src\d3d11\D3D11Renderer.cpp">
+			<Filter>src\d3d11</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d11\D3D11RendererDirectionalLight.cpp">
+			<Filter>src\d3d11</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d11\D3D11RendererIndexBuffer.cpp">
+			<Filter>src\d3d11</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d11\D3D11RendererInstanceBuffer.cpp">
+			<Filter>src\d3d11</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d11\D3D11RendererMaterial.cpp">
+			<Filter>src\d3d11</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d11\D3D11RendererMesh.cpp">
+			<Filter>src\d3d11</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d11\D3D11RendererSpotLight.cpp">
+			<Filter>src\d3d11</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d11\D3D11RendererTarget.cpp">
+			<Filter>src\d3d11</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d11\D3D11RendererTexture2D.cpp">
+			<Filter>src\d3d11</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d11\D3D11RendererTexture3D.cpp">
+			<Filter>src\d3d11</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d11\D3D11RendererUtils.cpp">
+			<Filter>src\d3d11</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d11\D3D11RendererVariableManager.cpp">
+			<Filter>src\d3d11</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d11\D3D11RendererVertexBuffer.cpp">
+			<Filter>src\d3d11</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<Filter Include="src\d3d9"><!--  -->
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="..\..\src\d3d9\D3D9Renderer.h">
+			<Filter>src\d3d9</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d9\D3D9RendererDirectionalLight.h">
+			<Filter>src\d3d9</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d9\D3D9RendererIndexBuffer.h">
+			<Filter>src\d3d9</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d9\D3D9RendererInstanceBuffer.h">
+			<Filter>src\d3d9</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d9\D3D9RendererMaterial.h">
+			<Filter>src\d3d9</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d9\D3D9RendererMesh.h">
+			<Filter>src\d3d9</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d9\D3D9RendererSpotLight.h">
+			<Filter>src\d3d9</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d9\D3D9RendererTarget.h">
+			<Filter>src\d3d9</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d9\D3D9RendererTexture2D.h">
+			<Filter>src\d3d9</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\d3d9\D3D9RendererVertexBuffer.h">
+			<Filter>src\d3d9</Filter>
+		</ClInclude>
+		<ClCompile Include="..\..\src\d3d9\D3D9Renderer.cpp">
+			<Filter>src\d3d9</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d9\D3D9RendererDirectionalLight.cpp">
+			<Filter>src\d3d9</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d9\D3D9RendererIndexBuffer.cpp">
+			<Filter>src\d3d9</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d9\D3D9RendererInstanceBuffer.cpp">
+			<Filter>src\d3d9</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d9\D3D9RendererMaterial.cpp">
+			<Filter>src\d3d9</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d9\D3D9RendererMesh.cpp">
+			<Filter>src\d3d9</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d9\D3D9RendererSpotLight.cpp">
+			<Filter>src\d3d9</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d9\D3D9RendererTarget.cpp">
+			<Filter>src\d3d9</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d9\D3D9RendererTexture2D.cpp">
+			<Filter>src\d3d9</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\d3d9\D3D9RendererVertexBuffer.cpp">
+			<Filter>src\d3d9</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<ClCompile Include="..\..\src\Renderer.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererBoxShape.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererCapsuleShape.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererClothShape.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererColor.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererDesc.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererDirectionalLight.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererDirectionalLightDesc.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererGridShape.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererIndexBuffer.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererIndexBufferDesc.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererInstanceBuffer.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererInstanceBufferDesc.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererLight.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererLightDesc.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererMaterial.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererMaterialDesc.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererMaterialInstance.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererMesh.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererMeshContext.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererMeshDesc.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererMeshShape.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererParticleSystemShape.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererProjection.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererShape.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererSpotLight.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererSpotLightDesc.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererTarget.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererTargetDesc.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererTerrainShape.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererTexture.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererTexture2D.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererTexture2DDesc.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererTextureDesc.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererVertexBuffer.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererVertexBufferDesc.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\RendererWindow.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+	</ItemGroup>
+</Project>

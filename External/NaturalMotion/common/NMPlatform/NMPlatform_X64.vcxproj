@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target LE64 Debug|x64">
+      <Configuration>Target LE64 Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target LE64 Release|x64">
+      <Configuration>Target LE64 Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>NMPlatform</ProjectName>
+    <ProjectGuid>{773E894A-FCA3-4312-37AF-0588248FC43F}</ProjectGuid>
+    <RootNamespace>NMPlatform</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>NMPlatform_debug</TargetName>
+    <IntDir>..\..\obj\x64\vs$(VisualStudioVersion)\NMPlatform\debug\</IntDir>
+    <OutDir>..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>NMPlatform</TargetName>
+    <IntDir>..\..\obj\x64\vs$(VisualStudioVersion)\NMPlatform\release\</IntDir>
+    <OutDir>..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <TargetName>NMPlatform_target_LE64_debug</TargetName>
+    <IntDir>..\..\obj\x64\vs$(VisualStudioVersion)\NMPlatform\target_le64_debug\</IntDir>
+    <OutDir>..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <TargetName>NMPlatform_target_LE64</TargetName>
+    <IntDir>..\..\obj\x64\vs$(VisualStudioVersion)\NMPlatform\target_le64_release\</IntDir>
+    <OutDir>..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)NMPlatform_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)NMPlatform.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_TARGET_BIGENDIAN=0;WIN32;_DEBUG;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)NMPlatform_target_LE64_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;NM_TARGET_BIGENDIAN=0;WIN32;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)NMPlatform_target_LE64.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\NMPlatform\generic\NMMatrix34.inl" />
+    <ClInclude Include="include\NMPlatform\generic\NMQuat.inl" />
+    <ClInclude Include="include\NMPlatform\generic\NMVector3.inl" />
+    <ClInclude Include="include\NMPlatform\NMAtomic.h" />
+    <ClInclude Include="include\NMPlatform\NMBasicLogger.h" />
+    <ClInclude Include="include\NMPlatform\NMBitArray.h" />
+    <ClInclude Include="include\NMPlatform\NMBitStreamCoder.h" />
+    <ClInclude Include="include\NMPlatform\NMBuffer.h" />
+    <ClInclude Include="include\NMPlatform\NMColour.h" />
+    <ClInclude Include="include\NMPlatform\NMCommandLineProcessor.h" />
+    <ClInclude Include="include\NMPlatform\NMDebugDrawManager.h" />
+    <ClInclude Include="include\NMPlatform\NMFastFreeList.h" />
+    <ClInclude Include="include\NMPlatform\NMFastHeapAllocator.h" />
+    <ClInclude Include="include\NMPlatform\NMFile.h" />
+    <ClInclude Include="include\NMPlatform\NMFlags.h" />
+    <ClInclude Include="include\NMPlatform\NMFreelistMemoryAllocator.h" />
+    <ClInclude Include="include\NMPlatform\NMHash.h" />
+    <ClInclude Include="include\NMPlatform\NMHashMap.h" />
+    <ClInclude Include="include\NMPlatform\NMHierarchy.h" />
+    <ClInclude Include="include\NMPlatform\NMKeyboardHarness.h" />
+    <ClInclude Include="include\NMPlatform\NMLoggingMemoryAllocator.h" />
+    <ClInclude Include="include\NMPlatform\NMMapContainer.h" />
+    <ClInclude Include="include\NMPlatform\NMMathPlatform.h" />
+    <ClInclude Include="include\NMPlatform\NMMathUtils.h" />
+    <ClInclude Include="include\NMPlatform\NMMatrix.h" />
+    <ClInclude Include="include\NMPlatform\NMMatrix.inl" />
+    <ClInclude Include="include\NMPlatform\NMMatrix34.h" />
+    <ClInclude Include="include\NMPlatform\NMMemory.h" />
+    <ClInclude Include="include\NMPlatform\NMMemoryAllocator.h" />
+    <ClInclude Include="include\NMPlatform\NMNorm.h" />
+    <ClInclude Include="include\NMPlatform\NMPadHarness.h" />
+    <ClInclude Include="include\NMPlatform\NMPlatform.h" />
+    <ClInclude Include="include\NMPlatform\NMPrioritiesLogger.h" />
+    <ClInclude Include="include\NMPlatform\NMProfiler.h" />
+    <ClInclude Include="include\NMPlatform\NMQuat.h" />
+    <ClInclude Include="include\NMPlatform\NMRingBuffer.h" />
+    <ClInclude Include="include\NMPlatform\NMRNG.h" />
+    <ClInclude Include="include\NMPlatform\NMSeh.h" />
+    <ClInclude Include="include\NMPlatform\NMSocket.h" />
+    <ClInclude Include="include\NMPlatform\NMSocketWrapper.h" />
+    <ClInclude Include="include\NMPlatform\NMStaticFreeList.h" />
+    <ClInclude Include="include\NMPlatform\NMStaticFreeListAllocator.h" />
+    <ClInclude Include="include\NMPlatform\NMStlUtils.h" />
+    <ClInclude Include="include\NMPlatform\NMStlUtils.inl" />
+    <ClInclude Include="include\NMPlatform\NMString.h" />
+    <ClInclude Include="include\NMPlatform\NMStringTable.h" />
+    <ClInclude Include="include\NMPlatform\NMSync.h" />
+    <ClInclude Include="include\NMPlatform\NMSystem.h" />
+    <ClInclude Include="include\NMPlatform\NMTimer.h" />
+    <ClInclude Include="include\NMPlatform\NMVector.h" />
+    <ClInclude Include="include\NMPlatform\NMVector.inl" />
+    <ClInclude Include="include\NMPlatform\NMVector3.h" />
+    <ClInclude Include="include\NMPlatform\NMVectorContainer.h" />
+    <ClInclude Include="include\NMPlatform\NMvpu.h" />
+    <ClInclude Include="include\NMPlatform\vpu\NMfpu.inl" />
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuFx.inl" />
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuInc.inl" />
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuMatrix.inl" />
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuMP.inl" />
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuQuat.inl" />
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuQuatMP.inl" />
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuSpec.inl" />
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuTrig.inl" />
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuVector.inl" />
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuVector3MP.inl" />
+    <ClInclude Include="include\NMPlatform\vpu\NMvpuVector4MP.inl" />
+    <ClInclude Include="include\NMPlatform\win32\NMAtomic.inl" />
+    <ClInclude Include="include\NMPlatform\win32\NMBasicLogger.inl" />
+    <ClInclude Include="include\NMPlatform\win32\NMFile.inl" />
+    <ClInclude Include="include\NMPlatform\win32\NMHost.h" />
+    <ClInclude Include="include\NMPlatform\win32\NMSync.inl" />
+    <ClInclude Include="include\NMPlatform\win32\NMSystem.inl" />
+    <ClInclude Include="include\NMPlatform\win32\NMvpuImplementation.inl" />
+    <ClInclude Include="include\NMPlatform\win32\NMvpuPlatformIncludes.h" />
+    <ClInclude Include="include\NMPlatform\win32\socket_imp.h" />
+    <ClCompile Include="src\NMBasicLogger.cpp" />
+    <ClCompile Include="src\NMBitArray.cpp" />
+    <ClCompile Include="src\NMBitStreamCoder.cpp" />
+    <ClCompile Include="src\NMBuffer.cpp" />
+    <ClCompile Include="src\NMColour.cpp" />
+    <ClCompile Include="src\NMCommandLineProcessor.cpp" />
+    <ClCompile Include="src\NMDebugDrawManager.cpp" />
+    <ClCompile Include="src\NMFastFreeList.cpp" />
+    <ClCompile Include="src\NMFastHeapAllocator.cpp" />
+    <ClCompile Include="src\NMFile.cpp" />
+    <ClCompile Include="src\NMFlags.cpp" />
+    <ClCompile Include="src\NMFreelistMemoryAllocator.cpp" />
+    <ClCompile Include="src\NMKeyboardHarness.cpp" />
+    <ClCompile Include="src\NMLoggingMemoryAllocator.cpp" />
+    <ClCompile Include="src\NMMatrix.cpp" />
+    <ClCompile Include="src\NMMatrix_imp.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\NMMemory.cpp" />
+    <ClCompile Include="src\NMMemoryAllocator.cpp" />
+    <ClCompile Include="src\NMNorm.cpp" />
+    <ClCompile Include="src\NMNorm_imp.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\NMPadHarness.cpp" />
+    <ClCompile Include="src\NMPlatformOutput.cpp" />
+    <ClCompile Include="src\NMPrioritiesLogger.cpp" />
+    <ClCompile Include="src\NMProfiler.cpp" />
+    <ClCompile Include="src\NMQuat.cpp" />
+    <ClCompile Include="src\NMSocketWrapper.cpp" />
+    <ClCompile Include="src\NMStaticFreeListAllocator.cpp" />
+    <ClCompile Include="src\NMString.cpp" />
+    <ClCompile Include="src\NMStringTable.cpp" />
+    <ClCompile Include="src\NMVector.cpp" />
+    <ClCompile Include="src\NMVector3.cpp" />
+    <ClCompile Include="src\NMVector_imp.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\NMvpu.cpp" />
+    <ClCompile Include="src\win32\NMHostMemory.cpp" />
+    <ClCompile Include="src\win32\NMSocket.cpp" />
+    <ClCompile Include="src\win32\NMStlGuard.cpp" />
+    <ClCompile Include="src\win32\NMSync.cpp" />
+    <ClCompile Include="src\win32\NMTimer.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

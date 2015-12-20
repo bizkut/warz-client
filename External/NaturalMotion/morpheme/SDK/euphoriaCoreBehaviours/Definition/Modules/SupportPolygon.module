@@ -1,0 +1,55 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Collects support points and builds them into a polygon structure.
+__no_feedback__ module_def SupportPolygon
+{
+owner: BodyFrame<>
+
+data:
+  enum Constants
+  {
+    rigMaxNumSupports = networkMaxNumLegs + networkMaxNumArms + networkMaxNumSpines
+  };
+
+  Environment::SupportPoly polygon; ///< set of 3d points.
+  
+in:
+  bool includeLegSupportPoints;
+  bool includeArmSupportPoints;
+  bool includeSpineSupportPoints;
+
+feedIn:
+  Position supportPoints[rigMaxNumSupports]; ///< Incoming points which define the support.
+  Weight fullySupported;                     ///< Affects lean vector and makes inside-support-polygon return true.
+
+out:
+  Environment::SupportPoly polygon; ///< The calculated polygon of support.
+  PositionDelta offsetFromPolygon;  ///< Offset of test position from polygon.
+
+connections<>:
+  feedIn.supportPoints[*] = directInput(owner.owner.legs[*].standingSupport.feedOut.endSupportPoint,
+                                        owner.owner.arms[*].standingSupport.feedOut.endSupportPoint,
+                                        owner.owner.spines[*].support.feedOut.rootSupportPoint);
+  feedIn.fullySupported = (owner.owner.spines[0].feedOut.externalSupportAmount);
+
+connections<Standing>:
+  in.includeArmSupportPoints = (owner.owner.balanceBehaviourInterface.out.supportWithArms);
+  in.includeLegSupportPoints = (owner.owner.balanceBehaviourInterface.out.supportWithLegs);
+
+connections<Sitting>:
+  in.includeLegSupportPoints = (owner.owner.sitBehaviourInterface.out.supportWithLegs);
+  in.includeSpineSupportPoints = (owner.owner.sitBehaviourInterface.out.supportWithSpines);
+
+}
+
+#endif

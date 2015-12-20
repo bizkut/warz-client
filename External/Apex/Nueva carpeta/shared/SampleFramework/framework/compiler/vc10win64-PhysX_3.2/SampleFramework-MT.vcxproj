@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project
+    DefaultTargets="Build"
+    ToolsVersion="4.0"
+    xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="profile|x64">
+      <Configuration>profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="checked|x64">
+      <Configuration>checked</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup
+      Condition="'$(Configuration)|$(Platform)'=='release|x64'"
+      Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <GenerateManifest>false</GenerateManifest>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup
+      Condition="'$(Configuration)|$(Platform)'=='profile|x64'"
+      Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <GenerateManifest>false</GenerateManifest>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup
+      Condition="'$(Configuration)|$(Platform)'=='checked|x64'"
+      Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <GenerateManifest>false</GenerateManifest>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="../../../../../compiler/vc10WIN64-PhysX_3.2/nxpath.vsprops" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings"></ImportGroup>
+  <ImportGroup
+      Label="PropertySheets"
+      Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <Import
+        Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"
+        Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')"
+        Label="LocalAppDataPlatform"
+    />
+  </ImportGroup>
+  <ImportGroup
+      Label="PropertySheets"
+      Condition="'$(Configuration)|$(Platform)'=='profile|x64'">
+    <Import
+        Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"
+        Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')"
+        Label="LocalAppDataPlatform"
+    />
+  </ImportGroup>
+  <ImportGroup
+      Label="PropertySheets"
+      Condition="'$(Configuration)|$(Platform)'=='checked|x64'">
+    <Import
+        Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"
+        Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')"
+        Label="LocalAppDataPlatform"
+    />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <OutDir>./../../lib/vc10win64\</OutDir>
+    <IntDir>build//x64/SampleFramework-MT/release\</IntDir>
+    <TargetExt>.lib</TargetExt>
+    <TargetName>$(ProjectName)</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules/>
+    <CodeAnalysisRuleAssemblies/>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <ClCompile>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <StringPooling>true</StringPooling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalOptions>/EHsc /D ASSET_DIR=\"/SampleRenderer/4/\" /MP</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <AdditionalIncludeDirectories>./../../include;./../../../renderer/include;./../../../platform/include;./../../../../../externals/OpenAutomate/inc;./../../../../general/PxIOStream/include;./../../../../general/PxIOStream/public;./../../../../general/string_parsing/include;./../../../../general/shared;$(NXPATH)/Include;$(NXPATH)/Include/foundation;$(NXPATH)/Include/foundation/windows;$(NXPATH)/Source/foundation/include;$(NXPATH)/Source/foundation/include/windows;$(NXPATH)/Include/physxprofilesdk;$(NXPATH)/Source/physxprofilesdk;./../../../../../public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>AGPERFMON;PHYSX_PROFILE_SDK;WIN32;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;NDEBUG;APEX_SHIPPING;_SECURE_SCL=0;_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>false</ExceptionHandling>
+      <WarningLevel>Level4</WarningLevel>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/INCREMENTAL:NO</AdditionalOptions>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(OutDir)/$(ProjectName).lib.pdb</ProgramDatabaseFile>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+    <ResourceCompile></ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='profile|x64'">
+    <OutDir>./../../lib/vc10win64\</OutDir>
+    <IntDir>build//x64/SampleFramework-MT/profile\</IntDir>
+    <TargetExt>.lib</TargetExt>
+    <TargetName>$(ProjectName)PROFILE</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules/>
+    <CodeAnalysisRuleAssemblies/>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='profile|x64'">
+    <ClCompile>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <StringPooling>true</StringPooling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalOptions>/EHsc /D ASSET_DIR=\"/SampleRenderer/4/\" /MP</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <AdditionalIncludeDirectories>./../../include;./../../../renderer/include;./../../../platform/include;./../../../../../externals/OpenAutomate/inc;./../../../../general/PxIOStream/include;./../../../../general/PxIOStream/public;./../../../../general/string_parsing/include;./../../../../general/shared;$(NXPATH)/Include;$(NXPATH)/Include/foundation;$(NXPATH)/Include/foundation/windows;$(NXPATH)/Source/foundation/include;$(NXPATH)/Source/foundation/include/windows;$(NXPATH)/Include/physxprofilesdk;$(NXPATH)/Source/physxprofilesdk;./../../../../../public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>AGPERFMON;PHYSX_PROFILE_SDK;WIN32;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;NDEBUG;PX_PROFILE;_SECURE_SCL=0;_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>false</ExceptionHandling>
+      <WarningLevel>Level4</WarningLevel>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/INCREMENTAL:NO</AdditionalOptions>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)PROFILE.lib</OutputFile>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(OutDir)/$(ProjectName)PROFILE.lib.pdb</ProgramDatabaseFile>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+    <ResourceCompile></ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='checked|x64'">
+    <OutDir>./../../lib/vc10win64\</OutDir>
+    <IntDir>build//x64/SampleFramework-MT/checked\</IntDir>
+    <TargetExt>.lib</TargetExt>
+    <TargetName>$(ProjectName)CHECKED</TargetName>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules/>
+    <CodeAnalysisRuleAssemblies/>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='checked|x64'">
+    <ClCompile>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <StringPooling>true</StringPooling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalOptions>/EHsc /D ASSET_DIR=\"/SampleRenderer/4/\" /MP</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <AdditionalIncludeDirectories>./../../include;./../../../renderer/include;./../../../platform/include;./../../../../../externals/OpenAutomate/inc;./../../../../general/PxIOStream/include;./../../../../general/PxIOStream/public;./../../../../general/string_parsing/include;./../../../../general/shared;$(NXPATH)/Include;$(NXPATH)/Include/foundation;$(NXPATH)/Include/foundation/windows;$(NXPATH)/Source/foundation/include;$(NXPATH)/Source/foundation/include/windows;$(NXPATH)/Include/physxprofilesdk;$(NXPATH)/Source/physxprofilesdk;./../../../../../public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>AGPERFMON;PHYSX_PROFILE_SDK;WIN32;WIN64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;NDEBUG;PX_CHECKED;_SECURE_SCL=0;_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>false</ExceptionHandling>
+      <WarningLevel>Level4</WarningLevel>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalOptions>/INCREMENTAL:NO</AdditionalOptions>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)CHECKED.lib</OutputFile>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(OutDir)/$(ProjectName)CHECKED.lib.pdb</ProgramDatabaseFile>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+    <ResourceCompile></ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\AgPerfMonEventAPI.h"></ClInclude>
+    <ClInclude Include="..\..\include\AgPerfMonEventDefs.h"></ClInclude>
+    <ClInclude Include="..\..\include\AgPerfMonEventSrcAPI.h"></ClInclude>
+    <ClInclude Include="..\..\include\FrameworkFoundation.h"></ClInclude>
+    <ClInclude Include="..\..\include\ODBlock.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleActor.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleApplication.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleArray.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleAsset.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleAssetManager.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleCommandLine.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleDirManager.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleFilesystem.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleFrameworkInputEventIds.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleInputAsset.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleLineDebugRender.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleMaterialAsset.h"></ClInclude>
+    <ClInclude Include="..\..\include\SamplePointDebugRender.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleProfileDeclareAgPerfmonEventInfo.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleProfileDefineAgPerfmonEventInfo.h"></ClInclude>
+    <ClInclude Include="..\..\include\SamplePxProfileZone.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleTextureAsset.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleTree.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleTriangleDebugRender.h"></ClInclude>
+    <ClInclude Include="..\..\include\SampleXml.h"></ClInclude>
+    <ClInclude Include="..\..\include\targa.h"></ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\windows\WindowsSampleAssetManager.cpp"></ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\nv_dds.h"></ClInclude>
+    <ClInclude Include="..\..\src\pvrt.h"></ClInclude>
+    <ClCompile Include="..\..\src\AgPerfMonEventSrcAPI.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\nv_dds.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\ODBlock.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\SampleApplication.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\SampleAsset.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\SampleAssetManager.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\SampleCommandLine.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\SampleDirManager.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\SampleInputAsset.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\SampleLineDebugRender.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\SampleMaterialAsset.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\SamplePointDebugRender.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\SamplePxProfileZone.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\SampleTextureAsset.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\SampleTree.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\SampleTriangleDebugRender.cpp"></ClCompile>
+    <ClCompile Include="..\..\src\targa.cpp"></ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets"></ImportGroup>
+</Project>

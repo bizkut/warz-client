@@ -1,0 +1,46 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Modifies a character's balance behaviour to change the balancing posture, such as leaning, twisting and crouching. 
+behaviour_def BalancePoser
+{
+interface:
+  displayname = "Balance Poser";
+  version = 2;
+
+modules:
+  balancePoserBehaviourInterface; 
+  balanceManagement.balancePoser;
+
+attributes:
+
+  {
+    float CrouchHeightFraction = 0.6f, 0 , 1 __per_anim_set__;  ///< Fraction of the balance pose pelvis height when fully crouching
+    float PelvisWeight = 0.2f, -1.0f, 1.0f __per_anim_set__;     ///< Fraction of the pose angle change applied to the pelvis
+    float SpineWeight = 0.8f, -1.0f, 1.0f __per_anim_set__;      ///< Fraction of the pose angle change applied to the chest
+    float HeadWeight = 0.5f, -1.0f, 1.0f __per_anim_set__;       ///< Fraction of the pose angle change applied to the head
+    float PitchPerCrouchAmount = 30.0f __per_anim_set__;        ///< Pitch forward (degrees) when CrouchAmount = 1
+    bool  ChestTranslationInCharacterSpace = false;             ///< If true then the chest translation is done in character space so that x = forward, y = up and z = right
+  }
+
+controlParams:
+{
+  float Yaw;                 ///< Sets the rotation around the spine axis. Positive values cause a rotation to the left. In degrees.
+  float Pitch;               ///< Sets the angle with which the character leans forwards or backwards. Positive values pitch the character forwards and down. In degrees.
+  float Roll;                ///< Sets the angle with which the character leans to the left or right. Positive values tip the character to its left. In degrees.
+  float CrouchAmount = 1.0f, 0.0f, 1.0f; ///< Interpolate the character's target height (as a fraction of its full height) between 1 (when crouch amount is 0) and the value of the behaviour's "Crouch height fraction" attribute (when crouch amount is 1).
+  vector3 ChestTranslation;  ///< Sets the requested translation of the chest from the current position. This is interpreted in absolute units if the 'translation in' attribute is set to 'World Space'. Otherwise, if the 'translation in' attribute is set to 'Character Space' then +ve x is forwards, +ve y is upwards, +ve z is rightwards.
+}
+}
+
+#endif
+

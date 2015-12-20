@@ -1,0 +1,213 @@
+/*
+ * Copyright (c) 2009 NaturalMotion Ltd. All rights reserved.
+ *
+ * Not to be copied, adapted, modified, used, distributed, sold,
+ * licensed or commercially exploited in any manner without the
+ * written consent of NaturalMotion.
+ *
+ * All non public elements of this software are the confidential
+ * information of NaturalMotion and may not be disclosed to any
+ * person nor used for any purpose not expressly approved by
+ * NaturalMotion in writing.
+ *
+ */
+
+#if 0
+
+//----------------------------------------------------------------------------------------------------------------------
+// Describes how the constraint between an end-effector and a physics actor behaves.
+//----------------------------------------------------------------------------------------------------------------------
+struct EndConstraintControl
+{
+  + void initialise(const ER::DimensionalScaling &scaling);
+  /// Set the desired orientation of the end-effector in world space.
+  + void setDesiredOrientation(NMP::Matrix34& desTM);
+  /// Provide a pointer (cast to int) to the object to constrain to.
+  + void setTargetShapeID(int64_t shapeID);
+  // Disable collisions between end-effector and constrainee.
+  + void setDisableCollisions(bool disable);
+
+  ER::HandFootTransform desiredTM; ///< Desired pose of the end-effector in world space.
+  int64_t targetShapeID;      ///< Cast from pointer to physics actor.
+  uint16_t lockedLinearDofs;  ///< Bitmask specifying linear dofs locked by constraint.
+  uint16_t lockedAngularDofs; ///< Bitmask specifying angular dofs locked by constraint.
+  Length createDistance;      ///< Distance between endEff and target at which constraint is created.
+  Length destroyDistance;     ///< Distance between endEff and target at which constraint is destroyed.
+  Angle startOrientationAngle;///< Angular distance between endEff and target orientation to start locking orientation.
+  Angle stopOrientationAngle; ///< Angular distance between endEff and target orientation to stop locking orientation.
+  bool disableCollisions;     ///< Toggle collisions between end-effector and constrainee.
+  bool constrainOnContact;    ///< Allow constraining of end-effector to any physical actor it is in contact with.
+  bool useCheatForces;        ///< Assist hand positioning and chest orientation with helper forces.
+  bool disableAngularDofsUntilHanging; ///< Wait until hanging vertically before locking the angular dofs
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+// Manages an EndConstraint over time.
+//----------------------------------------------------------------------------------------------------------------------
+struct HoldTimer
+{
+  + void initialise(const ER::DimensionalScaling &scaling);
+
+  TimePeriod minHoldPeriod;   ///< The constraint will exist at least for this long.
+  TimePeriod maxHoldPeriod;   ///< The constraint will exist no longer than this.
+  TimePeriod noHoldPeriod;    ///< After a constraint is released, a new one can't be created during this period.
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+// Ray-cast params.
+//----------------------------------------------------------------------------------------------------------------------
+struct EdgeRaycastParams
+{
+  + void initialise(const ER::DimensionalScaling &scaling);
+
+  bool enableRaycast;
+  Length raycastEdgeOffset;
+  Length raycastLength;
+  Angle raycastHitAngle;
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+// Settings for trying to position/orientate the chest when grabbing/holding
+//----------------------------------------------------------------------------------------------------------------------
+struct GrabChestParams
+{
+  Imminence     imminence;
+  Weight        stiffnessScale;
+  ClampedWeight passOnAmount;
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+// Aggregate for sending along together in BehaviourNetwork
+//----------------------------------------------------------------------------------------------------------------------
+struct GrabControl
+{
+  EndConstraintControl constraintParams;
+  HoldTimer            holdTimer;
+  EdgeRaycastParams    edgeRaycastParams;
+  GrabChestParams      grabChestParams;
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+// Describes what kind of edges the Hold behaviour should be allowed to grab.
+//----------------------------------------------------------------------------------------------------------------------
+struct GrabDetectionParams
+{
+  + void initialise(const ER::DimensionalScaling &scaling);
+
+  float maxReachDistance;       ///< Edge must be closer than this distance from the characters chest.
+  Length minEdgeLength;         ///< Shorter edges are not allowed (dimensionally scaled).
+  Angle minAngleBetweenNormals; ///< If two surfaces are too level the joining edge is not allowed.
+  Angle maxSlope;               ///< If slope of the more upright surface is too steep, edge is not allowed.
+  Mass minMass;                 ///< Only heavier objects are allowed (dimensionally scaled).
+  Volume minVolume;             ///< Only bigger objects are allowed (dimensionally scaled).
+  Weight minEdgeQuality;        ///< Filter out low quality edges, if desired.
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+// Determines under which conditions the character will attempt to hold.
+//----------------------------------------------------------------------------------------------------------------------
+struct GrabEnableConditions
+{
+  + void initialise(const ER::DimensionalScaling &scaling);
+
+  Angle minSupportSlope;          ///< Ground normals more upright are considered supportive, so no hold required.
+  Speed verticalSpeedToStart;     ///< Falling speed needs to be bigger to attempt a hold.
+  Speed verticalSpeedToStop;      ///< Falling speed needs to be smaller to abort the hold attempt.
+  Weight unbalancedAmount;        ///< Amounts greater than this for a period of time are considered supported (no grab).
+  TimePeriod minUnbalancedPeriod; ///< See minBalanceAmount.
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+// Determines conditions for aborting a hold attempt.
+//----------------------------------------------------------------------------------------------------------------------
+struct GrabFailureConditions
+{
+  + void initialise(const ER::DimensionalScaling &scaling);
+
+  TimePeriod maxHandsBehindBackPeriod;///< If hands are constrained behind the back for this long.
+  TimePeriod maxReachAttemptPeriod;   ///< If character has tried but failed to reach an edge for this long.
+  TimePeriod minReachRecoveryPeriod;  ///< After a failed attempt, a new attempt isn't started for this long.
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+// Describes how the character behaves while stably hanging from an edge.
+//----------------------------------------------------------------------------------------------------------------------
+struct GrabAliveParams
+{
+  + void initialise();
+
+  Weight pullUpAmount;   //< How high up the character tries to pull himself. 1: to chest level, 0: no pulling.
+  Weight pullUpStrengthScale; //< How strong the arms will try to pull up.
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+// Describes an edge with information required by the hold behaviour.
+//----------------------------------------------------------------------------------------------------------------------
+struct Edge
+{
+  + Edge();
+  /// Draw edge with "grabbability" colour coding.
+  + void debugDraw(MR::InstanceDebugInterface* pDebugDrawInst) const;
+  /// Do these two instances describe the same edge?
+  + bool equals(const Edge& other) const;
+
+  int64_t shapeID;        ///< Cast from pointer.
+  int16_t gameEdgeID;     ///< Index into the list of game specified edges, or -1 if it's not from there
+  bool isWall;            ///< True: belongs to wall/box geometry. False: it's a pole or ledge.  
+  Position corner;        ///< Start of the edge.
+  PositionDelta edge;     ///< Direction of the edge (left/right hand positioning depends on this).
+  Direction uprightNormal;///< Normal of the more horizontal surface (the more supporting one).
+  Direction otherNormal;  ///< Normal of the less supportive surface.
+  Position point;         ///< A point on the edge. Used as average grab point for the end-effector.
+  float quality;          ///< "Grabbability" of this edge.
+};
+
+//----------------------------------------------------------------------------------------------------------------------
+// Ring buffer for edges. Optionally used by the GrabDetection module to "memorise" edges that are otherwise
+// forgotten by the EA system, even though they might still be valid as targets for the Hold behaviour.
+// Pushes new edges to the top, and pops old edges from the bottom.
+//----------------------------------------------------------------------------------------------------------------------
+struct EdgeBuffer
+{
+  + EdgeBuffer();
+
+  /// Adds a new edge.
+  + bool push(Edge& edge, bool avoidDuplicates);
+  /// Removes oldest edge.
+  + bool pop();
+  /// Replaces edge with lowest quality ("grabbability") with new one.
+  + bool priorityInsert(Edge& edge);
+  + bool isEmpty() const;
+  + bool isFull() const;
+  + uint8_t size() const;
+  /// Returns newest edge.
+  + Edge* first();
+  /// Returns oldest edge.
+  + Edge* last();
+  /// Random access to edges.
+  + Edge* get(uint8_t i);
+  /// Returns index of edge if it already exists in the buffer, otherwise -1.
+  + int8_t find(const Edge& edge) const;
+  /// Removes all the edges with quality ("grabbability") less than minQuality.
+  + void cullLowQuality(float minQuality);
+  /// Removes all the edges that belong to the shape with specified ID.
+  + void cullShapeID(int64_t edgeShapeID);
+  + void debugDraw(MR::InstanceDebugInterface* pDebugDrawInst) const;
+
+  private:
+
+  /// Remove edge by identifier.
+  + void remove(uint8_t i);
+
+  enum Constants
+  {
+    MAX_SIZE = 4
+  };
+
+  Edge m_edges[MAX_SIZE];
+  uint8_t m_pushIndex;
+  uint8_t m_popIndex;
+  uint8_t m_size;
+};
+
+#endif

@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target LE32 Debug|Win32">
+      <Configuration>Target LE32 Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target LE32 Release|Win32">
+      <Configuration>Target LE32 Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target BE32 Debug|Win32">
+      <Configuration>Target BE32 Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target BE32 Release|Win32">
+      <Configuration>Target BE32 Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>morphemeCore</ProjectName>
+    <ProjectGuid>{AC5679CC-935C-4BCF-67A4-D937C17D2BC4}</ProjectGuid>
+    <RootNamespace>morphemeCore</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>morphemeCore_debug</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\morphemeCore\debug\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>morphemeCore</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\morphemeCore\release\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <TargetName>morphemeCore_target_LE32_debug</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\morphemeCore\target_le32_debug\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <TargetName>morphemeCore_target_LE32</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\morphemeCore\target_le32_release\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <TargetName>morphemeCore_target_BE32_debug</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\morphemeCore\target_be32_debug\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <TargetName>morphemeCore_target_BE32</TargetName>
+    <IntDir>..\..\..\obj\win32\vs$(VisualStudioVersion)\morphemeCore\target_be32_release\</IntDir>
+    <OutDir>..\..\..\lib\win32\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeCore_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeCore.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_TARGET_BIGENDIAN=0;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeCore_target_LE32_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;NM_TARGET_BIGENDIAN=0;WIN32;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeCore_target_LE32.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_TARGET_BIGENDIAN=1;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeCore_target_BE32_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..;..\..\..\common\NMRuntimeUtils\include;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;NM_TARGET_BIGENDIAN=1;WIN32;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)morphemeCore_target_BE32.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSectionASA.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSectionMBA.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSectionNSA.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSectionQSA.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSource.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSourceASA.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSourceMBA.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSourceNSA.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSourceQSA.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrAnimSourceUtils.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrChannelPos.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrChannelPosQuantised.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrChannelQuat.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrChannelRotVecQuantised.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrTrajectorySourceASA.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrTrajectorySourceBase.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrTrajectorySourceMBA.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrTrajectorySourceNSA.h" />
+    <ClInclude Include="include\morpheme\AnimSource\mrTrajectorySourceQSA.h" />
+    <ClInclude Include="include\morpheme\mrAnimationSourceHandle.h" />
+    <ClInclude Include="include\morpheme\mrAnimSampleTasks.inl" />
+    <ClInclude Include="include\morpheme\mrAttribAddress.h" />
+    <ClInclude Include="include\morpheme\mrAttribData.h" />
+    <ClInclude Include="include\morpheme\mrBlendOps.h" />
+    <ClInclude Include="include\morpheme\mrCharacterControllerAttribData.h" />
+    <ClInclude Include="include\morpheme\mrCharacterControllerDef.h" />
+    <ClInclude Include="include\morpheme\mrCharacterControllerInterface.h" />
+    <ClInclude Include="include\morpheme\mrCharacterControllerInterfaceBase.h" />
+    <ClInclude Include="include\morpheme\mrCommonTaskQueuingFns.h" />
+    <ClInclude Include="include\morpheme\mrCommonTasks.h" />
+    <ClInclude Include="include\morpheme\mrCompressedDataBufferQuat.h" />
+    <ClInclude Include="include\morpheme\mrCompressedDataBufferVector3.h" />
+    <ClInclude Include="include\morpheme\mrCoreTaskIDs.h" />
+    <ClInclude Include="include\morpheme\mrDebugClient.h" />
+    <ClInclude Include="include\morpheme\mrDebugClient.inl" />
+    <ClInclude Include="include\morpheme\mrDebugMacros.h" />
+    <ClInclude Include="include\morpheme\mrDebugManager.h" />
+    <ClInclude Include="include\morpheme\mrDefines.h" />
+    <ClInclude Include="include\morpheme\mrDispatcher.h" />
+    <ClInclude Include="include\morpheme\mrEventTrackBase.h" />
+    <ClInclude Include="include\morpheme\mrEventTrackCurve.h" />
+    <ClInclude Include="include\morpheme\mrEventTrackDiscrete.h" />
+    <ClInclude Include="include\morpheme\mrEventTrackDuration.h" />
+    <ClInclude Include="include\morpheme\mrEventTrackSync.h" />
+    <ClInclude Include="include\morpheme\mrFootCyclePrediction.h" />
+    <ClInclude Include="include\morpheme\mrInstanceDebugInterface.h" />
+    <ClInclude Include="include\morpheme\mrJointControlUtilities.h" />
+    <ClInclude Include="include\morpheme\mrManager.h" />
+    <ClInclude Include="include\morpheme\mrMessage.h" />
+    <ClInclude Include="include\morpheme\mrMessageDistributor.h" />
+    <ClInclude Include="include\morpheme\mrMirroredAnimMapping.h" />
+    <ClInclude Include="include\morpheme\mrNetwork.h" />
+    <ClInclude Include="include\morpheme\mrNetworkControlSerialiser.h" />
+    <ClInclude Include="include\morpheme\mrNetworkControlSerialiser.inl" />
+    <ClInclude Include="include\morpheme\mrNetworkDef.h" />
+    <ClInclude Include="include\morpheme\mrNetworkDef.inl" />
+    <ClInclude Include="include\morpheme\mrNetworkLogger.h" />
+    <ClInclude Include="include\morpheme\mrNetworkRestorePoint.h" />
+    <ClInclude Include="include\morpheme\mrNetworkRestorePoint.inl" />
+    <ClInclude Include="include\morpheme\mrNode.h" />
+    <ClInclude Include="include\morpheme\mrNodeBin.h" />
+    <ClInclude Include="include\morpheme\mrNodeDef.h" />
+    <ClInclude Include="include\morpheme\mrNodeDef.inl" />
+    <ClInclude Include="include\morpheme\mrNodeParentingMap.h" />
+    <ClInclude Include="include\morpheme\mrNodeTagTable.h" />
+    <ClInclude Include="include\morpheme\mrNodeTagTable.inl" />
+    <ClInclude Include="include\morpheme\mrPackedArrayUint32.h" />
+    <ClInclude Include="include\morpheme\mrRig.h" />
+    <ClInclude Include="include\morpheme\mrRigRetargetMapping.h" />
+    <ClInclude Include="include\morpheme\mrRigToAnimMap.h" />
+    <ClInclude Include="include\morpheme\mrRuntimeNodeInspector.h" />
+    <ClInclude Include="include\morpheme\mrSPUDefines.h" />
+    <ClInclude Include="include\morpheme\mrSyncEventPos.h" />
+    <ClInclude Include="include\morpheme\mrTask.h" />
+    <ClInclude Include="include\morpheme\mrTaskQueue.h" />
+    <ClInclude Include="include\morpheme\mrTaskUtilities.h" />
+    <ClInclude Include="include\morpheme\mrTrajectoryPrediction.h" />
+    <ClInclude Include="include\morpheme\mrTransitDeadBlend.h" />
+    <ClInclude Include="include\morpheme\mrUnevenTerrainIK.h" />
+    <ClInclude Include="include\morpheme\mrUnevenTerrainUtilities.h" />
+    <ClInclude Include="include\morpheme\mrUtils.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrEmittedControlParamNodeUtils.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeAnimSyncEvents.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeApplyBindPose.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeApplyGlobalTime.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBasicUnevenTerrain.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlend2.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlend2SyncEvents.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlend2x2.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlend2x2SyncEvents.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlendAll.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlendAllSyncEvents.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlendN.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlendNSyncEvents.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeBlendNxM.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeCharacterControllerOverride.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeClosestAnim.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeControlParamBool.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeControlParamFloat.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeControlParamInt.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeControlParamUInt.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeControlParamVector3.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeControlParamVector4.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeEmitMessageOnDiscreteEvent.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeExtractJointInfo.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeFeatherBlend2.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeFeatherBlend2SyncEvents.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeFilterTransforms.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeFreeze.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeGunAimIK.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeHeadLook.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeHipsIK.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeLockFoot.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeMirrorTransforms.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeModifyJointTransform.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeModifyTrajectoryTransform.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorArithmetic.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorBoolean.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorCPCompare.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorFloatsToVector3.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorFloatToInt.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorFunction.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorIntToFloat.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorNoiseGen.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorOneInputArithmetic.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorRampFloat.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorRandomFloat.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorRateOfChange.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorRayCast.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorSmoothFloat.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorTimeLagInput.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorVector3Angle.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorVector3CrossProduct.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorVector3Distance.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorVector3Dot.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorVector3Normalise.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeOperatorVector3ToFloats.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodePassThrough.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodePlaySpeedModifier.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodePredictiveUnevenTerrain.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeRetarget.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodes.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeScaleCharacter.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeScaleToDuration.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeScatterBlend1D.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeScatterBlend2D.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeScatterBlend2DSyncEvents.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeSequence.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeSingleFrame.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeSmoothTransforms.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeStateMachine.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeSubtractiveBlend.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeSubtractiveBlendSyncEvents.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeSwitch.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeTransit.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeTransitSyncEvents.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrNodeTwoBoneIK.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrScatterBlend1DUtils.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrScatterBlend2DUtils.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrScatterBlendProjectionUtils.h" />
+    <ClInclude Include="include\morpheme\Nodes\mrSharedNodeFunctions.h" />
+    <ClInclude Include="include\morpheme\Prediction\mrNDMesh.h" />
+    <ClInclude Include="include\morpheme\Prediction\mrNDMeshAPResampleMap.h" />
+    <ClInclude Include="include\morpheme\Prediction\mrNDMeshAPSearchMap.h" />
+    <ClInclude Include="include\morpheme\Prediction\mrNDMeshQueryData.h" />
+    <ClInclude Include="include\morpheme\Prediction\mrNetworkPredictionDef.h" />
+    <ClInclude Include="include\morpheme\Prediction\mrPredictionModelNDMesh.h" />
+    <ClInclude Include="include\morpheme\Prediction\mrScatteredDataUtils.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitCondition.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamBoolSet.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamFloatGreater.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamFloatInRange.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamFloatLess.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamIntGreater.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamIntInRange.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamIntLess.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamUIntGreater.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamUIntInRange.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionControlParamUIntLess.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionCrossedCurveEventValueDecreasing.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionCrossedDurationFraction.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionDiscreteEventTriggered.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionFalse.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionInDurationEvent.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionInSyncEventRange.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionNodeActive.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionOnMessage.h" />
+    <ClInclude Include="include\morpheme\TransitConditions\mrTransitConditionRayHit.h" />
+    <ClCompile Include="src\AnimSource\mrAnimSectionASA.cpp" />
+    <ClCompile Include="src\AnimSource\mrAnimSectionMBA.cpp" />
+    <ClCompile Include="src\AnimSource\mrAnimSectionNSA.cpp" />
+    <ClCompile Include="src\AnimSource\mrAnimSectionQSA.cpp" />
+    <ClCompile Include="src\AnimSource\mrAnimSource.cpp" />
+    <ClCompile Include="src\AnimSource\mrAnimSourceASA.cpp" />
+    <ClCompile Include="src\AnimSource\mrAnimSourceMBA.cpp" />
+    <ClCompile Include="src\AnimSource\mrAnimSourceNSA.cpp" />
+    <ClCompile Include="src\AnimSource\mrAnimSourceQSA.cpp" />
+    <ClCompile Include="src\AnimSource\mrAnimSourceUtils.cpp" />
+    <ClCompile Include="src\AnimSource\mrChannelPos.cpp" />
+    <ClCompile Include="src\AnimSource\mrChannelPosQuantised.cpp" />
+    <ClCompile Include="src\AnimSource\mrChannelQuat.cpp" />
+    <ClCompile Include="src\AnimSource\mrChannelRotVecQuantised.cpp" />
+    <ClCompile Include="src\AnimSource\mrTrajectorySourceASA.cpp" />
+    <ClCompile Include="src\AnimSource\mrTrajectorySourceMBA.cpp" />
+    <ClCompile Include="src\AnimSource\mrTrajectorySourceNSA.cpp" />
+    <ClCompile Include="src\AnimSource\mrTrajectorySourceQSA.cpp" />
+    <ClCompile Include="src\mrAnimationSourceHandle.cpp" />
+    <ClCompile Include="src\mrAnimSampleTasksASA.cpp" />
+    <ClCompile Include="src\mrAnimSampleTasksMBA.cpp" />
+    <ClCompile Include="src\mrAnimSampleTasksNSA.cpp" />
+    <ClCompile Include="src\mrAnimSampleTasksQSA.cpp" />
+    <ClCompile Include="src\mrAttribData.cpp" />
+    <ClCompile Include="src\mrBasicUnevenTerrainIKTasks.cpp" />
+    <ClCompile Include="src\mrBlendOps.cpp" />
+    <ClCompile Include="src\mrBlendOpsSIMD.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Target LE32 Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Target LE32 Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Target BE32 Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Target BE32 Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\mrBlendTransformTasks.cpp" />
+    <ClCompile Include="src\mrCharacterControllerAttribData.cpp" />
+    <ClCompile Include="src\mrCharacterControllerDef.cpp" />
+    <ClCompile Include="src\mrCommonTaskQueuingFns.cpp" />
+    <ClCompile Include="src\mrCommonTasks.cpp" />
+    <ClCompile Include="src\mrCompressedDataBufferQuat.cpp" />
+    <ClCompile Include="src\mrCompressedDataBufferVector3.cpp" />
+    <ClCompile Include="src\mrCoreTaskIDs.cpp" />
+    <ClCompile Include="src\mrDebugManager.cpp" />
+    <ClCompile Include="src\mrDispatcher.cpp" />
+    <ClCompile Include="src\mrDurationEventTasks.cpp" />
+    <ClCompile Include="src\mrEventTrackBase.cpp" />
+    <ClCompile Include="src\mrEventTrackCurve.cpp" />
+    <ClCompile Include="src\mrEventTrackDiscrete.cpp" />
+    <ClCompile Include="src\mrEventTrackDuration.cpp" />
+    <ClCompile Include="src\mrEventTrackSync.cpp" />
+    <ClCompile Include="src\mrFootCyclePrediction.cpp" />
+    <ClCompile Include="src\mrFootLockIKTasks.cpp" />
+    <ClCompile Include="src\mrGunAimIKTasks.cpp" />
+    <ClCompile Include="src\mrHeadLookIKTasks.cpp" />
+    <ClCompile Include="src\mrHipsIKTasks.cpp" />
+    <ClCompile Include="src\mrInstanceDebugInterface.cpp" />
+    <ClCompile Include="src\mrJointControlUtilities.cpp" />
+    <ClCompile Include="src\mrManager.cpp" />
+    <ClCompile Include="src\mrMessageDistributor.cpp" />
+    <ClCompile Include="src\mrMirroredAnimMapping.cpp" />
+    <ClCompile Include="src\mrNetwork.cpp" />
+    <ClCompile Include="src\mrNetworkControlSerialiser.cpp" />
+    <ClCompile Include="src\mrNetworkDef.cpp" />
+    <ClCompile Include="src\mrNetworkLogger.cpp" />
+    <ClCompile Include="src\mrNetworkRestorePoint.cpp" />
+    <ClCompile Include="src\mrNodeBin.cpp" />
+    <ClCompile Include="src\mrNodeDef.cpp" />
+    <ClCompile Include="src\mrNodeParentingMap.cpp" />
+    <ClCompile Include="src\mrNodeTagTable.cpp" />
+    <ClCompile Include="src\mrPackedArrayUint32.cpp" />
+    <ClCompile Include="src\mrPredictiveUnevenTerrainIKTasks.cpp" />
+    <ClCompile Include="src\mrReferenceTasks.cpp" />
+    <ClCompile Include="src\mrRetargetTasks.cpp" />
+    <ClCompile Include="src\mrRig.cpp" />
+    <ClCompile Include="src\mrRigRetargetMapping.cpp" />
+    <ClCompile Include="src\mrRigToAnimMap.cpp" />
+    <ClCompile Include="src\mrRuntimeNodeInspector.cpp" />
+    <ClCompile Include="src\mrTaskQueue.cpp" />
+    <ClCompile Include="src\mrTaskUtilities.cpp" />
+    <ClCompile Include="src\mrTrajectoryBlendTasks.cpp" />
+    <ClCompile Include="src\mrTrajectoryPrediction.cpp" />
+    <ClCompile Include="src\mrTransitDeadBlend.cpp" />
+    <ClInclude Include="src\mrTransitDeadBlend.inl" />
+    <ClCompile Include="src\mrTransitTasks.cpp" />
+    <ClCompile Include="src\mrTwoBoneIKTasks.cpp" />
+    <ClCompile Include="src\mrUnevenTerrainIK.cpp" />
+    <ClCompile Include="src\mrUnevenTerrainUtilities.cpp" />
+    <ClCompile Include="src\mrUtils.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeAnimSyncEvents.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeApplyBindPose.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeApplyGlobalTime.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeBasicUnevenTerrain.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeBlend2.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeBlend2SyncEvents.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeBlend2x2.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeBlend2x2SyncEvents.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeBlendAll.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeBlendAllSyncEvents.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeBlendN.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeBlendNSyncEvents.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeBlendNxM.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeCharacterControllerOverride.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeClosestAnim.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeControlParamBool.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeControlParamFloat.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeControlParamInt.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeControlParamUInt.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeControlParamVector3.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeControlParamVector4.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeEmitMessageOnDiscreteEvent.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeExtractJointInfo.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeFeatherBlend2.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeFeatherBlend2SyncEvents.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeFilterTransforms.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeFreeze.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeGunAimIK.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeHeadLook.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeHipsIK.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeLockFoot.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeMirrorTransforms.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeModifyJointTransform.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeModifyTrajectoryTransform.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorArithmetic.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorBoolean.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorCPCompare.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorFloatsToVector3.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorFloatToInt.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorFunction.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorIntToFloat.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorNoiseGen.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorOneInputArithmetic.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorRampFloat.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorRandomFloat.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorRateOfChange.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorRayCast.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorSmoothFloat.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorTimeLagInput.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorVector3Angle.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorVector3CrossProduct.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorVector3Distance.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorVector3Dot.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorVector3Normalise.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeOperatorVector3ToFloats.cpp" />
+    <ClCompile Include="src\Nodes\mrNodePassThrough.cpp" />
+    <ClCompile Include="src\Nodes\mrNodePlaySpeedModifier.cpp" />
+    <ClCompile Include="src\Nodes\mrNodePredictiveUnevenTerrain.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeRetarget.cpp" />
+    <ClCompile Include="src\Nodes\mrNodes.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeScaleCharacter.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeScaleToDuration.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeScatterBlend1D.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeScatterBlend2D.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeScatterBlend2DSyncEvents.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeSequence.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeSingleFrame.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeSmoothTransforms.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeStateMachine.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeSubtractiveBlend.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeSubtractiveBlendSyncEvents.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeSwitch.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeTransit.cpp" />
+    <ClInclude Include="src\Nodes\mrNodeTransit.inl" />
+    <ClCompile Include="src\Nodes\mrNodeTransitSyncEvents.cpp" />
+    <ClCompile Include="src\Nodes\mrNodeTwoBoneIK.cpp" />
+    <ClCompile Include="src\Nodes\mrScatterBlend1DUtils.cpp" />
+    <ClCompile Include="src\Nodes\mrScatterBlend2DUtils.cpp" />
+    <ClCompile Include="src\Nodes\mrScatterBlendProjectionUtils.cpp" />
+    <ClCompile Include="src\Nodes\mrSharedNodeFunctions.cpp" />
+    <ClCompile Include="src\Prediction\mrNDMesh.cpp" />
+    <ClCompile Include="src\Prediction\mrNDMeshAPResampleMap.cpp" />
+    <ClCompile Include="src\Prediction\mrNDMeshAPSearchMap.cpp" />
+    <ClCompile Include="src\Prediction\mrNDMeshQueryData.cpp" />
+    <ClCompile Include="src\Prediction\mrNetworkPredictionDef.cpp" />
+    <ClCompile Include="src\Prediction\mrPredictionModelNDMesh.cpp" />
+    <ClCompile Include="src\Prediction\mrScatteredDataUtils.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitCondition.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamBoolSet.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamFloatGreater.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamFloatInRange.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamFloatLess.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamIntGreater.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamIntInRange.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamIntLess.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamUIntGreater.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamUIntInRange.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionControlParamUIntLess.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionCrossedCurveEventValueDecreasing.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionCrossedDurationFraction.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionDiscreteEventTriggered.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionFalse.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionInDurationEvent.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionInSyncEventRange.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionNodeActive.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionOnMessage.cpp" />
+    <ClCompile Include="src\TransitConditions\mrTransitConditionRayHit.cpp" />
+    <ClInclude Include="..\sharedDefines\mAnimDebugInterface.h" />
+    <ClInclude Include="..\sharedDefines\mAnimDebugInterface.inl" />
+    <ClInclude Include="..\sharedDefines\mCoreDebugInterface.h" />
+    <ClInclude Include="..\sharedDefines\mCoreDebugInterface.inl" />
+    <ClInclude Include="..\sharedDefines\mDebugDrawTessellator.h" />
+    <ClInclude Include="..\sharedDefines\mDebugDrawTessellator.inl" />
+    <ClInclude Include="..\sharedDefines\mSharedDefines.h" />
+    <ClInclude Include="..\sharedDefines\mVersion.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\common\NMRuntimeUtils\NMRuntimeUtils_WIN32.vcxproj">
+      <Project>{3EBBF790-FDD8-4FCC-81A8-FEA264CAD994}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMPlatform\NMPlatform_WIN32.vcxproj">
+      <Project>{A09CF394-9273-474D-4091-19EB54BF95DA}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

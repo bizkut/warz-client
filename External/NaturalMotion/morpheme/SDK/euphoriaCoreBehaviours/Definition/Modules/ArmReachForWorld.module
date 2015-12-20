@@ -1,0 +1,52 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// reach to a target (point + normal)
+module_def ArmReachForWorld
+{
+owner: Arm
+data:
+  float effectorToTargetAngle;
+  Importance reachImportance;       ///< A measure of how much apparent effort should be made to reach the current target.
+  Length maxReach;             ///< This is the arm length scaled by the user-specified maximum reach scale parameter.
+in:
+  LimbControl limbControl;
+  ReachWorldParameters reachParams;
+  Weight supportAmount;
+  ER::LimbTransform supportTM;    ///< in support this is considered the "fixed root" of the system
+  
+out:
+  LimbControl control;
+
+feedOut:
+  Distance distanceToTarget;
+  DirectionRequest pelvisDirectionRequest;
+  TranslationRequest pelvisTranslationRequest;
+  RotationRequest pelvisRotationRequest;
+  DirectionRequest chestDirectionRequest; ///< Will be sent when he is supported
+  RotationRequest rootRotationRequest; ///< Will be sent when he is not supported
+  TranslationRequest chestTranslationRequest;
+  
+connections<>:
+  // what to reach for
+  in.limbControl = junctions.target = winnerTakesAll(
+    owner.grab.out.limbControl,
+    owner.owner.reachForWorldBehaviourInterface.out.limbControls[owner.$ChildIndex]);
+    
+  in.reachParams = junctions.reachActionParams = winnerTakesAll(
+    owner.grab.out.reachParams,
+    owner.owner.reachForWorldBehaviourInterface.out.reachParams[owner.$ChildIndex]);
+  in.supportAmount = (owner.owner.bodyFrame.feedOut.supportAmount);
+  in.supportTM = (owner.owner.bodyFrame.bodyBalance.out.supportTM);
+}
+
+#endif

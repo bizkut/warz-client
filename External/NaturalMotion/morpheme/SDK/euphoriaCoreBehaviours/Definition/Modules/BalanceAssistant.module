@@ -1,0 +1,38 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+__global_access__ __no_feedback__ module_def BalanceAssistant
+{
+owner: BodyFrame<>
+data:
+
+in:
+  ER::LimbTransform desiredPelvisTM;
+  BalanceAssistanceParameters balanceAssistanceParameters;
+  Weight balanceAmount;
+
+out:
+
+feedOut:
+
+feedIn:
+  bool isStepping[networkMaxNumLegs];
+
+connections<>:
+  in.desiredPelvisTM = (owner.bodyBalance.out.targetPelvisTM);
+  in.balanceAmount = (owner.bodyBalance.feedOut.balanceAmount);
+  in.balanceAssistanceParameters = (owner.owner.balanceBehaviourInterface.out.balanceAssistanceParameters);
+  feedIn.isStepping[*] = directInput(owner.owner.legs[*].step.feedOut.isStepping);
+
+}
+
+#endif

@@ -1,0 +1,53 @@
+  // Copyright (c) 2012 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Non-SPU so it can interface with the system to get data into an appropriate network format etc
+__global_access__ module_def SitBehaviourInterface
+{
+owner: MyNetwork<>
+
+data:
+  // Following are only used if the behaviour param UseSingleFrameForPose is set to true
+  Transform cachedSitPoseEndRelativeToRoots[networkMaxNumLimbs];
+  float     cachedSitPoseWeights[networkMaxNumLimbs];
+
+out:
+  Transform armPoseEndRelativeToRoot[networkMaxNumArms];
+  Transform legPoseEndRelativeToRoot[networkMaxNumLegs];
+  Transform spinePoseEndRelativeToRoot[networkMaxNumSpines];
+  Transform headPoseEndRelativeToRoot[networkMaxNumHeads];
+
+  SitParameters sitParameters;
+
+  bool supportWithArms;
+  bool supportWithLegs;
+  bool supportWithSpines;
+
+  Multiplier legsSwingWeight; ///< Used to disable leg swing when attempting to sit.
+
+feedIn:
+  Weight sitAmount;
+
+feedOut:
+  Weight sitAmount;
+
+connections<>:
+  // feedIn
+  feedIn.sitAmount = (owner.bodyFrame.sittingBodyBalance.feedOut.sitAmount);
+
+  // feedOut
+  feedOut.sitAmount = (feedIn.sitAmount);
+
+}
+
+#endif
+

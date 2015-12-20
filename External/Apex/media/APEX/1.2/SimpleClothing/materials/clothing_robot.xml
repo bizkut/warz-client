@@ -1,0 +1,9 @@
+<material type="lit">
+  <shader name="vertex">vertex/staticmesh.cg</shader>
+  <shader name="vertex">vertex/skeletalmesh_4bone.cg</shader>
+  <shader name="fragment">fragment/simple_uniform_colors.cg</shader>
+  <variables>
+    <float4 name="diffuseColor">0.4 0.4 0.4 1.0</float4>
+    <float4 name="specularColor">0.6 0.6 0.7 3.0</float4>
+  </variables>
+</material>

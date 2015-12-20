@@ -1,0 +1,424 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\NMNumerics" />
+    <Filter Include="include" />
+    <Filter Include="src" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\NMNumerics\NMBandDiagMatrix.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMBandDiagSolverCholesky.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMBandDiagSolverLU.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMBidiagonalizer.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMBSplineCurve.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMBSplineSolver.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMCSplineInterpolator.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMCSplineSmoother.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMCurveBase.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMDiscreteWaveletTransform.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMDiscreteWaveletTransform2D.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMEigenSystemSym.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMGivens.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMHouseholder.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMImage.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMLinearRegression.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMMoments2D.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMNonLinearOptimiser.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMNonLinearOptimiserBandDiag.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMNonLinearOptimiserBase.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMNonLinearOptimiserCholesky.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMNormalDistribution2D.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMNumericUtils.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMPolyLine.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMPosSpline.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMPosSplineFitterBase.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMPosSplineFitterTangents.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMPPolyCurve.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMQR.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMQuatSpline.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMQuatSplineFitterAngleTol.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMQuatSplineFitterBase.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMQuatSplineFitterContinuityC0.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMQuatSplineFitterContinuityC1.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMQuatSplineFitterInsertKnot.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMQuatSplineFitterRemoveKnot.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMQuatSplineFitterSmoothedC1.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMQuatSplineFitterTangents.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMQuatUtils.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMRigidMotionTMJacobian.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMScrew.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMSimpleKnotVector.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMSimpleSplineFittingUtils.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMSimplexGenerator3D.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMSolverCholesky.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMSolverLU.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMSolverQR.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMSolverTriDiag.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMSplineUtils.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMSVD.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMTriangulation2D.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMUniformQuantisation.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NMNumerics\NMVector3Utils.h">
+      <Filter>include\NMNumerics</Filter>
+    </ClInclude>
+    <ClCompile Include="src\NMBandDiagMatrix.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBandDiagMatrix_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBandDiagSolverCholesky.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBandDiagSolverCholesky_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBandDiagSolverLU.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBandDiagSolverLU_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBidiagonalizer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBidiagonalizer_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBSplineCurve.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBSplineCurve_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBSplineSolver.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMBSplineSolver_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMCSplineInterpolator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMCSplineInterpolator_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMCSplineSmoother.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMCSplineSmoother_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMCurveBase.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMCurveBase_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMDiscreteWaveletTransform.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMDiscreteWaveletTransform2D.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMDiscreteWaveletTransform2D_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMDiscreteWaveletTransform_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMEigenSystemSym.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMEigenSystemSym_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMGivens.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMGivens_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMHouseholder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMHouseholder_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMImage.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMLinearRegression.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMLinearRegression_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMMoments2D.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMMoments2D_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNonLinearOptimiser.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNonLinearOptimiserBandDiag.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNonLinearOptimiserBandDiag_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNonLinearOptimiserBase.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNonLinearOptimiserBase_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNonLinearOptimiserCholesky.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNonLinearOptimiserCholesky_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNonLinearOptimiser_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNormalDistribution2D.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNormalDistribution2D_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNumericUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMNumericUtils_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMPolyLine.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMPolyLine_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMPosSpline.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMPosSplineFitterBase.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMPosSplineFitterTangents.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMPPolyCurve.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMPPolyCurve_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMQR.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMQR_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMQuatSpline.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMQuatSplineFitterAngleTol.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMQuatSplineFitterBase.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMQuatSplineFitterContinuityC0.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMQuatSplineFitterContinuityC1.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMQuatSplineFitterInsertKnot.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMQuatSplineFitterRemoveKnot.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMQuatSplineFitterSmoothedC1.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMQuatSplineFitterTangents.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMQuatUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMRigidMotionTMJacobian.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMScrew.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMScrew_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSimpleKnotVector.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSimpleSplineFittingUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSimplexGenerator3D.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSolverCholesky.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSolverCholesky_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSolverLU.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSolverLU_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSolverQR.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSolverQR_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSolverTriDiag.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSolverTriDiag_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSplineUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSplineUtils_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSVD.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMSVD_imp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMTriangulation2D.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMUniformQuantisation.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NMVector3Utils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

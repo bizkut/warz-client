@@ -1,0 +1,25 @@
+<!DOCTYPE NxParameters>
+<NxParameters numObjects="1" version="1.0" >
+<value name="" type="Ref" className="BasicIOSAssetParam" version="0.4" checksum="0xcb6a84c 0x48e1978e 0x961cee62 0x1d7d95b">
+  <struct name="">
+    <value name="restDensity" type="F32">0</value>
+    <value name="particleRadius" type="F32">1</value>
+    <value name="maxParticleCount" type="U32">16384</value>
+    <value name="maxInjectedParticleCount" type="F32">0.1</value>
+    <value name="sceneGravityScale" type="F32">1</value>
+    <value name="externalAcceleration" type="Vec3">0 0 0</value>
+    <struct name="particleMass">
+      <value name="center" type="F32">1</value>
+      <value name="spread" type="F32">0</value>
+      <value name="type" type="Enum">uniform</value>
+    </struct>
+    <value name="collisionFilterDataName" null="1" type="String"></value>
+    <value name="fieldSamplerFilterDataName" null="1" type="String"></value>
+    <value name="staticCollision" type="Bool">true</value>
+    <value name="restitutionForStaticShapes" type="F32">0.5</value>
+    <value name="dynamicCollision" type="Bool">true</value>
+    <value name="restitutionForDynamicShapes" type="F32">0.5</value>
+    <value name="collisionDistanceMultiplier" type="F32">1</value>
+  </struct>
+</value>
+</NxParameters>

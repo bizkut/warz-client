@@ -1,0 +1,275 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Keeps the character in a specified standing pose or returns the character to that pose by stepping, if the character is off balance. 
+behaviour_def Balance
+{
+interface:
+  displayname = "Balance";
+  version = 11;
+
+modules:
+  balanceBehaviourInterface;
+  balanceBehaviourFeedback;
+
+  arms[*].standingSupport.*;
+  arms[*].step.*;
+  arms[*].swing.*;
+  arms[*].spin.*;
+  arms[*].pose.*;
+
+  heads[*].support.*;
+  heads[*].point.*;
+  heads[*].eyes;
+
+  legs[*].standingSupport.*;
+  legs[*].step.*;
+
+  spines[*].support.*;
+  spines[*].control.*;
+
+  balanceManagement.*;
+  bodyFrame.bodyBalance.*;
+  bodyFrame.supportPolygon.*;
+  bodyFrame.balanceAssistant.*;
+  upperBody.*;
+  lowerBody.*;
+
+attributes:
+
+  /// Settings that govern the characters behaviour when standing (stationary balance)
+  group("Stand")
+  {
+    bool EnableStand = true; ///< Unused
+    bool SupportWithArms = false __per_anim_set__;///< Use the arms as well as the legs to stand and balance on. This is a possibility for balancing for quadrapeds whose forlegs are marked as arms.
+
+    // Advanced settings for balancing when the character is stationary.
+    float FootBalanceAmount  = 481.191376f, 0, 5000.0f __per_anim_set__ __title__("FootBalanceAngle"); ///< Amount to angle the feet to balance (this is the foot target angle in degrees when at the edge of balancing). Generally make it as large as possible, but if it is too large it will cause the feet to jitter.
+    float DecelerationAmount = 0.549265f, 0, 1.0f __per_anim_set__;                                    ///< Amount that the character should lean away from movement in order to decelerate
+    float MaxAngle           = 60.0f, 0, 90.0f __per_anim_set__         __title__("MaxFootAngle");     ///< Maximum angle for the feet, in degrees
+    float FootLength         = 0.392197f, 0, 1.0f __per_anim_set__;                                    ///< Foot length in metres (standard character). Smaller values result in the character stepping earlier, which can prevent him teetering on the edge of static balance.
+    float LowerPelvisDistanceWhenFootLifts = 0.456781f, 0, 1.0f __per_anim_set__  __title__("OnFootLiftLowerPelvisBy") ; ///< Distance to lower the pelvis (i.e. crouch) when a supporting foot lifts off the floor. In metres (standard character).
+  }
+
+  /// Settings that govern the tendency to spin arms to regain balance
+  group("Arm Spin")
+  {
+    bool AllowArmSpin = false __per_anim_set__     __title__("SpinArmsForBalance"); ///< Allow the character to or windmill its arms (when needed) in order to maintain balance. If a character is unable to step then windmilling its arms can be the only way it can maintain balance.
+    float SpinAmount = 1.0f, 0.1f, 5.0f __per_anim_set__; ///< Scales the amount and speed of arm spinning
+    float SpinThreshold = 2.0f, 0.0f, 5.0f __per_anim_set__; ///< How off-balance the character needs to be to start spinning his arms
+  }
+
+  /// Settings that govern the characters behaviour when stepping (to maintain balance)
+  group("Step")
+  {
+    bool EnableCollisionGroup = true; ///< Use a collision group to avoid leg/ arm collision.  If enabled the collision group index must be provided. 
+    int CollisionGroupIndex = -1 __title__("CollisionGroup"); ///< Collision group used to disable leg/arm collision when stepping. This is the name of the collision group within the collision groups editor. This name is stored as an index into the group as appears in the collision group index.
+    bool StepWithLegs = true  __per_anim_set__ ; ///< Use the legs to step with
+    bool StepWithArms = false  __per_anim_set__ ; ///< Use the arms to step with. This is a possibility for quadrapeds whose forlegs are marked as arms
+    float SuppressSteppingTime = 0.0f __per_anim_set__ __title__("DelayBeforeStepping");  ///< Prevent stepping for this time after enabling, in seconds (standard character).
+
+    /// Scales the strength with which the character can swing its arms when stepping. 
+    float ArmSwingStrengthScaleWhenStepping = 0.5f, 0.0f, 1.0f __per_anim_set__ __title__("ArmSwingStrengthScale"); 
+
+    /// The StepCount that is emitted as an output parameter is reset if this amount of time has passed from the last step. In seconds (standard character).
+    float StepCountResetTime = 1.0f __per_anim_set__                       __title__("ResetStepCountAfter"); 
+
+    /// Attempt to prevent/reduce stepping through such that the step would cross the other stance feet
+    bool SuppressFootCrossing = false __per_anim_set__;
+    /// Positive values will cut the step short before it would cross the other foot. Negative values will allow for more foot crossing. In metres (standard character).
+    float FootCrossingOffset = 0.1f, -0.4f, 0.4f __per_anim_set__;
+    
+    // Advanced settings for balancing when the character is stepping.
+    float StepPredictionTimeForward    =  0.127242f, 0, 1.0f __per_anim_set__ __title__("ForwardStepPredictionTime"); ///< Time used to calculate the step length when stepping forwards, in seconds (standard character).
+    float StepPredictionTimeBackward   =  0.408668f, 0, 1.0f __per_anim_set__ __title__("BackwardStepPredictionTime"); ///< Time used to calculate the step length when stepping backwards, in seconds (standard character).
+    float StepUpDistance               =  0.702910f, 0, 1.0f __per_anim_set__ __title__("StepLiftUpDistance"); ///< How high the steps should be, in metres (standard character). Higher values will tend to make the character stagger with high steps, so the foot will be unlikely to catch on the ground. Lower values may look more natural, at the risk of catching the foot on the ground.
+    float StepDownDistance             =  0.945113f, 0, 1.0f __per_anim_set__ __title__("StepPlaceDownDistance"); ///< When the balancer wishes to end a step he aims this distance below the ground. In metres (standard character).
+    float MaxStepLength                =  2.0f, 0, 2.0f __per_anim_set__ ; ///< Max step length, in metres (standard character).
+    float StepDownSpeed                =  0.942423f, 0, 1.0f __per_anim_set__ ; ///< Speed to aim the foot down as the step time progresses, in m/s (standard character). This can help prevent the foot from hanging if for some reason it does not progress.
+    float FootSeparationFraction       =  0.8f,      0, 1.0f __per_anim_set__ ; ///< Target foot separation as a fraction of the balance pose during the step.
+    float AlignFootToFloorWeight       =  0.0f,      0, 5.0f __per_anim_set__ ; ///< Amount to align the foot to the floor (rather than making it follow the natural swing of the leg) during the step.
+    float LowerPelvisAmount            =  0.354872f, 0, 1.0f __per_anim_set__ ; ///< Amount to lower the pelvis when stepping as a fraction of the step length.
+    float StrengthScale                =  1.6f     , 0, 2.0f __per_anim_set__ ; ///< Step strength multiplier, so larger values make the stepping leg stronger.
+    float DampingRatioScale            =  1.134721f, 0, 2.0f __per_anim_set__ ; ///< Step damping ratio multiplier, so larger values make the stepping leg move slower but more stiffly.
+    float SteppingOrientationWeight    =  0.475309f, 0, 1.0f __per_anim_set__ __title__("IKOrientationWeight"); ///< IK orientation weight.
+    float IKSubStep                    =  0.5f,      0, 1.0f __per_anim_set__ __title__("IKSubSteps"); ///< IK sub step (values < 1 make the stepping foot follow a straighter line rather than an arc).
+    float SteppingGravityCompensation  =  0.042387f, 0, 1.0f __per_anim_set__ __title__("GravityCompensation"); ///< Amount of gravity compensation on the stepping leg
+    float SteppingLimbLengthToAbort    =  0.7f,      0, 2.0f __per_anim_set__ __title__("LimbLengthToAbort"); ///< First condition for preventing or aborting a step - if the distance between the foot and leg root is less than this (e.g. if the character has fallen and the legs are compressed), in metres (standard character).
+    float SteppingRootDownSpeedToAbort =  1.0f,      0,10.0f __per_anim_set__ __title__("DownwardSpeedToAbort"); ///< Second condition for preventing or aborting a step - if the leg root is moving downwards with a speed greater than this, in m/s (standard character).
+    float SteppingDirectionThreshold   = -0.502405f,-1.0f,1.0f __per_anim_set__ __title__("Toe-firstSteppingThreshold"); ///< Threshold for when the character should step toe or heel first. If 0 then it happens when stepping directly forwards. -1 results in stepping toe first even when stepping backwards.
+    float SteppingImplicitStiffness    =  0.0f,      0, 1.0f __per_anim_set__ __title__("ImplicitLegStiffness"); ///< How much the character anticipates the ground when stepping. Smaller values result in the leg being weaker when it hits the ground (which can appear more natural)
+  }
+
+  /// Settings to make the character look where it is stepping.
+  group("Look")
+  {
+    bool EnableLook = true __per_anim_set__;  ///< Allow the character to Look in the step direction.
+    int   StepsBeforeLooking = 3, 0, 10 __per_anim_set__          __title__("StartLookingAfter"); ///< Look in step direction after this many consecutive steps
+    float StopLookingTime = 1.0f, 0.1f, 10.0f __per_anim_set__    __title__("StopLookingAfter"); ///< Time over which to stop looking in the step direction, in seconds (standard character).
+    float MinSpeedForLooking = 0.3f, 0.0f, 1.0f __per_anim_set__  __title__("MinimumSpeed"); ///< Speed below which the character shouldn't look where they're stepping. In m/s (standard character).
+    float WholeBodyLook = 0.0f, 0.0f, 1.0f __per_anim_set__       __title__("Movement"); ///< Set to 0 to only look with the head, or 1 to use as much of the body as possible
+    float LookDownAngle = 20.0f, -45.0f, 60.0f __per_anim_set__   __title__("TargetAngle(Down)"); ///< Angle (in degrees) to look down when stepping
+    float LookWeight = 1.0f, 0.0f, 1.0f __per_anim_set__          __title__("Weight"); ///< 0- don't look where you step, 1- look with normal strength in the direction you are stepping
+  }
+
+  /// These settings can ensure that the character will attempt to regain the stand pose when sufficiently displaced from that pose
+  group("Step to Recover")
+  {
+    bool  StepToRecoverPose = true __per_anim_set__             __title__("Enable"); ///< Enable/disable stepping to recover the stand pose
+    float FwdDistanceToTriggerStep = 0.15f __per_anim_set__     __title__("Forward"); ///< Step if a foot is this much ahead of where it should be, relative to the balance pose, in metres (standard character).
+    float SidewaysDistanceToTriggerStep = 0.15f __per_anim_set__ __title__("Sideways"); ///< Step if a foot is this much sideways relative to the balance pose, in metres (standard character).
+    float TimeBeforeShiftingWeight = 0.2f, 0.0f, 10.0f __per_anim_set__  __title__("DelayBeforeShiftingWeight"); ///< Time to wait before starting to shift the balance weight prior to a recovery step, in seconds (standard character).
+    float WeightShiftingTime = 0.5f, 0.0f, 10.0f __per_anim_set__        __title__("WeightShiftLastsFor"); ///< Time to spend shifting the balance weight before stepping, in seconds (standard character).
+  }
+
+  /// These settings stabilise the character by restricting and smoothing the target balance pose, which may be modified by other behaviours (for example by BalancePoser).
+  group("Pose Clamping")
+  {
+    bool  EnablePoseClamping = true; ///< Enable clamping of the pose - there is a small performance cost to doing so
+    bool  DynamicClamping = false __per_anim_set__; ///< If set then the clamping is made more restrictive depending on the state of the character. This can help him keep his balance, but in some situations may cause him to oscillate to some degree.
+    float MinPelvisPitch = -45.0f, -90.0f, 0.0f __per_anim_set__ ; ///< Minimum pelvis pitch in degrees - positive values pitch up
+    float MaxPelvisPitch = 25.0f, 0.0f, 90.0f __per_anim_set__ ; ///< Maximum pelvis pitch in degrees - positive values pitch up
+    float MinPelvisRoll = -30.0f, -90.0f, 0.0f __per_anim_set__ ; ///< Minimum pelvis roll in degrees - positive values roll to the right
+    float MaxPelvisRoll = 30.0f, 0.0f, 90.0f __per_anim_set__ ; ///< Maximum pelvis roll in degrees - positive values roll to the right
+    float MinPelvisYaw = -45.0f, -90.0f, 0.0f __per_anim_set__ ; ///< Minimum pelvis yaw in degrees - positive values yaw to the left
+    float MaxPelvisYaw = 45.0f, 0.0f, 90.0f __per_anim_set__ ; ///< Maximum pelvis yaw in degrees - positive values yaw to the left
+    float MinPelvisHeight = 0.4f __per_anim_set__ ; ///< Minimum pelvis height above the feet, in metres (standard character).
+    float MaxPelvisHeight = 1.0f __per_anim_set__ ; ///< Maximum pelvis height above the feet, in metres (standard character).
+    float PelvisPositionChangeTimescale = 0.3f __per_anim_set__ __title__("PositionTimescale"); ///< Timescale over which to smooth the pelvis target position, in seconds (standard character).
+    float PelvisOrientationChangeTimescale = 0.4f __per_anim_set__ __title__("OrientationTimescale");///< Timescale over which to smooth the pelvis target orientation, in seconds (standard character).
+  }
+
+  /// The pose guide for the limbs when the character is in a stationary balance.
+  group("Stand Pose")
+  {
+    /// If set then pose will be cached on the first update. This means that the pose that is used will not change if the input changes.
+    bool UseSingleFrameForBalancePose = false __per_anim_set__                      __title__("CacheFirstFrame");
+    float NonSupportingGravityCompensationScale = 0.0f, 0.0f, 4.0f __per_anim_set__ __title__("GravityCompensation"); ///< Gravity compensation on the non-supporting arm pose. Can be greater than 1 if you want full compensation on otherwise weak arms - in which case set it to one divided by the balance pose weight.
+    float NonSupportingDampingScale = 1.0f, 0.0f, 100.0f __per_anim_set__           __title__("DampingScale"); ///< Damping scale on the non-supporting arm pose (1 means use default damping). Note that when using low strengths (in the BalancePose section) the damping will automatically be reduced, so this value may need to be rather high (e.g. 1/strength) in order to see significant damping.
+    float NonSupportingDriveCompensationScale = 0.2f, 0.0f, 1.0f __per_anim_set__   __title__("DriveCompensation"); ///< Drive compensation on the non-supporting arm pose. A value of 1 should be used if you want these limbs to be strong and coordinated. However, if you want the unsupported limbs to be quite loose, then a value of zero is better, as that will prevent 'floaty' artefacts.
+  }
+  
+  /// The pose used to place the arms when the character is stepping. All other parts of the pose are ignored.
+  group("Arm Pose During Step")
+  {
+    /// If set then pose will be cached on the first update. This means that the pose that is used will not change if the input changes.
+    bool UseSingleFrameForReadyPose = false __per_anim_set__ __title__("CacheFirstFrame");
+    float ArmDisplacementTime = 1.0f, 0.0f, 2.0f __per_anim_set__; ///< How much to move the hands in the direction of the step when stepping, calculated by multiplying velocity of the character by this value. In seconds (standard character).
+  }
+  
+  /// Balance assistance provided through external forces/torques
+  group("Assistance")
+  {
+    bool EnableAssistance = true __per_anim_set__;  ///< Enable assistance forces.
+    bool ReduceAssistanceWhenFalling = true __per_anim_set__ __title__("ReduceAssistanceWhenFalling"); ///< If true then the assistance amount will be reduced if the character looses balance, which means less assistance when more horizontal in angle. This prevents the character from appearing to magically stay up while leaning at an angle that should cause it to fall.
+    float MaxLinearAccelerationAssistance = 0.0f __per_anim_set__ __title__("MaxLinearAcceleration"); ///< Maximum linear acceleration provided by the assistance (disabled if zero) in m/s^2 (standard character).
+    float MaxAngularAccelerationAssistance = 0.0f __per_anim_set__ __title__("MaxAngularAcceleration"); ///< Maximum linear acceleration provided by the assistance (disabled if zero) in deg/s^2 (standard character).
+    float AssistanceChestToPelvisRatio = 0.5f, 0.0f, 1.0f __per_anim_set__ __title__("ChestToPelvisRatio"); ///< How to distribute the balance cheat forces. A value of 1 results in them all being applied to the chest. A value of 0 results in them all being applied to the pelvis.
+  }
+
+  group("Emitted Messages")
+  {
+    float FallenTimeToEmitRequests = 1.0f __per_anim_set__ __title__("SettleTimeBeforeSending"); ///< Messages for fallen/recovered get triggered when the fallen time exceeds this, in seconds (standard character).
+  }
+  
+  group("Desired Pelvis Direction")
+  {
+    bool IgnoreDirectionWhenOutOfRange = false;  ///< Ignore desired pelvis direction input if it is outside of this range. The centre of the range points in the pelvis forward direction. Pitch and Yaw are in degrees.
+    float TargetYawRight  = -90.0f, -180.0f, 180.0f __title__("Yaw right (min)"); ///< Ignore Desired Pelvis Direction input if yaw is outside of this range. The centre of the range points in the pelvis forward direction and the yaw value increases from the character's right to its left. In degrees.
+    float TargetYawLeft   =  90.0f, -180.0f, 180.0f __title__("Yaw left (max)"); ///< Ignore Desired Pelvis Direction input if yaw is outside of this range. The centre of the range points in the pelvis forward direction and the yaw value increases from the character's right to its left. In degrees
+    float TargetPitchDown = -90.0f, -180.0f, 180.0f __title__("Pitch down (min)"); ///< Ignore Desired Pelvis Direction input if pitch is outside of this range. The centre of the range points in the pelvis forward direction and the pitch value increases from character down to up. In degrees.
+    float TargetPitchUp   =  90.0f, -180.0f, 180.0f __title__("Pitch up (max)"); ///< Ignore Desired Pelvis Direction input if pitch is outside of this range. The centre of the range points in the pelvis forward direction and the pitch value increases from character down to up. In degrees.
+  }
+
+animationInputs:
+  //                     arms  head legs spine
+  BodyPose BalancePose = 0.3f, 1,   1,   1 __title__("Stand Pose Weights"); ///< Target pose when balancing
+  BodyPose ReadyPose   = 1.0f, 0,   0,   0 __title__("Step Pose Weights"); ///< Pose used for the arms when stepping
+  
+controlParams:
+
+  // unsorted control params
+  {
+    // Stand CPs
+    vector3 TargetVelocity __title__("Desired velocity"); ///< Creates a tendency to lean/stagger in a certain direction (will provoke stepping if enabled). Requires a non-zero velocity assistance. Specified in absolute units.
+    bool TargetVelocityInCharacterSpace = false; ///< If true then the target velocity is specified in character space with x forward, y up and z right. If false then it is specified in world space.
+    float BalanceFwdOffset = 0 ;  ///< Sets a forwards offset for the pelvis position when balancing, in metres (standard character).
+    float BalanceRightOffset = 0; ///< Sets a rightwards offset for the pelvis position when balancing, in metres (standard character).
+
+    // Step CPs
+    float LegStepStrength[networkMaxNumLegs] = 1, 0, 1; ///< Sets the stepping strength scale on the legs. Accepts values in the range 0 to 1.
+    float ArmStepStrength[networkMaxNumArms] = 1, 0, 1; ///< Sets the stepping strength scale on the arms. Accepts values in the range 0 to 1.
+  }
+
+  group("Look")
+  {
+    bool LookInStepDirection = true; ///< Activates the tendency for the character to look in the direction it is stepping.
+  }
+
+  group("Desired Pelvis Direction")
+  {
+    vector3 TargetPelvisDirection; ///< Target direction in world space for the pelvis. The character will try to align the pelvis forwards direction with this. The magnitude determines how much this is used, so 0 means it is ignored, and 1 means it overrides the normal direction, based on the character's current orientation.
+  }
+
+  group("Stand Pose")
+  {
+    float BalanceWithAnimationPose = 0, 0, 1 __title__("MatchPoseWhenBalancing"); ///< If zero, then the balancer tries to place the centre of mass over the support area. If one then it tries to match the animation pose (which may not be intrinsically balanced). Intermediate values blend between these extremes.
+  }
+
+  group("Stand")
+  {
+    float LegStandStrength[networkMaxNumLegs] = 1, 0, 1; ///< Sets the stand strength scale on the legs. Accepts values in the range 0 to 1.
+    float ArmStandStrength[networkMaxNumArms] = 1, 0, 1; ///< Sets the stand strength scale on the arms. Accepts values in the range 0 to 1.
+  }
+
+  /// The exclusion zone allows you to specify a region into which the charatcer will not step. This can be used to prevent him stepping off the edge of a cliff, for example.
+  group("Exclusion Zone")
+  {
+    vector3 ExclusionZonePoint __title__("Point");     ///< Point on the plane defining the stepping exclusion zone, in absolute units
+    vector3 ExclusionZoneDirection __title__("Direction"); ///< Points into the exclusion zone. If the direction is zero then the exclusion zone is disabled.
+  }
+  
+  group("Assistance")
+  {
+    // Assistance
+    //
+    // Sets the scale of cheat forces which can be used by the balance behaviour to maintain the position and orientation
+    // of the pelvis and feet. The position and orientation pins accept values in the range 0 to 4, with a value of 1
+    // resulting in a default amount of assistance.
+    float OrientationAssistanceAmount = 0.0f, 0.0f, 4.0f; ///< Sets the scale of cheat forces which can be used in keeping the pelvis orientated correctly for balance. A value of 1 results in a moderate amount of assistance.
+    float PositionAssistanceAmount = 0.0f, 0.0f, 4.0f; ///< Sets the scale of cheat forces which can be used in keeping the pelvis positioned correctly for balance. A value of 1 results in a moderate amount of assistance.
+    float VelocityAssistanceAmount = 0.0f, 0.0f, 4.0f; ///< Sets the scale of cheat forces which can be used in damping the pelvis/chest velocity towards the target/desired velocity. A value of 1 results in a moderate amount of assistance.
+    bool  UseCounterForceOnFeet = false; ///< Determines whether the stabilisation forces applied to the pelvis should be compensated for by an equal an opposite force on the feet. This helps preserve momentum when stepping on dynamic objects.
+  }
+
+outputControlParams:
+  // Stand OCPs
+  float StandingStillTime; ///< The time that the character has been balancing without stepping (will be zero if stepping or fallen). In absolute units.
+  float FallenTime;        ///< The time that the character has been fallen, defined as when BalanceAmount is 0. In absolute units.
+  float OnGroundTime;      ///< The time that the character has been touching something that appears to be ground with his legs/feet. In absolute units.
+  float BalanceAmount;     ///< An indicator of how balanced the character is from 0 to 1. Will be close to 1 when balanced, and decrease to 0 if he is falling/lifted off the ground.
+  vector3 ForwardsDirection; ///< Direction forwards relative to the character, projected onto the horizontal plane
+  vector3 RightDirection;    ///< Direction sideways to the right of the character, projected onto the horizontal plane
+  vector3 SupportVelocity;   ///< Velocity of the balance support region
+
+  // Step OCPs
+  float SteppingTime;      ///< The time that stepping has been active (will be reset after StepCountResetTime). In absolute units.
+  int   StepCount;         ///< The total number of steps (will be reset after StepCountResetTime)
+  float LegStepFractions[networkMaxNumLegs]; ///< The approximate fraction through the step so 0 means the leg is just about to leave the ground, 1 when it reaches its target and the step finishes.
+
+emittedMessages:
+  HasFallen; ///< Message emmited when the character has fallen
+  HasRecoveredBalance; ///< Message emmited when the character has recovered its balance
+}
+
+#endif
+

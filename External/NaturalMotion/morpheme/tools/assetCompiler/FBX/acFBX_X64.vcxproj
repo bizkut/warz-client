@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Target LE64 Debug|x64">
+      <Configuration>Target LE64 Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Target LE64 Release|x64">
+      <Configuration>Target LE64 Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>acFBX</ProjectName>
+    <ProjectGuid>{59ABE4DC-9F78-46CD-9082-0974DD02E78C}</ProjectGuid>
+    <RootNamespace>acFBX</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <TargetName>acFBX_target_LE64_debug</TargetName>
+    <IntDir>..\..\..\..\obj\x64\vs$(VisualStudioVersion)\acFBX\target_le64_debug\</IntDir>
+    <OutDir>..\..\..\..\bin\x64\vs$(VisualStudioVersion)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <TargetName>acFBX_target_LE64</TargetName>
+    <IntDir>..\..\..\..\obj\x64\vs$(VisualStudioVersion)\acFBX\target_le64_release\</IntDir>
+    <OutDir>..\..\..\..\bin\x64\vs$(VisualStudioVersion)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\..\..\..\common\XMD\include;..\..\..\..\common\NMTL\include;..\..\..\SDK\export\include;..\..\..\..\common\NMPlatform\include;..\..\..\..\common\NMPlatform\include\NMPlatform\win32;"$(FBXSDK)\include";%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_TARGET_BIGENDIAN=0;WIN32;XMDPLUGIN_FBX_EXPORTS;_DEBUG;_USRDLL;_WIN64;_WINDLL;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\XMD_debug.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMTL_debug.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeExport_debug.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMPlatform_target_LE64_debug.lib";"$(FBXSDK)\lib\vs2010\x64\fbxsdk-2014.1-mdd.lib";wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\..\..\..\lib\x64\vs$(VisualStudioVersion)\acFBX_target_LE64_debug.lib</ImportLibrary>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <ProgramDatabaseFile>$(OutDir)acFBX_target_LE64_debug.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Target LE64 Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\..\..\..\common\XMD\include;..\..\..\..\common\NMTL\include;..\..\..\SDK\export\include;..\..\..\..\common\NMPlatform\include;..\..\..\..\common\NMPlatform\include\NMPlatform\win32;"$(FBXSDK)\include";%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_ENABLE_EXCEPTIONS=1;NM_TARGET_BIGENDIAN=0;WIN32;XMDPLUGIN_FBX_EXPORTS;_USRDLL;_WIN64;_WINDLL;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\XMD.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMTL.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\morphemeExport.lib";"..\..\..\..\lib\x64\vs$(VisualStudioVersion)\NMPlatform_target_LE64.lib";"$(FBXSDK)\lib\vs2010\x64\fbxsdk-2014.1-md.lib";wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\..\..\..\lib\x64\vs$(VisualStudioVersion)\acFBX_target_LE64.lib</ImportLibrary>
+      <ManifestFile>$(IntDir)intermediate.manifest</ManifestFile>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDatabaseFile>$(OutDir)acFBX_target_LE64.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="FBXExport.cpp" />
+    <ClCompile Include="FbxImport.cpp" />
+    <ClCompile Include="FbxImportAnim.cpp" />
+    <ClInclude Include="FBXPlugin.h" />
+    <ClCompile Include="FBXUpdateAnimInfo.cpp" />
+    <ClCompile Include="FBXUtil.cpp" />
+    <ClInclude Include="FBXUtil.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\common\XMD\XMD_X64.vcxproj">
+      <Project>{23D1C7B2-4F9B-401E-D08D-7E8CBE00A9B7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\NMTL\NMTL_X64.vcxproj">
+      <Project>{5FF4A11E-1F9C-4999-1E8C-6616EF16DB1C}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SDK\export\morphemeExport_X64.vcxproj">
+      <Project>{348A8659-5C73-4CB4-20A1-95EDAB98AE5D}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\NMPlatform\NMPlatform_X64.vcxproj">
+      <Project>{773E894A-FCA3-4312-37AF-0588248FC43F}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

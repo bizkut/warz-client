@@ -1,0 +1,85 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// module for retrieving useful information from the collision geometry of the environment (based on requested sphere projection probes) and passing the
+// results up as environment patches (small pieces of geometry that approximate the neighbourhood of the probe hit point)
+__pix__ module_def EnvironmentAwareness
+{
+owner: MyNetwork<>
+
+data:
+  enum Constants
+  {
+    numImpactProjections = 1,
+    numLegProjections = networkMaxNumLegs,
+    numArmProjections = networkMaxNumArms,
+    //numProjections = numImpactProjections + numLegProjections + numArmProjections,
+    numProjections = numImpactProjections,
+  
+    maxObjectsInRange = 16
+  };
+  
+  PatchStore patchStores[numProjections];     ///< Stores the state of each patch relative to its shape
+  PatchSet patchSets[numProjections];         ///< The resulting patches after being applied to the latest shape's transform
+  int32_t probeID;                            ///< Which of the input probes to use
+  int32_t staticProbeID;                      ///< Which of the input probes to use for static objects
+  Environment::ObjectData objectData[maxObjectsInRange]; ///< Persistent data for objects that come in and out of view, e.g. for calcualting smooth velocities
+  bool foundPotentialDynamicLastFrame;        ///< Whether a dynamic object's bounding box collided with the projection last frame
+  Environment::Object dynamicObjectsInRange[maxObjectsInRange]; ///< This is the latest state of the dynamic objects in view, e.g. TMs, velocities
+  int32_t numDynamicObjectsInRange;           ///< size of dynamicObjectsInRange array
+  Environment::Object staticSweepResultObject;///< The static object's state
+  Environment::Object staticContactObject;    ///< The state of the latest contacting object
+  
+  // Used to decide whether to do lower priority 'nearby' sweeps
+  bool dynamicCollidedLastTest;               
+  bool staticCollidedLastTest;                
+  Position lastDynamicContactPoint;           
+  Position lastStaticContactPoint;
+  ModuleRNG rng; ///< Used to do a random nearby sweep when no other known dangers
+  float lastMetric; ///< Used for time-based hysteresis of observed objects
+  
+in:
+  // TODO MORPH-19578 Use network constants here - but need arithmetic to do this
+  SphereTrajectory sphereProjectionsForImpactPredictor[numImpactProjections];
+  // find the best object under a certain metric, e.g. with the best combination of speed, acceleration etc.
+  ObjectMetric findObject; ///< Metric for picking the 'best' object in view, e.g. the fastest within a range. Used by Observe
+
+feedOut:
+  PatchSet potentialHazardsForImpactPredictor[numImpactProjections]; ///< Returns a set of potential hazards for each projection that has been passed down
+  Environment::State foundObject;  ///< Result of the in.findObject metric
+  float foundObjectMetric;         ///< Value of the in.findObject metric
+
+out:
+  // Requesting linear sphere sweeps, not output every frame
+  ER::SphereSweep sphereSweepDynamic; 
+  ER::SphereSweep sphereSweepStatic;  
+
+feedIn:
+  // Results of linear sphere sweeps, these don't all arrive every frame
+  ER::SweepResult sweepResultDynamic; 
+  ER::SweepResult sweepResultStatic;
+  ER::SweepResult contactResult; ///< Result of contact information, e.g. a ground plane from the foot contact. Allows awareness when not looking
+  
+  Position focalCentre;  ///< Where the character actually ended up looking
+  Length focalRadius;    ///< Width of sphere of vision
+  bool requestNextProbe; ///< Request to receive a sphere sweep next frame
+
+connections<>:
+  feedIn.focalCentre = junctions.feedIn_focalCentre = average(owner.heads[*].eyes.feedOut.focalCentre);
+  feedIn.focalRadius = junctions.feedIn_focalRadius = average(owner.heads[*].eyes.feedOut.focalRadius);
+  feedIn.requestNextProbe = (owner.sceneProbes.feedOut.requestNextProbe);
+
+  in.sphereProjectionsForImpactPredictor[0] = (owner.hazardManagement.chestImpactPredictor.out.sphereProjection);
+  in.findObject = (owner.observeBehaviourInterface.out.findObject);
+}
+
+#endif

@@ -1,0 +1,95 @@
+/*
+ * Copyright (c) 2013 NaturalMotion Ltd. All rights reserved.
+ *
+ * Not to be copied, adapted, modified, used, distributed, sold,
+ * licensed or commercially exploited in any manner without the
+ * written consent of NaturalMotion.
+ *
+ * All non public elements of this software are the confidential
+ * information of NaturalMotion and may not be disclosed to any
+ * person nor used for any purpose not expressly approved by
+ * NaturalMotion in writing.
+ *
+ */
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                  This file is auto-generated
+//----------------------------------------------------------------------------------------------------------------------
+
+// module def dependencies
+#include "MyNetwork.h"
+#include "CharacteristicsBehaviourInterface.h"
+#include "CharacteristicsBehaviourInterfacePackaging.h"
+#include "MyNetworkPackaging.h"
+
+// misc
+#include "euphoria/erEuphoriaLogger.h"
+#include "euphoria/erDebugDraw.h"
+#include "physics/mrPhysicsSerialisationBuffer.h"
+
+
+
+namespace NM_BEHAVIOUR_LIB_NAMESPACE
+{
+
+//----------------------------------------------------------------------------------------------------------------------
+CharacteristicsBehaviourInterface::CharacteristicsBehaviourInterface(ER::ModuleDataAllocator* mdAllocator, ER::ModuleCon* connectionSet) : ER::Module(mdAllocator, connectionSet)
+{
+  out = (CharacteristicsBehaviourInterfaceOutputs*)mdAllocator->alloc(ER::ModuleDataAllocator::Outputs, sizeof(CharacteristicsBehaviourInterfaceOutputs), __alignof(CharacteristicsBehaviourInterfaceOutputs));
+
+  m_apiBase = (CharacteristicsBehaviourInterfaceAPIBase*)NMPMemoryAllocAligned(sizeof(CharacteristicsBehaviourInterfaceAPIBase), 16);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+CharacteristicsBehaviourInterface::~CharacteristicsBehaviourInterface()
+{
+  owner = 0;
+
+  NMP::Memory::memFree(m_apiBase);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+void CharacteristicsBehaviourInterface::create(ER::Module* parent, int childIndex)
+{
+  ER::Module::create(parent, childIndex);
+  owner = (MyNetwork*)parent;
+  if (getConnections())
+    getConnections()->create(this, (ER::Module*)owner);
+
+
+  new(m_apiBase) CharacteristicsBehaviourInterfaceAPIBase( owner->m_apiBase);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+void CharacteristicsBehaviourInterface::clearAllData()
+{
+  out->clear();
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+bool CharacteristicsBehaviourInterface::storeState(MR::PhysicsSerialisationBuffer& savedState)
+{
+  savedState.addValue(*out);
+  storeStateChildren(savedState);
+  return true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+bool CharacteristicsBehaviourInterface::restoreState(MR::PhysicsSerialisationBuffer& savedState)
+{
+  *out = savedState.getValue<CharacteristicsBehaviourInterfaceOutputs>();
+  restoreStateChildren(savedState);
+  return true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+const char* CharacteristicsBehaviourInterface::getChildName(int32_t) const
+{
+  NMP_ASSERT_FAIL();
+  return 0;
+}
+
+
+} // namespace NM_BEHAVIOUR_LIB_NAMESPACE
+
+

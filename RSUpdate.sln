@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Eternity", "Eternity\Eternity.vcproj", "{3D51BE84-6441-4AC7-A73F-587C6B36DDAF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RSUpdate", "RSUpdate\RSUpdate.vcproj", "{4C326ABD-0ED8-49E0-AA2A-B24629A2E14D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D51BE84-6441-4AC7-A73F-587C6B36DDAF} = {3D51BE84-6441-4AC7-A73F-587C6B36DDAF}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D51BE84-6441-4AC7-A73F-587C6B36DDAF}.Debug|Win32.ActiveCfg = Debug_NoCrashRpt|Win32
+		{3D51BE84-6441-4AC7-A73F-587C6B36DDAF}.Debug|Win32.Build.0 = Debug_NoCrashRpt|Win32
+		{3D51BE84-6441-4AC7-A73F-587C6B36DDAF}.Release|Win32.ActiveCfg = Release_NoCrashRpt|Win32
+		{3D51BE84-6441-4AC7-A73F-587C6B36DDAF}.Release|Win32.Build.0 = Release_NoCrashRpt|Win32
+		{4C326ABD-0ED8-49E0-AA2A-B24629A2E14D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4C326ABD-0ED8-49E0-AA2A-B24629A2E14D}.Debug|Win32.Build.0 = Debug|Win32
+		{4C326ABD-0ED8-49E0-AA2A-B24629A2E14D}.Release|Win32.ActiveCfg = Release|Win32
+		{4C326ABD-0ED8-49E0-AA2A-B24629A2E14D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

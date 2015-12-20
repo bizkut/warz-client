@@ -1,0 +1,88 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// All controllers and sensors that are specific to just the physical neck and head
+__limb__(Heads) module_def Head
+{
+owner: MyNetwork<>
+publicAPI:
+  bool canReachPointTarget(const NMP::Vector3 &position, bool &canReach, float lookOutOfRangeWeight) const;
+
+data:
+  int32_t limbRigIndex;     ///< index into all the rig's limbs
+  int32_t limbNetworkIndex; ///< index into all the network's limbs
+  int32_t childIndex;       ///< index into network's array of arms.
+  bool headInContact;       
+  bool chestInContact; 
+  float contactForceScalarSqr;  ///< TODO this is only used for a unit test
+  Length length;                ///< Distance from chest to centre of head
+  Stiffness normalStiffness;    ///< Usual stiffness, e.g. for holding the head up
+  DampingRatio normalDampingRatio; ///< 1 is critical damping
+  Compensation normalDriveCompensation; ///< Larger is more controlled
+  ER::DimensionalScaling dimensionalScaling;
+
+children:
+  HeadEyes<> eyes;
+  HeadAvoid<> avoid;
+  HeadDodge<> dodge;
+  HeadAim<> aim;
+  HeadPoint<> point;
+  HeadSupport support;
+  HeadPose<> pose;
+
+in:
+  WeightWithClamp chestControlledAmount;     ///< How well controlled the chest is, if it is 1 then it should move with normalStiffness
+
+  // 1 is full reduction so no stiffness / control / damping
+  Multiplier limbStiffnessReduction;           
+  Multiplier limbControlCompensationReduction;
+  Multiplier limbDampingRatioReduction;
+  
+  bool upperBodyInContact;  ///< Is any limb in the upper body contacting an external object
+
+feedOut:
+  Position currEndPartPosition; ///< The centre of the head 
+  bool inContact;           
+
+out:
+  LimbControl control;  ///< IK control of the head
+  LimbControl average;  ///< This is a temporary output to get rid of junctions feeding into junctions
+
+connections<>:
+  // This sets up a junction tree:
+  // pose  support  aim           point dodge avoid pose        pose
+  //   |     |       |       |______________________________|    |
+  //   |     |       |                        |                  |
+  //   |     |       |                     average               |
+  //   |_____|_______|________________________|__________________|
+  //                       Priority
+  //                          |
+  out.average = junctions.avg01 = average(
+    point.out.control, 
+    dodge.out.control, 
+    avoid.out.control);
+
+  out.control = junctions.pri01 = priority(
+    pose.out.controlLowImp,
+    support.out.control,
+    aim.out.control,
+    out.average,
+    pose.out.controlHighImp);
+
+  in.limbStiffnessReduction = (owner.characteristicsBehaviourInterface.out.headStrengthReduction[$ChildIndex]);
+  in.limbControlCompensationReduction = (owner.characteristicsBehaviourInterface.out.headControlCompensationReduction[$ChildIndex]);
+  in.limbDampingRatioReduction = (owner.characteristicsBehaviourInterface.out.headDampingRatioReduction[$ChildIndex]);
+  in.chestControlledAmount = (owner.upperBody.feedOut.controlledAmount);
+  in.upperBodyInContact = (owner.upperBody.feedIn.inContact);
+}
+
+#endif 

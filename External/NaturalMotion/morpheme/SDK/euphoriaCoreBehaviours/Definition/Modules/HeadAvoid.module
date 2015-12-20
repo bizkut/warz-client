@@ -1,0 +1,44 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// this module simply repositions the head to get out the way of a hazard
+module_def HeadAvoid
+{
+owner: Head
+data:
+  Weight importance; ///< Used on control
+  Length safeRadius; ///< The radius at which no head movement is necessary, not the same as the equilibrium radius
+  PositionDelta headShift;     ///< Amount of translation required to avoid the target
+
+in:
+  SpatialTarget avoidTarget; ///< Position, normal of target to avoid
+  Length avoidRadius;        ///< Max radius at which to avoid, equilibrium will be less than this radius 
+  bool twoSidedTarget;       ///< Defaults to false. True means 2-sided plane
+
+out:
+  LimbControl control; ///< IK control of the neck joints
+
+feedOut:
+  // Request motion from the chest, to aid in achieving the avoid task
+  TranslationRequest rootTranslationRequest; 
+  RotationRequest rootRotationRequest;
+
+connections<>:
+  junctions.pri01 = priority(
+    owner.owner.hazardManagement.hazardResponse.out.avoidTarget,
+    owner.owner.headAvoidBehaviourInterface.out.avoidTarget);
+  in.avoidTarget = junctions.pri01;
+  in.avoidRadius = (owner.owner.headAvoidBehaviourInterface.out.avoidRadius);
+  in.twoSidedTarget = (owner.owner.headAvoidBehaviourInterface.out.twoSidedTarget);
+}
+
+#endif

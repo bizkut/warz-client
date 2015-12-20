@@ -1,0 +1,35 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// looks at the specified target
+__no_feedback__ module_def ArmReachReaction
+{
+owner: Arm
+data:  
+in:
+  Weight supportAmount;
+  ReachTarget currentReachTargets[networkMaxNumArms];
+  Position avgReachingHandPos;
+  Transform armHitPoseEndRelRoot;
+feedOut:
+out:
+  LimbControl control;
+  float distanceToTarget;
+  
+connections<>:
+  in.currentReachTargets[] = (owner.owner.arms[].reachForBodyPart.feedOut.currentReachTarget);
+  in.supportAmount = (owner.owner.bodyFrame.feedOut.supportAmount);
+  in.avgReachingHandPos = (owner.owner.bodyFrame.reachForBody.out.errorWeightedAverageEffectorPosition);
+  in.armHitPoseEndRelRoot = (owner.owner.reachForBodyBehaviourInterface.out.armHitPoseEndRelRoot[owner.$ChildIndex]);
+}
+
+#endif

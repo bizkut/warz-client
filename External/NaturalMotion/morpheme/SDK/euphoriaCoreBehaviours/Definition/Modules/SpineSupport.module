@@ -1,0 +1,59 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// keep the spine end supported above its root in a good posture
+module_def SpineSupport
+{
+owner: Spine
+
+in:
+  // Desired rotation of the end of the spine relative to the root (in root's space)
+  OrientationDelta desiredEndRotationRelRoot;
+  PositionDelta desiredEndTranslationRelRoot;
+
+feedIn:
+  ER::LimbTransform targetPelvisTM;
+
+feedOut:
+  Position rootSupportPoint; ///< Position of spine root.
+
+out:
+  // these below are generated from local space requests
+  RotationRequest upperRotationRequestLocal;
+  RotationRequest lowerRotationRequestLocal;
+  TranslationRequest upperTranslationRequestLocal;
+  TranslationRequest lowerTranslationRequestLocal;
+  // these below come from the world space requests
+  RotationRequest upperRotationRequestWorld;
+  RotationRequest lowerRotationRequestWorld;
+  TranslationRequest upperTranslationRequestWorld;
+  TranslationRequest lowerTranslationRequestWorld;
+
+connections<>:
+  in.desiredEndRotationRelRoot = junctions.in_desiredEndRotationRelRoot = priority(
+    owner.feedOut.desiredEndRotationRelRoot,
+    owner.owner.balanceManagement.staticBalance.out.chestRelPelvisOrientation[owner.$ChildIndex],
+    owner.owner.balanceManagement.balancePoser.out.chestRelPelvisOrientation[owner.$ChildIndex],
+    owner.owner.bodyFrame.sittingBodyBalance.out.chestRelPelvisOrientation[owner.$ChildIndex]);
+
+  in.desiredEndTranslationRelRoot = junctions.in_desiredEndTranslationRelRoot = priority(
+    owner.feedOut.desiredEndTranslationRelRoot,
+    owner.owner.balanceManagement.staticBalance.out.chestRelPelvisTranslation[owner.$ChildIndex],
+    owner.owner.balanceManagement.balancePoser.out.chestRelPelvisTranslation[owner.$ChildIndex],
+    owner.owner.bodyFrame.sittingBodyBalance.out.chestRelPelvisTranslation[owner.$ChildIndex]);
+
+    feedIn.targetPelvisTM = junctions.in_targetPelvisTM = priority(
+      owner.owner.bodyFrame.bodyBalance.out.targetPelvisTM,
+      owner.owner.bodyFrame.sittingBodyBalance.out.desiredPelvisTM);
+}
+
+#endif 

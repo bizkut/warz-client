@@ -1,0 +1,101 @@
+/*
+ * Copyright (c) 2009 NaturalMotion Ltd. All rights reserved.
+ *
+ * Not to be copied, adapted, modified, used, distributed, sold,
+ * licensed or commercially exploited in any manner without the
+ * written consent of NaturalMotion.
+ *
+ * All non public elements of this software are the confidential
+ * information of NaturalMotion and may not be disclosed to any
+ * person nor used for any purpose not expressly approved by
+ * NaturalMotion in writing.
+ *
+ */
+
+#if 0
+
+/// Request for a rotation (ie a delta from the current orientation), with an optional imminence.
+/// The imminence is the reciprocal of the time period in which the request needs to get done, and affects where 
+/// the motion occurs, high is higher in the body
+struct RotationRequest 
+{
+  + RotationRequest(); ///< Note that the imminence must be set prior to use
+  + RotationRequest(const NMP::Vector3 &rotation, const ER::DimensionalScaling dimensionalScaling); 
+  Imminence imminence;
+  Multiplier stiffnessScale;
+  RotationVector rotation; ///< Rotation (length is radians) is in world space
+  LimbDebugControlAmounts debugControlAmounts;
+  Multiplier passOnAmount; ///< 0 means receiver passes none futher, 1 means pass default amount down (even distribution), inf means pass all down
+};
+
+/// Request for a translation (ie a delta from the current position), with an optional imminence.
+/// The imminence is the reciprocal of the time period in which the request needs to get done, and affects 
+/// where the motion occurs, high is higher in the body
+struct TranslationRequest
+{
+  + TranslationRequest(); ///< Note that the imminence must be set prior to use
+  + TranslationRequest(const NMP::Vector3 &translation, const ER::DimensionalScaling dimensionalScaling); 
+  /// 1 divided by the time period in which the request needs to be fulfilled
+  Imminence imminence;
+  Multiplier stiffnessScale;
+  /// the change from current position of the area you are requesting (e.g. the upper body). This should be the full change, the system chooses an appropriate fraction
+  PositionDelta translation;
+  LimbDebugControlAmounts debugControlAmounts;
+  Multiplier passOnAmount; ///< 0 means receiver passes none futher, 1 means pass default amount down (even distribution), inf means pass all down
+};
+
+
+/// Request for a direction change that would align a reference direction with a world space direction, 
+/// and an optional imminence.
+/// The imminence is the reciprocal of the time period in which the request needs to get done, and affects 
+/// where the motion occurs, high is higher in the body
+struct DirectionRequest
+{
+  + DirectionRequest(); ///< Note that the imminence must be set prior to use
+  + DirectionRequest(const NMP::Vector3 &controlLocal, const NMP::Vector3& referenceWorld, const ER::DimensionalScaling dimensionalScaling); 
+  /// 1 divided by the time period in which the request needs to be fulfilled
+  Imminence imminence;
+  Multiplier stiffnessScale;
+  /// the direction in local coordinates of the body to be orienting (eg. (1,0,0) of the pelvis means the forwards direction of the pelvis)
+  Direction controlDirLocal;
+  /// the direction to be orienting to coordinates wrt the frame that the body matrix is expressed in (usually world)
+  Direction referenceDirWorld;
+  LimbDebugControlAmounts debugControlAmounts;
+  Multiplier passOnAmount; ///< 0 means receiver passes none futher, 1 means pass default amount down (even distribution), inf means pass all down
+};
+
+/// Request an orientation change towards a (look) target, and an optional imminence.
+/// The imminence is the reciprocal of the time period in which the request needs to get done, and affects 
+/// where the motion occurs, high is higher in the body.
+struct TargetRequest
+{
+  + TargetRequest(); ///< Note that the imminence must be set prior to use
+  + TargetRequest(const NMP::Vector3 &target, const ER::DimensionalScaling dimensionalScaling);
+  /// 1 divided by the time period in which the request needs to be fulfilled
+  Imminence imminence;
+  Multiplier stiffnessScale;
+  /// the target position for the area you are requesting (e.g. to the head point)
+  Position target;
+  LimbDebugControlAmounts debugControlAmounts;
+  Multiplier passOnAmount; ///< 0 means receiver passes none futher, 1 means pass default amount down (even distribution), inf means pass all down
+  Weight lookOutOfRangeWeight; ///< 0 means he won't try and look at targets out of range, 1 means he will try and look at targets over the full 4pi square-radians
+};
+
+// Used for choosing the weight to apply requests
+struct ProcessRequest 
+{
+  // Stores values to optionally use and returns importance for this controller
+  // importance:       importance of inbound request, or 1 when generating new control 
+  // imminence:        imminence of constraint (1/time to event)
+  // controlStiffness: stiffness of control if controller used fully
+  // passOnAmount:     0 means receiver passes none futher, 1 means pass default amount down (even distribution), inf means pass all down
+  // minStiffness:     minimum stiffness, any constraint that requires less than this does nothing 
+  // maxStiffness:     maximum stiffness, any constraint that requires more won’t be fully met
+  + float processRequest(float importance, float imminence, float controlStiffness, float passOnAmount = 1, float minStiffness = 0, float maxStiffness = 10000000);
+  float imminence;      ///< same as input imminence, to be passed into any motion requests
+  float importance;     ///< importance of any motion requests
+  float stiffnessScale; ///< scalar to optionally apply to the control stiffness for imminent targets
+};
+
+#endif
+

@@ -1,0 +1,37 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+__no_feedback__ module_def ArmPose
+{
+owner: Arm
+  
+in:
+  PoseData armPoseLowImp;
+  PoseData armPoseHighImp;
+  
+out:
+  LimbControl controlLowImp;
+  LimbControl controlHighImp;
+
+connections<>:
+  in.armPoseLowImp = junctions.lowImportance = priority(
+    owner.owner.animateBehaviourInterface.out.armPoseLowPriority[owner.$ChildIndex],
+    owner.owner.balanceBehaviourInterface.out.armBalancePose[owner.$ChildIndex],
+    owner.owner.balanceManagement.steppingBalance.out.armPose[owner.$ChildIndex],
+    owner.owner.idleAwakeBehaviourInterface.out.armPose[owner.$ChildIndex]);
+  in.armPoseHighImp = junctions.highImportance = winnerTakesAll(
+    owner.owner.shieldBehaviourInterface.out.armPose[owner.$ChildIndex],
+    owner.owner.shieldActionBehaviourInterface.out.armPose[owner.$ChildIndex],
+    owner.owner.animateBehaviourInterface.out.armPoseHighPriority[owner.$ChildIndex]);
+}
+
+#endif

@@ -1,0 +1,30 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// This behaviour currently is just used to retrieve the eye vector or position, which can then be set in the animation
+__global_access__ __no_update__ module_def EyesBehaviourInterface
+{
+owner: MyNetwork<>
+
+feedIn:
+  Direction focalDirection;  ///< Direction character is looking in
+  Position focalCentre;      ///< Position character is looking at
+  Length focalRadius;        ///< Radius of vision
+  
+connections<>:
+  feedIn.focalDirection = (owner.heads[0].eyes.feedOut.focalDirection);
+  feedIn.focalCentre    = (owner.heads[0].eyes.feedOut.focalCentre);
+  feedIn.focalRadius    = (owner.heads[0].eyes.feedOut.focalRadius);
+}
+
+#endif
+

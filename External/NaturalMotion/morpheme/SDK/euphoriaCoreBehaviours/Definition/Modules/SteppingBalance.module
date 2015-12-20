@@ -1,0 +1,70 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Stepping balance control/management
+module_def SteppingBalance
+{
+owner: BalanceManagement<>
+
+data:
+  TimePeriod timeSinceLastStep;
+  TimePeriod steppingTime;
+  Direction horLookDir;
+  Weight armPoseAmount;
+  int32_t    stepCount;
+  bool       wasStepping;
+  int32_t    stepLegIndex;
+  enum BackwardsLookDir {NONE, LEFT, RIGHT};
+  uint32_t backwardsLookDir;
+
+children:
+
+in:
+  SteppingBalanceParameters steppingBalanceParameters;
+  Transform armReadyPoseEndRelativeToRoot[networkMaxNumArms];
+  Transform armBalancePoseEndRelativeToRoot[networkMaxNumArms];
+
+feedIn:
+  bool isDoingRecoveryStep;
+  BodyState centreOfMassBodyState;
+  bool isLegStepping[networkMaxNumLegs];
+  Direction stepDir[networkMaxNumLegs];
+  Velocity groundVel;
+
+feedOut:
+  TimePeriod timeSinceLastStep;
+  TimePeriod steppingTime;
+  int32_t    stepCount;
+
+out:
+  // When stepping, it's normal to look where you're going!
+  TargetRequest lookTarget;
+
+  // These will only be output when we're stepping.
+  PoseData armPose[networkMaxNumArms];
+
+connections<>:
+  in.steppingBalanceParameters = (owner.owner.balanceBehaviourInterface.out.steppingBalanceParameters);
+  in.armReadyPoseEndRelativeToRoot = (owner.owner.balanceBehaviourInterface.out.armReadyPoseEndRelativeToRoot);
+  in.armBalancePoseEndRelativeToRoot = (owner.owner.balanceBehaviourInterface.out.armBalancePoseEndRelativeToRoot);
+  
+  feedIn.isLegStepping[*] = directInput(owner.owner.legs[*].step.feedOut.isStepping);
+  feedIn.stepDir[*] = directInput(owner.owner.legs[*].step.feedOut.stepDir);
+//~  feedIn.legEndTMs[*] = directInput(owner.owner.legs[*].feedIn.endTM);
+//~  feedIn.spineRootTM = (owner.owner.spines[0].feedIn.rootTM);
+  feedIn.isDoingRecoveryStep = (owner.owner.bodyFrame.bodyBalance.feedIn.isDoingRecoveryStep);
+  feedIn.centreOfMassBodyState = (owner.owner.bodyFrame.feedOut.centreOfMassBodyState);
+  feedIn.groundVel = (owner.owner.bodyFrame.bodyBalance.out.groundVelocity);
+}
+
+#endif
+

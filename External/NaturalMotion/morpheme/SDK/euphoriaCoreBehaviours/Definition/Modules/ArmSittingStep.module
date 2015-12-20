@@ -1,0 +1,39 @@
+// Copyright (c) 2012 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Make the arm move to prepare to support the chest when the pelvis is supported
+__no_feedback__ module_def ArmSittingStep
+{
+owner: Arm
+
+in:
+  Transform armPoseEndRelativeToRoot;
+  SitParameters sitParameters; ///< Parameters defined by sit behaviour interface.
+
+out:
+  LimbControl control;
+
+feedIn:
+  Weight supportImportance; ///< Overall importance of the arms in maintaining a sitting balance.
+
+feedOut:
+  bool isStepping;
+
+connections<>:
+  // Inputs
+  in.armPoseEndRelativeToRoot = (owner.owner.sitBehaviourInterface.out.armPoseEndRelativeToRoot[owner.$ChildIndex]);
+  in.sitParameters = (owner.owner.sitBehaviourInterface.out.sitParameters);
+
+  feedIn.supportImportance = (owner.owner.bodyFrame.sittingBodyBalance.out.armSupportImportance);
+}
+
+#endif 

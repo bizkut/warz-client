@@ -1,0 +1,14 @@
+<material type="lit"> 
+	<shader name="vertex">vertex/skeletalmesh_1bone.cg</shader> 
+	<shader name="vertex">vertex/staticmesh.cg</shader> 
+	<shader name="fragment">fragment/simple_diffuse.cg</shader> 
+	<shader name="hull">tessellation/procedural_noise.cg</shader> 
+	<shader name="domain">tessellation/procedural_noise.cg</shader> 
+	<variables> 
+		<sampler2D name="diffuseTexture">textures/Plaster_Tileable.dds</sampler2D> 
+		<float4 name="g_tessFactor">6.0 6.0 3 100.0</float4> 
+		<float2 name="g_tessMinMaxDistance">1.0 15.0</float2> 
+		<float2 name="g_tessHeightScaleAndBias">1.0 0.5</float2> 
+		<float2 name="g_tessUVScale">1.0 1.0</float2> 
+	</variables>
+</material>

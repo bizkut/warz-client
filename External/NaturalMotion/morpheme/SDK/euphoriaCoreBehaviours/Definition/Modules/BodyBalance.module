@@ -1,0 +1,268 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Overall module dealing with applying overall body balance
+/// Note that this deals with balancing on legs and arms. Where
+/// legs and arms are treated identically then legs will be stored
+/// first, and the leg/arm is called a limb.
+__pix__ module_def BodyBalance
+{
+owner: BodyFrame<>
+data:
+  enum Constants {rigMaxNumSupports = networkMaxNumLegs + networkMaxNumArms};
+
+  /// True only right at the start of the update (and then cleared).
+  bool isFirstUpdate;
+
+  /// When we start swinging our arms to balance we use this timer to prevent them stopping too soon.
+  TimePeriod continueArmsTimer;
+  /// The time-smoothed centre of support position - at the moment average of the feet - weighted by the amount each
+  /// foot (or whatever) is actually supporting. Orientation gives yAxis "up" (against the effective gravity), 
+  /// xAxis "forward"
+  ER::LimbTransform supportTM;
+  /// horizontal version of supportTM
+  ER::LimbTransform horizontalSupportTM;
+  /// This is the position on the ground around which balancing is done. It won't necessarily be the
+  /// same as the supportTM position as that is the intended support position - i.e. it won't shift
+  /// if a foot is lifted, but is still considered to be part of the balance.
+  NMP::Vector3 groundContactPoint;
+  /// Rate of change of the support forward direction (units of /s)
+  NMP::Vector3 supportForwardRate;
+  /// The current (smoothed) ground velocity (averaged over all supporting limbs)
+  Velocity groundVel;
+  /// Rate of change of the ground velocity so we can smooth it
+  Acceleration groundVelRate;
+  /// Store the old ground velocity so we can estimate the acceleration
+  Velocity lastGroundVel;
+  /// (Smoothed) Acceleration of the feet/standing surface
+  Acceleration groundAccel;
+  /// Rate of change of the acceleration of the standing surface, used for smoothing
+  Jerk groundAccelRate;
+  /// velocity of the CoM
+  Velocity COMVel;
+  /// Horizontal (in support plane) COM velocity relative to the ground (depends on a foot touching the ground)
+  Velocity horCOMVelRelGround;
+  /// Direction of the effective gravity (adjusted if the floor is accelerating)
+  Direction effectiveGravityDir;
+  /// Average of all the supporting limb's contact normals
+  Direction averageSupportingLimbContactNormal;
+
+  // The COM error from the desired position, normalised to the support dimensions (but then squared
+  // and scaled)
+  Multiplier sidewaysPosErrorFrac;
+  Multiplier forwardsPosErrorFrac;
+  
+  Weight limbWeights[rigMaxNumSupports]; ///< weights per supporting limb claculated and stored in feedback for use in update
+  Multiplier supportPointWeightingPerLimb[rigMaxNumSupports];
+
+  Weight balanceAmount; ///< From 0 to 1
+  bool isStepping;
+  
+  bool needToInitialiseSupportTM;
+  uint32_t numStepsTaken;
+  TimePeriod timeSinceLastStep;
+  
+  /// Use this to "dot product" against arrays of all arms/legs
+  Weight enableSupportOnLimbs[rigMaxNumSupports];
+  Weight enableStepOnLimbs[rigMaxNumSupports];
+  
+  bool needToStep;
+  
+  // Used to adjust/correct the incoming desired pose
+  PositionDelta targetPelvisRelSupportPosition;
+  RotationVector targetPelvisRelSupportOrientation;
+  Velocity  targetPelvisRelSupportPositionRate;
+  Position  lastTargetPelvisRelSupportPosition; ///< used in stabilise_method 3
+  AngularVelocity targetPelvisRelSupportOrientationRate;
+  bool initialisedTargetPelvisRelSupport;
+  Transform targetPelvisRelSupport;
+
+  // Used when clamping the desired pose to smooth the IK error and use that to limit the deviations
+  Distance smoothedLegIKOrientationError;
+  Speed smoothedLegIKOrientationErrorRate;
+
+  float smoothedLegStrength[networkMaxNumLegs];
+  float smoothedArmStrength[networkMaxNumArms];
+  float smoothedLegStrengthRate[networkMaxNumLegs];
+  float smoothedArmStrengthRate[networkMaxNumArms];
+
+in:
+  BalanceParameters balanceParameters;
+  BalancePoseClamping balancePoseClamping;
+  StepRecoveryParameters stepRecoveryParameters;
+  /// The desired rotation and offset of the pelvis relative to the centre and direction of support.
+  /// The support coordinate from has the same convention as the spine etc - i.e. y up, x fwd
+  /// The horizontal component is used as a desired offset from the centre of support - so for
+  /// normal balancing, make sure this is zeroed!
+  Transform pelvisRelSupport;
+  /// Spine balance pose
+  Transform spinePoseEndRelativeToRoot[networkMaxNumSpines];
+  /// Leg balance pose
+  Transform legEndRelativeToRoot[networkMaxNumLegs];
+  
+  /// If 1 then the incoming horizontal pelvis offset from support should be kept. If 0 then the CoM will be used
+  /// balance. 
+  ClampedWeight balanceUsingAnimationHorizontalPelvisOffsetAmount;
+
+  Environment::SupportPoly supportPolygon;
+
+  bool enableSupportOnLegs;
+  bool enableSupportOnArms;
+  bool enableStepOnLegs;
+  bool enableStepOnArms;
+
+out:
+  /// This request can be acted on by any part of the body (hint - arm swing!) to try to rotate the pelvis. 
+  RotationRequest pelvisRotationRequest;
+  /// Desired spine root transform that support modules may try to reach for balance
+  ER::LimbTransform desiredPelvisTM;
+  /// Desired spine end transform that support modules may try to reach for balance
+  ER::LimbTransform desiredChestTM;
+
+  /// How much the root of the spine should be stabilised by support (by counteracting undesired motion)
+  Multiplier stabilisePelvisAmount;
+  /// How much the end of the spine should be stabilised by support (by counteracting undesired motion)
+  Multiplier stabiliseChestAmount;
+  
+  /// The velocity of the ground, if there is at least one limb supporting
+  Velocity groundVelocity;
+  
+  /// Top-down allowing of stepping - needed to prevent both feet from stepping at once etc. 
+  bool allowLegStep[networkMaxNumLegs];
+  bool allowArmStep[networkMaxNumArms];
+
+  /// Top-down evaluation of stepping - no need to evaluate if we're completely balanced, or if another 
+  /// leg is already stepping
+  bool evaluateStep;
+
+  /// Indicate to stepping that it should try to step to recover the feet, and where to. When this
+  /// gets called normally the balancer will be stable, and will have made the desired stepping leg
+  /// redundant to the balance.
+  Transform recoveryLegStepTarget[networkMaxNumLegs];
+  Transform recoveryArmStepTarget[networkMaxNumArms];
+
+  /// Strength scales for the arms/legs that are supporting (should also be used by stepping)
+  Weight legSupportStrengthScales[networkMaxNumLegs];
+  Weight armSupportStrengthScales[networkMaxNumArms];
+
+  /// The centre of support position - at the moment average of the feet - weighted by the amount
+  /// each foot (or whatever) is actually supporting. Orientation gives yAxis "up" (against the
+  /// real gravity), xAxis "forward"
+  /// Same as feedOut.supportTM
+  ER::LimbTransform supportTM;
+
+  /// This is the target pelvis position that is given by the target pose offset from the 
+  /// (horizontal) support TM. It has the CoM offset from the pelvis applied to it - so is 
+  /// statically balanced
+  ER::LimbTransform targetPelvisTM;
+
+  /// Average contact normal of the supporting limbs that are touching the ground
+  Direction averageSupportingLimbContactNormal;
+  
+  /// Control how the balance swing/spin the arms
+  bool armsSwingOutwardsOnly;
+  bool armsSpinInPhase;
+
+  /// Increase the spine damping when balancing to reduce oscillations
+  Weight spineDampingIncrease;
+
+feedOut:
+  /// The centre of support position - at the moment average of the feet - weighted by the amount
+  /// each foot (or whatever) is actually supporting. Orientation gives yAxis "up" (against the
+  /// real gravity), xAxis "forward"
+  ER::LimbTransform supportTM;
+  
+  /// If the body as a whole is supported (includes standing or stepping). Will be 0 when fallen.
+  Weight balanceAmount;
+
+  /// Velocity of the support poly - note that this is not the same as the gound velocity as we may
+  /// have the feet off the floor (e.g. stepping).
+  Velocity supportVelocity;
+
+  /// This indicates if the legs are currently trying to step (though will be wrong if the step
+  /// output is overridden)
+  bool isStepping;
+
+feedIn:
+  Weight limbSupportAmounts[rigMaxNumSupports];
+  bool isSupportedByConstraint;
+
+  Weight limbEndOnGroundAmounts[rigMaxNumSupports];
+
+  // What the stepping module is doing  
+  bool isStepping[rigMaxNumSupports];
+  Length stepLengths[rigMaxNumSupports];
+  Direction stepDir;
+  /// Indicates if any of the legs are stepping to recover pose
+  bool isDoingRecoveryStep;
+  
+  bool isSteppingBeingSuppressed;
+  
+  /// Amount that we should lower the pelvis by to help the stepping
+  Distance lowerPelvisDistance;
+
+  /// Backup indications if we should support - needed for the first feedback pass
+  bool enableSupportOnLegs;
+  bool enableSupportOnArms;
+
+connections<>:
+  // Inputs
+  in.balanceParameters = (owner.owner.balanceBehaviourInterface.out.balanceParameters);
+  in.stepRecoveryParameters = (owner.owner.balanceBehaviourInterface.out.stepRecoveryParameters);
+
+  in.balancePoseClamping = (owner.owner.balanceBehaviourInterface.out.balancePoseClamping);
+  in.pelvisRelSupport = (owner.owner.balanceManagement.out.pelvisRelSupport);
+
+  in.spinePoseEndRelativeToRoot[] = (owner.owner.balanceBehaviourInterface.out.spineBalancePoseEndRelativeToRoot[]);
+  in.legEndRelativeToRoot[] = (owner.owner.balanceBehaviourInterface.out.legBalancePoseEndRelativeToRoot[]);
+
+  in.balanceUsingAnimationHorizontalPelvisOffsetAmount = (owner.owner.balanceBehaviourInterface.out.balanceUsingAnimationHorizontalPelvisOffsetAmount);
+
+  in.supportPolygon = (owner.supportPolygon.out.polygon);
+
+  in.enableSupportOnLegs = (owner.owner.balanceBehaviourInterface.out.supportWithLegs);
+  in.enableSupportOnArms = (owner.owner.balanceBehaviourInterface.out.supportWithArms);
+  in.enableStepOnLegs = (owner.owner.balanceBehaviourInterface.out.stepWithLegs);
+  in.enableStepOnArms = (owner.owner.balanceBehaviourInterface.out.stepWithArms);
+
+  // Feed inputs
+  feedIn.enableSupportOnLegs = (owner.owner.balanceBehaviourFeedback.feedOut.supportWithLegs);
+  feedIn.enableSupportOnArms = (owner.owner.balanceBehaviourFeedback.feedOut.supportWithArms);
+
+  feedIn.limbSupportAmounts[*] = directInput(owner.owner.legs[*].standingSupport.feedOut.supportAmount,
+                                             owner.owner.arms[*].standingSupport.feedOut.supportAmount);
+  feedIn.isSupportedByConstraint = junctions.feedIn_isSupportedByConstraint = isBoolSet(
+    owner.owner.legs[*].feedOut.supportedByConstraint, 
+    owner.owner.arms[*].feedOut.supportedByConstraint);
+  feedIn.limbEndOnGroundAmounts[*] = directInput(owner.owner.legs[*].feedOut.endOnGroundAmount,
+                                                 owner.owner.arms[*].feedOut.endOnGroundAmount);
+  feedIn.stepLengths[*] = directInput(owner.owner.legs[*].step.feedOut.stepLength, owner.owner.arms[*].step.feedOut.stepLength);
+  feedIn.lowerPelvisDistance = junctions.feedIn_lowerPelvisDistance = maxFloat(
+    owner.owner.legs[*].step.feedOut.lowerRootDistance,
+    owner.owner.legs[*].standingSupport.feedOut.lowerRootDistance);
+  //feedIn.lowerChestDistance = junctions.feedIn_lowerChestDistance = average(owner.owner.arms[*].step.feedOut.lowerRootDistance); ///< not used in practice
+  feedIn.isSteppingBeingSuppressed = junctions.feedIn_isSteppingBeingSuppressed = isBoolSet(
+    owner.owner.legs[*].step.feedOut.isSteppingBeingSuppressed,
+    owner.owner.arms[*].step.feedOut.isSteppingBeingSuppressed);
+  feedIn.isStepping[*] = directInput(owner.owner.legs[*].step.feedOut.isStepping, owner.owner.arms[*].step.feedOut.isStepping);
+  feedIn.isDoingRecoveryStep = junctions.feedIn_isDoingRecoveryStep = isBoolSet(
+    owner.owner.legs[*].step.feedOut.isDoingRecoveryStep, 
+    owner.owner.arms[*].step.feedOut.isDoingRecoveryStep);
+  feedIn.stepDir = junctions.feedIn_stepDir = average(
+    owner.owner.legs[*].step.feedOut.stepDir, 
+    owner.owner.arms[*].step.feedOut.stepDir);
+
+  // feed outputs
+  feedOut.isStepping = junctions.feedOut_isStepping = isBoolSet(feedIn.isStepping[*]);
+}
+
+#endif

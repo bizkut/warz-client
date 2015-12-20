@@ -1,0 +1,69 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Allows a character to try to protect its main head and chest from extreme danger by taking a shield pose, just like a boxer being hit. 
+behaviour_def Shield
+{
+interface:
+  displayname = "Shield";
+  version = 4;
+
+modules:
+  shieldBehaviourInterface;
+  heads[*].eyes;
+  environmentAwareness.*;
+  sceneProbes.*;   
+  hazardManagement;
+  hazardManagement.hazardResponse;
+  hazardManagement.chestImpactPredictor;
+  hazardManagement.shieldManagement;
+  balanceManagement.balancePoser;
+  spines[*].pose;
+  legs[*].pose;
+  arms[*].pose;
+  heads[*].pose;
+  bodyFrame;
+
+attributes:
+
+  group("Shield")
+  {
+    float ImpactResponseForShield = 7.0f, 0.0f  __per_anim_set__ __title__("ImpactResponseIsGreaterThan"); ///<Shield will be triggered if the character will change speed by more than this on impact, based on the relative masses. In m/s (standard character).
+    float AngularSpeedForShield = 1.5f, 0.0f   __per_anim_set__ __title__("SpinSpeedIsGreaterThan"); ///< The character will shield if he predicts an impact with a hazard and he is rotating faster than this. In revolutions/second (standard character).
+    float TangentialSpeedForShield = 6.0f, 0.0f __per_anim_set__ __title__("TangentialSpeedIsGreaterThan"); ///< The character will shield if his predicted tangential velocity at the time of impact with a hazard is greater than this. In m/s (standard character).
+    float SmoothReturnTimePeriod = 1.0f, 0.0f __per_anim_set__ __title__("BlendOutDuration");  ///< Time period the character will need to completely stop shield. In seconds (standard character).
+  }
+  group("Balance")
+  {
+    float DefaultPitchAngle = 15.0f, -180.0f, 180.0f __per_anim_set__  __title__("SpinePitch");  ///< Pitch of the spine when the character stands up (in degrees).
+    float crouchAmount = 0.2f, 0.0f, 1.0f          __per_anim_set__  __title__("CrouchAmount");  ///< Level of crouching, larger values will crouch more when shielding
+  }
+  group("Cache Pose")
+  {
+    /// If set then pose will be cached on the first update. This means that the pose that is used will not change if the input changes.
+    bool UseSingleFrameForShieldPoses = false        __per_anim_set__ __title__("CacheFirstFrame"); 
+  }
+
+animationInputs:
+  BodyPose  ShieldPose __title__("Pose");    ///< The basic shield pose itself.
+  
+controlParams:
+  {
+    float TurnAwayScale = 1, 0, 1  __title__("TurnAwayFromHazard"); ///< Sets the amount the character can turn away from a hazard. Accepts values in the range 0 to 1.
+  }
+  
+outputControlParams:
+  float isShielding; ///< 1 if we are shielding, 0 otherwise
+  float hazardAngle; ///< Angle in degrees towards the hazard. Zero means straight ahead, and +ve is to the right.
+}
+
+#endif

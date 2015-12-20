@@ -1,0 +1,49 @@
+// Copyright (c) 2012 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// Drive the orientation of the pelvis with the legs without attempting to maintain the pelvis position. The position of
+// the feet relative to the pelvis is driven gently toward the supplied pose but the priority is to drive the feet 
+// position in whatever way is most useful for maintaining the desired pelvis orientation. This module assumes that the 
+// pelvis is intended to be in contact with a supporting surface.
+module_def LegSittingSupport
+{
+owner: Leg
+data:
+  /// Used to make support more keen to claim that it is supporting on the first update/feedback - so 
+  /// that there isn't one frame of unsupported (which would result in other behaviours trying to run)
+  bool hasFeedbackRun;
+  
+  float endOffGroundAmount; ///< Continuously varying parameter indicating time out of contact.
+
+in:
+  ER::LimbTransform rootDesiredTM; ///< Desired transform (world space) for the root of the limb
+  /// Scaling on the strengths so that modules coordinating support etc can indicate if the 
+  /// actions need to be stronger/weaker depending on how many limbs are acting.
+  Weight supportStrengthScale;
+
+  Transform balancePoseEndRelativeToRoot; ///< Balance pose
+
+feedOut:
+  Weight    supportAmount;   ///< How much the support is operating, 1 if support is operating, even if it has only loose control of the root.
+  Position  endSupportPoint; ///< Position of the end effector.
+
+out:
+  LimbControl control;
+
+connections<>:
+  in.rootDesiredTM = (owner.owner.bodyFrame.sittingBodyBalance.out.desiredPelvisTM);
+  in.supportStrengthScale = (owner.owner.bodyFrame.sittingBodyBalance.out.legSupportStrengthScales[owner.$ChildIndex]);
+  in.balancePoseEndRelativeToRoot = 
+    (owner.owner.sitBehaviourInterface.out.legPoseEndRelativeToRoot[owner.$ChildIndex]);
+}
+
+#endif 

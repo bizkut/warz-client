@@ -1,0 +1,31 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// looks at the specified target
+__no_feedback__ module_def SpineReachReaction
+{
+owner: Spine
+data:  
+in:
+  Weight supportAmount;
+  ReachTarget reachTarget;
+  Position avgReachingHandPos;
+feedOut:
+out:
+  LimbControl control;
+connections<>:
+  in.reachTarget = (owner.owner.bodyFrame.reachForBody.out.reachTarget);
+  in.supportAmount = (owner.owner.bodyFrame.feedOut.supportAmount);
+  in.avgReachingHandPos = (owner.owner.bodyFrame.reachForBody.out.errorWeightedAverageEffectorPosition);
+}
+
+#endif

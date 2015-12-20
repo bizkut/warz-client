@@ -1,0 +1,30 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// this module takes care of choosing which leg(s) to brace with
+// based on which one is closer. It is designed to work on n legs and the result depends on the masses 
+// a character with heavy legs and a small body mass will brace with just the closest leg
+// a character with light legs and a heavy body will usually brace with all its legs
+// This module could also be used for arms, and for deciding which legs to step with
+// Lastly, there is scope to improve this by shanging how the incoming data is calculated
+__no_feedback__ module_def BraceChooser 
+{
+owner: BodySection<>
+out:
+  bool shouldBrace[networkMaxNumLegs]; ///< Outputs whether each limb should brace
+feedIn:
+  BraceState braceStates[networkMaxNumLegs]; ///< Pose of each limb which determines its fitness for bracing
+connections<>:
+  feedIn.braceStates[] = (owner.feedIn.braceStates[]);
+}
+
+#endif

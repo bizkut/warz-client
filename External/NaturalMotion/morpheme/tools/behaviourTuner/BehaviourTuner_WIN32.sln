@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{A05A2F59-30AF-489E-D394-270D55B9817D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BehaviourTuner", "BehaviourTuner_WIN32.vcxproj", "{EAE3644D-ED6F-410E-50B8-D62E3C991A4E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NMTinyXML", "..\..\..\common\tinyxml\NMTinyXML_WIN32.vcxproj", "{DB83B4BD-06FA-42BE-9C9C-C79CC34E829F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug Tool|Win32 = Debug Tool|Win32
+		Release Tool|Win32 = Release Tool|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAE3644D-ED6F-410E-50B8-D62E3C991A4E}.Debug Tool|Win32.ActiveCfg = Debug Tool|Win32
+		{EAE3644D-ED6F-410E-50B8-D62E3C991A4E}.Debug Tool|Win32.Build.0 = Debug Tool|Win32
+		{EAE3644D-ED6F-410E-50B8-D62E3C991A4E}.Release Tool|Win32.ActiveCfg = Release Tool|Win32
+		{EAE3644D-ED6F-410E-50B8-D62E3C991A4E}.Release Tool|Win32.Build.0 = Release Tool|Win32
+		{DB83B4BD-06FA-42BE-9C9C-C79CC34E829F}.Debug Tool|Win32.ActiveCfg = Debug Tool|Win32
+		{DB83B4BD-06FA-42BE-9C9C-C79CC34E829F}.Debug Tool|Win32.Build.0 = Debug Tool|Win32
+		{DB83B4BD-06FA-42BE-9C9C-C79CC34E829F}.Release Tool|Win32.ActiveCfg = Release Tool|Win32
+		{DB83B4BD-06FA-42BE-9C9C-C79CC34E829F}.Release Tool|Win32.Build.0 = Release Tool|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EAE3644D-ED6F-410E-50B8-D62E3C991A4E} = {A05A2F59-30AF-489E-D394-270D55B9817D}
+		{DB83B4BD-06FA-42BE-9C9C-C79CC34E829F} = {F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}
+	EndGlobalSection
+EndGlobal

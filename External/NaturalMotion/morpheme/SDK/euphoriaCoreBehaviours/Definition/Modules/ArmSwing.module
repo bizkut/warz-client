@@ -1,0 +1,43 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// attempt to adjust the angle of the body by accelerating the swing of the arms in the opposite angular direction
+__no_feedback__ module_def ArmSwing
+{
+owner: Arm
+
+in:
+  RotationRequest rotationRequest; ///< Requests rotation from the chest
+  uint16_t numConstrainedArms;     ///< Number of arms with pin constraints. Prevents swinging when arms are constrained
+  Multiplier swingStiffnessScale;  ///< Makes the arms stiffer / faster
+  bool armsOutwardsOnly;           ///< Doesn't try and windmill arms to cross to inside of body
+
+out:
+  LimbControl control; ///< IK control of arm
+
+connections<>:
+  in.swingStiffnessScale = junctions.sss = priority(
+    owner.owner.protectBehaviourInterface.out.armsSwingWeight,
+    owner.owner.hazardManagement.grab.out.armSwingStiffnessScale,
+    owner.owner.armsWindmillBehaviourInterface.out.swingStiffnessScales[owner.$ChildIndex]);
+    
+  in.rotationRequest = junctions.pri01 = priority(
+    owner.owner.upperBody.out.rotationRequest, 
+    owner.owner.armsWindmillBehaviourInterface.out.targetRequests[owner.$ChildIndex]);
+
+  in.numConstrainedArms = (owner.owner.hazardManagement.grab.out.numConstrainedArms);
+  in.armsOutwardsOnly = junctions.pri02 = winnerTakesAll(
+    owner.owner.armsWindmillBehaviourInterface.out.armsOutwardsOnly, 
+    owner.owner.bodyFrame.bodyBalance.out.armsSwingOutwardsOnly);
+}
+
+#endif

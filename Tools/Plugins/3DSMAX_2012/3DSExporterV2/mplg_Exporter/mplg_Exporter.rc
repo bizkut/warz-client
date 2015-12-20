@@ -1,0 +1,212 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,5,1
+ PRODUCTVERSION 1,0,5,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", " "
+            VALUE "FileDescription", "TSGroup Exporter Plugin"
+            VALUE "FileVersion", "1, 0, 5, 1"
+            VALUE "InternalName", "SSMaxExporter"
+            VALUE "LegalCopyright", "Copyright © 2005 TSGroup"
+            VALUE "OriginalFilename", "SS_Exporter.smax_dll"
+            VALUE "ProductName", "TSGroup Exporter Plugin"
+            VALUE "ProductVersion", "1, 0, 5, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUT DIALOGEX 0, 0, 202, 89
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "TSGroup Exporter - About"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Close",IDOK,75,69,50,14
+    CTEXT           "TSGroup 3DSMax Exporter\n\n(c) 2005",IDC_STATIC,7,15,188,41
+END
+
+IDD_SCENE_EXPORT DIALOGEX 0, 0, 299, 230
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Export Scene"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Close",IDCLOSE,227,201,50,14
+    DEFPUSHBUTTON   "Export",IDC_SCENE_EXPORT,62,201,111,14
+    LTEXT           "Export Path:",IDC_STATIC,14,23,40,8
+    EDITTEXT        IDC_EXPORTPATH,58,21,165,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Browse",IDC_BROWSE,226,21,50,14
+    CONTROL         "Copy Textures",IDC_CHECK_TEXCOPY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,59,44,61,10
+    CONTROL         "",IDC_NRM_EPSILON,"msctls_trackbar32",TBS_AUTOTICKS | TBS_TOP | TBS_TOOLTIPS | WS_TABSTOP,72,164,168,20
+    LTEXT           "Normals Tolerance",IDC_STATIC,7,171,60,8
+    LTEXT           "Static",IDC_NRM_TEXT,250,172,42,8
+    CONTROL         "Export Materials",IDC_CHECK_SAVEMATS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,59,110,66,10
+    CONTROL         "Export Vertex Colors",IDC_CHECK_VTXCOLOR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,58,126,79,10
+    CONTROL         "Convert to DDS",IDC_CHECK_CONVDDS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,58,58,61,10
+    EDITTEXT        IDC_EDIT1,67,69,217,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,67,86,217,14,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 195
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 83
+    END
+
+    IDD_SCENE_EXPORT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 292
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 224
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_TYPE_BONE           ICON                    "res\\type_bone.ico"
+IDI_TYPE_OTHER          ICON                    "res\\type_other.ico"
+IDI_TYPE_DUMMY          ICON                    "res\\type_dummy.ico"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Switzerland) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DES)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN_SWISS
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 7, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""l.deu\\afxres.rc""          // Standardkomponenten\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // German (Switzerland) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE 7, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "l.deu\afxres.rc"          // Standardkomponenten
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

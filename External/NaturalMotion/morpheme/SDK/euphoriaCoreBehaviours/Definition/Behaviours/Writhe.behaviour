@@ -1,0 +1,74 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Allows a character to writhe and flail, based on a default pose or on the current limb position.
+behaviour_def Writhe
+{
+interface:
+  displayname = "Writhe";
+  version = 2;
+  
+modules:
+  writheBehaviourInterface;
+  arms[*].writhe;
+  legs[*].writhe;
+  spines[*].writhe;
+  randomLook;
+  heads[*].point;
+  heads[*].eyes;
+  
+animationInputs:
+  BodyPose DefaultPose; ///< Sets an average pose for the character's body during the behaviour. All random movement of body parts will be interpreted as offsets from this pose.
+  
+attributes:
+  group("Arms")
+  {
+    float ArmsDriveCompensationScale[networkMaxNumArms] = 1.0f, 0, 2.0f   __per_anim_set__ __title__("DriveCompensationScale");   ///< A scale on the drive compensation, larger values give more controlled motion, smaller give more springy motion with more oscillations.
+    float ArmsAmplitudeScale[networkMaxNumArms] = 0.75f, 0, 100.0f        __per_anim_set__ __title__("AmplitudeScale");           ///< Scales the length of the randomly generated displacement of the arm position.
+    float ArmsFrequency[networkMaxNumArms] = 15.0f, 0.1f, 100.0f          __per_anim_set__ __title__("Frequency");                ///< How often the randomly generated arm position changes. In Hertz on the standard character.
+    bool ArmsBasedOnDefaultPose[networkMaxNumArms] = true                 __per_anim_set__ __title__("UsePose");                  ///< When enabled, the arm is randomly displaced from the position in the pose. If disabled, the random displacement is added to the current position.
+  }
+  group("Heads")
+  {
+    float HeadsDriveCompensationScale[networkMaxNumHeads] = 1.0f, 0, 2.0f __per_anim_set__ __title__("DriveCompensationScale");   ///< A scale on the drive compensation, larger values give more controlled motion, smaller give more springy motion with more oscillations.
+    float HeadsAmplitudeScale[networkMaxNumHeads] = 0.75f, 0, 100.0f      __per_anim_set__ __title__("AmplitudeScale");           ///< Scales the length of the randomly generated displacement of the head position.
+    float HeadsFrequency[networkMaxNumHeads] = 15.0f, 0.1f, 100.0f        __per_anim_set__ __title__("Frequency");                ///< How often the randomly generated head position changes. In Hertz on the standard character.
+    bool HeadsBasedOnDefaultPose[networkMaxNumHeads] = true               __per_anim_set__ __title__("UsePose");                  ///< When enabled, the head is randomly displaced from the position in the pose. If disabled, the random displacement is added to the current position.
+  }
+  group("Legs")
+  {
+    float LegsDriveCompensationScale[networkMaxNumLegs] = 1.0f, 0, 2.0f   __per_anim_set__ __title__("DriveCompensationScale");   ///< A scale on the drive compensation, larger values give more controlled motion, smaller give more springy motion with more oscillations.
+    float LegsAmplitudeScale[networkMaxNumLegs] = 0.75f, 0, 100.0f        __per_anim_set__ __title__("AmplitudeScale");           ///< Scales the length of the randomly generated displacement of the leg position.
+    float LegsFrequency[networkMaxNumLegs] = 10.0f, 0.1f, 100.0f          __per_anim_set__ __title__("Frequency");                ///< How often the randomly generated leg position changes. In Hertz on the standard character.
+    bool LegsBasedOnDefaultPose[networkMaxNumLegs] = true                 __per_anim_set__ __title__("UsePose");                  ///< When enabled, the leg is randomly displaced from the position in the pose. If disabled, the random displacement is added to the current position.
+  }
+  group("Spines")
+  {
+    float SpinesDriveCompensationScale[networkMaxNumSpines] = 1.0f, 0, 2.0f __per_anim_set__ __title__("DriveCompensationScale"); ///< A scale on the drive compensation, larger values give more controlled motion, smaller give more springy motion with more oscillations.
+    float SpinesAmplitudeScale[networkMaxNumSpines] = 0.75f, 0, 100.0f      __per_anim_set__ __title__("AmplitudeScale");         ///< Scales the length of the randomly generated displacement of the spine position.
+    float SpinesFrequency[networkMaxNumSpines] = 15.0f, 0.1f, 100.0f        __per_anim_set__ __title__("Frequency");              ///< How often the randomly generated spine position changes. In Hertz on the standard character.
+    bool SpinesBasedOnDefaultPose[networkMaxNumSpines] = true               __per_anim_set__ __title__("UsePose");                ///< When enabled, the spine is randomly displaced from the position in the pose. If disabled, the random displacement is added to the current position.
+  }
+controlParams:
+
+  /// The strength this behaviour has to control each limb type
+  group("Strength Scale Defaults")
+  {
+    float ImportanceArm[networkMaxNumArms]   = 1, 0, 2    __title__("Arm");     ///< Sets the strength of the control this behaviour has over the arms, scaling the generated movement.
+    float ImportanceHead[networkMaxNumHeads]  = 1, 0, 2   __title__("Head");    ///< Sets the strength of the control this behaviour has over the heads, scaling the generated movement.
+    float ImportanceLeg[networkMaxNumLegs]   = 1, 0, 2    __title__("Leg");     ///< Sets the strength of the control this behaviour has over the legs, scaling the generated movement.
+    float ImportanceSpine[networkMaxNumSpines] = 1, 0, 2  __title__("Spine");   ///< Sets the strength of the control this behaviour has over the spines, scaling the generated movement.
+  }
+}
+
+#endif
+

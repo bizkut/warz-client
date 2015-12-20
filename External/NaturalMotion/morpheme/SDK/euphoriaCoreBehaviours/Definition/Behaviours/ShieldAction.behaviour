@@ -1,0 +1,67 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Makes the character form a shield pose against a specified hazard position.
+behaviour_def ShieldAction
+{
+interface:
+  displayname = "Shield Action";
+  version = 2;
+
+modules:
+  shieldActionBehaviourInterface;
+  hazardManagement.shieldManagement;
+  balanceManagement.balancePoser;
+  spines[*].pose;
+  legs[*].pose;
+  arms[*].pose;
+  heads[*].pose;
+  bodyFrame;
+
+attributes:
+  group("Balance")
+  {
+    float DefaultPitchAngle = 15.0f, -180.0f, 180.0f  __per_anim_set__ __title__("SpinePitch");  ///< Pitch of the spine when the character stands up (in degrees).
+    float CrouchAmount = 0.2f, 0.0f, 100.0f           __per_anim_set__;            ///< Level of crouching, larger values will crouch more when shielding
+  }
+  
+  group("Cache Pose")
+  {
+    /// If set then pose will be cached on the first update. This means that the pose that is used will not change if the input changes.
+    bool UseSingleFrameForShieldPose = false    __per_anim_set__ __title__("CacheFirstFrame"); 
+  }
+  
+  group("Shield")
+  {
+    float SmoothReturnTimePeriod = 1.0f, 0.0f, 100.0f  __per_anim_set__ __title__("BlendOutDuration"); ///< Minimum time period the character will continue to shield after shielding against a hazard. In seconds (standard character).
+  }
+  
+animationInputs:
+  BodyPose  ShieldPose __title__("Pose");    ///< The basic shield pose itself. If the character is supported,the shield pose will only be used for his heads and arms. The character will rotate with his spine to turn away from the hazard. If he is not supported, the poses are applied for the all body.
+
+controlParams:
+  {
+    float Importance = 1, 0, 1 __title__("Weight"); ///< This determines whether shield happens or not. A value of 1 will force the character to shield.
+    vector3 HazardPos __expose_as_pin__ __title__("HazardPosition"); ///< Position of the hazard to shield against in world space.
+  }
+
+  group("Shield")
+  {
+    float TurnAwayScale = 1, 0, 1 __title__("TurnAwayFromHazard"); ///< Scale used to set the amount of rotation to turn away from the hazard (0 - 1).
+  }
+
+outputControlParams:
+  float hazardAngle; ///< Angle in degrees towards the hazard. Zero means straight ahead, and +ve is to the right.
+
+}
+
+#endif

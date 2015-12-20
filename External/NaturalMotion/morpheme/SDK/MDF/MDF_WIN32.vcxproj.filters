@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CustomOptionKeyword.inl" />
+    <ClInclude Include="FixedStack.h" />
+    <ClCompile Include="LibMDF.cpp" />
+    <ClInclude Include="LibMDF.h" />
+    <ClCompile Include="MappedIO.cpp" />
+    <ClInclude Include="MappedIO.h" />
+    <ClCompile Include="MDF.cpp" />
+    <ClInclude Include="MDF.h" />
+    <ClCompile Include="MDFBehaviourAnalysis.cpp" />
+    <ClInclude Include="MDFBehaviourAnalysis.h" />
+    <ClInclude Include="MDFBehaviourDefs.h" />
+    <ClCompile Include="MDFBehaviourGrammar.cpp" />
+    <ClInclude Include="MDFBehaviourGrammar.h" />
+    <ClCompile Include="MDFBehaviourHandlers.cpp" />
+    <ClCompile Include="MDFKeywords.cpp" />
+    <ClInclude Include="MDFKeywords.h" />
+    <ClCompile Include="MDFModuleAnalysis.cpp" />
+    <ClInclude Include="MDFModuleAnalysis.h" />
+    <ClInclude Include="MDFModuleDefs.h" />
+    <ClCompile Include="MDFModuleGrammar.cpp" />
+    <ClInclude Include="MDFModuleGrammar.h" />
+    <ClCompile Include="MDFModuleHandlers.cpp" />
+    <ClInclude Include="MDFPrecompiled.h" />
+    <ClCompile Include="MDFTypesAnalysis.cpp" />
+    <ClInclude Include="MDFTypesAnalysis.h" />
+    <ClInclude Include="MDFTypesDefs.h" />
+    <ClCompile Include="MDFTypesGrammar.cpp" />
+    <ClInclude Include="MDFTypesGrammar.h" />
+    <ClCompile Include="MDFTypesHandlers.cpp" />
+    <ClCompile Include="ParserBase.cpp" />
+    <ClInclude Include="ParserBase.h" />
+    <ClInclude Include="ParserDefs.h" />
+    <ClCompile Include="ParserEngine.cpp" />
+    <ClInclude Include="ParserEngine.h" />
+    <ClCompile Include="ParserMemory.cpp" />
+    <ClInclude Include="ParserMemory.h" />
+    <ClInclude Include="PString.h" />
+    <ClInclude Include="StringBuilder.h" />
+    <ClCompile Include="TypesRegistry.cpp" />
+    <ClCompile Include="Utils.cpp" />
+    <ClInclude Include="Utils.h" />
+  </ItemGroup>
+</Project>

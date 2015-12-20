@@ -1,0 +1,39 @@
+// Copyright (c) 2012 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// To allow user-generated hazards to be passed in.
+behaviour_def UserHazard
+{
+interface:
+  displayname = "User Hazard";
+  version = 2;
+  
+modules:
+  userHazardBehaviourInterface;
+  hazardManagement.chestImpactPredictor.*;
+
+controlParams:
+  group("Input Defaults")
+  {
+    bool UserHazard = 0          __title__("User defined hazard");   ///< If true, a user defined hazard will be used alongside hazards identified by environment awareness.
+    bool IgnoreOtherHazards = 0  __title__("Ignore other hazards");  ///< Force the behaviour to use only this hazard, rather than using the environment awareness.
+  }
+  group("Hazard Inputs")
+  {
+    vector3 HazardPosition = (0.0f, 0.0f, 0.0f) __title__("Position") __expose_as_pin__;     ///< Sets the position of the user defined hazard. In absolute world space units.
+    vector3 HazardVelocity = (0.0f, 0.0f, 0.0f) __title__("Velocity") __expose_as_pin__;     ///< Sets the velocity of the user defined hazard. In absolute world space units.
+    float HazardMass = 0.0f, 0.0f, 10000.0f  __title__("Mass");     ///< Sets the mass of the user defined hazard, which affects the strength of bracing. In absolute units.
+    float HazardRadius = 0.0f, 0.0f, 100.0f  __title__("Radius");   ///< Sets the radius of the user defined hazard (the object is approximated as a sphere). In absolute units.
+  }
+}
+
+#endif

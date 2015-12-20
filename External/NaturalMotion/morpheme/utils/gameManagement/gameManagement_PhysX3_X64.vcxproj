@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>gameManagement_PhysX3</ProjectName>
+    <ProjectGuid>{7DA6AA3B-3B82-4315-D899-960A0D95A181}</ProjectGuid>
+    <RootNamespace>gameManagement_PhysX3</RootNamespace>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>gameManagement_PhysX3_debug</TargetName>
+    <IntDir>..\..\..\obj\x64\vs$(VisualStudioVersion)\gameManagement_PhysX3\debug\</IntDir>
+    <OutDir>..\..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>gameManagement_PhysX3</TargetName>
+    <IntDir>..\..\..\obj\x64\vs$(VisualStudioVersion)\gameManagement_PhysX3\release\</IntDir>
+    <OutDir>..\..\..\lib\x64\vs$(VisualStudioVersion)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\SDK\physics\include\Physics\PhysX3;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\..\SDK\physics\include;..\comms2\include;..\simpleBundle\include;..\..\SDK\core\include;..\..\SDK;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessorDefinitions>NM_PHYSX3;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)gameManagement_PhysX3_debug.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\SDK\physics\include\Physics\PhysX3;"$(PHYSX3_PATH)\Include";"$(PHYSX3_PATH)\Include\characterkinematic";"$(PHYSX3_PATH)\Include\cloth";"$(PHYSX3_PATH)\Include\common";"$(PHYSX3_PATH)\Include\cooking";"$(PHYSX3_PATH)\Include\depracated";"$(PHYSX3_PATH)\Include\extensions";"$(PHYSX3_PATH)\Include\foundation";"$(PHYSX3_PATH)\Include\geometry";"$(PHYSX3_PATH)\Include\gpu";"$(PHYSX3_PATH)\Include\particles";"$(PHYSX3_PATH)\Include\physxprofilesdk";"$(PHYSX3_PATH)\Include\physxvisualdebuggersdk";"$(PHYSX3_PATH)\Include\pvd";"$(PHYSX3_PATH)\Include\pxtask";"$(PHYSX3_PATH)\Include\RepX";"$(PHYSX3_PATH)\Include\vehicle";"$(PHYSX3_PATH)\Include\foundation\windows";..\..\SDK\physics\include;..\comms2\include;..\simpleBundle\include;..\..\SDK\core\include;..\..\SDK;..\..\..\common\NMPlatform\include;..\..\..\common\NMPlatform\include\NMPlatform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>Default</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NM_PHYSX3;NOMINMAX;PX_PHYSX_CHARACTER_STATIC_LIB;WIN32;_CRT_SECURE_NO_WARNINGS;_LIB;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ProgramDatabaseFileName>$(OutDir)gameManagement_PhysX3.pdb</ProgramDatabaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\GameManagement\GameAnimLoader.h" />
+    <ClInclude Include="include\GameManagement\GameAnimModule.h" />
+    <ClInclude Include="include\GameManagement\GameAssetLoader.h" />
+    <ClInclude Include="include\GameManagement\GameCharacter.h" />
+    <ClInclude Include="include\GameManagement\GameCharacterDef.h" />
+    <ClInclude Include="include\GameManagement\GameCharacterManager.h" />
+    <ClInclude Include="include\GameManagement\GameThreadScheduler.h" />
+    <ClInclude Include="include\GameManagement\PhysX3\GameAnimSystemModulePhysX3.h" />
+    <ClInclude Include="include\GameManagement\PhysX3\GameCharacterControllerPhysX3.h" />
+    <ClInclude Include="include\GameManagement\PhysX3\GameCharacterManagerPhysX3.h" />
+    <ClInclude Include="include\GameManagement\PhysX3\GameCharacterManagerPhysX3Threaded.h" />
+    <ClInclude Include="include\GameManagement\PhysX3\GameCharacterPhysX3.h" />
+    <ClInclude Include="include\GameManagement\PhysX3\GamePhysX3Manager.h" />
+    <ClCompile Include="src\GameAnimLoader.cpp" />
+    <ClCompile Include="src\GameAnimModule.cpp" />
+    <ClCompile Include="src\GameAssetLoader.cpp" />
+    <ClCompile Include="src\GameCharacter.cpp" />
+    <ClCompile Include="src\GameCharacterDef.cpp" />
+    <ClCompile Include="src\GameCharacterManager.cpp" />
+    <ClCompile Include="src\GameThreadScheduler.cpp" />
+    <ClCompile Include="src\PhysX3\GameAnimSystemModulePhysX3.cpp" />
+    <ClCompile Include="src\PhysX3\GameCharacterControllerPhysX3.cpp" />
+    <ClCompile Include="src\PhysX3\GameCharacterManagerPhysX3.cpp" />
+    <ClCompile Include="src\PhysX3\GameCharacterManagerPhysX3Threaded.cpp" />
+    <ClCompile Include="src\PhysX3\GameCharacterPhysX3.cpp" />
+    <ClCompile Include="src\PhysX3\GamePhysX3Manager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SDK\physics\morphemePhysicsDriver_PhysX3_X64.vcxproj">
+      <Project>{49059F87-92EE-48ED-389D-76C9F7E7D572}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SDK\physics\morphemePhysicsCore_X64.vcxproj">
+      <Project>{C153C767-7FAA-4D11-629F-2BFA6D25D883}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\comms2\morphemeComms2_X64.vcxproj">
+      <Project>{6759E731-4BC1-4352-28AA-C5583B7EC71F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\simpleBundle\morphemeSimpleBundle_X64.vcxproj">
+      <Project>{6CEBC4A6-0CFB-4C11-E5A6-3A08633BEE6F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SDK\core\morphemeCore_X64.vcxproj">
+      <Project>{D90ECD48-E518-4965-D5A1-487523A09108}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\NMPlatform\NMPlatform_X64.vcxproj">
+      <Project>{773E894A-FCA3-4312-37AF-0588248FC43F}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

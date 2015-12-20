@@ -1,0 +1,66 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Spins a character's legs in circles in order to achieve a rotation of the pelvis within a specified time period. 
+behaviour_def LegsPedal
+{
+interface:
+  version = 5;
+  displayname = "Legs Pedal";
+  
+modules:
+  legsPedalBehaviourInterface;
+  lowerBody;
+  legs[*].spin;
+  
+attributes:
+  group("Leg Spin Weight") ///< Affects how strongly the character will spin the legs to drive rotation about each axis. Axis are defined in character or world space depending on the value of the "Operate in local space" attribute.
+  {
+    float SpinWeightForward = 1.0f, 0.0f, 1.0f __per_anim_set__ __title__("AroundForwardAxis"); ///< Weight of rotation control around the forwards / x axis.
+    float SpinWeightUp      = 1.0f, 0.0f, 1.0f __per_anim_set__ __title__("AroundUpAxis");      ///< Weight of rotation control around the upwards / y axis.
+    float SpinWeightLateral = 1.0f, 0.0f, 1.0f __per_anim_set__ __title__("AroundRightAxis");   ///< Weight of rotation control around the sideways / z axis.
+  }
+  group("Spin") ///< Affects how strongly a request to spin the legs is applied. 1 is normal or average stiffness, 0 has no effect, the spin is turned off.
+  {
+    float SpinAmounts[networkMaxNumLegs] = 1.0f, 0.0f, 2.0f __title__("SpinAmount"); ///< Affects how strongly a request to spin the legs is applied. 1 is normal or average stiffness, 0 has no effect, the spin is turned off.
+
+    /// Maximum angular speed of the leg, in revolutions/second (standard character).
+    float MaxAngSpeed = 3.0f, 0.0f, 5.0f __per_anim_set__  __title__("MaximumAngularSpeed"); 
+    
+    /// Maximum radius of spin around the spin centre, this is a length, in metres (standard character).
+    float MaxRadius   = 0.4f, 0.0f, 2.0f __per_anim_set__ __title__("MaximumSpinRadius"); 
+    
+    /// If true then both feet will have opposite phases in their respective circles, if false then the feet will circle independently from their initial positions
+    bool Synchronised = true __per_anim_set__;
+  }
+  group("Swing") ///< Affects how strongly a request to swing the legs is applied.
+  {
+    float SwingAmounts[networkMaxNumLegs] = 0.0f, 0.0f, 3.0f __title__("SwingAmount");   ///< Affects how strongly a request to swing the legs is applied, 0 will not swing, 1 is normal stiffness.
+  }  
+  group("Stop Swinging When")
+  {
+    float FallenFor = 0.8f, 0.0f, 5.0f;    ///< The swing will abort if the character is fallen over for longer than this amount of time (seconds). In seconds (standard character).
+  }
+  group("Input Defaults")
+  {
+    /// If true then the target rotation delta of the character will be interpreted in the local space of the pelvis. Otherwise it is interpreted in world space.
+    bool SpinInLocalSpace = true __per_anim_set__ __title__("OperateInLocalSpace");
+  }
+controlParams:
+  {
+    vector3 TargetRotationDelta = (0.0f, 0.0f, 90.0f) __title__("Rotation");   ///< Sets a world or local space rotation vector whose direction determines the axis and magnitude determines the angle of rotation of the pelvis, in degrees.
+    float   RotationTime = 0.8f, 0.0f, 5.0f;                                  ///< Sets the amount of time in which to achieve the rotation, in seconds (standard character). Smaller values lead to faster movements. For times under about 0.5s the legs will swing rather than spin.
+    float   ImportanceForLeg[networkMaxNumLegs] = 1.0f, 0.0f, 1.0f __title__("Weight"); ///< Sets the strength of control this behaviour has over each leg. Accepts values in the range 0 to 1.
+  }
+}
+
+#endif

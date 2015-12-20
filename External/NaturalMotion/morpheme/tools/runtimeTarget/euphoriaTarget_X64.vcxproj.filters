@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Euphoria" />
+    <Filter Include="Physics\PhysX3" />
+    <Filter Include="Physics" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="defaultAssetMgr.cpp" />
+    <ClInclude Include="defaultAssetMgr.h" />
+    <ClCompile Include="defaultConnectionManager.cpp" />
+    <ClInclude Include="defaultConnectionManager.h" />
+    <ClCompile Include="defaultDataManager.cpp" />
+    <ClInclude Include="defaultDataManager.h" />
+    <ClCompile Include="defaultNetworkManager.cpp" />
+    <ClInclude Include="defaultNetworkManager.h" />
+    <ClCompile Include="defaultPhysicsManipMgr.cpp" />
+    <ClInclude Include="defaultPhysicsManipMgr.h" />
+    <ClCompile Include="defaultSceneObjectMgr.cpp" />
+    <ClInclude Include="defaultSceneObjectMgr.h" />
+    <ClCompile Include="Euphoria\defaultERAssetMgr.cpp">
+      <Filter>Euphoria</Filter>
+    </ClCompile>
+    <ClInclude Include="Euphoria\defaultERAssetMgr.h">
+      <Filter>Euphoria</Filter>
+    </ClInclude>
+    <ClCompile Include="Euphoria\defaultERPhysicsDataMgr.cpp">
+      <Filter>Euphoria</Filter>
+    </ClCompile>
+    <ClInclude Include="Euphoria\defaultERPhysicsDataMgr.h">
+      <Filter>Euphoria</Filter>
+    </ClInclude>
+    <ClCompile Include="Euphoria\defaultERPhysicsMgr.cpp">
+      <Filter>Euphoria</Filter>
+    </ClCompile>
+    <ClInclude Include="Euphoria\defaultERPhysicsMgr.h">
+      <Filter>Euphoria</Filter>
+    </ClInclude>
+    <ClCompile Include="Euphoria\defaultEuphoriaDataMgr.cpp">
+      <Filter>Euphoria</Filter>
+    </ClCompile>
+    <ClInclude Include="Euphoria\defaultEuphoriaDataMgr.h">
+      <Filter>Euphoria</Filter>
+    </ClInclude>
+    <ClCompile Include="Euphoria\erLiveLinkData.cpp">
+      <Filter>Euphoria</Filter>
+    </ClCompile>
+    <ClInclude Include="Euphoria\erLiveLinkData.h">
+      <Filter>Euphoria</Filter>
+    </ClInclude>
+    <ClCompile Include="Euphoria\runtimeTarget.cpp">
+      <Filter>Euphoria</Filter>
+    </ClCompile>
+    <ClInclude Include="iControllerMgr.h" />
+    <ClInclude Include="iPhysicsMgr.h" />
+    <ClCompile Include="networkDefRecordManager.cpp" />
+    <ClInclude Include="networkDefRecordManager.h" />
+    <ClCompile Include="networkInstanceRecordManager.cpp" />
+    <ClInclude Include="networkInstanceRecordManager.h" />
+    <ClCompile Include="Physics\PhysX3\defaultControllerMgr.cpp">
+      <Filter>Physics\PhysX3</Filter>
+    </ClCompile>
+    <ClInclude Include="Physics\PhysX3\defaultControllerMgr.h">
+      <Filter>Physics\PhysX3</Filter>
+    </ClInclude>
+    <ClCompile Include="Physics\PhysX3\defaultPhysicsMgr.cpp">
+      <Filter>Physics\PhysX3</Filter>
+    </ClCompile>
+    <ClInclude Include="Physics\PhysX3\defaultPhysicsMgr.h">
+      <Filter>Physics\PhysX3</Filter>
+    </ClInclude>
+    <ClCompile Include="Physics\PhysX3\memoryStream.cpp">
+      <Filter>Physics\PhysX3</Filter>
+    </ClCompile>
+    <ClInclude Include="Physics\PhysX3\memoryStream.h">
+      <Filter>Physics\PhysX3</Filter>
+    </ClInclude>
+    <ClCompile Include="runtimeTargetContext.cpp" />
+    <ClInclude Include="runtimeTargetContext.h" />
+    <ClCompile Include="runtimeTargetLogger.cpp" />
+    <ClInclude Include="runtimeTargetLogger.h" />
+    <ClCompile Include="sceneObjectRecordManager.cpp" />
+    <ClInclude Include="sceneObjectRecordManager.h" />
+  </ItemGroup>
+</Project>

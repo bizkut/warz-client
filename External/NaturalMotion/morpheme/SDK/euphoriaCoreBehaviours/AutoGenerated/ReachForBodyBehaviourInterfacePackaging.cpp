@@ -1,0 +1,100 @@
+/*
+ * Copyright (c) 2013 NaturalMotion Ltd. All rights reserved.
+ *
+ * Not to be copied, adapted, modified, used, distributed, sold,
+ * licensed or commercially exploited in any manner without the
+ * written consent of NaturalMotion.
+ *
+ * All non public elements of this software are the confidential
+ * information of NaturalMotion and may not be disclosed to any
+ * person nor used for any purpose not expressly approved by
+ * NaturalMotion in writing.
+ *
+ */
+
+//----------------------------------------------------------------------------------------------------------------------
+//                                  This file is auto-generated
+//----------------------------------------------------------------------------------------------------------------------
+
+// module def dependencies
+#include "MyNetwork.h"
+#include "ReachForBodyBehaviourInterface.h"
+#include "ReachForBodyBehaviourInterfacePackaging.h"
+#include "BodyFrame.h"
+#include "ReachForBody.h"
+#include "MyNetworkPackaging.h"
+
+namespace NM_BEHAVIOUR_LIB_NAMESPACE
+{
+
+//----------------------------------------------------------------------------------------------------------------------
+void ReachForBodyBehaviourInterface_Con::create(ER::Module* module, ER::Module* NMP_UNUSED(owner))
+{
+  buildConnections((ReachForBodyBehaviourInterface*)module);
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+ReachForBodyBehaviourInterface_Con::~ReachForBodyBehaviourInterface_Con()
+{
+  junc_feedIn_isComplete->destroy();
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+NMP::Memory::Format ReachForBodyBehaviourInterface_Con::getMemoryRequirements()
+{
+  NMP::Memory::Format result(sizeof(ReachForBodyBehaviourInterface_Con), 16);
+
+  result += ER::Junction::getMemoryRequirements(1);
+  return result;
+}
+//----------------------------------------------------------------------------------------------------------------------
+void ReachForBodyBehaviourInterface_Con::buildConnections(ReachForBodyBehaviourInterface* module)
+{
+  // Reconstruct the previously-allocated resource to fill in the junctions
+  NMP::Memory::Format format = getMemoryRequirements();
+  NMP::Memory::Resource resource = {this, format};
+  NMP::Memory::Format classFormat(sizeof(ReachForBodyBehaviourInterface_Con), 16);
+  resource.increment(classFormat);
+
+  ER::Junction* activeJnc = 0;
+
+  // build and connect up all junctions
+  junc_feedIn_isComplete = activeJnc = ER::Junction::init(resource, 1, ER::Junction::directInput);
+  activeJnc->getEdges()[0].reinit( (char*)&(module->owner->bodyFrame->reachForBody->feedOut->getCompleted()), (float*)&(module->owner->bodyFrame->reachForBody->feedOut->getCompletedImportanceRef()) );
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+void ReachForBodyBehaviourInterface_Con::relocate()
+{
+  // Reconstruct the previously-allocated resource to fill in the junctions
+  NMP::Memory::Format format = getMemoryRequirements();
+  NMP::Memory::Resource resource = {this, format};
+  NMP::Memory::Format classFormat(sizeof(ReachForBodyBehaviourInterface_Con), 16);
+  resource.increment(classFormat);
+
+  // Reconnect all junctions
+  junc_feedIn_isComplete = ER::Junction::relocate(resource);
+  // junc_feedIn_isComplete->getEdges()[0].reinit( (char*)&(module->owner->bodyFrame->reachForBody->feedOut->getCompleted()), (float*)&(module->owner->bodyFrame->reachForBody->feedOut->getCompletedImportanceRef()) );
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+// Combiner api.
+void ReachForBodyBehaviourInterface_Con::combineFeedbackInputs(ER::Module* modulePtr)
+{
+  ReachForBodyBehaviourInterface* module = (ReachForBodyBehaviourInterface*)modulePtr;
+  ReachForBodyBehaviourInterfaceFeedbackInputs& feedIn = *module->feedIn;
+
+  // Junction assignments.
+  feedIn.m_isCompleteImportance = junc_feedIn_isComplete->combineDirectInput(&feedIn.isComplete);
+
+#if NM_CALL_VALIDATORS
+  feedIn.validate();
+#endif // NM_CALL_VALIDATORS
+}
+
+
+} // namespace NM_BEHAVIOUR_LIB_NAMESPACE
+
+

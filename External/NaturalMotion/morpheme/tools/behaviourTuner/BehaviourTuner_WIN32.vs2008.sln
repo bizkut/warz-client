@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{A05A2F59-30AF-489E-D394-270D55B9817D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BehaviourTuner", "BehaviourTuner_WIN32.vcproj", "{3C963D46-25E6-4CBB-BB93-85BCE002CAD4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C2A25061-2989-4731-0CB4-0F0D9DF580F4} = {C2A25061-2989-4731-0CB4-0F0D9DF580F4}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NMTinyXML", "..\..\..\common\tinyxml\NMTinyXML_WIN32.vcproj", "{C2A25061-2989-4731-0CB4-0F0D9DF580F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug Tool|Win32 = Debug Tool|Win32
+		Release Tool|Win32 = Release Tool|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C963D46-25E6-4CBB-BB93-85BCE002CAD4}.Debug Tool|Win32.ActiveCfg = Debug Tool|Win32
+		{3C963D46-25E6-4CBB-BB93-85BCE002CAD4}.Debug Tool|Win32.Build.0 = Debug Tool|Win32
+		{3C963D46-25E6-4CBB-BB93-85BCE002CAD4}.Release Tool|Win32.ActiveCfg = Release Tool|Win32
+		{3C963D46-25E6-4CBB-BB93-85BCE002CAD4}.Release Tool|Win32.Build.0 = Release Tool|Win32
+		{C2A25061-2989-4731-0CB4-0F0D9DF580F4}.Debug Tool|Win32.ActiveCfg = Debug Tool|Win32
+		{C2A25061-2989-4731-0CB4-0F0D9DF580F4}.Debug Tool|Win32.Build.0 = Debug Tool|Win32
+		{C2A25061-2989-4731-0CB4-0F0D9DF580F4}.Release Tool|Win32.ActiveCfg = Release Tool|Win32
+		{C2A25061-2989-4731-0CB4-0F0D9DF580F4}.Release Tool|Win32.Build.0 = Release Tool|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3C963D46-25E6-4CBB-BB93-85BCE002CAD4} = {A05A2F59-30AF-489E-D394-270D55B9817D}
+		{C2A25061-2989-4731-0CB4-0F0D9DF580F4} = {F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}
+	EndGlobalSection
+EndGlobal

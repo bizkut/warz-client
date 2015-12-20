@@ -1,0 +1,49 @@
+/*
+* Copyright (c) 2009 NaturalMotion Ltd. All rights reserved.
+*
+* Not to be copied, adapted, modified, used, distributed, sold,
+* licensed or commercially exploited in any manner without the
+* written consent of NaturalMotion.
+*
+* All non public elements of this software are the confidential
+* information of NaturalMotion and may not be disclosed to any
+* person nor used for any purpose not expressly approved by
+* NaturalMotion in writing.
+*
+*/
+
+#if 0
+
+/// Class for generating the dynamics of bracing. 
+/// Note that rather than descriptive variable names, we use short hand in order to match closely the mathematics in
+/// nm\codebaseLowLevel\morphoria\sandpit\Behaviours\BraceDynamics.docx
+struct BraceDynamic
+{
+  + void init(float baseMass, float braceObjectMass, float hazardMass);
+  + void setPositions(const NMP::Vector3 &basePosition, const NMP::Vector3 &braceObjectPosition, const NMP::Vector3 &hazardPosition);
+  + void setVelocities(const NMP::Vector3 &baseVelocity, const NMP::Vector3 &braceObjectVelocity, const NMP::Vector3 &hazardVelocity);
+
+  + float findInterceptTime(const NMP::Vector3 &braceDirection, const NMP::Vector3 &interceptVel);
+  + NMP::Vector3 getWorldVel(const NMP::Vector3 &localVel) const;
+  + NMP::Vector3 getLocalVel(const NMP::Vector3 &worldvel) const;
+  Length maxReachDistance;
+  Length minReachDistance;
+  + float getBufferStiffnessScale() const;
+  + float getControlMass() const;
+  + float getImpactMass() const;
+private:
+  // These positions and velocities are stored relative to the centre of mass and centre of mass velocity, for easier calculation
+  Velocity V0;
+  Position P0;
+  Position Ph;
+  Velocity Vh;
+  Position centreOfMass;
+  Velocity centreOfMassVelocity;
+
+  Mass m;
+  Mass mh;
+  Mass mb;
+  + float findBestInterceptTime(const NMP::Vector3 &braceDir, float mc, float Vsqr, float dir, const NMP::Vector3 &Va);
+  + float distanceScale();
+};
+#endif

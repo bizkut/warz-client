@@ -1,0 +1,30 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Provides a game with the target position and direction of a character's eyes. 
+behaviour_def Eyes
+{
+interface:
+  displayname = "Eyes";
+  version = 1;
+modules:
+  eyesBehaviourInterface;
+  heads[*].eyes;
+  
+outputControlParams:
+  vector3 LookDirection; ///< A normalised vector in the direction that the character is looking.
+  vector3 FocalCentre;   ///< The position in world space that the character is focussing on. In absolute world space units.
+  float FocalRadius;     ///< The radius of the field around the focalCentre in which the character will notice objects. In absolute units.
+}
+
+#endif
+

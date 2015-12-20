@@ -1,0 +1,119 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// try to hold onto environment objects for support (when falling e.g., or to help balancer)
+__global_access__ module_def Grab
+{
+owner: 
+  HazardManagement<>
+
+data:
+  bool grabAllowed;             ///< Whether to try and grab currently. Used for hysteresis of some internal parameters.
+  TimePeriod edgeBehindPeriod;  ///< How long the edge has been behind the character's back.
+  TimePeriod balancedPeriod;    ///< How long the character's been balanced.
+  TimePeriod onGroundPeriod;    ///< How long the character has been lying on the floor.
+  TimePeriod holdDuration;      ///< How long the character has been constrained.
+  Distance maxArmLength;        ///< Length of the longest arm.
+  Direction desiredTorsoFwd;    ///< Ideal facing direction while hanging.
+  bool isHanging;               ///< Is the character stably hanging (rather than still falling).
+  uint16_t numConstrainedArms;  ///< Number of currently constrained hands.
+  /// Caches the edge sent out, in local space. If a constraint is actually created, we can stop looking for grabbable edges
+  /// (using the EA system), and just keep sending this.
+  Edge cachedGrabbableEdgeLocal;
+  /// Perform edge ray-cast on first entry, then only when edge has changed provided it's a non-action edge.
+  bool rayCastEdge;
+  bool edgeIsObstructed;
+  bool useEnvironmentAwareness;
+  bool reEvaluateGrabPoint;
+
+in:
+  Edge gameEdges[10];                     ///< Edges passed in directly by the game.
+  GrabControl grabAbilityControl;         ///< Hold parameters as specified by the Hold (-ability) behaviour interface
+  GrabControl grabActionControl;          ///< Hold parameters as specified by the HoldAction behaviour interface
+  GrabEnableConditions enableConditions;  ///< Configures the conditions for starting a hold attempt.
+  GrabAliveParams grabAliveParams;        ///< Configures behaviour while hanging (e.g. "pullUps")
+  TimePeriod maxTwistBwdPeriod;           ///< If character is not facing the edge for this long he will give up
+  bool hasForcedEdge;                     ///< If true, would overwrite any EA patches, therefore no need to use EA.
+  /// The proportion of maxHoldTime at which the character will switch from looking at the edge to looking down.
+  Weight timeRatioBeforeLookingDown;
+  Edge grabbableEdge;                     ///< Best edge to grab as returned by GrabDetection.
+  bool letGoEdge;
+  bool ignoreOvershotEdges;               ///< Ignore edge when chest is likely to land on the surface above that edge.
+
+feedIn:
+  Position centreOfShoulders;                     ///< Center of shoulders.
+  bool spineInContact;                            ///< Is the spine currently in contact with the environment?
+  bool legsInContact;                             ///< Are the legs currently in contact with the environment?
+  ContactInfo mostUprightContact;                 ///< Receives the most upright contact normal of current leg collisions
+  Hazard braceHazard;                             ///< Brace's current target, to check whether brace is more important.
+
+feedOut:
+  uint16_t numConstrainedArms;    ///< Number of currently constrained hands.
+  Weight holdAttemptImportance;   ///< How important Hold thinks it is to grab the current edge.
+  TimePeriod holdDuration;        ///< How long the character has been constrained.
+  Direction edgeForwardNormal;    ///< The normal to the front surface of the edge (as opposed to the upper surface).
+  bool useEnvironmentAwareness;   ///< Whether or not to look for grabbable edges.
+
+out:
+  Edge edgeToGrab;                          ///< Passes on preprocessed edge information to individual arms (ArmGrab).
+  bool edgeIsObstructed;                    ///< Edge ray-cast result to assess whether edge is obstructed by geometry out and below the edge.
+  bool edgeOvershot;                        ///< Set if the behaviour ignored the best edge because the chest was going over the top.
+  EndConstraintControl endConstraintOptions;///< Desired properties of the physical constraint.
+  HoldTimer holdTimer;                    ///< Contains Minimum and maximum constraint duration, as well as recovery period.
+  TranslationRequest translationRequest;  ///< Controls desired chest position.
+  RotationRequest rotationRequest;        ///< Controls desired chest orientation.
+  uint16_t numConstrainedArms;            ///< Number of currently constrained hands.
+  bool hasTwistedAround;                  ///< True if character is grabbing an edge behind him with more than one arm.
+  bool isHanging;                         ///< Is the character stably hanging (rather than still falling).
+  TargetRequest lookTarget;               ///< Where to look at (e.g. average grab point)
+  Multiplier armSwingStiffnessScale;      ///< Used to suppress arm swing whilst holding
+
+  /// Request contacts with normals like this
+  Direction uprightContactDir;            ///< Request leg collision normals that are closest to upright.
+  Weight spineDampingIncrease;            ///< Large damping passed down so chest doesn't easily counter-rotate when the arms reach quickly
+  
+connections<>:
+
+  /// Information about the current state of the character
+  feedIn.spineInContact = (owner.owner.bodyFrame.feedIn.spineInContact);
+  feedIn.legsInContact = (owner.owner.bodyFrame.feedIn.legsInContact);
+  feedIn.centreOfShoulders = (owner.owner.bodyFrame.feedIn.averageShoulders);
+  feedIn.mostUprightContact = (owner.owner.lowerBody.feedIn.closestContact);
+  feedIn.braceHazard = (owner.chestImpactPredictor.feedOut.hazard);
+  
+  /// Inputs from grabDetection
+  in.grabbableEdge = (owner.grabDetection.out.grabbableEdge);
+  in.letGoEdge = (owner.grabDetection.out.letGoEdge);
+
+  /// Information from behaviour interfaces
+  in.gameEdges[] = (owner.owner.holdActionBehaviourInterface.userIn.gameEdges[]);
+  in.grabAbilityControl = (owner.owner.holdBehaviourInterface.out.grabControl);
+  in.grabActionControl = (owner.owner.holdActionBehaviourInterface.out.grabControl);
+  in.enableConditions = junctions.in_enableConditions = priority(
+    owner.owner.holdBehaviourInterface.out.grabEnableConditions,
+    owner.owner.holdActionBehaviourInterface.out.grabEnableConditions);
+  in.grabAliveParams = junctions.in_aliveParams = priority(
+    owner.owner.holdBehaviourInterface.out.grabAliveParams,
+    owner.owner.holdActionBehaviourInterface.out.grabAliveParams);
+  in.timeRatioBeforeLookingDown = junctions.in_timeRatioBeforeLookingDown = priority(
+    owner.owner.holdBehaviourInterface.out.timeRatioBeforeLookingDown,
+    owner.owner.holdActionBehaviourInterface.out.timeRatioBeforeLookingDown);    
+  in.maxTwistBwdPeriod = junctions.in_maxTwistBwdPeriod = priority(
+    owner.owner.holdBehaviourInterface.out.maxTwistBwdPeriod,
+    owner.owner.holdActionBehaviourInterface.out.maxTwistBwdPeriod);
+  in.hasForcedEdge = (owner.owner.holdActionBehaviourInterface.out.hasForcedEdge);
+  in.ignoreOvershotEdges = (owner.owner.holdBehaviourInterface.out.ignoreOvershotEdges);
+
+}
+
+#endif 
+

@@ -1,0 +1,76 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Maintain a raised stance of the body relative to the ground, this module controls the position of the chest.
+module_def ArmStandingSupport
+{
+owner: Arm
+data:
+  /// Used to make support more keen to claim that it is supporting on the first update/feedback - so 
+  /// that there isn't one frame of unsupported (which would result in other behaviours trying to run)
+  bool hasFeedbackRun;
+  
+  /// Used to differentiate between landing after a step and landing after a fall.
+  bool lostContactWithGround;
+
+in:
+  ER::LimbTransform rootDesiredTM; ///< Desired transform (world space) for the root of the limb.
+  ER::HandFootTransform endDesiredTM; ///< Desired transform (world space) for the end of the limb.
+  /// If the limb root should be stabilised (e.g. to provide additional compensation whilst stepping).
+  /// Can be > 0 but large values will lead to instability
+  Multiplier stabiliseRootAmount;
+  /// Scaling on the strengths so that modules coordinating support etc can indicate if the 
+  /// actions need to be stronger/weaker depending on how many limbs are acting.
+  Weight supportStrengthScale;
+  /// If enabled, the support module will inform rest of network that it is externally supported (e.g. when constrained), 
+  /// in which case the balancer e.g. will know that this helps with balancing
+  bool enableExternalSupport;
+
+  bool enableRootSupport; ///< Use the root of the limb (i.e. the chest in the case of arms) for support.
+
+  BalanceParameters balanceParameters;
+
+  Transform balancePoseEndRelativeToRoot; ///< Balance pose
+
+feedOut:
+  /// how much the armSupport is operating, 1 if armSupport is operating, even if it has only loose control of chest.
+  Weight          supportAmount;
+  /// how much chest control due to arm strength, 0 up to 1 if arm can control chest with normal stiffness.
+  WeightWithClamp   chestControlAmount;
+  Position        endSupportPoint;
+  bool            supportedByConstraint;
+  Distance        lowerRootDistance;
+
+out:
+  LimbControl control;
+  bool useFullEndJointRange;
+
+connections<>:
+  in.balanceParameters = (owner.owner.balanceBehaviourInterface.out.balanceParameters);
+  in.enableExternalSupport = junctions.in_enableExternalSupport = winnerTakesAll(
+    owner.owner.balanceBehaviourInterface.out.supportWithArms,
+    owner.owner.bodyFrame.sittingBodyBalance.out.supportWithArms);
+  in.rootDesiredTM = junctions.in_rootDesiredTM = winnerTakesAll(
+    owner.owner.bodyFrame.bodyBalance.out.desiredChestTM,
+    owner.owner.bodyFrame.sittingBodyBalance.out.desiredChestTM);
+  in.endDesiredTM = (owner.owner.bodyFrame.sittingBodyBalance.out.desiredArmEndTM[owner.$ChildIndex]);
+  in.stabiliseRootAmount = (owner.owner.bodyFrame.bodyBalance.out.stabiliseChestAmount);
+  in.supportStrengthScale = junctions.in_supportStrengthScale = priority(
+    owner.owner.bodyFrame.bodyBalance.out.armSupportStrengthScales[owner.$ChildIndex],
+    owner.grab.out.holdStrengthScale,
+    owner.owner.bodyFrame.sittingBodyBalance.out.armSupportStrengthScales[owner.$ChildIndex]);
+  in.balancePoseEndRelativeToRoot = junctions.in_balancePoseEndRelativeToRoot = winnerTakesAll(
+    owner.owner.balanceBehaviourInterface.out.armBalancePoseEndRelativeToRoot[owner.$ChildIndex],
+    owner.owner.sitBehaviourInterface.out.armPoseEndRelativeToRoot[owner.$ChildIndex]);
+}
+
+#endif 

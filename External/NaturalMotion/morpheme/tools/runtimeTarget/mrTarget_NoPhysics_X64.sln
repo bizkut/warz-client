@@ -1,0 +1,64 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{A05A2F59-30AF-489E-D394-270D55B9817D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Runtime Targets", "Runtime Targets", "{147EC3E5-FDF8-4F9E-9425-67A13952AB8E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mrTarget_NoPhysics", "mrTarget_NoPhysics_X64.vcxproj", "{F06FA5C4-F809-42F7-22AA-634F3A057082}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "morphemeComms2", "..\..\utils\comms2\morphemeComms2_X64.vcxproj", "{6759E731-4BC1-4352-28AA-C5583B7EC71F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "morphemeCore", "..\..\SDK\core\morphemeCore_X64.vcxproj", "{D90ECD48-E518-4965-D5A1-487523A09108}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "morphemeSimpleBundle", "..\..\utils\simpleBundle\morphemeSimpleBundle_X64.vcxproj", "{6CEBC4A6-0CFB-4C11-E5A6-3A08633BEE6F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NMPlatform", "..\..\..\common\NMPlatform\NMPlatform_X64.vcxproj", "{773E894A-FCA3-4312-37AF-0588248FC43F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NMRuntimeUtils", "..\..\..\common\NMRuntimeUtils\NMRuntimeUtils_X64.vcxproj", "{3C388267-640A-4D4B-C8B1-2361CDE77233}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6759E731-4BC1-4352-28AA-C5583B7EC71F}.Debug|x64.ActiveCfg = Debug|x64
+		{6759E731-4BC1-4352-28AA-C5583B7EC71F}.Debug|x64.Build.0 = Debug|x64
+		{6759E731-4BC1-4352-28AA-C5583B7EC71F}.Release|x64.ActiveCfg = Release|x64
+		{6759E731-4BC1-4352-28AA-C5583B7EC71F}.Release|x64.Build.0 = Release|x64
+		{D90ECD48-E518-4965-D5A1-487523A09108}.Debug|x64.ActiveCfg = Debug|x64
+		{D90ECD48-E518-4965-D5A1-487523A09108}.Debug|x64.Build.0 = Debug|x64
+		{D90ECD48-E518-4965-D5A1-487523A09108}.Release|x64.ActiveCfg = Release|x64
+		{D90ECD48-E518-4965-D5A1-487523A09108}.Release|x64.Build.0 = Release|x64
+		{6CEBC4A6-0CFB-4C11-E5A6-3A08633BEE6F}.Debug|x64.ActiveCfg = Debug|x64
+		{6CEBC4A6-0CFB-4C11-E5A6-3A08633BEE6F}.Debug|x64.Build.0 = Debug|x64
+		{6CEBC4A6-0CFB-4C11-E5A6-3A08633BEE6F}.Release|x64.ActiveCfg = Release|x64
+		{6CEBC4A6-0CFB-4C11-E5A6-3A08633BEE6F}.Release|x64.Build.0 = Release|x64
+		{F06FA5C4-F809-42F7-22AA-634F3A057082}.Debug|x64.ActiveCfg = Debug|x64
+		{F06FA5C4-F809-42F7-22AA-634F3A057082}.Debug|x64.Build.0 = Debug|x64
+		{F06FA5C4-F809-42F7-22AA-634F3A057082}.Release|x64.ActiveCfg = Release|x64
+		{F06FA5C4-F809-42F7-22AA-634F3A057082}.Release|x64.Build.0 = Release|x64
+		{773E894A-FCA3-4312-37AF-0588248FC43F}.Debug|x64.ActiveCfg = Debug|x64
+		{773E894A-FCA3-4312-37AF-0588248FC43F}.Debug|x64.Build.0 = Debug|x64
+		{773E894A-FCA3-4312-37AF-0588248FC43F}.Release|x64.ActiveCfg = Release|x64
+		{773E894A-FCA3-4312-37AF-0588248FC43F}.Release|x64.Build.0 = Release|x64
+		{3C388267-640A-4D4B-C8B1-2361CDE77233}.Debug|x64.ActiveCfg = Debug|x64
+		{3C388267-640A-4D4B-C8B1-2361CDE77233}.Debug|x64.Build.0 = Debug|x64
+		{3C388267-640A-4D4B-C8B1-2361CDE77233}.Release|x64.ActiveCfg = Release|x64
+		{3C388267-640A-4D4B-C8B1-2361CDE77233}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6759E731-4BC1-4352-28AA-C5583B7EC71F} = {F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}
+		{D90ECD48-E518-4965-D5A1-487523A09108} = {F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}
+		{6CEBC4A6-0CFB-4C11-E5A6-3A08633BEE6F} = {F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}
+		{773E894A-FCA3-4312-37AF-0588248FC43F} = {F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}
+		{3C388267-640A-4D4B-C8B1-2361CDE77233} = {F041FFB9-5D41-4D7A-5CBA-08A8B839B0DE}
+		{147EC3E5-FDF8-4F9E-9425-67A13952AB8E} = {A05A2F59-30AF-489E-D394-270D55B9817D}
+		{F06FA5C4-F809-42F7-22AA-634F3A057082} = {147EC3E5-FDF8-4F9E-9425-67A13952AB8E}
+	EndGlobalSection
+EndGlobal

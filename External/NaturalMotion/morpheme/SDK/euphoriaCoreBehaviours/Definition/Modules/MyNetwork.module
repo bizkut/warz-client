@@ -1,0 +1,149 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// This is the root container module for the network, non-spu so it can
+/// interface with physics engine and the behaviour technology
+__global_access__ module_def MyNetwork
+{
+owner:
+
+privateAPI:
+  const LimbControl *getLimbControl(uint32_t iLimb) const;
+  void setStrengths();
+  void setProperties();
+  void adjustLimbSoftLimits(uint32_t limbIndex, const LimbControl* limbControl, float stiffnessScale);
+
+publicAPI:
+  bool rampDownLargeAccelerations(NMP::Vector3 &acc) const;
+  NMP::Vector3 smoothAcceleration(const NMP::Vector3 &currentAcc, const NMP::Vector3 &newAcc, float timeStep) const;
+  NMP::Vector3 smoothAngularVelocity(const NMP::Vector3 &currentAngVel, const NMP::Vector3 &newAngVel, float timeStep) const;
+  
+data:
+  Stiffness relaxStiffness; ///< Stiffness when the character is awake but relaxed
+  Frequency minDamping;     ///< Damping when the character is awake but relaxed, and also minimum damping
+  TimePeriod relaxDriveCompensation; 
+  Acceleration gravity; ///< Gravity vector
+  AccelerationScalar gravityMagnitude; ///< Gravity vector magnitude
+  Direction down;       ///< Unit length in direction of gravity
+  Direction up;         ///< Unit length opposing gravity
+  Stiffness minStiffnessForActing; ///< This is used to decide when to start an action (like a cushion or brace) based on the stiffness needed
+  Stiffness maxStiffness; ///< This should generally be fixed per character, it is a physical limit
+  Stiffness normalStiffness; ///< This could potentially vary with time (e.g. with health)
+  DampingRatio normalDampingRatio; ///< 1 is critical damping
+  TimePeriod normalDriveCompensation; ///< Larger is more controlled, less spongey
+  ER::DimensionalScaling dimensionalScaling;
+  Weight minInterestingRelativeMass; ///< Unitless, e.g. <0.01 of character mass is not interesting
+  Mass totalMass;      ///< Mass of whole character, e.g. approx 75kg for an adult male
+  TimePeriod collidingSupportTime; ///< When a supporting contact is lost, the character still considers itself partially supported during this time period. This is so that it does not suddenly "panic" if it hops off the ground.
+  TimePeriod awarenessPredictionTime; ///< Interact with objects when they're predicted to reach us within this time.
+  Angle cosMaxSlopeForGround; ///< If a surface slopes more than cos(angle in degrees), then it will not be considered "ground" for the purposes of balance etc.
+
+  // These are indices etc into the rig limbs, so not typically useful as most network processing works on
+  uint32_t numArms;
+  uint32_t numHeads;
+  uint32_t numLegs;
+  uint32_t numSpines;
+  uint32_t armRigIndices[networkMaxNumArms]; 
+  uint32_t headRigIndices[networkMaxNumHeads]; 
+  uint32_t legRigIndices[networkMaxNumLegs]; 
+  uint32_t spineRigIndices[networkMaxNumSpines]; 
+
+  // Note - indices into the rig limbs
+  uint32_t firstArmRigIndex;
+  uint32_t firstHeadRigIndex;
+  uint32_t firstLegRigIndex;
+  uint32_t firstSpineRigIndex;
+  
+  // Note - indices into the network arrays
+  enum firstLimbNetworkIndices {
+    firstArmNetworkIndex = 0, 
+    firstHeadNetworkIndex = networkMaxNumArms, 
+    firstLegNetworkIndex = networkMaxNumArms + networkMaxNumHeads,
+    firstSpineNetworkIndex = networkMaxNumArms + networkMaxNumHeads + networkMaxNumLegs
+  };
+  
+  // These will be calculated once at initialisation, and will then be available to all modules. Each module can get
+  // them via either the limbRigIndex in the limb module, or using offsets and the first*NetworkIndex above.
+  Transform defaultPoseEndsRelativeToRoot[networkMaxNumLimbs];
+  Transform zeroPoseEndsRelativeToRoot[networkMaxNumLimbs];
+  Length defaultPoseLimbLengths[networkMaxNumLimbs]; 
+  Length baseToEndLength[networkMaxNumLimbs];  
+  Transform averageLegDefaultPoseEndRelativeToRoot;
+  Transform averageArmDefaultPoseEndRelativeToRoot;
+  Length selfAvoidanceRadius; ///< Used for self avoidance in reaching
+
+  // New centrally accessible replacements for data previously stored in the limbs
+  //
+
+  // Average end effector positions
+  //
+  Position averageOfAllHandPositions;
+  Position averageOfAllFootPositions;
+
+  // Limb state info
+  //
+  HeadLimbSharedState       headLimbSharedStates[networkMaxNumHeads];
+  SpineLimbSharedState      spineLimbSharedStates[networkMaxNumSpines];
+  ArmAndLegLimbSharedState  armLimbSharedStates[networkMaxNumArms];
+  ArmAndLegLimbSharedState  legLimbSharedStates[networkMaxNumLegs];
+  BodyLimbSharedState       bodyLimbSharedState;
+
+
+
+children:
+  CharacteristicsBehaviourInterface<> characteristicsBehaviourInterface; ///< must come first so other BIs can read the outputs
+  PropertiesBehaviourInterface<> propertiesBehaviourInterface; ///< must come second so other BIs can read the properties
+  EuphoriaRagdollBehaviourInterface<> euphoriaRagdollBehaviourInterface;
+  EyesBehaviourInterface<> eyesBehaviourInterface;
+  ArmsBraceBehaviourInterface<> armsBraceBehaviourInterface;
+  ArmsPlacementBehaviourInterface<> armsPlacementBehaviourInterface;
+  AimBehaviourInterface<> aimBehaviourInterface;
+  HeadDodgeBehaviourInterface<> headDodgeBehaviourInterface;
+  ReachForBodyBehaviourInterface<> reachForBodyBehaviourInterface;
+  ReachForWorldBehaviourInterface<> reachForWorldBehaviourInterface;
+  AnimateBehaviourInterface<> animateBehaviourInterface;
+  BalanceBehaviourInterface<> balanceBehaviourInterface;
+  BalancePoserBehaviourInterface<> balancePoserBehaviourInterface;
+  ProtectBehaviourInterface<> protectBehaviourInterface;
+  HazardAwarenessBehaviourInterface<> hazardAwarenessBehaviourInterface;
+  UserHazardBehaviourInterface<> userHazardBehaviourInterface;
+  ObserveBehaviourInterface<> observeBehaviourInterface;
+  IdleAwakeBehaviourInterface<> idleAwakeBehaviourInterface;
+  LookBehaviourInterface<> lookBehaviourInterface;
+  HeadAvoidBehaviourInterface<> headAvoidBehaviourInterface;
+  ShieldBehaviourInterface<> shieldBehaviourInterface;
+  HoldBehaviourInterface<> holdBehaviourInterface;
+  HoldActionBehaviourInterface<> holdActionBehaviourInterface;
+  FreeFallBehaviourInterface<> freeFallBehaviourInterface;
+  ArmsWindmillBehaviourInterface<> armsWindmillBehaviourInterface;
+  LegsPedalBehaviourInterface<> legsPedalBehaviourInterface;
+  ShieldActionBehaviourInterface<> shieldActionBehaviourInterface;
+  SitBehaviourInterface<> sitBehaviourInterface;
+  WritheBehaviourInterface<> writheBehaviourInterface;
+  RandomLook<> randomLook;
+  HazardManagement<> hazardManagement;
+  BalanceManagement<> balanceManagement;
+  EnvironmentAwareness<> environmentAwareness;
+  BodyFrame<> bodyFrame;
+  BodySection<upper> upperBody;
+  BodySection<lower> lowerBody;
+
+  Arm<> arms[networkMaxNumArms];
+  Head<> heads[networkMaxNumHeads];
+  Leg<> legs[networkMaxNumLegs];
+  Spine<> spines[networkMaxNumSpines];
+  
+  SceneProbes<> sceneProbes;
+  BalanceBehaviourFeedback<> balanceBehaviourFeedback;
+}
+
+#endif

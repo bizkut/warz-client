@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\physics" />
+    <Filter Include="include" />
+    <Filter Include="include\physics\Nodes" />
+    <Filter Include="src" />
+    <Filter Include="src\Nodes" />
+    <Filter Include="sharedDefines" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\physics\mrCCOverrideBasics.h">
+      <Filter>include\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\mrPhysics.h">
+      <Filter>include\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\mrPhysicsAttribData.h">
+      <Filter>include\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\mrPhysicsRig.h">
+      <Filter>include\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\mrPhysicsRigDef.h">
+      <Filter>include\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\mrPhysicsScene.h">
+      <Filter>include\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\mrPhysicsSerialisationBuffer.h">
+      <Filter>include\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\mrPhysicsTasks.h">
+      <Filter>include\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrNodeApplyPhysicsJointLimits.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrNodeControlParamPhysicsObjectPointer.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrNodeExpandLimits.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrNodeOperatorApplyImpulse.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrNodeOperatorPhysicsInfo.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrNodePhysics.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrNodePhysicsGrouper.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrNodePhysicsTransit.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrNodeSetNonPhysicsTransforms.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrPhysicsNodes.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrTransitConditionGroundContact.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrTransitConditionPhysicsAvailable.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrTransitConditionPhysicsInUse.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrTransitConditionPhysicsMoving.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\Nodes\mrTransitConditionSKDeviation.h">
+      <Filter>include\physics\Nodes</Filter>
+    </ClInclude>
+    <ClCompile Include="src\mrCCOverrideBasics.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrPhysics.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrPhysicsAttribData.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrPhysicsGrouperTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrPhysicsRig.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrPhysicsRigDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrPhysicsTaskIDs.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrPhysicsTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mrPhysicsTransitTasks.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeApplyPhysicsJointLimits.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeControlParamPhysicsObjectPointer.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeExpandLimits.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorApplyImpulse.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeOperatorPhysicsInfo.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodePhysics.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodePhysicsGrouper.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodePhysicsTransit.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrNodeSetNonPhysicsTransforms.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrPhysicsNodes.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrTransitConditionGroundContact.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrTransitConditionPhysicsAvailable.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrTransitConditionPhysicsInUse.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrTransitConditionPhysicsMoving.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nodes\mrTransitConditionSKDeviation.cpp">
+      <Filter>src\Nodes</Filter>
+    </ClCompile>
+    <ClInclude Include="..\sharedDefines\mPhysicsDebugInterface.h">
+      <Filter>sharedDefines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sharedDefines\mPhysicsDebugInterface.inl">
+      <Filter>sharedDefines</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

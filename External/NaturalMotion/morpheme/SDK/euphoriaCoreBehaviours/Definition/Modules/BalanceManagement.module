@@ -1,0 +1,83 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// High-level balance control/management
+__pix__ __no_feedback__ __no_update__ module_def BalanceManagement
+{
+owner: MyNetwork<>
+data:
+children:
+  StaticBalance<> staticBalance;
+  SteppingBalance<> steppingBalance;
+  BalancePoser<> balancePoser;
+
+in:
+  bool              supportWithLegs;
+  bool              supportWithArms;
+
+feedIn:
+  Weight impendingInstability; ///< this value is the magnitude of the instability, and the importance is 1/(1+ time to instability)
+  Weight supportAmount;
+  
+  RotationRequest pelvisRotationRequest;  
+  
+  TranslationRequest pelvisTranslationRequest;
+  TranslationRequest avgReachForBodyPartPTR;
+  TranslationRequest avgReachForWorldPTR;
+  
+  DirectionRequest chestDirectionRequest;
+  DirectionRequest avgReachForBodyPartCDR;
+  DirectionRequest avgReachForWorldCDR;
+  
+  DirectionRequest pelvisDirectionRequest;
+  DirectionRequest avgReachForBodyPartPDR;
+  DirectionRequest avgReachForWorldPDR;
+  
+  bool isStepping;
+out:
+  Transform pelvisRelSupport;
+  OrientationDelta headRelChestOrientation[networkMaxNumHeads];
+    
+connections<>:
+
+  feedIn.impendingInstability = (owner.bodyFrame.feedOut.impendingInstability);
+  feedIn.supportAmount = (owner.bodyFrame.feedOut.supportAmount);
+  in.supportWithArms = (owner.balanceBehaviourInterface.out.supportWithArms);
+  in.supportWithLegs = (owner.balanceBehaviourInterface.out.supportWithLegs);
+  
+  // temporary hookup to reach module for testing, eventually should be routing through a central request management system
+  feedIn.pelvisRotationRequest = junctions.pelvisRotReq = average(owner.arms[*].reachForBodyPart.feedOut.rotationRequest, owner.lowerBody.rotate.feedOut.rotationRequest);
+  
+  feedIn.avgReachForBodyPartPTR = junctions.feedIn_avgReachForBodyPartPTR = average(owner.arms[*].reachForBodyPart.feedOut.pelvisTranslationRequest, owner.lowerBody.position.feedOut.translationRequest);
+  feedIn.avgReachForWorldPTR = junctions.feedIn_avgReachForWorldPTR = average(owner.arms[*].reachForWorld.feedOut.pelvisTranslationRequest, owner.lowerBody.position.feedOut.translationRequest);
+  feedIn.pelvisTranslationRequest = junctions.feedIn_pelvisTranslationRequest = winnerTakesAll(feedIn.avgReachForWorldPTR, feedIn.avgReachForBodyPartPTR);
+  
+  feedIn.avgReachForBodyPartPDR = junctions.feedIn_avgReachForBodyPartPDR = average(owner.arms[*].reachForBodyPart.feedOut.pelvisDirectionRequest);
+  feedIn.avgReachForWorldPDR = junctions.feedIn_avgReachForWorldPDR = average(owner.arms[*].reachForWorld.feedOut.pelvisDirectionRequest);
+  feedIn.pelvisDirectionRequest = junctions.feedIn_pelvisDirectionRequest = winnerTakesAll(feedIn.avgReachForWorldPDR, feedIn.avgReachForBodyPartPDR);
+  
+  feedIn.avgReachForBodyPartCDR = junctions.feedIn_avgReachForBodyPartCDR = average(owner.arms[*].reachForBodyPart.feedOut.chestDirectionRequest);
+  feedIn.avgReachForWorldCDR = junctions.feedIn_avgReachForWorldCDR = average(owner.arms[*].reachForWorld.feedOut.chestDirectionRequest);
+  feedIn.chestDirectionRequest = junctions.feedIn_chestDirectionRequest = winnerTakesAll(feedIn.avgReachForBodyPartCDR, feedIn.avgReachForWorldCDR);
+
+  feedIn.isStepping = (owner.bodyFrame.bodyBalance.feedOut.isStepping);
+  
+  out.pelvisRelSupport = junctions.in_pelvisRelSupport = priority(
+    staticBalance.out.pelvisRelSupport,
+    balancePoser.out.pelvisRelSupport);  
+  out.headRelChestOrientation[] = junctions.out_headRelChestOrientation = priority(
+    staticBalance.out.headRelChestOrientation[],
+    balancePoser.out.headRelChestOrientation[]);
+}
+
+#endif
+

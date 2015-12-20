@@ -1,0 +1,59 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+// This behaviour just tries to keep the head away from the position of the hazard.
+// note, if a hazard doesn't exist then ramp down the avoid, rather than just turning it off instantly.
+// like other atomic behaviours, it should be used alongside a balance otherwise he'll fall over
+
+// Keeps the head a safe distance from a plane, usually to prevent collision, just like humans tend to keep their head from touching objects. 
+behaviour_def HeadAvoid
+{
+interface:
+  displayname = "Head Avoid";
+  version = 4;
+  
+modules:
+  headAvoidBehaviourInterface;
+  heads[*].avoid;
+
+attributes:
+
+  group("Hazard Plane")
+  {    
+    /// Determines if character always avoids the plane from both sides, or a just one side.
+    bool twoSidedPlane = 0 __title__("PlaneType");
+  }
+
+controlParams:
+
+  /// The plane to avoid
+  group("Hazard Plane")
+  {
+    /// Position of the hazard plane to avoid. In absolute world space units.
+    vector3 AvoidPlanePosition  __title__("Position");
+    
+    /// Surface normal of the hazard plane to avoid.
+    vector3 AvoidPlaneNormal    __title__("Normal");
+
+    /// Sets the maximum distance a hazard plane can be from the character before it is ignored by the behaviour. In metres (standard character).
+    float AvoidSafeDistance = 0.5f, 0.0f, 3.0f    __title__("SafeDistance");
+  }
+  
+  group("Importance")
+  {    
+    /// Sets the importance of this behaviour relative to others. The pin accepts values in the range 0 to 1.
+    float Weight = 1.0f, 0.0f, 1.0f;
+  }
+}
+
+#endif
+

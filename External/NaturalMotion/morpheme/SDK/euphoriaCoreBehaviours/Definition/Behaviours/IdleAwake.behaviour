@@ -1,0 +1,79 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Gives a character an awareness of the scene and the appearance of an awake state, as though they were waiting. 
+///
+/// This is an "always on"/background behaviour that should quietly provide low-importance outputs to make 
+/// the character look as if he is awake, even if he has nothing to actually do. This might involve getting 
+/// into a comfy pose where possible, and idly looking around. It will also include modules (if they exist) 
+/// that simply provide "alive" behaviour - such as breathing or reflexes.
+behaviour_def IdleAwake
+{
+interface:
+  displayname = "Idle Awake";
+  version = 3;
+
+modules:
+  idleAwakeBehaviourInterface;
+
+  randomLook;
+  heads[*].point.*;
+  heads[*].eyes;
+  heads[*].support.*;
+  spines[*].support.*;
+  spines[*].control.*;
+  arms[*].pose;
+  heads[*].pose;
+  legs[*].pose;
+  spines[*].pose;
+
+  upperBody.*;   
+  lowerBody.*;   
+
+  environmentAwareness.*;
+  sceneProbes.*;
+ 
+attributes:
+
+  /// Settings that define how the balance pose varies over time.
+  group("Balance")
+  {
+    float FwdRange   = 0.0f __per_anim_set__ __title__("Front");  ///< Amount the Center of Mass may drift forwards, distance in metres (standard character).
+    float BackRange  = 0.0f __per_anim_set__ __title__("Back");   ///< Amount the Center of Mass may drift backwards, distance in metres (standard character).
+    float LeftRange  = 0.0f __per_anim_set__ __title__("Left");   ///< Amount the Center of Mass may drift left, distance in metres (standard character).
+    float RightRange = 0.0f __per_anim_set__ __title__("Right");  ///< Amount the Center of Mass may drift right, distance in metres (standard character).
+    float StanceChangeTime = 0.0f __per_anim_set__  __title__("ChangeStanceEvery"); ///< How often to choose a new stance, in seconds (standard character).
+    float PoseAdjustTime = 0.0f   __per_anim_set__  __title__("ChangeLasts");       ///< Time period over which to adjust to the new stance, in seconds (standard character).
+  }
+
+  /// Settings that define how the character changes its gaze over time.
+  group("Look")
+  {
+    float LookTimescale = 1.0f, 0, 10.0f                __per_anim_set__ __title__("TargetDurationScale"); ///< Scales how long to look at each target, so smaller values will result in the character changing his look target more frequently.
+    float LookRangeUpDown = 30.0f, 0.0f, 90.0f          __per_anim_set__ __title__("TargetRange(Up/Down)"); ///< Range of angles to look up/down (degrees)
+    float LookRangeSideways = 90.0f, 0.0f, 180.0f       __per_anim_set__ __title__("TargetRange(Left/Right)"); ///< Range of positions to look at sideways (degrees)
+    float LookStrengthWhenSupported = 0.5f, 0.0f, 1.0f  __per_anim_set__ __title__("Weight(WhenBalancing)"); ///< Look importance when balancing
+    float LookStrengthWhenUnsupported =1.0f, 0.0f, 1.0f __per_anim_set__ __title__("Weight(WhenFallen)"); ///< Look importance when fallen
+    float LookTransitionTime = 0.5f, 0.0f, 2.0f __per_anim_set__;  ///< Controls how slowly/smoothly the character switches between look targets. In seconds (standard character).
+    float LookFocusDistance = 5.0f, 0.3f, 20.0f __per_anim_set__;  ///< Distance at which to focus. Affects what is noticed when running autonomous behaviours in parallel. In metres (standard character).
+    float LookVerticalOffset = -0.8f, -2.0f, 2.0f __per_anim_set__;///< Positive will look vertically higher, negative will look down. In metres (standard character).
+  }
+controlParams:
+  {
+    float WholeBodyLook = 0.25f, 0.0f, 1.0f         __title__("MoveBody"); ///< Sets how much of the body to move when looking. The pin accepts a value in the range 0 to 1.
+  }
+animationInputs:
+  BodyPose FallenPose __title__("Fallen Pose Weight");  ///< Sets the animation pose that should be adopted by the character when unsupported and lying on its back.
+}
+
+#endif
+

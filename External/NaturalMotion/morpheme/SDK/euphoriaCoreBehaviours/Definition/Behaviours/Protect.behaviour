@@ -1,0 +1,87 @@
+// Copyright (c) 2009 NaturalMotion.  All Rights Reserved.
+// Not to be copied, adapted, modified, used, distributed, sold,
+// licensed or commercially exploited in any manner without the
+// written consent of NaturalMotion.  
+//
+// All non public elements of this software are the confidential
+// information of NaturalMotion and may not be disclosed to any
+// person nor used for any purpose not expressly approved by
+// NaturalMotion in writing.
+
+#if 0
+
+/// Protects a character's head and chest from injury due to impact by coordinating the use of other behaviours such as HeadAvoid, HeadDodge, Shield and Look. Protect chooses when and how to apply these behaviours, so is an autonomous reaction to the objects that it is aware of. 
+behaviour_def Protect
+{
+interface:
+  displayname = "Protect";
+  version = 8;
+  
+modules:
+  protectBehaviourInterface;
+  heads[*].eyes;
+  environmentAwareness.*;
+  bodyFrame;
+  bodyFrame.supportPolygon.*; 
+  upperBody.*;
+  lowerBody.*;
+  hazardManagement.hazardResponse;
+  hazardManagement.chestImpactPredictor;
+  sceneProbes.*;
+  // sub behaviours (or sub modules)
+  heads[*].point;
+  heads[*].avoid;
+  heads[*].dodge;
+  heads[*].support;
+  spines[*].support.*;
+  spines[*].control.*;
+  arms[*].swing;
+  arms[*].spin;
+  legs[*].swing;
+  legs[*].spin;
+  arms[*].brace;
+  legs[*].brace;
+  arms[*].placement;
+
+attributes:
+  group("Hazard Awareness")
+  {
+    float HeadLookWeight = 1.0f, 0.0f, 1.0f __per_anim_set__;      ///< Look towards potential hazards that approach the character
+    float HazardLookTime = 0.5f, -2.0f, 2.0f;               ///< How long the character will look at an object that is no longer on collision course. Positive will look where the hazard was going to. Negative will look back to where the hazard came from. Both are extrapolations. In seconds (standard character).
+    float HazardLevelThreshold = 0.75f, 0.0f, 4.0f;         ///< Used only in hazardFreeTime to determine the time since the last hazard, as feedback info
+    float ObjectTrackingRadius = 1.0f, 0.1f, 3.0f;          ///< Radius for non-hazards, for example to use with headAvoid and armPlacement. In metres (standard character).
+  }
+
+  group("Protect")
+  {
+    float HeadAvoidWeight = 1.0f, 0.0f, 1.0f __per_anim_set__;     ///< Keep the head away from nearby hazards to reduce chance of head impact
+    float HeadDodgeWeight = 1.0f, 0.0f, 1.0f __per_anim_set__;     ///< Move head laterally or duck out the way of an incoming projectile
+    float BraceWeight = 1.0f, 0.0f, 1.0f __per_anim_set__;         ///< Move arms to intercept the incoming hazard, and cushion the impact
+    float ArmsPlacementWeight = 1.0f, 0.0f, 1.0f __per_anim_set__; ///< Place arms near or on nearby hazards that could be a danger in future
+    float SensitivityToCloseMovements = 0.5f, 0.0f, 3.0f __title__("Close movement sensitivity");   ///< Determines the amount of danger given for a certain level of relative acceleration. Higher will do placement/headAvoid more eagerly. In seconds (standard character).
+    float CrouchDownAmount = 0.25f, 0.0f, 0.5f;             ///< How much the character should crouch downwards as the impact approaches
+    float CrouchPitchAmount = 0.75f, 0.0f, 2.0f;            ///< How much the character should lean forwards as the impact approaches
+    float SupportIgnoreRadius = 0.5f, 0.0f, 2.0f __per_anim_set__; ///< Radius of a sphere around the support point (i.e. the feet when balancing) where hazards will be ignored. This prevents bracing against the ground when crouching etc. In metres (standard character).
+  }
+
+  /// Configure the use of arm swing to avoid hazards by altering the chest's velocity.
+  group("Arm Swing")
+  {
+    float ArmsSwingWeight = 1.0f, 0.0f, 1.0f __per_anim_set__ __title__("Swing weight");      ///< Help rotate or stabilise the chest
+    float SwivelAmount = 0.3f, -1.0f, 1.0f __per_anim_set__;                                  ///< Controls the arms' swivel, Positive is elbows out and up, 0 matches the guide pose, negative is elbows in and down
+    float MaxArmExtensionScale = 1.0f, 0.1f, 1.0f __per_anim_set__ __title__("ArmExtension"); ///< Limit the maximum extension of the arm. Expressed as a proportion of the total arm length. For use in bracen and placement
+  }
+
+  /// Configure the use of leg swing to avoid hazards by altering the pelvis' velocity.
+  group("Leg Swing")
+  {
+    float LegsSwingWeight = 1.0f, 0.0f, 1.0f __per_anim_set__ __title__("Swing weight");     ///< Help rotate or stabilise the pelvis. 
+  }
+
+controlParams:
+  {
+    vector3 OffsetFromChest; ///< Offset from the chest that is used as the primary part to protect. X is forward, Y is up and Z is right, relative to the chest. In metres (standard character).
+  }
+}
+
+#endif

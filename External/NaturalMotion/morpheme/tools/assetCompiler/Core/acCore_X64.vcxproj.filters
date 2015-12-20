@@ -1,0 +1,873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\core" />
+    <Filter Include="include" />
+    <Filter Include="include\core\Analysis" />
+    <Filter Include="src" />
+    <Filter Include="src\Analysis" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\core\acCore.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisCondition.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisConditionAtFrame.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisConditionCrossedDurationFraction.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisConditionDiscreteEventTriggered.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisConditionInSyncEventRange.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisConditionStateMachineInState.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisInterval.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisParameteriser.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisProperty.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyCustom.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyEulerAngleComponent.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyPositionArcDistance.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyPositionDeltaDistance.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyPositionDeltaInAxis.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyPositionValueInAxis.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyRateOfTurnWithForwardTravel.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyRotationDeltaInAxis.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertySpeed.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertySpeedForCutTurns.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertySpeedInPlane.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyStrideLength.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyTakeOffDirectionInPlane.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyTravelDirectionInPlane.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyTravelSlopeAngle.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyTurningRate.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyUtils.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\AnalysisPropertyVelocityInAxis.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\ControlParameterRegularSampleGrid.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\DemoPredictionModel.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\NDMeshAnalysisData.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\NDMeshAPResampleMapBuilder.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\NDMeshAPSearchMapBuilder.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\NDMeshBuilder.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\NDMeshQuantisationData.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\NDMeshResampleMapExportData.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\NDMeshResampleMapIntermediteData.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\NDMeshResampler.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\NetworkControlPlayer.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\PredictionModelNDMeshAnalyser.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\PredictionModelNDMeshBuilder.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\ScatterBlend1DTask.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\ScatterBlend2DBSPTreeAnalyser.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\ScatterBlendTriangleAnnotationAnalyser.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\ScatterBlendVertexSourceAnalyser.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Analysis\XMDNetworkControlTake.h">
+      <Filter>include\core\Analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\BasicCharacterController.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\CharacterControllerDefBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\EventTrackCurveBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\EventTrackDiscreteBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\EventTrackDurationBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\JointLimitsBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\MessageScaleCharacterBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\MirroredAnimMappingBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NetworkDefBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NetworkPredictionDefBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeAnimSyncEventsBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeApplyBindPoseBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeApplyGlobalTimeBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeBasicUnevenTerrainBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeBlend2Builder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeBlend2x2Builder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeBlendAllBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeBlendNBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeBlendNxMBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeCharacterControllerOverrideBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeClosestAnimBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeControlParamBoolBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeControlParamFloatBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeControlParamIntBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeControlParamUIntBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeControlParamVector3Builder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeControlParamVector4Builder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeEmitMessageOnDiscreteEventBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeExtractJointInfoBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeFeatherBlend2Builder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeFilterTransformsBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeFreezeBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeGunAimIKBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeHeadLookBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeHipsIKBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeLockFootBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeMirrorTransformsBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeModifyJointTransformBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeModifyTrajectoryTransformBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorArithmeticBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorArithmeticVector3Builder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorBooleanBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorCPCompareBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorFloatsToVector3Builder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorFloatToIntBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorFunctionBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorIntToFloatBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorNoiseGenBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorOneInputArithmeticBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorOneInputArithmeticVector3Builder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorRampFloatBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorRandomFloatBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorRateOfChangeBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorRayCastBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorSmoothFloatBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorTimeLagInputBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorVector3AngleBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorVector3CrossProductBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorVector3DistanceBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorVector3DotBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorVector3NormaliseBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeOperatorVector3ToFloatsBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodePassThroughBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodePlaySpeedModifierBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodePredictiveUnevenTerrainBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeRetargetBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeScaleCharacterBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeScaleToDurationBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeScatterBlend1DAnnotationExport.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeScatterBlend1DBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeScatterBlend2DAnnotation.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeScatterBlend2DAnnotationExport.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeScatterBlendBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeSequenceBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeSingleFrameBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeSmoothTransformsBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeStateMachineBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeSubtractiveBlendBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeSwitchBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeTransitBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeTransitSyncEventsBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\NodeTwoBoneIKBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\PluginManager.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\RigBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\RigRetargetMappingBuilder.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\TransitConditionDefBuilderControlParamBoolSet.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\TransitConditionDefBuilderControlParamInRange.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\TransitConditionDefBuilderControlParamTest.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\TransitConditionDefBuilderCrossedCurveEventValueDecreasing.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\TransitConditionDefBuilderCrossedDurationFraction.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\TransitConditionDefBuilderDiscreteEventTriggered.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\TransitConditionDefBuilderFalse.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\TransitConditionDefBuilderInDurationEvent.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\TransitConditionDefBuilderInSyncEventRange.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\TransitConditionDefBuilderNodeActive.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\TransitConditionDefBuilderOnMessage.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\TransitConditionDefBuilderRayHit.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\TransitDeadBlendDefBuilderDefault.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClCompile Include="src\acCore.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisConditionAtFrame.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisConditionCrossedDurationFraction.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisConditionDiscreteEventTriggered.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisConditionInSyncEventRange.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisConditionStateMachineInState.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisInterval.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisParameteriser.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisProperty.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyCustom.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyEulerAngleComponent.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyPositionArcDistance.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyPositionDeltaDistance.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyPositionDeltaInAxis.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyPositionValueInAxis.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyRateOfTurnWithForwardTravel.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyRotationDeltaInAxis.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertySpeed.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertySpeedForCutTurns.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertySpeedInPlane.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyStrideLength.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyTakeOffDirectionInPlane.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyTravelDirectionInPlane.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyTravelSlopeAngle.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyTurningRate.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyUtils.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\AnalysisPropertyVelocityInAxis.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\ControlParameterRegularSampleGrid.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\DemoPredictionModel.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\NDMeshAnalysisData.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\NDMeshAPResampleMapBuilder.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\NDMeshAPSearchMapBuilder.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\NDMeshBuilder.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\NDMeshQuantisationData.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\NDMeshResampleMapExportData.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\NDMeshResampleMapIntermediteData.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\NDMeshResampler.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\NetworkControlPlayer.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\PredictionModelNDMeshAnalyser.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\PredictionModelNDMeshBuilder.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\ScatterBlend1DTask.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\ScatterBlend2DBSPTreeAnalyser.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\ScatterBlendTriangleAnnotationAnalyser.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\ScatterBlendVertexSourceAnalyser.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Analysis\XMDNetworkControlTake.cpp">
+      <Filter>src\Analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BasicCharacterController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CharacterControllerDefBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EventTrackCurveBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EventTrackDiscreteBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EventTrackDurationBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JointLimitsBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MessageScaleCharacterBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MirroredAnimMappingBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NetworkDefBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NetworkPredictionDefBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeAnimSyncEventsBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeApplyBindPoseBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeApplyGlobalTimeBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeBasicUnevenTerrainBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeBlend2Builder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeBlend2x2Builder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeBlendAllBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeBlendNBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeBlendNxMBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeCharacterControllerOverrideBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeClosestAnimBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeControlParamBoolBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeControlParamFloatBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeControlParamIntBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeControlParamUIntBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeControlParamVector3Builder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeControlParamVector4Builder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeEmitMessageOnDiscreteEventBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeExtractJointInfoBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeFeatherBlend2Builder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeFilterTransformsBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeFreezeBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeGunAimIKBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeHeadLookBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeHipsIKBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeLockFootBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeMirrorTransformsBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeModifyJointTransformBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeModifyTrajectoryTransformBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorArithmeticBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorArithmeticVector3Builder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorBooleanBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorCPCompareBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorFloatsToVector3Builder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorFloatToIntBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorFunctionBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorIntToFloatBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorNoiseGenBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorOneInputArithmeticBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorOneInputArithmeticVector3Builder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorRampFloatBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorRandomFloatBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorRateOfChangeBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorRayCastBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorSmoothFloatBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorTimeLagInputBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorVector3AngleBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorVector3CrossProductBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorVector3DistanceBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorVector3DotBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorVector3NormaliseBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeOperatorVector3ToFloatsBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodePassThroughBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodePlaySpeedModifierBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodePredictiveUnevenTerrainBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeRetargetBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeScaleCharacterBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeScaleToDurationBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeScatterBlend1DAnnotationExport.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeScatterBlend1DBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeScatterBlend2DAnnotation.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeScatterBlend2DAnnotationExport.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeScatterBlendBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeSequenceBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeSingleFrameBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeSmoothTransformsBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeStateMachineBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeSubtractiveBlendBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeSwitchBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeTransitBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeTransitSyncEventsBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NodeTwoBoneIKBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PluginManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RigBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RigRetargetMappingBuilder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderControlParamBoolSet.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderControlParamInRange.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderControlParamTest.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderCrossedCurveEventValueDecreasing.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderCrossedDurationFraction.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderDiscreteEventTriggered.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderFalse.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderInDurationEvent.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderInSyncEventRange.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderNodeActive.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderOnMessage.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitConditionDefBuilderRayHit.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransitDeadBlendDefBuilderDefault.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

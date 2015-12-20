@@ -1,0 +1,61 @@
+# Extensions beginning with ? are not required. For instance, glDrawArraysInstanced is a method used 
+# for instancing; however, it is not required for proper operation, it may just be more optimal.
+# Extensions beginning with ! are allowed to fail. This means that (unlike all other commands) glGetError
+# is not called after execution, so it can be called externally to check for failures.
+
+glBlendEquation
+glBlendFuncSeparate
+glActiveTexture
+glEnableVertexAttribArray
+glDisableVertexAttribArray
+glVertexAttribPointer
+glDeleteShader
+glDeleteProgram
+glCreateShader
+glShaderSource
+glCompileShader
+glCreateProgram
+glAttachShader
+glLinkProgram
+glUseProgram
+glGetShaderiv
+glGetShaderInfoLog
+glGetProgramiv
+glGetProgramInfoLog
+glGetAttribLocation
+glGetUniformLocation
+glBindAttribLocation
+glUniform1i
+glUniform1iv
+glUniform1f
+glUniform2f
+glUniform1fv
+glUniform2fv
+glUniform3fv
+glUniform4fv
+glUniformMatrix4fv
+glCompressedTexImage2D
+glGenBuffers
+glDeleteBuffers
+glBindBuffer
+glBufferData
+glBufferSubData
+glMapBuffer
+glUnmapBuffer
+glBindRenderbufferEXT
+glDeleteRenderbuffersEXT
+glGenRenderbuffersEXT
+glBindFramebufferEXT
+glDeleteFramebuffersEXT
+glGenFramebuffersEXT
+! glRenderbufferStorageEXT
+glFramebufferTexture2DEXT
+glFramebufferRenderbufferEXT
+glCheckFramebufferStatusEXT
+glGetFramebufferAttachmentParameterivEXT
+glGetRenderbufferParameterivEXT
+glIsFramebufferEXT
+glIsRenderbufferEXT
+glGenerateMipmapEXT
+? glDrawElementsInstanced
+? glStringMarkerGREMEDY

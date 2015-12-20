@@ -1,0 +1,38 @@
+The AdditionalCompilerOptions[64].txt files are meant to facilitate changes in 
+compiler settings that should affect all project files.
+
+AdditionalCompilerOptions.txt and AdditionalCompilerOptions64.txt are included 
+by all project files. The first is referenced by all x32 project configurations, 
+while the second by all x64 configurations.
+
+Note that the VS 2008 C++ compiler does not allow for comments in these text files.
+
+:: List of compiler flags ::
+/GR - Enables Runtime-Type Information - As of 3ds Max 2009, all modules of 3ds Max
+including 3rd party plugins must be compiled with RTTI On
+
+:: List of warnings that are enabled or promoted to errors ::
+C4706 - error - assignment within conditional expression
+C4390 - error - ';' : empty controlled statement found; is this the intent?
+C4557 - error - __assume' contains effect 'effect'
+C4546 - error - function call before comma missing argument list
+C4545 - error - expression before comma evaluates to a function which is missing an argument list
+C4295 - error - 'array' : array is too small to include a terminating null character
+C4310 - error - cast truncates constant value
+C4130 - error - 'operator' : logical operation on address of string constant. Example:
+	char* pc = "Hello";
+	if (pc == "Hello") // C4130
+C4611 - error - interaction between 'function' and C++ object destruction is non-portable
+C4213 - error - nonstandard extension used : cast on l-value
+C4121 - error - 'symbol' : alignment of a member was sensitive to packing
+C4715 - error - 'function' : not all control paths return a value
+C4265 - promoted to level 3 - 'class' : class has virtual functions, but destructor is not virtual
+
+:: List of warnings that are disabled ::
+C4244 - disabled - 'argument' : conversion from 'type1' to 'type2', possible loss 
+of data. Reason: generates many false positives such as when an int is converted to a float.
+C4018 - disabled - 'expression' : signed/unsigned mismatch. Reason: Max code has too many of them
+C4819 - disabled - The file contains a character that cannot be represented in the current code page. Reason: 
+Too many files are containing characters that cannot be represented in certain code pages like Chinese (936). 
+
+- EOF -

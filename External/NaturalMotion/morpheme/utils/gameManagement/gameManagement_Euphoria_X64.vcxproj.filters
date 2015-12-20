@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include\GameManagement\Euphoria" />
+    <Filter Include="include\GameManagement" />
+    <Filter Include="include" />
+    <Filter Include="src\Euphoria" />
+    <Filter Include="src" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\GameManagement\Euphoria\GameAnimSystemModuleEuphoria.h">
+      <Filter>include\GameManagement\Euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\Euphoria\GameCharacterControllerEuphoria.h">
+      <Filter>include\GameManagement\Euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\Euphoria\GameCharacterDefEuphoria.h">
+      <Filter>include\GameManagement\Euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\Euphoria\GameCharacterEuphoria.h">
+      <Filter>include\GameManagement\Euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\Euphoria\GameCharacterManagerEuphoria.h">
+      <Filter>include\GameManagement\Euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\Euphoria\GameCharacterManagerEuphoriaThreaded.h">
+      <Filter>include\GameManagement\Euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\Euphoria\GameEuphoriaManager.h">
+      <Filter>include\GameManagement\Euphoria</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameAnimLoader.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameAnimModule.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameAssetLoader.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameCharacter.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameCharacterDef.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameCharacterManager.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameManagement\GameThreadScheduler.h">
+      <Filter>include\GameManagement</Filter>
+    </ClInclude>
+    <ClCompile Include="src\Euphoria\GameAnimSystemModuleEuphoria.cpp">
+      <Filter>src\Euphoria</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Euphoria\GameCharacterControllerEuphoria.cpp">
+      <Filter>src\Euphoria</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Euphoria\GameCharacterDefEuphoria.cpp">
+      <Filter>src\Euphoria</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Euphoria\GameCharacterEuphoria.cpp">
+      <Filter>src\Euphoria</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Euphoria\GameCharacterManagerEuphoria.cpp">
+      <Filter>src\Euphoria</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Euphoria\GameCharacterManagerEuphoriaThreaded.cpp">
+      <Filter>src\Euphoria</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Euphoria\GameEuphoriaManager.cpp">
+      <Filter>src\Euphoria</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameAnimLoader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameAnimModule.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameAssetLoader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameCharacter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameCharacterDef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameCharacterManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameThreadScheduler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
