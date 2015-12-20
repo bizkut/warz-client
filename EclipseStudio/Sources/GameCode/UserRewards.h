@@ -4,7 +4,8 @@
 enum EPlayerRewardID
 {
 	RWD_ZombieKill		= 1,	//Standard
-	RWD_SuperZombieKill = 2, 
+	RWD_SuperZombieKill = 2,
+	RWD_PlayerKill      = 3,
 
 	// Why the fuck this shit is here? :( It shouldn't be part of PlayerRewards to begin with. FUCK!
 #ifdef MISSIONS

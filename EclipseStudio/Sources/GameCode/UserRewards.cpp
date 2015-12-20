@@ -36,6 +36,7 @@ void CGameRewards::InitDefaultRewards()
 
 	SetReward(1, "ZombieKill", 1, 1, 2, 2);
 	SetReward(2, "Super ZombieKill", 20, 20, 50, 50);
+	SetReward(3, "PlayerKill", 0, 15, 0, 15);
 }
 
 void CGameRewards::ExportDefaultRewards()
