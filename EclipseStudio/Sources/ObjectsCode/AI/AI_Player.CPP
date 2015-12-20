@@ -7836,7 +7836,10 @@ void obj_Player::DrawLabel()
 		}
 		float fps = r3dGetAvgFPS();
 		//if(fps < 10.0f)
-			Font_Label->PrintF(r3dRenderer->ScreenW-80, 0, r3dColor(243,43,37), "FPS: %.1f", fps);
+		Font_Label->PrintF((r3dRenderer->ScreenW) / 2, 0, r3dColor(243,43,37), "FPS: %.1f", r3dGetAvgFPS());
+        if(gClientLogic().net_->lastPing_ > 50)
+            Font_Label->PrintF((r3dRenderer->ScreenW) / 2, 15, r3dColor(255,0,0), "PING: %i", gClientLogic().net_->lastPing_);
+        else Font_Label->PrintF((r3dRenderer->ScreenW) / 2, 15, r3dColor(0,255,68), "PING: %i", gClientLogic().net_->lastPing_);
 	}
 
 #ifndef FINAL_BUILD
