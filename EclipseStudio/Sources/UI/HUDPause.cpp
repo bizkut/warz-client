@@ -829,7 +829,14 @@ void HUDPause::eventQuitGame(r3dScaleformMovie* pMovie, const Scaleform::GFx::Va
 	p2pSendToHost(gClientLogic().localPlayer_, &n, sizeof(n), true);
 
 	if(!gClientLogic().localPlayer_->bDead)
-		DisconnectAt = r3dGetTime() + 10.0f; 
+		if(gUserProfile.ProfileData.AccountType == 0 || gUserProfile.ProfileData.isDevAccount>0)
+		{
+			DisconnectAt = r3dGetTime(); 
+		}
+		else
+		{
+			DisconnectAt = r3dGetTime() + 5.0f; 
+		}
 	else
 		DisconnectAt = r3dGetTime();
 }
