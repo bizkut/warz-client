@@ -150,7 +150,7 @@
 
 #define VEHICLES_ENABLED 1
 
-//#define ENABLE_INGAME_STORE 1
+#define ENABLE_INGAME_STORE 1
 
 #ifndef DISABLE_PHYSX  // DISABLE_PHYSX defined for server
 #include "PxPhysicsAPI.h"
